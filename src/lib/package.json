@@ -1,0 +1,27 @@
+{
+  "name": "ng-wizi-bulma",
+  "version": "1.0.0",
+  "description": "Angular Compoments using Bulma css",
+  "main": "./bundles/ng-wizi-bulma.umd.js",
+  "module": "./index.js",
+  "typings": "./index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WiziShop/ng-wizi-bulma.git"
+  },
+  "keywords": [
+    "angular",
+    "wizishop",
+    "bulma",
+    "components"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WiziShop/ng-wizi-bulma/issues"
+  },
+  "homepage": "https://github.com/WiziShop/ng-wizi-bulma#readme",
+  "peerDependencies": {
+    "@angular/core": "^2.4.8",
+    "@angular/common": "^2.4.8"
+  }
+}
