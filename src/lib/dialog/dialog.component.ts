@@ -29,8 +29,8 @@ import {NwbDialogConfig} from './dialog.service';
           {{config.message}}
         </section>
         <footer class="modal-card-foot">
-          <a class="button column is-medium is-danger" (click)="dismiss(false)">{{config.closeButtonText}}</a>
-          <a class="button column is-medium is-success is-offset-8" *ngIf="config.okButtonText !== ''"
+          <a class="button column is-medium is-danger" *ngIf="config.closeButtonText" (click)="dismiss(false)">{{config.closeButtonText}}</a>
+          <a class="button column is-medium is-success is-offset-8" *ngIf="config.okButtonText"
              (click)="dismiss(true)">{{config.okButtonText}}</a>
         </footer>
       </div>

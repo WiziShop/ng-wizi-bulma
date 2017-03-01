@@ -1,6 +1,6 @@
 {
   "name": "ng-wizi-bulma",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Angular Compoments using Bulma css",
   "main": "./bundles/ng-wizi-bulma.umd.js",
   "module": "./index.js",
