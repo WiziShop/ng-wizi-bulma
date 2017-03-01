@@ -6,11 +6,18 @@ This repo contains Angular 2+ components build using [Bulma css](http://bulma.io
 
 run 
 ```
-npm i -S ng-wizi-bulma
+npm i -S ng-wizi-bulma && npm i -S bulma
 
 ```
 
-Then import the module into your app module : 
+1. Import bulma css into your main css file
+
+```
+@import '~bulma/bulma';
+
+```
+
+2. import the module into your app module : 
 
 ````
 
@@ -38,11 +45,12 @@ export class AppModule {
 
 ````
 
-Then add the `nwb-app-root` tag into you app.component.html : 
+3. add the `nwb-app-root` tag into you app.component.html : 
 ```
 <nwb-app-root></nwb-app-root>
 
 ```
+
 
 #Try it
 
