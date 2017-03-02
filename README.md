@@ -8,20 +8,18 @@ Try out the [demo](https://ng-wizi-bulma.firebaseapp.com/)
 
 ## Install
 
-run 
+Run: 
 ```
 npm i -S ng-wizi-bulma && npm i -S bulma
-
 ```
 
-1. Import bulma css into your main css file
+Import bulma css into your main css file:
 
 ```
 @import '~bulma/bulma';
-
 ```
 
-2. import the module into your app module : 
+Import the module into your app module: 
 
 ````
 
@@ -52,10 +50,9 @@ export class AppModule {
 3. add the `nwb-app-root` tag into you app.component.html : 
 ```
 <nwb-app-root></nwb-app-root>
-
 ```
 
 
-## Try it
+## How to use it
 
 If you want to see how components work, just see the demo file : `src/demo-app/demo-app/demo-app.ts`
