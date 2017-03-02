@@ -11,7 +11,8 @@
   "scripts": {
     "build": "gulp build:components",
     "demo-app": "gulp serve:devapp",
-    "publish": "gulp publish"
+    "deploy": "gulp build:devapp && firebase deploy",
+    "publish": "npm run deploy && gulp publish"
   },
   "license": "MIT",
   "engines": {

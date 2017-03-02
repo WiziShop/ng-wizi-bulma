@@ -2,7 +2,11 @@
 
 This repo contains Angular 2+ components build using [Bulma css](http://bulma.io/)
 
-#Install
+## Demo
+
+Try out the [demo](https://ng-wizi-bulma.firebaseapp.com/)
+
+## Install
 
 run 
 ```
@@ -52,6 +56,6 @@ export class AppModule {
 ```
 
 
-#Try it
+## Try it
 
 If you want to see how components work, just see the demo file : `src/demo-app/demo-app/demo-app.ts`
