@@ -33,6 +33,7 @@ import {NwbSnackbarConfig} from './snackbar.service';
       margin: 0 auto;
       left: 0;
       right: 0;
+      z-index:10;
     }
 
     .notification--message {
