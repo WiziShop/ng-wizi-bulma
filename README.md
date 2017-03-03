@@ -47,7 +47,7 @@ export class AppModule {
 
 ````
 
-Add the `nwb-app-root` tag into you app.component.html : 
+Add the `nwb-app-root` tag at the **bottom** of your app root html (i.e. app.component.html): 
 ```
 <nwb-app-root></nwb-app-root>
 ```
