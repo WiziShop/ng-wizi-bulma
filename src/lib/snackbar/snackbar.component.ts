@@ -11,10 +11,10 @@ import {NwbSnackbarConfig} from './snackbar.service';
          (@state.done)="animationDone($event)"
     >
       <div class="columns">
-        <div class="column is-9 notification--message">
+        <div class="column is-three-quarters notification--message">
           {{config.message}}
         </div>
-        <div class="column is-1">
+        <div class="column is-one-quarter">
           <button *ngIf="config.action" class="button is-success" (click)="dismiss(true)">{{config.action}}</button>
 
         </div>
