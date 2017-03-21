@@ -36,6 +36,10 @@ import {NwbSnackbarConfig} from './snackbar.service';
       z-index:10;
     }
 
+    .notification .column:last-of-type {
+      text-align: right;
+    }
+
     .notification--message {
       align-self: center;
     }
