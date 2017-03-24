@@ -1,16 +1,8 @@
-import {
-  animate,
-  AnimationTransitionEvent,
-  Component,
-  keyframes,
-  OnInit,
-  style,
-  transition,
-  trigger
-} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {NwbDialogConfig} from './dialog.service';
+import {Component, OnInit, AnimationTransitionEvent} from '@angular/core';
+import {animate, keyframes, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'nwb-dialog',
@@ -29,7 +21,8 @@ import {NwbDialogConfig} from './dialog.service';
           {{config.message}}
         </section>
         <footer class="modal-card-foot">
-          <a class="button column is-medium is-danger" *ngIf="config.closeButtonText" (click)="dismiss(false)">{{config.closeButtonText}}</a>
+          <a class="button column is-medium is-danger" *ngIf="config.closeButtonText"
+             (click)="dismiss(false)">{{config.closeButtonText}}</a>
           <a class="button column is-medium is-success is-offset-8" *ngIf="config.okButtonText"
              (click)="dismiss(true)">{{config.okButtonText}}</a>
         </footer>

@@ -2,19 +2,21 @@ import * as child_process from 'child_process';
 import * as fs from 'fs';
 import * as gulp from 'gulp';
 import * as path from 'path';
-import {DIST_ROOT, NPM_VENDOR_FILES, PROJECT_ROOT, SASS_AUTOPREFIXER_OPTIONS} from './constants';
+import {NPM_VENDOR_FILES, PROJECT_ROOT, DIST_ROOT} from '../constants';
+import {CompilerOptions} from 'typescript';
+import {compileProject} from './ts-compiler';
 
-
-/** Those imports lack typings. */
+/* Those imports lack typings. */
 const gulpClean = require('gulp-clean');
 const gulpMerge = require('merge2');
 const gulpRunSequence = require('run-sequence');
 const gulpSass = require('gulp-sass');
 const gulpSourcemaps = require('gulp-sourcemaps');
-const gulpAutoprefixer = require('gulp-autoprefixer');
 const gulpConnect = require('gulp-connect');
-const resolveBin = require('resolve-bin');
+const gulpIf = require('gulp-if');
+const gulpCleanCss = require('gulp-clean-css');
 
+const resolveBin = require('resolve-bin');
 
 /** If the string passed in is a glob, returns it, otherwise append '**\/*' to it. */
 function _globify(maybeGlob: string, suffix = '**/*') {
@@ -26,25 +28,24 @@ function _globify(maybeGlob: string, suffix = '**/*') {
     if (stat.isFile()) {
       return maybeGlob;
     }
-  } catch (e) {
-  }
+  } catch (e) {}
   return path.join(maybeGlob, suffix);
 }
 
 
 /** Creates a task that runs the TypeScript compiler */
-export function tsBuildTask(tsConfigPath: string) {
-  return execNodeTask('typescript', 'tsc', ['-p', tsConfigPath]);
+export function tsBuildTask(tsConfigPath: string, extraOptions?: CompilerOptions) {
+  return () => compileProject(tsConfigPath, extraOptions);
 }
 
 
 /** Create a SASS Build Task. */
-export function sassBuildTask(dest: string, root: string) {
+export function sassBuildTask(dest: string, root: string, minify = false) {
   return () => {
     return gulp.src(_globify(root, '**/*.scss'))
-      .pipe(gulpSourcemaps.init())
+      .pipe(gulpSourcemaps.init({ loadMaps: true }))
       .pipe(gulpSass().on('error', gulpSass.logError))
-      .pipe(gulpAutoprefixer(SASS_AUTOPREFIXER_OPTIONS))
+      .pipe(gulpIf(minify, gulpCleanCss()))
       .pipe(gulpSourcemaps.write('.'))
       .pipe(gulp.dest(dest));
   };
@@ -101,7 +102,7 @@ export function execNodeTask(packageName: string, executable: string | string[],
   }
 
   return (done: (err: any) => void) => {
-    resolveBin(packageName, {executable: executable}, (err: any, binPath: string) => {
+    resolveBin(packageName, { executable: executable }, (err: any, binPath: string) => {
       if (err) {
         done(err);
       } else {
@@ -127,14 +128,15 @@ export function copyTask(srcGlobOrDir: string | string[], outRoot: string) {
 
 /** Delete files. */
 export function cleanTask(glob: string) {
-  return () => gulp.src(glob, {read: false}).pipe(gulpClean(null));
+  return () => gulp.src(glob, { read: false }).pipe(gulpClean(null));
 }
 
 
 /** Build an task that depends on all application build tasks. */
 export function buildAppTask(appName: string) {
-  const buildTasks = ['vendor', 'ts', 'scss', 'assets']
-    .map(taskName => `:build:${appName}:${taskName}`);
+  const buildTasks = ['vendor', 'ts', 'scss', 'assets', 'bulma']
+    .map(taskName => `:build:${appName}:${taskName}`)
+    .filter(taskName => gulp.hasTask(taskName));
 
   return (done: () => void) => {
     gulpRunSequence(

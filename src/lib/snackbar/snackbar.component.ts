@@ -1,7 +1,8 @@
-import {animate, AnimationTransitionEvent, Component, OnInit, state, style, transition, trigger} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {NwbSnackbarConfig} from './snackbar.service';
+import {AnimationTransitionEvent, Component, OnInit} from '@angular/core';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'nwb-snack-bar',
@@ -15,7 +16,8 @@ import {NwbSnackbarConfig} from './snackbar.service';
           {{config.message}}
         </div>
         <div class="column is-one-quarter">
-          <button *ngIf="config.action" class="button is-success" (click)="dismiss(true)">{{config.action}}</button>
+          <button *ngIf="config.action" class="button is-success" 
+                  (click)="dismiss(true)">{{config.action}}</button>
 
         </div>
       </div>
