@@ -1,4 +1,4 @@
-#NG Wizi Bulma
+# NG Wizi Bulma
 
 This repo contains Angular 2+ components build using [Bulma css](http://bulma.io/)
 
