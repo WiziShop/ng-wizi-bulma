@@ -10,7 +10,7 @@ export class NwbDialogService {
   }
 
   open(config: NwbDialogConfig): NwbDialogComponent {
-    const portal = this.wdApp.nwbRootCpm.getPortal(NwbPortal.MODAL);
+    const portal = this.wdApp.getNwbRootComponent().getPortal(NwbPortal.MODAL);
 
     const factory = portal.componentFactoryResolver.resolveComponentFactory(NwbDialogComponent);
     const componentRef = portal.viewContainerRef.createComponent(factory);

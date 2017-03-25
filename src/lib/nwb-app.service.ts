@@ -3,5 +3,17 @@ import {NwbRootComponent} from './nwb-root/nwb-root.component';
 
 @Injectable()
 export class NwbAppService {
-  nwbRootCpm: NwbRootComponent;
+  private nwbRootCpm: NwbRootComponent;
+
+  getNwbRootComponent(): NwbRootComponent {
+    if (!this.nwbRootCpm) {
+      throw 'NwbRootComponent has not been initialized yet.';
+    }
+
+    return this.nwbRootCpm;
+  }
+
+  setNwbRootComponent(component: NwbRootComponent) {
+    this.nwbRootCpm = component;
+  }
 }

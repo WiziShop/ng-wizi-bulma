@@ -11,12 +11,17 @@ import {NwbAppService} from '../nwb-app.service';
   `
 })
 export class NwbRootComponent {
-  @ViewChild('modalPortal', {read: NwbOverlayPortalDirective}) modalPortal: NwbOverlayPortalDirective;
-  @ViewChild('defaultPortal', {read: NwbOverlayPortalDirective}) defaultPortal: NwbOverlayPortalDirective;
-  @ViewChild('snackBar', {read: NwbOverlayPortalDirective}) snackBar: NwbOverlayPortalDirective;
+  @ViewChild('modalPortal', {read: NwbOverlayPortalDirective})
+  modalPortal: NwbOverlayPortalDirective;
+
+  @ViewChild('defaultPortal', {read: NwbOverlayPortalDirective})
+  defaultPortal: NwbOverlayPortalDirective;
+
+  @ViewChild('snackBar', {read: NwbOverlayPortalDirective})
+  snackBar: NwbOverlayPortalDirective;
 
   constructor(nwbApp: NwbAppService) {
-    nwbApp.nwbRootCpm = this;
+    nwbApp.setNwbRootComponent(this);
   }
 
   getPortal(appPortal?: NwbPortal): NwbOverlayPortalDirective {

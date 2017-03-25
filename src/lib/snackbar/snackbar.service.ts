@@ -10,7 +10,7 @@ export class NwbSnackbarService {
   }
 
   open(config: NwbSnackbarConfig): NwbSnackbarComponent {
-    const portal = this.wdApp.nwbRootCpm.getPortal(NwbPortal.SNACKBAR);
+    const portal = this.wdApp.getNwbRootComponent().getPortal(NwbPortal.SNACKBAR);
 
     const factory = portal.componentFactoryResolver.resolveComponentFactory(NwbSnackbarComponent);
     const componentRef = portal.viewContainerRef.createComponent(factory);
