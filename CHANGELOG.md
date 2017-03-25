@@ -1,3 +1,8 @@
+# 1.0.9 (2017-03-25)
+
+- FIX npm package issue
+- Throw an exception if nwbRootCpm is not defined
+
 # 1.0.6 (2017-03-24)
 
 Upgrade to Angular 4.x
