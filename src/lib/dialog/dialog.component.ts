@@ -17,8 +17,8 @@ import {animate, keyframes, style, transition, trigger} from '@angular/animation
           <p class="modal-card-title">{{config.title}}</p>
           <button class="delete" (click)="dismiss(false)"></button>
         </header>
-        <section class="modal-card-body">
-          {{config.message}}
+        <section class="modal-card-body" [innerHTML]="config.message">
+
         </section>
         <footer class="modal-card-foot">
           <a class="button column is-medium is-danger" *ngIf="config.closeButtonText"

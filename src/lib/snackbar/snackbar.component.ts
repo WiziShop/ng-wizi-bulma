@@ -12,12 +12,13 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
          (@state.done)="animationDone($event)"
     >
       <div class="columns">
-        <div class="column notification--message" [ngClass]="{'is-half': config.action}">
-          {{config.message}}
+        <div class="column notification--message" [ngClass]="{'is-half': config.action}"
+             [innerHTML]="config.message">
         </div>
         <div class="column is-half" *ngIf="config.action">
-          <button class="button is-success" 
-                  (click)="dismiss(true)">{{config.action}}</button>
+          <button class="button is-success"
+                  (click)="dismiss(true)">{{config.action}}
+          </button>
 
         </div>
       </div>
@@ -35,9 +36,9 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
       margin: 0 auto;
       left: 0;
       right: 0;
-      z-index:10;
+      z-index: 10;
     }
-    
+
     .notification button {
       word-wrap: break-word;
       word-break: break-all;

@@ -12,13 +12,13 @@ export class DemoApp {
 
   dialogConfig: NwbDialogConfig = {
     title: 'Logout',
-    message: 'Logout ?',
+    message: 'Logout <b>with bold</b> ?',
     okButtonText: 'Yes',
     closeButtonText: 'No'
   };
 
   snackBarNewVersionConfig: NwbSnackbarConfig = {
-    message: 'My snackbar message',
+    message: 'My snackbar message with <b>bold</b>',
     action: 'My button',
     duration: 3000
   };
