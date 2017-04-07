@@ -47,6 +47,10 @@ import {animate, keyframes, style, transition, trigger} from '@angular/animation
     a.button {
       height: auto;
     }
+    
+    button.delete {
+      height: 40px;
+    }
   `],
   animations: [
     trigger('modalState', [

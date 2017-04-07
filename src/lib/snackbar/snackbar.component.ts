@@ -46,8 +46,12 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
       height: 100%;
     }
 
-    .notification .column:last-of-type {
+    .notification .column:nth-child(2) {
       text-align: right;
+    }
+
+    .notification .column:nth-child(1) {
+      text-align: left;
     }
 
     .notification--message {
