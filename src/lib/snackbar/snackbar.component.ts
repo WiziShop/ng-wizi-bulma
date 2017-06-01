@@ -1,8 +1,8 @@
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {NwbSnackbarConfig} from './snackbar.service';
-import {AnimationTransitionEvent, Component, OnInit} from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {Component, OnInit} from '@angular/core';
+import {animate, AnimationEvent, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'nwb-snack-bar',
@@ -102,7 +102,7 @@ export class NwbSnackbarComponent implements OnInit {
 
   }
 
-  animationDone(event: AnimationTransitionEvent) {
+  animationDone(event: AnimationEvent) {
     if (event.fromState === 'active' && event.toState === 'inactive') {
       this._afterClosed.next(this.manualClose);
       this._afterClosed.complete();

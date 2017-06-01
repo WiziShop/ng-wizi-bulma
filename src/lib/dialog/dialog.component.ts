@@ -1,8 +1,8 @@
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
-import {NwbDialogConfig} from './dialog.service';
-import {Component, OnInit, AnimationTransitionEvent} from '@angular/core';
-import {animate, keyframes, style, transition, trigger} from '@angular/animations';
+import {ComponentType, NwbDialogConfig} from './dialog.service';
+import {Component, ComponentFactoryResolver, OnInit, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
+import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'nwb-dialog',
@@ -12,13 +12,17 @@ import {animate, keyframes, style, transition, trigger} from '@angular/animation
       <div class="modal-card"
            [@modalState]="open? 'active' : 'inactive'"
            (@modalState.done)="animationDone($event)"
+           [ngStyle]="{'width': config.width}"
       >
         <header class="modal-card-head" *ngIf="config.title">
           <p class="modal-card-title">{{config.title}}</p>
           <button class="delete" (click)="dismiss(false)"></button>
         </header>
-        <section class="modal-card-body" [innerHTML]="config.message">
-
+        <section class="modal-card-body"
+                 *ngIf="config.message && config.message.length" [innerHTML]="config.message">
+        </section>
+        <section class="modal-card-body" [ngClass]="{'is-hidden':!hasComponent}">
+          <div #componentSection></div>
         </section>
         <footer class="modal-card-foot">
           <a class="button column is-medium is-danger" *ngIf="config.closeButtonText"
@@ -30,6 +34,7 @@ import {animate, keyframes, style, transition, trigger} from '@angular/animation
     </div>
   `,
   styles: [`
+
     .modal-card-head, .modal-card-foot {
       border: 0;
       border-radius: 0;
@@ -47,7 +52,7 @@ import {animate, keyframes, style, transition, trigger} from '@angular/animation
     a.button {
       height: auto;
     }
-    
+
     button.delete {
       height: 40px;
     }
@@ -65,7 +70,14 @@ import {animate, keyframes, style, transition, trigger} from '@angular/animation
     ])
   ]
 })
-export class NwbDialogComponent implements OnInit {
+export class NwbDialogComponent<T> implements OnInit {
+
+  @ViewChild('componentSection', {read: ViewContainerRef}) componentSection: ViewContainerRef;
+
+  componentInstance: T;
+
+  hasComponent = false;
+
   config: NwbDialogConfig = {
     message: 'Mon message',
     title: 'Mon title',
@@ -80,10 +92,14 @@ export class NwbDialogComponent implements OnInit {
 
   private fromOkButton = false;
 
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+
+  }
 
   ngOnInit() {
     this.open = true;
   }
+
 
   dismiss(fromOkButton: boolean) {
     this.open = false;
@@ -92,7 +108,7 @@ export class NwbDialogComponent implements OnInit {
 
   }
 
-  animationDone(event: AnimationTransitionEvent) {
+  animationDone(event: AnimationEvent) {
     if (event.fromState === 'active' && event.toState === 'inactive') {
       this._afterClosed.next(this.fromOkButton);
       this._afterClosed.complete();
@@ -104,5 +120,19 @@ export class NwbDialogComponent implements OnInit {
    */
   afterClosed(): Observable<any> {
     return this._afterClosed.asObservable();
+  }
+
+  setComponent(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>) {
+    let factory;
+
+    if (componentOrTemplateRef instanceof TemplateRef) {
+      this.componentSection.createEmbeddedView(componentOrTemplateRef);
+    } else {
+      factory = this.componentFactoryResolver.resolveComponentFactory(componentOrTemplateRef);
+      const componentRef = this.componentSection.createComponent(factory);
+
+      this.componentInstance = componentRef.instance;
+    }
+    this.hasComponent = true;
   }
 }

@@ -15,6 +15,31 @@
 <div class="card">
   <header class="card-header">
     <p class="card-header-title">
+      Dialog with component
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <button class="button" (click)="openDialogFromComponent()">Open Dialog From Component</button>
+      <p *ngIf="fakeComponentValue.length">Your name is: <b>{{fakeComponentValue}}</b></p>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Dialog with template
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <button class="button" (click)="openDialogFromTemplate()">Open Dialog From Template</button>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
       Snackbar
     </p>
   </header>
@@ -24,5 +49,9 @@
     </div>
   </div>
 </div>
+
+<ng-template #dialogTemplateRef>
+  I'm a template dialog. I've been opened {{numTemplateOpens}} times!
+</ng-template>
 
 <nwb-app-root></nwb-app-root>

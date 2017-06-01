@@ -1,1 +1,1 @@
-declare const module: {id: string};
+declare const module: { id: string };

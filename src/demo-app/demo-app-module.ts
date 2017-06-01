@@ -5,6 +5,7 @@ import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {DemoApp} from './demo-app/demo-app';
 import {NwbModule} from 'ng-wizi-bulma';
+import {FakeDialogComponent} from './demo-app/fake-dialog-component';
 
 @NgModule({
   imports: [
@@ -14,9 +15,9 @@ import {NwbModule} from 'ng-wizi-bulma';
     HttpModule,
     NwbModule,
   ],
-  declarations: [DemoApp],
+  declarations: [DemoApp, FakeDialogComponent],
   providers: [],
-  entryComponents: [DemoApp],
+  entryComponents: [DemoApp, FakeDialogComponent],
 })
 export class DemoAppModule {
   constructor(private _appRef: ApplicationRef) {

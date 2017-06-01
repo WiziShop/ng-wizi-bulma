@@ -19,16 +19,13 @@ System.config({
     '@angular/forms': 'vendor/@angular/forms/bundles/forms.umd.js',
     '@angular/forms/testing': 'vendor/@angular/forms/bundles/forms-testing.umd.js',
     '@angular/platform-browser': 'vendor/@angular/platform-browser/bundles/platform-browser.umd.js',
-    '@angular/platform-browser/testing':
-      'vendor/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
-    '@angular/platform-browser-dynamic':
-      'vendor/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
-    '@angular/platform-browser-dynamic/testing':
-      'vendor/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
+    '@angular/platform-browser/testing': 'vendor/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
+    '@angular/platform-browser-dynamic': 'vendor/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+    '@angular/platform-browser-dynamic/testing': 'vendor/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
   },
   packages: {
     // Thirdparty barrels.
-    'rxjs': { main: 'index' },
+    'rxjs': {main: 'index'},
     'ng-wizi-bulma': {
       format: 'cjs',
       main: 'ng-wizi-bulma.umd.js'
