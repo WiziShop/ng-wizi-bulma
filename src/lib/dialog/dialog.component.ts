@@ -25,9 +25,9 @@ import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@a
           <div #componentSection></div>
         </section>
         <footer class="modal-card-foot">
-          <a class="button column is-medium is-danger" *ngIf="config.closeButtonText"
+          <a class="button column is-medium is-danger is-4" *ngIf="config.closeButtonText"
              (click)="dismiss(false)">{{config.closeButtonText}}</a>
-          <a class="button column is-medium is-success is-offset-8" *ngIf="config.okButtonText"
+          <a class="button column is-medium is-success is-offset-4" *ngIf="config.okButtonText"
              (click)="dismiss(true)">{{config.okButtonText}}</a>
         </footer>
       </div>
@@ -38,6 +38,12 @@ import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@a
     .modal-card-head, .modal-card-foot {
       border: 0;
       border-radius: 0;
+    }
+    
+    .modal-card-foot a{
+      max-width: 50%;
+      white-space: initial;
+      word-wrap: break-word;
     }
 
     .modal-card-head {
@@ -54,7 +60,7 @@ import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@a
     }
 
     button.delete {
-      height: 40px;
+      padding: 10px;
     }
   `],
   animations: [
