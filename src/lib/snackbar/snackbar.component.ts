@@ -7,7 +7,7 @@ import {animate, AnimationEvent, state, style, transition, trigger} from '@angul
 @Component({
   selector: 'nwb-snack-bar',
   template: `
-    <div class="notification is-active"
+    <div [class]="'notification is-active ' + ((config.color) ? config.color : 'is-transparent')"
          [@state]="open ? 'active': 'inactive'"
          (@state.done)="animationDone($event)"
     >
@@ -16,7 +16,7 @@ import {animate, AnimationEvent, state, style, transition, trigger} from '@angul
              [innerHTML]="config.message">
         </div>
         <div class="column is-half" *ngIf="config.action">
-          <button class="button is-success"
+          <button [class]="'button ' + ((config.buttonColor) ? config.buttonColor : 'is-success')"
                   (click)="dismiss(true)">{{config.action}}
           </button>
 
@@ -29,7 +29,6 @@ import {animate, AnimationEvent, state, style, transition, trigger} from '@angul
       position: fixed;
       bottom: 0;
       width: 600px;
-      background-color: rgba(0, 0, 0, 0.8);
       color: #fff;
       font-size: 15px;
       font-weight: 300;
@@ -37,6 +36,10 @@ import {animate, AnimationEvent, state, style, transition, trigger} from '@angul
       left: 0;
       right: 0;
       z-index: 10;
+    }
+
+    .notification.is-transparent {
+      background-color: rgba(0, 0, 0, 0.8);
     }
 
     .notification button {

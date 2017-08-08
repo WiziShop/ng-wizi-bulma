@@ -30,5 +30,7 @@ export interface NwbSnackbarConfig {
   message: string;
   action?: string;
   duration?: number;
+  color?: string;
+  buttonColor?: string;
 }
 
