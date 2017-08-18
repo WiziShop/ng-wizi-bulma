@@ -1,6 +1,6 @@
 # NG Wizi Bulma
 
-This repo contains Angular 2+ components build using [Bulma css](http://bulma.io/)
+This repo contains Angular 4+ components build using [Bulma css](http://bulma.io/)
 
 ## Demo
 
@@ -47,10 +47,6 @@ export class AppModule {
 
 ````
 
-Add the `nwb-app-root` tag at the **bottom** of your app root html (i.e. app.component.html): 
-```
-<nwb-app-root></nwb-app-root>
-```
 
 
 ## How to use it

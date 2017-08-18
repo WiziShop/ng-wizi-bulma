@@ -1,19 +1,23 @@
 import {Injectable} from '@angular/core';
-import {NwbAppService} from '../nwb-app.service';
 import {NwbSnackbarComponent} from './snackbar.component';
-import {NwbPortal} from '../nwb-root/nwb-root.component';
+import {DomService} from '../shared/dom/dom.service';
 
 @Injectable()
 export class NwbSnackbarService {
 
-  constructor(private wdApp: NwbAppService) {
+  constructor(private domService: DomService) {
   }
 
   open(config: NwbSnackbarConfig): NwbSnackbarComponent {
-    const portal = this.wdApp.getNwbRootComponent().getPortal(NwbPortal.SNACKBAR);
+    const componentRef = this.getComponentRef(config);
 
-    const factory = portal.componentFactoryResolver.resolveComponentFactory(NwbSnackbarComponent);
-    const componentRef = portal.viewContainerRef.createComponent(factory);
+    return componentRef.instance;
+  }
+
+
+  private getComponentRef(config: NwbSnackbarConfig) {
+    const componentRef = this.domService.attachComponentPortal(NwbSnackbarComponent);
+
     componentRef.instance.config = config;
 
     componentRef.instance.afterClosed()
@@ -21,7 +25,7 @@ export class NwbSnackbarService {
         componentRef.destroy();
       });
 
-    return componentRef.instance;
+    return componentRef;
   }
 }
 

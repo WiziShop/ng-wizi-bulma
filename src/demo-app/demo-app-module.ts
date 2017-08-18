@@ -3,9 +3,12 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
-import {DemoApp} from './demo-app/demo-app';
+import {DemoApp} from './demo-app';
 import {NwbModule} from 'ng-wizi-bulma';
-import {FakeDialogComponent} from './demo-app/fake-dialog-component';
+import {DemoAppRoutingModule} from './demo-app-routing.module';
+import {DialogDemo} from './features/dialog/dialog-demo';
+import {FakeDialogDemoComponent} from './features/dialog/fake-dialog-demo-component';
+import {SnackbarDemo} from './features/snackbar/snackbar-demo';
 
 @NgModule({
   imports: [
@@ -14,10 +17,11 @@ import {FakeDialogComponent} from './demo-app/fake-dialog-component';
     FormsModule,
     HttpModule,
     NwbModule,
+    DemoAppRoutingModule,
   ],
-  declarations: [DemoApp, FakeDialogComponent],
+  declarations: [DemoApp, DialogDemo, FakeDialogDemoComponent, SnackbarDemo],
   providers: [],
-  entryComponents: [DemoApp, FakeDialogComponent],
+  entryComponents: [DemoApp, DialogDemo, FakeDialogDemoComponent, SnackbarDemo],
 })
 export class DemoAppModule {
   constructor(private _appRef: ApplicationRef) {

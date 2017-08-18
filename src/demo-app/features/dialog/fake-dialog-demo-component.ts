@@ -20,12 +20,12 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
     </div>
   `,
 })
-export class FakeDialogComponent {
+export class FakeDialogDemoComponent {
 
   @ViewChild('myInput') myInput: ElementRef;
 
   ngOnInit() {
-    console.log('FakeDialogComponent');
+    console.log('FakeDialogDemoComponent');
 
     console.log('myInput', this.myInput);
   }

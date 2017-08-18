@@ -1,3 +1,9 @@
+# 1.1.0 (2017-08-18)
+- Angular 4.3.5
+- Bulma 0.5.1
+- Create singleton of overlay
+- No need to add `<nwb-app-root></nwb-app-root>` into you html anymore
+
 # 1.0.9 (2017-03-25)
 
 - FIX npm package issue
