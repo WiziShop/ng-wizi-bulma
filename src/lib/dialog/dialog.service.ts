@@ -1,11 +1,12 @@
-import {Injectable, TemplateRef} from '@angular/core';
+import {Injectable, Injector, TemplateRef} from '@angular/core';
 import {NwbDialogComponent} from './dialog.component';
 import {ComponentType, DomService} from '../shared/dom/dom.service';
+import {PortalInjector} from '../shared/portal/portal-injector';
 
 @Injectable()
 export class NwbDialogService {
 
-  constructor(private domService: DomService) {
+  constructor(private domService: DomService, private injector: Injector) {
   }
 
   open(config: NwbDialogConfig): NwbDialogComponent<any> {
@@ -28,7 +29,13 @@ export class NwbDialogService {
 
 
   private getComponentRef(config: NwbDialogConfig) {
-    const componentRef = this.domService.attachComponentPortal(NwbDialogComponent);
+    const injectionTokens = new WeakMap();
+
+    injectionTokens.set(NwbDialogComponent, NwbDialogComponent);
+
+    let injector = new PortalInjector(this.injector, injectionTokens);
+
+    const componentRef = this.domService.attachComponentPortal(NwbDialogComponent, injector);
 
     componentRef.instance.config = config;
 

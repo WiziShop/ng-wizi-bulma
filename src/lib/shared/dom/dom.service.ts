@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 
 import {OverlayContainer} from '../overlay/overlay-container';
+import {PortalInjector} from '../portal/portal-injector';
 
 @Injectable()
 export class DomService {
@@ -20,11 +21,11 @@ export class DomService {
               private overlayContainer: OverlayContainer) {
   }
 
-  attachComponentPortal<T>(component: ComponentType<T>): ComponentRef<T> {
+  attachComponentPortal<T>(component: ComponentType<T>, injector?: PortalInjector): ComponentRef<T> {
 
     const componentRef: ComponentRef<T> = this.componentFactoryResolver
       .resolveComponentFactory(component)
-      .create(this.injector);
+      .create(injector ? injector : this.injector);
 
     this.appRef.attachView(componentRef.hostView);
 
