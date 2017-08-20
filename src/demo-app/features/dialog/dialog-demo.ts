@@ -11,14 +11,15 @@ export class DialogDemo {
 
   dialogConfig: NwbDialogConfig = {
     title: 'Logout',
-    message: 'Logout <b>with bold</b> ?',
+    message: 'Do you want to <b>logout</b>?',
     okButtonText: 'Yes',
-    closeButtonText: 'No'
+    cancelButtonText: 'No',
+
   };
   dialogFromComponentConfig: NwbDialogConfig = {
     title: 'From component',
     okButtonText: 'Yes',
-    closeButtonText: 'No',
+    cancelButtonText: 'No',
     width: '900px',
   };
 
@@ -32,7 +33,20 @@ export class DialogDemo {
 
 
   openDialog() {
-    this.nwbDialog.open(this.dialogConfig)
+
+
+    let dialog = this.nwbDialog.open(this.dialogConfig);
+
+    dialog.config.okHandler = () => {
+      dialog.disableButtonsAndMakeOkButtonLoading();
+
+      setTimeout(() => {
+        dialog.enableButtonsAndMakeOkButtonNotLoading();
+        dialog.dismiss(true);
+      }, 3000);
+    };
+
+    dialog
       .afterClosed()
       .subscribe(fromOkButton => console.log('dialogClose, fromOkButton', fromOkButton));
   }

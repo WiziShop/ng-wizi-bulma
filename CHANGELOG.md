@@ -1,3 +1,9 @@
+# 1.1.1 (2017-08-20)
+- Fix lazy loaded modules injectors issue
+- Add new functionality to the dialog component see NwbDialogConfig
+- NwbDialogConfig.closeButtonText has been renamed to NwbDialogConfig.cancelButtonText
+  
+
 # 1.1.0 (2017-08-18)
 - Angular 4.3.5
 - Bulma 0.5.1

@@ -1,7 +1,15 @@
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {ComponentType, NwbDialogConfig} from './dialog.service';
-import {Component, ComponentFactoryResolver, OnInit, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
+import {
+  Component,
+  ComponentFactoryResolver,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef
+} from '@angular/core';
 import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -16,7 +24,7 @@ import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@a
       >
         <header class="modal-card-head" *ngIf="config.title">
           <p class="modal-card-title">{{config.title}}</p>
-          <button class="delete" (click)="dismiss(false)"></button>
+          <button *ngIf="config.hasBackdrop" class="delete" (click)="backdropHandler()" #backdropButton></button>
         </header>
         <section class="modal-card-body"
                  *ngIf="config.message && config.message.length" [innerHTML]="config.message">
@@ -25,10 +33,12 @@ import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@a
           <div #componentSection></div>
         </section>
         <footer class="modal-card-foot">
-          <a class="button column is-medium is-danger is-4" *ngIf="config.closeButtonText"
-             (click)="dismiss(false)">{{config.closeButtonText}}</a>
-          <a class="button column is-medium is-success is-offset-4" *ngIf="config.okButtonText"
-             (click)="dismiss(true)">{{config.okButtonText}}</a>
+          <button class="button column is-medium is-danger is-4" *ngIf="config.cancelButtonText"
+                  (click)="cancelHandler()" #cancelButton>{{config.cancelButtonText}}
+          </button>
+          <button class="button column is-medium is-success is-offset-4" *ngIf="config.okButtonText"
+                  (click)="okHandler()" #okButton>{{config.okButtonText}}
+          </button>
         </footer>
       </div>
     </div>
@@ -39,8 +49,8 @@ import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@a
       border: 0;
       border-radius: 0;
     }
-    
-    .modal-card-foot a{
+
+    .modal-card-foot a {
       max-width: 50%;
       white-space: initial;
       word-wrap: break-word;
@@ -53,10 +63,6 @@ import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@a
 
     .modal-card-body {
       background-color: #f5f5f5;
-    }
-
-    a.button {
-      height: auto;
     }
 
     button.delete {
@@ -80,16 +86,15 @@ export class NwbDialogComponent<T> implements OnInit {
 
   @ViewChild('componentSection', {read: ViewContainerRef}) componentSection: ViewContainerRef;
 
+  @ViewChild('okButton') okButton: ElementRef;
+  @ViewChild('cancelButton') cancelButton: ElementRef;
+  @ViewChild('backdropButton') backdropButton: ElementRef;
+
   componentInstance: T;
 
   hasComponent = false;
 
-  config: NwbDialogConfig = {
-    message: 'Mon message',
-    title: 'Mon title',
-    okButtonText: 'OK',
-    closeButtonText: 'CLOSE',
-  };
+  config: NwbDialogConfig;
 
   /** Subject for notifying the user that the dialog has finished closing. */
   private _afterClosed: Subject<any> = new Subject();
@@ -106,7 +111,63 @@ export class NwbDialogComponent<T> implements OnInit {
     this.open = true;
   }
 
+  /** Method to call when backdrop button is clicked */
+  backdropHandler() {
+    this.dismiss(false);
+  }
 
+
+  /** Method to call when cancel button is clicked */
+  cancelHandler() {
+    if (this.config.cancelHandler && typeof this.config.cancelHandler === 'function') {
+      this.config.cancelHandler();
+    } else {
+      this.dismiss(false);
+    }
+  }
+
+  /** Method to call when ok button is clicked */
+  okHandler() {
+    if (this.config.okHandler && typeof this.config.okHandler === 'function') {
+      this.config.okHandler();
+    } else {
+      this.dismiss(true);
+    }
+  }
+
+  /** Gonna disable all buttons and make the ok button loading */
+  disableButtonsAndMakeOkButtonLoading() {
+    if (this.cancelButton) {
+      this.cancelButton.nativeElement.setAttribute('disabled', 'disabled');
+    }
+
+    if (this.okButton) {
+      this.okButton.nativeElement.setAttribute('disabled', 'disabled');
+      this.okButton.nativeElement.classList.add('is-loading');
+    }
+
+    if (this.backdropButton) {
+      this.backdropButton.nativeElement.setAttribute('disabled', 'disabled');
+    }
+  }
+
+  /** Gonna enable all buttons and make the ok button not loading */
+  enableButtonsAndMakeOkButtonNotLoading() {
+    if (this.cancelButton) {
+      this.cancelButton.nativeElement.setAttribute('disabled', '');
+    }
+
+    if (this.okButton) {
+      this.okButton.nativeElement.setAttribute('disabled', '');
+      this.okButton.nativeElement.classList.remove('is-loading');
+    }
+
+    if (this.backdropButton) {
+      this.backdropButton.nativeElement.setAttribute('disabled', '');
+    }
+  }
+
+  /** Dismiss the dialog */
   dismiss(fromOkButton: boolean) {
     this.open = false;
 
@@ -124,7 +185,7 @@ export class NwbDialogComponent<T> implements OnInit {
   /**
    * Gets an observable that is notified when the dialog is finished closing.
    */
-  afterClosed(): Observable<any> {
+  afterClosed(): Observable<boolean> {
     return this._afterClosed.asObservable();
   }
 
