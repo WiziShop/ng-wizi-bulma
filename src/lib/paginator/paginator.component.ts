@@ -165,7 +165,7 @@ export class NwdPaginatorComponent implements OnInit, OnDestroy {
    * switching so that the page size is 5 will set the third page as the current page so
    * that the 10th item will still be displayed.
    */
-  _changePageSize(pageSize: number) {
+  changePageSize(pageSize: number) {
     // Current page needs to be updated to reflect the new page size. Navigate to the page
     // containing the previous page's first item.
     const startIndex = this.pageIndex * this.pageSize;

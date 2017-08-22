@@ -25,7 +25,7 @@
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
             <a *ngFor="let pageSizeOption of _displayedPageSizeOptions"
-               (click)="pageSize = pageSizeOption"
+               (click)="changePageSize(pageSizeOption)"
                class="dropdown-item">
               {{pageSizeOption}}
             </a>

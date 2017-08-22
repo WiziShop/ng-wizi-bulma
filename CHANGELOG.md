@@ -1,4 +1,7 @@
-# 1.1.2
+# 1.1.3 (2017-08-22)
+- FIX: changing pageSize would not fire page event
+
+# 1.1.2 (2017-08-22)
 - Add paginator components
 - Use material icons: https://material.io/icons
 
