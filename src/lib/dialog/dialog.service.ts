@@ -1,6 +1,6 @@
 import {Injectable, Injector, TemplateRef} from '@angular/core';
 import {NwbDialogComponent} from './dialog.component';
-import {ComponentType, DomService} from '../shared/dom/dom.service';
+import {DomService} from '../shared/dom/dom.service';
 import {PortalInjector} from '../shared/portal/portal-injector';
 import {extendObject} from '../shared/util/object-extend';
 
