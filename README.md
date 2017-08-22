@@ -19,6 +19,12 @@ Import bulma css into your main css file:
 @import '~bulma/bulma';
 ```
 
+Load the Materials icon font in your index.html.
+
+```
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+```
+
 Import the `NwbModule` and `BrowserAnimationsModule` into your app module: 
 
 ````

@@ -9,6 +9,7 @@ import {DemoAppRoutingModule} from './demo-app-routing.module';
 import {DialogDemo} from './features/dialog/dialog-demo';
 import {FakeDialogDemoComponent} from './features/dialog/fake-dialog-demo-component';
 import {SnackbarDemo} from './features/snackbar/snackbar-demo';
+import {PaginatorDemo} from './features/paginator/paginator-demo';
 
 @NgModule({
   imports: [
@@ -19,9 +20,18 @@ import {SnackbarDemo} from './features/snackbar/snackbar-demo';
     NwbModule,
     DemoAppRoutingModule,
   ],
-  declarations: [DemoApp, DialogDemo, FakeDialogDemoComponent, SnackbarDemo],
+  declarations: [
+    DemoApp,
+    DialogDemo,
+    FakeDialogDemoComponent,
+    SnackbarDemo,
+    PaginatorDemo,
+  ],
   providers: [],
-  entryComponents: [DemoApp, DialogDemo, FakeDialogDemoComponent, SnackbarDemo],
+  entryComponents: [
+    DemoApp,
+    FakeDialogDemoComponent,
+  ],
 })
 export class DemoAppModule {
   constructor(private _appRef: ApplicationRef) {

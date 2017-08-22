@@ -1,3 +1,7 @@
+# 1.1.2
+- Add paginator components
+- Use material icons: https://material.io/icons
+
 # 1.1.1 (2017-08-20)
 - Fix lazy loaded modules injectors issue
 - Add new functionality to the dialog component see NwbDialogConfig
