@@ -5,6 +5,7 @@ import {
   Component,
   ComponentFactoryResolver,
   ElementRef,
+  EventEmitter,
   OnInit,
   TemplateRef,
   ViewChild,
@@ -22,17 +23,24 @@ import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@a
            (@modalState.done)="animationDone($event)"
            [ngStyle]="{'width': config.width}"
       >
-        <header class="modal-card-head" *ngIf="config.title">
+        <header class="modal-card-head" *ngIf="config.title" #header>
           <p class="modal-card-title">{{config.title}}</p>
           <button *ngIf="config.hasBackdrop" class="delete" (click)="backdropHandler()" #backdropButton></button>
         </header>
-        <section class="modal-card-body"
-                 *ngIf="config.message && config.message.length" [innerHTML]="config.message">
+
+        <section *ngIf="config.loading" class="modal-card-body">
+          <nwb-spinner></nwb-spinner>
         </section>
-        <section class="modal-card-body" [ngClass]="{'is-hidden':!hasComponent}">
+
+        <section class="modal-card-body"
+                 *ngIf="!config.loading && config.message && config.message.length" [innerHTML]="config.message">
+        </section>
+
+        <section class="modal-card-body" [ngClass]="{'is-hidden':!hasComponent || config.loading}">
           <div #componentSection></div>
         </section>
-        <footer class="modal-card-foot">
+
+        <footer class="modal-card-foot" *ngIf="!config.loading" #footer>
           <button class="button column is-medium is-danger is-4" *ngIf="config.cancelButtonText"
                   (click)="cancelHandler()" #cancelButton>{{config.cancelButtonText}}
           </button>
@@ -86,9 +94,14 @@ export class NwbDialogComponent<T> implements OnInit {
 
   @ViewChild('componentSection', {read: ViewContainerRef}) componentSection: ViewContainerRef;
 
-  @ViewChild('okButton') okButton: ElementRef;
-  @ViewChild('cancelButton') cancelButton: ElementRef;
-  @ViewChild('backdropButton') backdropButton: ElementRef;
+  @ViewChild('okButton') okButtonEl: ElementRef;
+  @ViewChild('cancelButton') cancelButtonEl: ElementRef;
+  @ViewChild('backdropButton') backdropButtonEl: ElementRef;
+
+  @ViewChild('header') headerEl: ElementRef;
+  @ViewChild('footer') footerEl: ElementRef;
+
+  ready = new EventEmitter<boolean>();
 
   componentInstance: T;
 
@@ -109,6 +122,7 @@ export class NwbDialogComponent<T> implements OnInit {
 
   ngOnInit() {
     this.open = true;
+    this.ready.next(true);
   }
 
   /** Method to call when backdrop button is clicked */
@@ -137,33 +151,33 @@ export class NwbDialogComponent<T> implements OnInit {
 
   /** Gonna disable all buttons and make the ok button loading */
   disableButtonsAndMakeOkButtonLoading() {
-    if (this.cancelButton) {
-      this.cancelButton.nativeElement.setAttribute('disabled', 'disabled');
+    if (this.cancelButtonEl) {
+      this.cancelButtonEl.nativeElement.setAttribute('disabled', 'disabled');
     }
 
-    if (this.okButton) {
-      this.okButton.nativeElement.setAttribute('disabled', 'disabled');
-      this.okButton.nativeElement.classList.add('is-loading');
+    if (this.okButtonEl) {
+      this.okButtonEl.nativeElement.setAttribute('disabled', 'disabled');
+      this.okButtonEl.nativeElement.classList.add('is-loading');
     }
 
-    if (this.backdropButton) {
-      this.backdropButton.nativeElement.setAttribute('disabled', 'disabled');
+    if (this.backdropButtonEl) {
+      this.backdropButtonEl.nativeElement.setAttribute('disabled', 'disabled');
     }
   }
 
   /** Gonna enable all buttons and make the ok button not loading */
   enableButtonsAndMakeOkButtonNotLoading() {
-    if (this.cancelButton) {
-      this.cancelButton.nativeElement.setAttribute('disabled', '');
+    if (this.cancelButtonEl) {
+      this.cancelButtonEl.nativeElement.removeAttribute('disabled');
     }
 
-    if (this.okButton) {
-      this.okButton.nativeElement.setAttribute('disabled', '');
-      this.okButton.nativeElement.classList.remove('is-loading');
+    if (this.okButtonEl) {
+      this.okButtonEl.nativeElement.removeAttribute('disabled');
+      this.okButtonEl.nativeElement.classList.remove('is-loading');
     }
 
-    if (this.backdropButton) {
-      this.backdropButton.nativeElement.setAttribute('disabled', '');
+    if (this.backdropButtonEl) {
+      this.backdropButtonEl.nativeElement.removeAttribute('disabled');
     }
   }
 
@@ -189,7 +203,15 @@ export class NwbDialogComponent<T> implements OnInit {
     return this._afterClosed.asObservable();
   }
 
-  setComponent(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>) {
+  hideSpinner() {
+    this.config.loading = false;
+  }
+
+  displaySpinner() {
+    this.config.loading = true;
+  }
+
+  _setComponent(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>) {
     let factory;
 
     if (componentOrTemplateRef instanceof TemplateRef) {

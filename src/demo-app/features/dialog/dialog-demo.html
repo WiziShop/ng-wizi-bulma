@@ -27,6 +27,19 @@
 <div class="card">
   <header class="card-header">
     <p class="card-header-title">
+      Dialog with component and spinner
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <button class="button" (click)="openDialogFromComponentWithSpinner()">Open Dialog From Component</button>
+      <p *ngIf="fakeComponent2Value.length">Your name is: <b>{{fakeComponent2Value}}</b></p>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
       Dialog with template
     </p>
   </header>

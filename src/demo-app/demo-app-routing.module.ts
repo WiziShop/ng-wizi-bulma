@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {DialogDemo} from './features/dialog/dialog-demo';
 import {SnackbarDemo} from './features/snackbar/snackbar-demo';
 import {PaginatorDemo} from './features/paginator/paginator-demo';
+import {SpinnerDemo} from './features/spinner/spinner-demo';
 
 
 const appRoutes: Routes = [
@@ -22,6 +23,10 @@ const appRoutes: Routes = [
   {
     path: 'paginator',
     component: PaginatorDemo
+  },
+  {
+    path: 'spinner',
+    component: SpinnerDemo
   },
   {
     path: '**',

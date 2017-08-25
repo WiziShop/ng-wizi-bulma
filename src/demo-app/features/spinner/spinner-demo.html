@@ -1,0 +1,27 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Paginator with page size options
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <p>Spinner with random color</p>
+      <nwb-spinner></nwb-spinner>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Paginator without page size options
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <p>Spinner with custom color : <span [ngStyle]="{'color':customColor}">{{customColor}}</span></p>
+      <nwb-spinner [color]="customColor"></nwb-spinner>
+    </div>
+  </div>
+</div>

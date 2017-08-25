@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, ViewChild} from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -24,10 +24,14 @@ export class FakeDialogDemoComponent {
 
   @ViewChild('myInput') myInput: ElementRef;
 
+  loading = new EventEmitter<boolean>();
+
   ngOnInit() {
     console.log('FakeDialogDemoComponent');
 
     console.log('myInput', this.myInput);
+
+    setTimeout(() => this.loading.next(false), 3000);
   }
 
 

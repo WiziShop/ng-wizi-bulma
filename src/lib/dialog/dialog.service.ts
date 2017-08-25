@@ -23,7 +23,7 @@ export class NwbDialogService {
 
     const componentRef = this.getComponentRef(config);
 
-    componentRef.instance.setComponent(componentOrTemplateRef);
+    componentRef.instance._setComponent(componentOrTemplateRef);
 
     return componentRef.instance;
   }
@@ -75,6 +75,9 @@ export class NwbDialogConfig {
 
   /** Custom method to call when cancel button is clicked */
   cancelHandler?: Function = null;
+
+  /** Display the spinner inside the dialog **/
+  loading?: boolean = false;
 }
 
 

@@ -1,3 +1,8 @@
+# 1.1.4 (2017-08-25)
+- Add spinner component
+- Add `loading` property in `NwbDialogConfig` to display the spinner inside the dialog
+- FIX: Dialog method: `enableButtonsAndMakeOkButtonNotLoading()` wasn't working properly
+
 # 1.1.3 (2017-08-22)
 - FIX: changing pageSize would not fire page event
 
