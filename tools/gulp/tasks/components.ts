@@ -67,7 +67,7 @@ task(':build:components:scss', sassBuildTask(DIST_COMPONENTS_ROOT, COMPONENTS_DI
 /** Builds a ES6 bundle for all components. */
 task(':build:components:rollup:esm', () => {
   return src(path.join(DIST_COMPONENTS_ROOT, 'index.js'))
-    .pipe(createRollupBundle('es', 'material.js'))
+    .pipe(createRollupBundle('es', 'ng-wizi-bulma.js'))
     .pipe(dest(path.join(DIST_COMPONENTS_ROOT, 'bundles')));
 });
 
@@ -133,7 +133,7 @@ const ROLLUP_GLOBALS = {
   'rxjs/Observable': 'Rx'
 };
 
-/** Creates a rollup bundles of the Material components.*/
+/** Creates a rollup bundles of the Nwb components.*/
 function createRollupBundle(format: string, outFile: string) {
   let rollupOptions = {
     context: 'this',
