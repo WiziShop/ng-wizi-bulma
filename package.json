@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "gulp build:components",
+    "build:release": "gulp build:release",
     "demo-app": "gulp serve:devapp",
     "deploy": "gulp build:devapp && firebase deploy",
     "publish": "npm run deploy && gulp publish"
