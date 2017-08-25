@@ -33,7 +33,7 @@ import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@a
         </section>
 
         <section class="modal-card-body"
-                 *ngIf="!config.loading && config.message && config.message.length" [innerHTML]="config.message">
+                 *ngIf="!config.loading && config.message && config.message.length > 0" [innerHTML]="config.message">
         </section>
 
         <section class="modal-card-body" [ngClass]="{'is-hidden':!hasComponent || config.loading}">
