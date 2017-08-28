@@ -51,7 +51,7 @@ export class DialogDemo {
         setTimeout(() => {
           console.log('openDialog is loaded');
           dialog.hideSpinner();
-        }, 3000);
+        }, 700);
       });
 
     dialog.config.okHandler = () => {
@@ -60,7 +60,7 @@ export class DialogDemo {
       setTimeout(() => {
         dialog.enableButtonsAndMakeOkButtonNotLoading();
         dialog.dismiss(true);
-      }, 3000);
+      }, 700);
     };
 
     dialog
