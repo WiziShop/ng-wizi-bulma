@@ -1,0 +1,25 @@
+<div class="dropdown"
+     [ngClass]="{'is-active':isActive}"
+     (click)="isActive = !isActive"
+>
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu"
+
+    >
+      <span [innerHTML]="currenText"></span>
+      <span class="icon is-small">
+        <i class="material-icons">keyboard_arrow_down</i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div class="dropdown-content">
+      <a *ngFor="let option of _options" class="dropdown-item"
+         [ngClass]="{'is-active':option.selected, 'is-disabled': option.disabled}"
+         (click)="selectOption(option)"
+         [innerHTML]="option.text">
+      </a>
+
+    </div>
+  </div>
+</div>

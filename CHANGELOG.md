@@ -1,3 +1,7 @@
+# 1.1.6 (2017-08-28)
+- Add Dropdown component
+
+
 # 1.1.5 (2017-08-25)
 - FIX: issue `dialog.component.d.ts.NwbDialogComponent.html (15,9): Type 'number' is not assignable to type 'boolean'` 
 when building components with aot

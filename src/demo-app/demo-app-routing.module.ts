@@ -4,6 +4,7 @@ import {DialogDemo} from './features/dialog/dialog-demo';
 import {SnackbarDemo} from './features/snackbar/snackbar-demo';
 import {PaginatorDemo} from './features/paginator/paginator-demo';
 import {SpinnerDemo} from './features/spinner/spinner-demo';
+import {DropdownDemo} from './features/dropdown/dropdown-demo';
 
 
 const appRoutes: Routes = [
@@ -27,6 +28,10 @@ const appRoutes: Routes = [
   {
     path: 'spinner',
     component: SpinnerDemo
+  },
+  {
+    path: 'dropdown',
+    component: DropdownDemo
   },
   {
     path: '**',

@@ -1,0 +1,23 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Dropdown menu
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <nwb-dropdown [(ngModel)]="gaming" (ngModelChange)="modelChange($event)">
+        <nwb-option value="nes" (nwbSelect)="nesHasBeenSelected($event)">NES</nwb-option>
+        <nwb-option value="n64">Nintendo64</nwb-option>
+        <nwb-option value="ps" [disabled]="true">Disabled value</nwb-option>
+        <nwb-option value="genesis">Sega Genesis</nwb-option>
+        <nwb-option value="saturn">Sega Saturn</nwb-option>
+        <nwb-option value="snes"><i class="material-icons">keyboard</i> SNES</nwb-option>
+        <nwb-option [value]="null">null value</nwb-option>
+        <nwb-option [value]="true">true value</nwb-option>
+      </nwb-dropdown>
+    </div>
+
+    {{gaming}}
+  </div>
+</div>

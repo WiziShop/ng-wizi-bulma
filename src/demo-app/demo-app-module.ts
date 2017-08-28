@@ -11,6 +11,7 @@ import {FakeDialogDemoComponent} from './features/dialog/fake-dialog-demo-compon
 import {SnackbarDemo} from './features/snackbar/snackbar-demo';
 import {PaginatorDemo} from './features/paginator/paginator-demo';
 import {SpinnerDemo} from './features/spinner/spinner-demo';
+import {DropdownDemo} from './features/dropdown/dropdown-demo';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import {SpinnerDemo} from './features/spinner/spinner-demo';
     SnackbarDemo,
     PaginatorDemo,
     SpinnerDemo,
+    DropdownDemo,
   ],
   providers: [],
   entryComponents: [

@@ -25,7 +25,7 @@ Load the Materials icon font in your index.html.
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 ```
 
-Import the `NwbModule` and `BrowserAnimationsModule` into your app module: 
+Import the `NwbModule`, `BrowserAnimationsModule` and `FormsModule` into your app module: 
 
 ````
 
