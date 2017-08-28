@@ -6,7 +6,7 @@
   </header>
   <div class="card-content">
     <div class="content">
-      <nwb-dropdown [(ngModel)]="gaming" (ngModelChange)="modelChange($event)">
+      <nwb-dropdown [(ngModel)]="gaming" (ngModelChange)="modelChange($event)" [isLoading]="isLoading">
         <nwb-option value="nes" (nwbSelect)="nesHasBeenSelected($event)">NES</nwb-option>
         <nwb-option value="n64">Nintendo64</nwb-option>
         <nwb-option value="ps" [disabled]="true">Disabled value</nwb-option>
@@ -18,6 +18,6 @@
       </nwb-dropdown>
     </div>
 
-    {{gaming}}
+    <p>Selected value: {{gaming}}</p>
   </div>
 </div>

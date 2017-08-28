@@ -9,6 +9,8 @@ export class DropdownDemo {
 
   gaming = 'nes';
 
+  isLoading = false;
+
   constructor() {
 
   }
@@ -16,6 +18,10 @@ export class DropdownDemo {
 
   modelChange(event: any) {
     console.log('modelChange', event);
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000);
   }
 
   nesHasBeenSelected(event: any) {

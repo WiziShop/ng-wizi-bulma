@@ -3,10 +3,10 @@
      (click)="isActive = !isActive"
 >
   <div class="dropdown-trigger">
-    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu"
+    <button class="button" [ngClass]="{'is-loading':isLoading}" aria-haspopup="true" aria-controls="dropdown-menu"
 
     >
-      <span [innerHTML]="currenText"></span>
+      <span [innerHTML]="currentText"></span>
       <span class="icon is-small">
         <i class="material-icons">keyboard_arrow_down</i>
       </span>

@@ -1,4 +1,4 @@
-import {Component, ContentChildren, ElementRef, HostListener, QueryList} from '@angular/core';
+import {Component, ContentChildren, ElementRef, HostListener, Input, QueryList} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {NwbOptionComponent} from '../option/option.component';
 
@@ -16,6 +16,8 @@ import {NwbOptionComponent} from '../option/option.component';
 })
 export class NwbDropdownComponent implements ControlValueAccessor {
 
+  @Input() isLoading: boolean;
+
   _onChanged: Function;
   _onTouched: Function;
   _options: QueryList<NwbOptionComponent>;
@@ -23,7 +25,7 @@ export class NwbDropdownComponent implements ControlValueAccessor {
   isActive = false;
 
   currentValue: any;
-  currenText: any;
+  currentText: any;
 
   writeValue(obj: any): void {
     this.currentValue = obj;
@@ -70,7 +72,7 @@ export class NwbDropdownComponent implements ControlValueAccessor {
       this._options.forEach(option => {
         option.selected = option.value === this.currentValue;
         if (option.selected) {
-          this.currenText = option.text;
+          this.currentText = option.text;
         }
       });
     }
