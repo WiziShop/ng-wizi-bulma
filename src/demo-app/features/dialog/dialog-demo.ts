@@ -20,8 +20,8 @@ export class DialogDemo {
     title: 'From component',
     okButtonText: 'Yes',
     cancelButtonText: 'No',
-    width: '900px',
   };
+
   dialogFromComponentConfigWithSpinner: NwbDialogConfig = {
     title: 'From component with spinner',
     okButtonText: 'Yes',

@@ -53,6 +53,11 @@ import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@a
   `,
   styles: [`
 
+    .modal-card-head {
+      min-width: 640px;
+      width: auto;
+    }
+
     .modal-card-head, .modal-card-foot {
       border: 0;
       border-radius: 0;
