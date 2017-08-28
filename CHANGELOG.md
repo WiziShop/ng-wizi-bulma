@@ -1,3 +1,7 @@
+# 1.1.7 (2017-08-28)
+- Add isLoading input parameter for dropdown
+- Dialog have now a default auto width
+
 # 1.1.6 (2017-08-28)
 - Add Dropdown component
 
