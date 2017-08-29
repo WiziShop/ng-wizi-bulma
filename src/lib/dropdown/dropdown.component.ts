@@ -1,6 +1,7 @@
 import {Component, ContentChildren, ElementRef, HostListener, Input, QueryList} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {NwbOptionComponent} from '../option/option.component';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'nwb-dropdown',
@@ -17,6 +18,8 @@ import {NwbOptionComponent} from '../option/option.component';
 export class NwbDropdownComponent implements ControlValueAccessor {
 
   @Input() isLoading: boolean;
+
+  @Input() config: NwbDropdownConfig = {};
 
   _onChanged: Function;
   _onTouched: Function;
@@ -44,6 +47,7 @@ export class NwbDropdownComponent implements ControlValueAccessor {
 
   constructor(private _elementRef: ElementRef) {
   }
+
 
   @HostListener('document:click', ['$event'])
   _click(ev: UIEvent) {
@@ -79,12 +83,52 @@ export class NwbDropdownComponent implements ControlValueAccessor {
 
   }
 
-  selectOption(option: NwbOptionComponent) {
+  private _setValue(option: NwbOptionComponent) {
     if (!option.disabled && this.currentValue !== option.value) {
+
       option.nwbSelect.emit(option.value);
       this.currentValue = option.value;
       this._onChanged(this.currentValue);
       this._updateOptions();
     }
   }
+
+  selectOption(option: NwbOptionComponent) {
+    if (!option.disabled && this.currentValue !== option.value) {
+      if (typeof this.config.handler === 'function') {
+        this.isLoading = true;
+        this.config.handler(option.value, this.config.data)
+          .subscribe((hasChanged) => {
+            this.isLoading = false;
+            if (hasChanged) {
+              this._setValue(option);
+            }
+
+          }, () => {
+            this.isLoading = false;
+          });
+      } else {
+        this._setValue(option);
+      }
+    }
+  }
+}
+
+
+export interface NwbDropdownConfig {
+  /** Data to pass as the second argument for the handler method if any **/
+  data?: any;
+
+  /**
+   * handler method to call on change.
+   * This allows you to perform any action before setting new value to the model
+   * It has to return a boolean observable. If the returned value is true then the model will change.
+   */
+  handler?: (value: any, data: any) => Observable<boolean> ;
+
+  /** Any classes to add to the button element inside the dropdown */
+  classes?: string;
+
+  /** Disable the dropdown */
+  disabled?: boolean;
 }

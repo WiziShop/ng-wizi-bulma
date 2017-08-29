@@ -3,7 +3,11 @@
      (click)="isActive = !isActive"
 >
   <div class="dropdown-trigger">
-    <button class="button" [ngClass]="{'is-loading':isLoading}" aria-haspopup="true" aria-controls="dropdown-menu"
+    <button class="button {{config.classes ? config.classes : ''}}"
+            [ngClass]="{'is-loading':isLoading}"
+            aria-haspopup="true"
+            aria-controls="dropdown-menu"
+            [disabled]="config.disabled"
 
     >
       <span [innerHTML]="currentText"></span>

@@ -6,7 +6,7 @@
   </header>
   <div class="card-content">
     <div class="content">
-      <nwb-dropdown [(ngModel)]="gaming" (ngModelChange)="modelChange($event)" [isLoading]="isLoading">
+      <nwb-dropdown [(ngModel)]="gaming" (ngModelChange)="modelChange($event)">
         <nwb-option value="nes" (nwbSelect)="nesHasBeenSelected($event)">NES</nwb-option>
         <nwb-option value="n64">Nintendo64</nwb-option>
         <nwb-option value="ps" [disabled]="true">Disabled value</nwb-option>
@@ -19,5 +19,35 @@
     </div>
 
     <p>Selected value: {{gaming}}</p>
+  </div>
+</div>
+
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Dropdown menu with change handler method
+    </p>
+  </header>
+  <div class="card-content">
+    <p>Will change only if user selects Nintendo64 (n64) or Sega Genesis (genesis)</p>
+    <div class="content">
+      <nwb-dropdown [(ngModel)]="gaming2" [config]="dopdown2Config">
+        <nwb-option value="nes" (nwbSelect)="nesHasBeenSelected($event)">NES</nwb-option>
+        <nwb-option value="n64">Nintendo64</nwb-option>
+        <nwb-option value="ps" [disabled]="true">Disabled value</nwb-option>
+        <nwb-option value="genesis">Sega Genesis</nwb-option>
+        <nwb-option value="saturn">Sega Saturn</nwb-option>
+        <nwb-option value="snes"><i class="material-icons">keyboard</i> SNES</nwb-option>
+        <nwb-option [value]="null">null value</nwb-option>
+        <nwb-option [value]="true">true value</nwb-option>
+      </nwb-dropdown>
+
+      <p>Selected value: {{gaming2}}</p>
+    </div>
+    <button class="button" (click)="dopdown2Config.disabled = !dopdown2Config.disabled">Disable/Enable dropdown</button>
+    <button class="button" (click)="dopdown2Config.classes =  dopdown2Config.classes =='is-info' ? '' : 'is-info'">
+      Change classes
+    </button>
+    <pre>{{dopdown2Config|json}}</pre>
   </div>
 </div>

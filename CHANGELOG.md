@@ -1,3 +1,6 @@
+# 1.1.8 (2017-08-29)
+- Add config attribute to dropdown, see `NwbDropdownConfig`
+
 # 1.1.7 (2017-08-28)
 - Add isLoading input parameter for dropdown
 - Dialog have now a default auto width
