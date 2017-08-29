@@ -53,7 +53,7 @@ import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@a
   `,
   styles: [`
 
-    .modal-card-head {
+    .modal-card {
       min-width: 640px;
       width: auto;
     }
