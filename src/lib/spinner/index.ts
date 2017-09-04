@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {NwbSpinnerComponent} from './spninner.component';
+import {NwbSpinnerComponent} from './spinner.component';
 
 @NgModule({
   imports: [CommonModule],
@@ -12,5 +12,5 @@ import {NwbSpinnerComponent} from './spninner.component';
 export class NwbSpinnerModule {
 }
 
-export * from './spninner.component';
+export * from './spinner.component';
 
