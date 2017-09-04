@@ -1,4 +1,7 @@
 /**
+ *
+ * Porf of Angular Mateiral's Paginator
+ *
  * @license
  * Copyright Google Inc. All Rights Reserved.
  *
@@ -14,7 +17,7 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  Output,
+  Output, ViewEncapsulation,
 } from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {NwbPaginatorIntl} from './paginator-intl';
@@ -47,7 +50,10 @@ export class NwbPageEvent {
   selector: 'nwb-paginator',
   templateUrl: 'paginator.component.html',
   styleUrls: ['./paginator.component.scss'],
-
+  host: {
+    'class': 'nwb-paginator',
+  },
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NwdPaginatorComponent implements OnInit, OnDestroy {

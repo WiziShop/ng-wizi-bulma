@@ -1,35 +1,37 @@
-.pagination-list {
-  justify-content: flex-end;
-  list-style-type: none;
-}
+.nwb-paginator {
+  .pagination-list {
+    justify-content: flex-end;
+    list-style-type: none;
+  }
 
-.pagination-list li {
-  margin-right: 10px;
-}
+  .pagination-list li {
+    margin-right: 10px;
+  }
 
-.pagination-list li:last-child {
-  margin-right: 0;
-}
+  .pagination-list li:last-child {
+    margin-right: 0;
+  }
 
-.pagination-list li > .nwb-paginator-range-label {
-  font-size: 12px;
-  min-width: 90px;
-  text-align: center;
-  display: block;
-}
+  .pagination-list li > .nwb-paginator-range-label {
+    font-size: 12px;
+    min-width: 90px;
+    text-align: center;
+    display: block;
+  }
 
-.pagination-list li > span:not(.nwb-paginator-range-label) {
-  font-size: 12px;
-  min-width: 90px;
-  text-align: center;
-  display: block;
-}
+  .pagination-list li > span:not(.nwb-paginator-range-label) {
+    font-size: 12px;
+    min-width: 90px;
+    text-align: center;
+    display: block;
+  }
 
-.pagination-list li:first-child {
-  font-size: 12px;
-  margin-top: 0.25em;
-}
+  .pagination-list li:first-child {
+    font-size: 12px;
+    margin-top: 0.25em;
+  }
 
-.pagination-list .button[aria-controls="dropdown-menu"] {
-  font-size: 12px;
+  .pagination-list .button[aria-controls="dropdown-menu"] {
+    font-size: 12px;
+  }
 }
