@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/ng-wizi-bulma.svg)](https://www.npmjs.com/package/ng-wizi-bulma)
 [![npm](https://img.shields.io/npm/dm/ng-wizi-bulma.svg)](https://www.npmjs.com/package/ng-wizi-bulma)
 
-This repo contains Angular 4+ components build using [Bulma css](http://bulma.io/)
+[Bulma](http://bulma.io/) components for Angular 4+
 
 ## Demo
 
