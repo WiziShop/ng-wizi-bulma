@@ -1,0 +1,16 @@
+<div [class]="'notification is-active ' + ((config.color) ? config.color : 'is-transparent')"
+     [@state]="open ? 'active': 'inactive'"
+     (@state.done)="animationDone($event)"
+>
+  <div class="columns">
+    <div class="column notification--message" [ngClass]="{'is-half': config.action}"
+         [innerHTML]="config.message">
+    </div>
+    <div class="column is-half" *ngIf="config.action">
+      <button [class]="'button ' + ((config.buttonColor) ? config.buttonColor : 'is-success')"
+              (click)="dismiss(true)">{{config.action}}
+      </button>
+
+    </div>
+  </div>
+</div>
