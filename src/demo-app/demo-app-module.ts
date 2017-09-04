@@ -12,6 +12,7 @@ import {SnackbarDemo} from './features/snackbar/snackbar-demo';
 import {PaginatorDemo} from './features/paginator/paginator-demo';
 import {SpinnerDemo} from './features/spinner/spinner-demo';
 import {DropdownDemo} from './features/dropdown/dropdown-demo';
+import {ProgressBarDemo} from './features/progress-bar/progress-bar-demo';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import {DropdownDemo} from './features/dropdown/dropdown-demo';
     PaginatorDemo,
     SpinnerDemo,
     DropdownDemo,
+    ProgressBarDemo,
   ],
   providers: [],
   entryComponents: [

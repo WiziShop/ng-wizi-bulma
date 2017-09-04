@@ -1,0 +1,66 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Progress Bar
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <h2 class="subtitle">Progress bar configuration</h2>
+      <div class="field">
+        <label class="label">Color:</label>
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="color" [(ngModel)]="color" value="primary">
+            Primary
+          </label>
+          <label class="radio">
+            <input type="radio" name="color" [(ngModel)]="color" value="info">
+            Info
+          </label>
+          <label class="radio">
+            <input type="radio" name="color" [(ngModel)]="color" value="warning">
+            Warning
+          </label>
+          <label class="radio">
+            <input type="radio" name="color" [(ngModel)]="color" value="danger">
+            Danger
+          </label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Mode:</label>
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="mode" [(ngModel)]="mode" value="determinate">
+            Determinate
+          </label>
+          <label class="radio">
+            <input type="radio" name="mode" [(ngModel)]="mode" value="indeterminate">
+            Indeterminate
+          </label>
+          <label class="radio">
+            <input type="radio" name="mode" [(ngModel)]="mode" value="query">
+            Query
+          </label>
+        </div>
+      </div>
+
+      <div class="field" *ngIf="mode === 'determinate'">
+        <label class="label">Value</label>
+        <div class="control">
+          <input class="input" type="number" name="value" [(ngModel)]="value">
+        </div>
+      </div>
+
+
+
+      <nwb-progress-bar
+        class="example-margin"
+        [color]="color"
+        [mode]="mode"
+        [value]="value">
+      </nwb-progress-bar>
+    </div>
+  </div>
+</div>

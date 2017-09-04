@@ -1,0 +1,236 @@
+// Bulma
+@import "../../../node_modules/bulma/sass/utilities/initial-variables.sass";
+@import "../../../node_modules/bulma/sass/utilities/variables.sass";
+
+$nwb-progress-bar-height: 5px !default;
+$nwb-progress-bar-full-animation-duration: 2000ms !default;
+$nwb-progress-bar-piece-animation-duration: 250ms !default;
+
+
+.nwb-progress-bar {
+  display: block;
+  // Height is provided for md-progress-bar to act as a default.
+  height: $nwb-progress-bar-height;
+  overflow: hidden;
+  position: relative;
+  // translateZ is added to force the md-progress-bar into its own GPU layer.
+  transform: translateZ(0);
+  transition: opacity $nwb-progress-bar-piece-animation-duration linear;
+  width: 100%;
+
+
+  &.is-primary .nwb-progress-bar-buffer {
+    background-color: $primary;
+    opacity: 0.2;
+  }
+  &.is-primary .nwb-progress-bar-fill::after {
+    background-color: $primary;
+  }
+
+  &.is-info .nwb-progress-bar-buffer {
+    background-color: $info;
+    opacity: 0.2;
+  }
+  &.is-info .nwb-progress-bar-fill::after {
+    background-color: $info;
+  }
+
+  &.is-warning .nwb-progress-bar-buffer {
+    background-color: $warning;
+    opacity: 0.2;
+  }
+  &.is-warning .nwb-progress-bar-fill::after {
+    background-color: $warning;
+  }
+
+  &.is-danger .nwb-progress-bar-buffer {
+    background-color: $danger;
+    opacity: 0.2;
+  }
+  &.is-danger .nwb-progress-bar-fill::after {
+    background-color: $danger;
+  }
+
+  // Base styles that are re-used across all of the progress bar children.
+  .nwb-progress-bar-element, .nwb-progress-bar-fill::after {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+
+
+  // The progress bar buffer is the bar indicator showing the buffer value and is only visible
+  // beyond the current value of the primary progress bar.
+  .nwb-progress-bar-buffer {
+    transform-origin: top left;
+    transition: transform $nwb-progress-bar-piece-animation-duration ease;
+  }
+
+  // The secondary progress bar is only used in the indeterminate animation, because of this it
+  // is hidden in other uses.
+  .nwb-progress-bar-secondary {
+    display: none;
+  }
+
+  // The progress bar fill fills the progress bar with the indicator color.
+  .nwb-progress-bar-fill {
+    animation: none;
+    transform-origin: top left;
+    transition: transform $nwb-progress-bar-piece-animation-duration ease;
+  }
+
+  // A pseudo element is created for each progress bar bar that fills with the indicator color.
+  .nwb-progress-bar-fill::after {
+    animation: none;
+    content: '';
+    display: inline-block;
+    left: 0;
+  }
+
+  &[mode='query'] {
+    transform: rotateZ(180deg);
+  }
+
+  &[mode='indeterminate'],
+  &[mode='query'] {
+    .nwb-progress-bar-fill {
+      transition: none;
+    }
+    .nwb-progress-bar-primary {
+      animation: nwb-progress-bar-primary-indeterminate-translate $nwb-progress-bar-full-animation-duration infinite linear;
+      left: -145.166611%;
+    }
+    .nwb-progress-bar-primary.nwb-progress-bar-fill::after {
+      animation: nwb-progress-bar-primary-indeterminate-scale $nwb-progress-bar-full-animation-duration infinite linear;
+    }
+    .nwb-progress-bar-secondary {
+      animation: nwb-progress-bar-secondary-indeterminate-translate $nwb-progress-bar-full-animation-duration infinite linear;
+      left: -54.888891%;
+      display: block;
+    }
+    .nwb-progress-bar-secondary.nwb-progress-bar-fill::after {
+      animation: nwb-progress-bar-secondary-indeterminate-scale $nwb-progress-bar-full-animation-duration infinite linear;
+    }
+  }
+
+
+}
+
+
+
+// The values used for animations in md-progress-bar, both timing and transformation, can be
+// considered magic values. They are sourced from the Material Design example spec and duplicate
+// the values of the original designers definitions.
+//
+// The indeterminate state is essentially made up of two progress bars, one primary (the one that
+// is shown in both the determinate and indeterminate states) and one secondary, which essentially
+// mirrors the primary progress bar in appearance but is only shown to assist with the
+// indeterminate animations.
+
+// KEYFRAME BLOCK                      DESCRIPTION
+// primary-indeterminate-translate     Translation of the primary progressbar across the screen
+// primary-indeterminate-scale         Scaling of the primary bar as it's being translated
+//                                     across the screen
+// secondary-indeterminate-translate   Translation of the secondary bar across the screen
+// secondary-indeterminate-scale       Scaling of the secondary bar as it's being translated
+//                                     across the screen
+//
+// Because two different transform animations need to be applied at once, the translation is
+// applied to the outer element and the scaling is applied to the inner element, which provides the
+// illusion necessary to make the animation work.
+
+// Progress Bar Timing functions:
+// $nwb-progress-bar-primary-indeterminate-translate-step-1 has no timing function.
+$nwb-progress-bar-primary-indeterminate-translate-step-2: cubic-bezier(0.5, 0, 0.701732, 0.495819) !default;
+$nwb-progress-bar-primary-indeterminate-translate-step-3: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352) !default;
+// $nwb-progress-bar-primary-indeterminate-translate-step-4 has no timing function.
+
+// $nwb-progress-bar-primary-indeterminate-scale-step-1 has no timing function
+$nwb-progress-bar-primary-indeterminate-scale-step-2: cubic-bezier(0.334731, 0.12482, 0.785844, 1) !default;
+$nwb-progress-bar-primary-indeterminate-scale-step-3: cubic-bezier(0.06, 0.11, 0.6, 1) !default;
+// $nwb-progress-bar-primary-indeterminate-scale-step-4 has no timing function
+
+$nwb-progress-bar-secondary-indeterminate-translate-step-1: cubic-bezier(0.15, 0, 0.515058, 0.409685) !default;
+$nwb-progress-bar-secondary-indeterminate-translate-step-2: cubic-bezier(0.31033, 0.284058, 0.8, 0.733712) !default;
+$nwb-progress-bar-secondary-indeterminate-translate-step-3: cubic-bezier(0.4, 0.627035, 0.6, 0.902026) !default;
+// $nwb-progress-bar-secondary-indeterminate-translate-step-4 has no timing function
+
+$nwb-progress-bar-secondary-indeterminate-scale-step-1: cubic-bezier(0.15, 0, 0.515058, 0.409685) !default;
+$nwb-progress-bar-secondary-indeterminate-scale-step-2: cubic-bezier(0.31033, 0.284058, 0.8, 0.733712) !default;
+$nwb-progress-bar-secondary-indeterminate-scale-step-3: cubic-bezier(0.4, 0.627035, 0.6, 0.902026) !default;
+// $nwb-progress-bar-secondary-indeterminate-scale-step-4 has no timing function
+
+// Animations for indeterminate and query mode.
+
+// Primary indicator.
+@keyframes nwb-progress-bar-primary-indeterminate-translate {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    animation-timing-function: $nwb-progress-bar-primary-indeterminate-translate-step-2;
+    transform: translateX(0);
+  }
+  59.15% {
+    animation-timing-function: $nwb-progress-bar-primary-indeterminate-translate-step-3;
+    transform: translateX(83.67142%);
+  }
+  100% {
+    transform: translateX(200.611057%);
+  }
+}
+
+@keyframes nwb-progress-bar-primary-indeterminate-scale {
+  0% {
+    transform: scaleX(0.08);
+  }
+  36.65% {
+    animation-timing-function: $nwb-progress-bar-primary-indeterminate-scale-step-2;
+    transform: scaleX(0.08);
+  }
+  69.15% {
+    animation-timing-function: $nwb-progress-bar-primary-indeterminate-scale-step-3;
+    transform: scaleX(0.661479);
+  }
+  100% {
+    transform: scaleX(0.08);
+  }
+}
+
+// Secondary indicator.
+@keyframes nwb-progress-bar-secondary-indeterminate-translate {
+  0% {
+    animation-timing-function: $nwb-progress-bar-secondary-indeterminate-translate-step-1;
+    transform: translateX(0);
+  }
+  25% {
+    animation-timing-function: $nwb-progress-bar-secondary-indeterminate-translate-step-2;
+
+    transform: translateX(37.651913%);
+  }
+  48.35% {
+    animation-timing-function: $nwb-progress-bar-secondary-indeterminate-translate-step-3;
+    transform: translateX(84.386165%);
+  }
+  100% {
+    transform: translateX(160.277782%);
+  }
+}
+
+@keyframes nwb-progress-bar-secondary-indeterminate-scale {
+  0% {
+    animation-timing-function: $nwb-progress-bar-secondary-indeterminate-scale-step-1;
+    transform: scaleX(0.08);
+  }
+  19.15% {
+    animation-timing-function: $nwb-progress-bar-secondary-indeterminate-scale-step-2;
+    transform: scaleX(0.457104);
+  }
+  44.15% {
+    animation-timing-function: $nwb-progress-bar-secondary-indeterminate-scale-step-3;
+    transform: scaleX(0.72796);
+  }
+  100% {
+    transform: scaleX(0.08);
+  }
+}

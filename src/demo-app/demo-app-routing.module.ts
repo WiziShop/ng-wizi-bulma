@@ -5,6 +5,7 @@ import {SnackbarDemo} from './features/snackbar/snackbar-demo';
 import {PaginatorDemo} from './features/paginator/paginator-demo';
 import {SpinnerDemo} from './features/spinner/spinner-demo';
 import {DropdownDemo} from './features/dropdown/dropdown-demo';
+import {ProgressBarDemo} from './features/progress-bar/progress-bar-demo';
 
 
 const appRoutes: Routes = [
@@ -32,6 +33,10 @@ const appRoutes: Routes = [
   {
     path: 'dropdown',
     component: DropdownDemo
+  },
+  {
+    path: 'progress-bar',
+    component: ProgressBarDemo
   },
   {
     path: '**',

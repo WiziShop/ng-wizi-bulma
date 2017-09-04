@@ -7,6 +7,7 @@ import {NwbPaginatorModule} from './paginator/index';
 import {NwbSpinnerModule} from './spinner/index';
 import {NwbDropdownModule} from './dropdown/index';
 import {NwbOptionModule} from './option/index';
+import {NwbProgressBarModule} from './progress-bar/index';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {NwbOptionModule} from './option/index';
     NwbSpinnerModule,
     NwbDropdownModule,
     NwbOptionModule,
+    NwbProgressBarModule,
   ],
   providers: [OVERLAY_CONTAINER_PROVIDER, DOM_SERVICE_PROVIDER],
   declarations: [],
@@ -27,6 +29,7 @@ import {NwbOptionModule} from './option/index';
     NwbSpinnerModule,
     NwbDropdownModule,
     NwbOptionModule,
+    NwbProgressBarModule,
   ],
 })
 export class NwbModule {

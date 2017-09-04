@@ -1,3 +1,8 @@
+# 1.1.9 (2017-09-04)
+- Fix dropdown disabled behavior
+- Set encapsulation to `ViewEncapsulation.None` on all components
+- Add progress bar component (port of Angular Material's Progress Bar)
+
 # 1.1.8 (2017-08-29)
 - Add config attribute to dropdown, see `NwbDropdownConfig`
 
