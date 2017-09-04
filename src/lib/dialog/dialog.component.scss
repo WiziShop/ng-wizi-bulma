@@ -1,0 +1,30 @@
+.nwb-dialog {
+  .modal-card {
+    min-width: 640px;
+    width: auto;
+  }
+
+  .modal-card-head, .modal-card-foot {
+    border: 0;
+    border-radius: 0;
+  }
+
+  .modal-card-foot a {
+    max-width: 50%;
+    white-space: initial;
+    word-wrap: break-word;
+  }
+
+  .modal-card-head {
+    background-color: #eaeaea;
+    font-weight: 200;
+  }
+
+  .modal-card-body {
+    background-color: #f5f5f5;
+  }
+
+  button.delete {
+    padding: 10px;
+  }
+}

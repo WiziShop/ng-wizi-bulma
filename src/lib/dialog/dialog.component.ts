@@ -9,79 +9,19 @@ import {
   OnInit,
   TemplateRef,
   ViewChild,
-  ViewContainerRef
+  ViewContainerRef,
+  ViewEncapsulation
 } from '@angular/core';
 import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'nwb-dialog',
-  template: `
-    <div class="modal is-active">
-      <div class="modal-background"></div>
-      <div class="modal-card"
-           [@modalState]="open? 'active' : 'inactive'"
-           (@modalState.done)="animationDone($event)"
-           [ngStyle]="{'width': config.width}"
-      >
-        <header class="modal-card-head" *ngIf="config.title" #header>
-          <p class="modal-card-title">{{config.title}}</p>
-          <button *ngIf="config.hasBackdrop" class="delete" (click)="backdropHandler()" #backdropButton></button>
-        </header>
-
-        <section *ngIf="config.loading" class="modal-card-body">
-          <nwb-spinner></nwb-spinner>
-        </section>
-
-        <section class="modal-card-body"
-                 *ngIf="!config.loading && config.message && config.message.length > 0" [innerHTML]="config.message">
-        </section>
-
-        <section class="modal-card-body" [ngClass]="{'is-hidden':!hasComponent || config.loading}">
-          <div #componentSection></div>
-        </section>
-
-        <footer class="modal-card-foot" *ngIf="!config.loading" #footer>
-          <button class="button column is-medium is-danger is-4" *ngIf="config.cancelButtonText"
-                  (click)="cancelHandler()" #cancelButton>{{config.cancelButtonText}}
-          </button>
-          <button class="button column is-medium is-success is-offset-4" *ngIf="config.okButtonText"
-                  (click)="okHandler()" #okButton>{{config.okButtonText}}
-          </button>
-        </footer>
-      </div>
-    </div>
-  `,
-  styles: [`
-
-    .modal-card {
-      min-width: 640px;
-      width: auto;
-    }
-
-    .modal-card-head, .modal-card-foot {
-      border: 0;
-      border-radius: 0;
-    }
-
-    .modal-card-foot a {
-      max-width: 50%;
-      white-space: initial;
-      word-wrap: break-word;
-    }
-
-    .modal-card-head {
-      background-color: #eaeaea;
-      font-weight: 200;
-    }
-
-    .modal-card-body {
-      background-color: #f5f5f5;
-    }
-
-    button.delete {
-      padding: 10px;
-    }
-  `],
+  templateUrl: './dialog.component.html',
+  styleUrls: ['./dialog.component.scss'],
+  host: {
+    'class': 'nwb-dialog',
+  },
+  encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('modalState', [
       transition('void => active', animate('200ms', keyframes([
