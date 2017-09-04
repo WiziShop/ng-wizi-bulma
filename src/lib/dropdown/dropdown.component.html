@@ -1,10 +1,9 @@
 <div class="dropdown"
      [ngClass]="{'is-active':isActive}"
-     (click)="isActive = !isActive"
+     (click)="toggleActive()"
 >
   <div class="dropdown-trigger">
-    <button class="button {{config.classes ? config.classes : ''}}"
-            [ngClass]="{'is-loading':isLoading}"
+    <button [ngClass]="['button',config.classes ? config.classes : '', isLoading ? ' is-loading' : '']"
             aria-haspopup="true"
             aria-controls="dropdown-menu"
             [disabled]="config.disabled"

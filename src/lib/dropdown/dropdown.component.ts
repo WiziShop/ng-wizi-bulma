@@ -1,4 +1,4 @@
-import {Component, ContentChildren, ElementRef, HostListener, Input, QueryList} from '@angular/core';
+import {Component, ContentChildren, ElementRef, HostListener, Input, QueryList, ViewEncapsulation} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {NwbOptionComponent} from '../option/option.component';
 import {Observable} from 'rxjs/Observable';
@@ -6,13 +6,11 @@ import {Observable} from 'rxjs/Observable';
 @Component({
   selector: 'nwb-dropdown',
   templateUrl: './dropdown.component.html',
-  styles: [`
-    a.is-disabled {
-      pointer-events: none;
-      background-color: whitesmoke;
-      color: #7a7a7a;
-    }
-  `],
+  styleUrls: ['./dropdown.component.scss'],
+  host: {
+    'class': 'nwb-dropdown',
+  },
+  encapsulation: ViewEncapsulation.None,
   providers: [{provide: NG_VALUE_ACCESSOR, useExisting: NwbDropdownComponent, multi: true}],
 })
 export class NwbDropdownComponent implements ControlValueAccessor {
@@ -111,6 +109,13 @@ export class NwbDropdownComponent implements ControlValueAccessor {
         this._setValue(option);
       }
     }
+  }
+
+  toggleActive() {
+    if (this.config.disabled === true || (this.isLoading && !this.isActive)) {
+      return;
+    }
+    this.isActive = !this.isActive;
   }
 }
 
