@@ -1,0 +1,25 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Input value change will fire with 500ms nwbDebounceDelay
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input class="input" type="text" nwbDebounce
+                 [nwbDebounceDelay]="500"
+                 (nwbDebounceChange)="valueChange($event)"
+                 [(ngModel)]="inputValue">
+        </div>
+      </div>
+
+      <p>My value is: {{inputValue}}</p>
+      <p>Value from nwbDebounceChange event: {{valueFromNwbDebounceChangeEvent}}</p>
+
+      <button class="button" (click)="setRandomValue()">Set random value to the model</button>
+    </div>
+  </div>
+</div>

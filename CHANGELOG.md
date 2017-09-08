@@ -1,3 +1,6 @@
+# 1.2.0 (2017-09-08)
+- Add nwbDebounce directive
+
 # 1.1.9 (2017-09-04)
 - Fix dropdown disabled behavior
 - Set encapsulation to `ViewEncapsulation.None` on all components

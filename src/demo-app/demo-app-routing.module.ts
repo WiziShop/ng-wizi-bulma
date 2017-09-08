@@ -6,13 +6,14 @@ import {PaginatorDemo} from './features/paginator/paginator-demo';
 import {SpinnerDemo} from './features/spinner/spinner-demo';
 import {DropdownDemo} from './features/dropdown/dropdown-demo';
 import {ProgressBarDemo} from './features/progress-bar/progress-bar-demo';
+import {Home} from './features/home/home';
+import {DebounceDemo} from './features/debounce/debounce-demo';
 
 
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'dialog',
-    pathMatch: 'full'
+    component: Home
   },
   {
     path: 'dialog',
@@ -39,8 +40,12 @@ const appRoutes: Routes = [
     component: ProgressBarDemo
   },
   {
+    path: 'debounce',
+    component: DebounceDemo
+  },
+  {
     path: '**',
-    component: DialogDemo
+    component: Home
   }
 ];
 

@@ -8,7 +8,10 @@ import {NwbSpinnerModule} from './spinner/index';
 import {NwbDropdownModule} from './dropdown/index';
 import {NwbOptionModule} from './option/index';
 import {NwbProgressBarModule} from './progress-bar/index';
+import {NwbNwbDebounceModule} from './debounce/index';
 
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/map';
 
 @NgModule({
   imports: [
@@ -19,6 +22,7 @@ import {NwbProgressBarModule} from './progress-bar/index';
     NwbDropdownModule,
     NwbOptionModule,
     NwbProgressBarModule,
+    NwbNwbDebounceModule,
   ],
   providers: [OVERLAY_CONTAINER_PROVIDER, DOM_SERVICE_PROVIDER],
   declarations: [],
@@ -30,6 +34,7 @@ import {NwbProgressBarModule} from './progress-bar/index';
     NwbDropdownModule,
     NwbOptionModule,
     NwbProgressBarModule,
+    NwbNwbDebounceModule
   ],
 })
 export class NwbModule {
