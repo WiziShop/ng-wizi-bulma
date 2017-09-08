@@ -19,14 +19,20 @@ export class NwbDropdownComponent implements ControlValueAccessor {
 
   @Input() config: NwbDropdownConfig = {};
 
-  _onChanged: Function;
-  _onTouched: Function;
   _options: QueryList<NwbOptionComponent>;
 
   isActive = false;
 
-  currentValue: any;
   currentText: any;
+
+  private _onChanged: Function;
+  private _onTouched: Function;
+  private currentValue: any;
+
+
+  constructor(private _elementRef: ElementRef) {
+  }
+
 
   writeValue(obj: any): void {
     this.currentValue = obj;
@@ -40,10 +46,6 @@ export class NwbDropdownComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this._onTouched = fn;
-  }
-
-
-  constructor(private _elementRef: ElementRef) {
   }
 
 
