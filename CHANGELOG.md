@@ -1,3 +1,6 @@
+# 1.2.1 (2017-09-12)
+- FIX: nwbDebounce directive could have _onChanged undefined
+
 # 1.2.0 (2017-09-08)
 - Add nwbDebounce directive
 

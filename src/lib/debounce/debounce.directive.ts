@@ -72,7 +72,9 @@ export class NwbDebounceDirective implements OnInit, ControlValueAccessor {
 
         if (this._modelValue !== this._inputValue) {
           this._modelValue = this._inputValue;
-          this._onChanged(this._inputValue);
+          if (typeof this._onChanged === 'function') {
+            this._onChanged(this._inputValue);
+          }
         }
       }
     }, this.nwbDebounceDelay);
