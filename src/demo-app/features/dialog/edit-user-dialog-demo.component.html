@@ -1,0 +1,28 @@
+<ng-template #dialogTemplateRef>
+  <div class="card">
+
+    <header class="card-header">
+      <p class="card-header-title">
+        Add User
+      </p>
+    </header>
+
+    <div class="card-content" *ngIf="user">
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input class="input" type="text" [(ngModel)]="user.name">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Username</label>
+        <div class="control ">
+          <input class="input is-success" type="text" [(ngModel)]="user.userName">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</ng-template>

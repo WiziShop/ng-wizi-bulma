@@ -47,10 +47,16 @@
     <div class="content">
       <button class="button" (click)="openDialogFromTemplate()">Open Dialog From Template</button>
     </div>
+
+
+    <demo-add-user-dialog
+      *ngIf="userId"
+      [id]="userId"
+      (userChange)="userChange($event)"
+      (close)="userId = null"
+    >
+
+    </demo-add-user-dialog>
+
   </div>
 </div>
-
-
-<ng-template #dialogTemplateRef>
-  I'm a template dialog. I've been opened {{numTemplateOpens}} times!
-</ng-template>

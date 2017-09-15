@@ -1,6 +1,7 @@
-import {Component, TemplateRef, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {NwbDialogConfig, NwbDialogService} from 'ng-wizi-bulma';
-import {FakeDialogDemoComponent} from './fake-dialog-demo-component';
+import {FakeDialogDemoComponent} from './fake-dialog-demo.component';
+import {User} from './edit-user-dialog-demo.component';
 
 @Component({
   moduleId: module.id,
@@ -32,9 +33,8 @@ export class DialogDemo {
 
   fakeComponentValue = '';
   fakeComponent2Value = '';
-  numTemplateOpens = 0;
 
-  @ViewChild('dialogTemplateRef') dialogTemplateRef: TemplateRef<any>;
+  userId: number = null;
 
   constructor(private nwbDialog: NwbDialogService) {
   }
@@ -109,10 +109,11 @@ export class DialogDemo {
   }
 
   openDialogFromTemplate() {
-    this.numTemplateOpens++;
-    const dialog = this.nwbDialog
-      .openFromComponent(this.dialogTemplateRef, this.dialogFromComponentConfig);
+    this.userId = 42;
+  }
 
+  userChange(user: User) {
+    console.log('user has changed', user);
   }
 
 }

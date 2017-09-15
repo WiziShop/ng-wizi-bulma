@@ -7,7 +7,7 @@ import {DemoApp} from './demo-app';
 import {NwbModule} from 'ng-wizi-bulma';
 import {DemoAppRoutingModule} from './demo-app-routing.module';
 import {DialogDemo} from './features/dialog/dialog-demo';
-import {FakeDialogDemoComponent} from './features/dialog/fake-dialog-demo-component';
+import {FakeDialogDemoComponent} from './features/dialog/fake-dialog-demo.component';
 import {SnackbarDemo} from './features/snackbar/snackbar-demo';
 import {PaginatorDemo} from './features/paginator/paginator-demo';
 import {SpinnerDemo} from './features/spinner/spinner-demo';
@@ -15,6 +15,7 @@ import {DropdownDemo} from './features/dropdown/dropdown-demo';
 import {ProgressBarDemo} from './features/progress-bar/progress-bar-demo';
 import {Home} from './features/home/home';
 import {DebounceDemo} from './features/debounce/debounce-demo';
+import {EditUserDialogDemoComponent} from './features/dialog/edit-user-dialog-demo.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import {DebounceDemo} from './features/debounce/debounce-demo';
     ProgressBarDemo,
     Home,
     DebounceDemo,
+    EditUserDialogDemoComponent,
   ],
   providers: [],
   entryComponents: [
