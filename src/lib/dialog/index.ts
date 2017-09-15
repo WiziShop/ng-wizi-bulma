@@ -9,10 +9,11 @@ import {NwbSpinnerModule} from '../spinner/index';
   providers: [NwbDialogService],
   declarations: [NwbDialogComponent],
   entryComponents: [NwbDialogComponent],
-  exports: [],
+  exports: [NwbDialogComponent],
 })
 export class NwbDialogModule {
 }
 
 
+export * from './dialog.component';
 export * from './dialog.service';
