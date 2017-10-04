@@ -1,5 +1,5 @@
 <div class="modal is-active">
-  <div class="modal-background"></div>
+  <div class="modal-background" (click)="backdropHandler()"></div>
   <div class="modal-card"
        [@modalState]="open? 'active' : 'inactive'"
        (@modalState.done)="animationDone($event)"

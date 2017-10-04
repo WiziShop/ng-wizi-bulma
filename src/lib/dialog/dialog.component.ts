@@ -6,6 +6,7 @@ import {
   ComponentFactoryResolver,
   ElementRef,
   EventEmitter,
+  HostListener,
   OnInit,
   TemplateRef,
   ViewChild,
@@ -70,9 +71,19 @@ export class NwbDialogComponent<T> implements OnInit {
     this.ready.next(true);
   }
 
+  @HostListener('document:keydown', ['$event'])
+  private _keypress(ev: KeyboardEvent) {
+    if (ev.keyCode === 27 && this.config.hasBackdrop) {
+      this.dismiss(false);
+    }
+
+  }
+
   /** Method to call when backdrop button is clicked */
   backdropHandler() {
-    this.dismiss(false);
+    if (this.config.hasBackdrop) {
+      this.dismiss(false);
+    }
   }
 
 
