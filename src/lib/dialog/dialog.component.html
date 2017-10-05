@@ -22,7 +22,8 @@
       <div #componentSection></div>
     </section>
 
-    <footer class="modal-card-foot" *ngIf="!config.loading" #footer>
+    <footer class="modal-card-foot"
+            *ngIf="!config.loading && config.cancelButtonText.length && config.okButtonText.length" #footer>
       <button class="button column is-medium is-danger is-4" *ngIf="config.cancelButtonText"
               (click)="cancelHandler()" #cancelButton>{{config.cancelButtonText}}
       </button>
