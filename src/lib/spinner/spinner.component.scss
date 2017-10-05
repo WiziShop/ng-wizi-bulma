@@ -1,4 +1,5 @@
 .nwb-spinner {
+  display: block;
   .is-spinning {
     animation: spinIt 500ms infinite linear;
     border: 2px solid white;
