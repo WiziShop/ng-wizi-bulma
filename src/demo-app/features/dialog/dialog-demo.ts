@@ -28,7 +28,8 @@ export class DialogDemo {
     okButtonText: 'Yes',
     cancelButtonText: 'No',
     width: '900px',
-    loading: true
+    loading: true,
+    hasBackdrop: false
   };
 
   fakeComponentValue = '';
