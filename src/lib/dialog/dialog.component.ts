@@ -71,9 +71,9 @@ export class NwbDialogComponent<T> implements OnInit {
     this.ready.next(true);
   }
 
-  @HostListener('document:keydown', ['$event'])
-  private _keypress(ev: KeyboardEvent) {
-    if (ev.keyCode === 27 && this.config.hasBackdrop) {
+  @HostListener('document:keydown.escape')
+  private _keypress() {
+    if (this.config.hasBackdrop) {
       this.dismiss(false);
     }
 
