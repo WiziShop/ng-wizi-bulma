@@ -21,9 +21,9 @@
   },
   "homepage": "https://github.com/WiziShop/ng-wizi-bulma#readme",
   "peerDependencies": {
-    "@angular/animations": "^4.3.5",
-    "@angular/common": "^4.3.5",
-    "@angular/core": "^4.3.5",
-    "bulma": "^0.5.1"
+    "@angular/animations": "^4.4.4",
+    "@angular/common": "^4.4.4",
+    "@angular/core": "^4.4.4",
+    "bulma": "^0.5.3"
   }
 }

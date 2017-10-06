@@ -1,3 +1,8 @@
+# 1.2.2 (2017-10-06)
+- Angular 4.4.4
+- Bulma 0.5.3
+- Fix: ng-wizi-bulma/dialog/dialog.component.html (2,698): Type 'number' is not assignable to type 'boolean'. on Aot build
+
 # 1.2.2 (2017-10-05)
 - Add nwb-modal-search component, to search everywhere
 - nwb-spinner is now display block
