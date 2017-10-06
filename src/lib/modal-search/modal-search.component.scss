@@ -1,0 +1,55 @@
+.nwb-modal-search {
+  .modal-content {
+    position: fixed;
+    top: 10%;
+  }
+
+  input {
+    font-size: 2em;
+  }
+
+  .control.has-icons-left .input {
+    padding-left: 1.25em;
+  }
+  .icon {
+    height: 100% !important;
+  }
+  .material-icons {
+    font-size: 2em;
+  }
+
+  .nwb-modal-search-found-rows {
+    max-height: 300px;
+    overflow: scroll;
+
+    margin-top: 20px;
+
+    .nwb-modal-search-row {
+      display: block;
+      color: black;
+
+      .nwb-modal-search-row-content {
+        padding-left: 1em;
+        height: 26px;
+      }
+    }
+
+    .nwb-modal-search-row:focus {
+      outline: none;
+    }
+
+    .nwb-modal-search-row.selected {
+      background-color: #239de3;
+      border-radius: 5px;
+      color: white;
+    }
+    .nwb-modal-search-row.not-selectable {
+      cursor: default;
+    }
+
+  }
+}
+
+nwb-spinner {
+  margin-top: 20px;
+}

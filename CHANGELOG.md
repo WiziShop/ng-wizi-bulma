@@ -1,3 +1,8 @@
+# 1.2.2 (2017-10-05)
+- Add nwb-modal-search component, to search everywhere
+- nwb-spinner is now display block
+- Can now dismiss dialog on click on modal background or with escape key
+
 # 1.2.1 (2017-09-12)
 - FIX: nwbDebounce directive could have _onChanged undefined
 

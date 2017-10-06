@@ -16,6 +16,7 @@ import {ProgressBarDemo} from './features/progress-bar/progress-bar-demo';
 import {Home} from './features/home/home';
 import {DebounceDemo} from './features/debounce/debounce-demo';
 import {EditUserDialogDemoComponent} from './features/dialog/edit-user-dialog-demo.component';
+import {ModalSearchDemo} from './features/modal-search/modal-search-demo';
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import {EditUserDialogDemoComponent} from './features/dialog/edit-user-dialog-de
     Home,
     DebounceDemo,
     EditUserDialogDemoComponent,
+    ModalSearchDemo,
   ],
   providers: [],
   entryComponents: [

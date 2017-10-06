@@ -1,0 +1,31 @@
+<div class="modal" [ngClass]="{'is-active': isActive}">
+  <div class="modal-background" (click)="close()"></div>
+  <div class="modal-content" (click)="focusInputSearch()">
+    <div class="box">
+      <div class="field nwb-modal-search">
+        <div class="control has-icons-left">
+          <input [ngModel]="searchString" (ngModelChange)="searching($event)"
+                 (keydown)="inputOnKeyDown($event)"
+                 #inputSearch
+                 class="input"
+                 type="text"
+                 placeholder="{{config.inputPlaceholder}}">
+          <span class="icon is-large is-left">
+        <i class="material-icons">search</i>
+      </span>
+        </div>
+        <div class="nwb-modal-search-found-rows" *ngIf="!isSearching && foundRows.length > 0">
+          <a *ngFor="let row of foundRows; let i = index"
+             [ngClass]="{'selected': isSelectable(row) && i === selectedFoundRow, 'not-selectable': !isSelectable(row)}"
+             (mouseover)="mouseOver(i)"
+             (click)="selectValue()"
+             class="nwb-modal-search-row" [tabindex]="i"
+          >
+            <div class="nwb-modal-search-row-content" [innerHTML]="row.text"></div>
+          </a>
+        </div>
+        <nwb-spinner *ngIf="isSearching"></nwb-spinner>
+      </div>
+    </div>
+  </div>
+</div>

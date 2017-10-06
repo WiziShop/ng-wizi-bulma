@@ -8,6 +8,7 @@ import {DropdownDemo} from './features/dropdown/dropdown-demo';
 import {ProgressBarDemo} from './features/progress-bar/progress-bar-demo';
 import {Home} from './features/home/home';
 import {DebounceDemo} from './features/debounce/debounce-demo';
+import {ModalSearchDemo} from './features/modal-search/modal-search-demo';
 
 
 const appRoutes: Routes = [
@@ -42,6 +43,10 @@ const appRoutes: Routes = [
   {
     path: 'debounce',
     component: DebounceDemo
+  },
+  {
+    path: 'modal-search',
+    component: ModalSearchDemo
   },
   {
     path: '**',

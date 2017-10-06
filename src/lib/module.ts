@@ -12,6 +12,7 @@ import {NwbNwbDebounceModule} from './debounce/index';
 
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/map';
+import {ModalSearchModule} from './modal-search/index';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import 'rxjs/add/operator/map';
     NwbOptionModule,
     NwbProgressBarModule,
     NwbNwbDebounceModule,
+    ModalSearchModule,
   ],
   providers: [OVERLAY_CONTAINER_PROVIDER, DOM_SERVICE_PROVIDER],
   declarations: [],
@@ -34,7 +36,8 @@ import 'rxjs/add/operator/map';
     NwbDropdownModule,
     NwbOptionModule,
     NwbProgressBarModule,
-    NwbNwbDebounceModule
+    NwbNwbDebounceModule,
+    ModalSearchModule,
   ],
 })
 export class NwbModule {
