@@ -1,39 +1,40 @@
-<div class="columns">
-  <div class="column is-2">
-    <aside class="menu">
-      <p class="menu-label">
-        Ng Wizi Bulma
-        <a (click)="openModalSearch()">
-        <span class="icon is-small">
+<div class="container">
+  <div class="columns">
+    <div class="column is-2">
+      <aside class="menu">
+        <p class="menu-label">
+          Ng Wizi Bulma
+          <a (click)="openModalSearch()">
+        <span class="icon is-small has-text-info is-texttop ">
             <i class="material-icons">search</i>
         </span>
-        </a>
-      </p>
-      <ul class="menu-list">
-        <li><a href="https://github.com/WiziShop/ng-wizi-bulma">GitHub</a></li>
-        <li><a [routerLink]="'./'">Home</a></li>
-      </ul>
-      <p class="menu-label">
-        Components
-      </p>
-      <ul class="menu-list">
-        <li><a [routerLink]="'./dialog'">Dialog</a></li>
-        <li><a [routerLink]="'./debounce'">Debounce</a></li>
-        <li><a [routerLink]="'./dropdown'">Dropdown</a></li>
-        <li><a [routerLink]="'./modal-search'">Modal Search</a></li>
-        <li><a [routerLink]="'./paginator'">Paginator</a></li>
-        <li><a [routerLink]="'./progress-bar'">Progress bar</a></li>
-        <li><a [routerLink]="'./snackbar'">Snackbar</a></li>
-        <li><a [routerLink]="'./spinner'">Spinner</a></li>
-      </ul>
-    </aside>
+          </a>
+        </p>
+        <ul class="menu-list">
+          <li><a href="https://github.com/WiziShop/ng-wizi-bulma">GitHub</a></li>
+          <li><a [routerLink]="'./'">Home</a></li>
+        </ul>
+        <p class="menu-label">
+          Components
+        </p>
+        <ul class="menu-list">
+          <li><a [routerLink]="'./dialog'">Dialog</a></li>
+          <li><a [routerLink]="'./debounce'">Debounce</a></li>
+          <li><a [routerLink]="'./dropdown'">Dropdown</a></li>
+          <li><a [routerLink]="'./modal-search'">Modal Search</a></li>
+          <li><a [routerLink]="'./paginator'">Paginator</a></li>
+          <li><a [routerLink]="'./progress-bar'">Progress bar</a></li>
+          <li><a [routerLink]="'./snackbar'">Snackbar</a></li>
+          <li><a [routerLink]="'./spinner'">Spinner</a></li>
+        </ul>
+      </aside>
+    </div>
+    <div class="column is-10">
+
+      <router-outlet></router-outlet>
+
+    </div>
+
   </div>
-  <div class="column is-9">
-
-    <router-outlet></router-outlet>
-
-  </div>
-
 </div>
-
 
