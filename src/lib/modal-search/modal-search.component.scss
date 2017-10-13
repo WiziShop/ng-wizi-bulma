@@ -54,7 +54,12 @@
     .nwb-modal-search-row.not-selectable {
       cursor: default;
     }
+  }
 
+  @media screen and (max-width: 769px) {
+    .modal-content, .modal-card {
+      margin: 0;
+    }
   }
 }
 

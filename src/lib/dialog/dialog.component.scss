@@ -27,4 +27,16 @@
   button.delete {
     padding: 10px;
   }
+
+  @media screen and (max-width: 640px) {
+    .modal-content, .modal-card {
+      min-width: inherit;
+      width: 100%;
+      margin:0;
+    }
+  }
+
+  .button.column {
+    height: auto;
+  }
 }
