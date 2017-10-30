@@ -51,7 +51,7 @@ export class NwbDropdownComponent implements ControlValueAccessor {
 
   @HostListener('document:click', ['$event'])
   _click(ev: UIEvent) {
-    if (!this._elementRef.nativeElement.contains(event.target)) { // Outside host, close dropdown
+    if (!this._elementRef.nativeElement.contains(ev.target)) { // Outside host, close dropdown
       this.isActive = false;
     }
 
