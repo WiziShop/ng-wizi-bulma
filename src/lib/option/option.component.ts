@@ -45,7 +45,7 @@ export class NwbOptionComponent {
    */
   @Input()
   get value() {
-    if (this._value !== undefined && this._value !== null) {
+    if (this._value !== undefined) {
       return this._value;
     }
     return this.text;
