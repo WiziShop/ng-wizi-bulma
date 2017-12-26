@@ -1,36 +1,43 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
 /dist
 /tmp
-/deploy
-/screenshots
+/out-tsc
 
 # dependencies
 /node_modules
-/bower_components
 
-# Dart
-/.pub
-/.packages
-/packages
-/pubspec.lock
-/src/.pub
-/src/.packages
-/src/packages
-/src/pubspec.lock
-
-
-# IDEs
+# IDEs and editors
 /.idea
-/.vscode
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # misc
-.DS_Store
 /.sass-cache
 /connect.lock
-/coverage/*
+/coverage
 /libpeerconnection.log
 npm-debug.log
 testem.log
-/.chrome
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+/src/ng-wizi-bulma/

@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "paths": {
+      "ng-wizi-bulma": [
+        "dist/ng-wizi-bulma"
+      ]
+    },
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  },
+  "exclude": [
+    ".ng_build"
+  ]
+}

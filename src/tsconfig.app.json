@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.json",
+  "angularCompilerOptions": {
+    "paths": {
+      "ng-wizi-bulma": [ "../src-lib/ng-wizi-bulma/public_api.ts" ]
+    }
+  },
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "./",
+    "module": "es2015",
+    "types": [],
+    "paths": {
+      "ng-wizi-bulma": [ "../src-lib/ng-wizi-bulma/public_api.ts" ]
+    }
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ]
+}
