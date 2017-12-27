@@ -9,8 +9,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Component, ChangeDetectionStrategy, Input, ViewEncapsulation} from '@angular/core';
-
+import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
 
 
 /**
@@ -31,7 +30,7 @@ import {Component, ChangeDetectionStrategy, Input, ViewEncapsulation} from '@ang
     '[class.is-danger]': 'color == "danger"',
     'class': 'nwb-progress-bar',
   },
-  templateUrl: 'progress-bar.component.html',
+  templateUrl: './progress-bar.component.html',
   styleUrls: ['./progress-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
@@ -59,7 +58,7 @@ export class NwbProgressBarComponent {
    * 'determinate'.
    * Mirrored to mode attribute.
    */
-  @Input() mode: 'determinate' | 'indeterminate'  | 'query' = 'determinate';
+  @Input() mode: 'determinate' | 'indeterminate' | 'query' = 'determinate';
 
   /** Gets the current transform value for the progress bar's primary indicator. */
   _primaryTransform() {

@@ -1,9 +1,7 @@
 {
   "name": "ng-wizi-bulma",
-  "version": "2.0.0-ng-packagr.alpha0",
+  "version": "2.0.0-ng-packagr.beta1",
   "description": "Angular Compoments using Bulma css",
-  "main": "./bundles/ng-wizi-bulma.umd.js",
-  "typings": "./public_api.d.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/WiziShop/ng-wizi-bulma.git"

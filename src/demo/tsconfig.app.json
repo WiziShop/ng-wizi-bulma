@@ -1,8 +1,8 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "../../tsconfig.json",
   "angularCompilerOptions": {
     "paths": {
-      "ng-wizi-bulma": [ "../src-lib/ng-wizi-bulma/public_api.ts" ]
+      "ng-wizi-bulma": [ "../lib/ng-wizi-bulma/public_api.ts" ]
     }
   },
   "compilerOptions": {
@@ -11,7 +11,7 @@
     "module": "es2015",
     "types": [],
     "paths": {
-      "ng-wizi-bulma": [ "../src-lib/ng-wizi-bulma/public_api.ts" ]
+      "ng-wizi-bulma": [ "../lib/ng-wizi-bulma/public_api.ts" ]
     }
   },
   "exclude": [

@@ -1,21 +1,22 @@
 {
   "name": "ng-wizi-bulma",
-  "version": "2.0.0-ng-packagr.alpha0",
+  "version": "2.0.0-ng-packagr.beta1",
   "license": "MIT",
   "scripts": {
     "chokidar": "chokidar",
     "concurrently": "concurrently",
     "ng": "ng",
     "start": "ng serve",
-    "start:dev": "concurrently \"chokidar './src-lib/ng-wizi-bulma/**/*' -c 'npm run build:lib'\" \"ng serve\"",
-    "build:lib": "ng-packagr",
-    "build:app": "cpr dist/ng-wizi-bulma src/ng-wizi-bulma && ng build  && rimraf src/ng-wizi-bulma",
+    "start:dev": "concurrently \"chokidar './src/lib/ng-wizi-bulma/**/*' -c 'npm run build:lib'\" \"ng serve\"",
+    "build:lib": "ng-packagr -p src/lib/ng-package.json",
+    "build:app": "cpr dist/ng-wizi-bulma src/demo/ng-wizi-bulma && ng build --prod && rimraf src/demo/ng-wizi-bulma",
     "build": "npm run build:lib && npm run build:app",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy": "npm run build && firebase deploy",
-    "publish": "npm run deploy"
+    "publish:npm":"cd dist/ng-wizi-bulma && npm publish --access public && cd ../../",
+    "publish": "npm run deploy && npm run publish:npm"
   },
   "private": true,
   "dependencies": {
