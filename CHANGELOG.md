@@ -1,3 +1,8 @@
+# 2.0.0 (2018-01-05)
+- Angular 5.1.2 
+- Bulma 0.6.1
+- Uses [ng-packagr](https://github.com/dherges/ng-packagr) to transpile into the Angular Package Format
+ 
 # 1.2.3 (2017-10-06)
 - Angular 4.4.4
 - Bulma 0.5.3

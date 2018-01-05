@@ -1,6 +1,6 @@
 {
   "name": "ng-wizi-bulma",
-  "version": "2.0.0-ng-packagr.beta1",
+  "version": "2.0.0",
   "license": "MIT",
   "scripts": {
     "chokidar": "chokidar",
