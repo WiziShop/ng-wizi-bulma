@@ -15,6 +15,9 @@ import {NwdPaginatorComponent} from './paginator/paginator.component';
 import {NwbProgressBarComponent} from './progress-bar/progress-bar.component';
 import {NwbSnackbarService} from './snackbar/snackbar.service';
 import {NwbSnackbarComponent} from './snackbar/snackbar.component';
+import {NwbTabsComponent} from './tabs/tabs.component';
+import {NwbTabsItemListComponent} from './tabs/tabs-item.component';
+import {NwbTabsItemViewComponent} from './tabs/tabs-item.component';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
@@ -34,6 +37,8 @@ import {FormsModule} from '@angular/forms';
     NwbDialogComponent,
     NwbModalSearchComponent,
     NwbSnackbarComponent,
+    NwbTabsItemListComponent,
+    NwbTabsItemViewComponent
   ],
   declarations: [
     NwbSpinnerComponent,
@@ -45,6 +50,9 @@ import {FormsModule} from '@angular/forms';
     NwdPaginatorComponent,
     NwbProgressBarComponent,
     NwbSnackbarComponent,
+    NwbTabsComponent,
+    NwbTabsItemListComponent,
+    NwbTabsItemViewComponent
   ],
   exports: [
     NwbSpinnerComponent,
@@ -56,6 +64,9 @@ import {FormsModule} from '@angular/forms';
     NwdPaginatorComponent,
     NwbProgressBarComponent,
     NwbSnackbarComponent,
+    NwbTabsComponent,
+    NwbTabsItemListComponent,
+    NwbTabsItemViewComponent
   ],
 })
 export class NwbModule {

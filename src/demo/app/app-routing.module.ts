@@ -9,6 +9,7 @@ import {ProgressBarDemo} from './features/progress-bar/progress-bar-demo';
 import {Home} from './features/home/home';
 import {DebounceDemo} from './features/debounce/debounce-demo';
 import {ModalSearchDemo} from './features/modal-search/modal-search-demo';
+import {TabsDemo} from './features/tabs/tabs-demo.component';
 
 
 const appRoutes: Routes = [
@@ -47,6 +48,10 @@ const appRoutes: Routes = [
   {
     path: 'modal-search',
     component: ModalSearchDemo
+  },
+  {
+    path: 'tabs',
+    component:TabsDemo
   },
   {
     path: '**',
