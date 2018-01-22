@@ -3,26 +3,26 @@
   <div class="column is-12">
     <h1 class="subtitle has-text-grey">Basic</h1>
     <nwb-tabs [(active)]="activeA">
-      <div nwb-tabs-item="Pictures">
+      <nwb-tabs-item [label]="'Pictures'">
         <p>Your Pictures are here!</p>
-        <button (click)="activeA='Pictures'"
+        <button (click)="activeA=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Music">
+      </nwb-tabs-item>
+      <nwb-tabs-item [label]="'Music'">
         <p>Your Music is here!</p>
-        <button (click)="activeA='Pictures'"
+        <button (click)="activeA=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Videos">
+      </nwb-tabs-item>
+      <nwb-tabs-item [label]="'Videos'">
         <p>Your Videos are here!</p>
-        <button (click)="activeA='Pictures'"
+        <button (click)="activeA=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Documents">
+      </nwb-tabs-item>
+      <nwb-tabs-item [label]="'Documents'">
         <p>Your Documents are here!</p>
-        <button (click)="activeA='Pictures'"
+        <button (click)="activeA=0"
           class="button is-small is-warning">Reset</button>
-      </div>
+      </nwb-tabs-item>
     </nwb-tabs>
   </div>
 </div>
@@ -33,26 +33,26 @@
     <nwb-tabs [(active)]="activeB"
       [size]="'small'"
       [toggle]="true">
-      <div nwb-tabs-item="Pictures">
+      <nwb-tabs-item [label]="'Pictures'">
         <p>Your Pictures are here!</p>
-        <button (click)="activeB='Pictures'"
+        <button (click)="activeB=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Music">
+      </nwb-tabs-item>
+      <nwb-tabs-item [label]="'Music'">
         <p>Your Music is here!</p>
-        <button (click)="activeB='Pictures'"
+        <button (click)="activeB=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Videos">
+      </nwb-tabs-item>
+      <nwb-tabs-item [label]="'Videos'">
         <p>Your Videos are here!</p>
-        <button (click)="activeB='Pictures'"
+        <button (click)="activeB=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Documents">
+      </nwb-tabs-item>
+      <nwb-tabs-item [label]="'Documents'">
         <p>Your Documents are here!</p>
-        <button (click)="activeB='Pictures'"
+        <button (click)="activeB=0"
           class="button is-small is-warning">Reset</button>
-      </div>
+      </nwb-tabs-item>
     </nwb-tabs>
   </div>
 </div>
@@ -63,26 +63,26 @@
     <nwb-tabs [(active)]="activeC"
       [size]="'large'"
       [rounded]="true">
-      <div nwb-tabs-item="Pictures">
+      <nwb-tabs-item [label]="'Pictures'">
         <p>Your Pictures are here!</p>
-        <button (click)="activeC='Pictures'"
+        <button (click)="activeC=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Music">
+      </nwb-tabs-item>
+      <nwb-tabs-item [label]="'Music'">
         <p>Your Music is here!</p>
-        <button (click)="activeC='Pictures'"
+        <button (click)="activeC=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Videos">
+      </nwb-tabs-item>
+      <nwb-tabs-item [label]="'Videos'">
         <p>Your Videos are here!</p>
-        <button (click)="activeC='Pictures'"
+        <button (click)="activeC=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Documents">
+      </nwb-tabs-item>
+      <nwb-tabs-item [label]="'Documents'">
         <p>Your Documents are here!</p>
-        <button (click)="activeC='Pictures'"
+        <button (click)="activeC=0"
           class="button is-small is-warning">Reset</button>
-      </div>
+      </nwb-tabs-item>
     </nwb-tabs>
   </div>
 </div>
@@ -93,26 +93,26 @@
     <nwb-tabs [(active)]="activeD"
       [fullwidth]="true"
       [box]="true">
-      <div nwb-tabs-item="Pictures">
+      <nwb-tabs-item [label]="'Pictures'">
         <p>Your Pictures are here!</p>
-        <button (click)="activeD='Pictures'"
+        <button (click)="activeD=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Music">
+      </nwb-tabs-item>
+      <nwb-tabs-item [label]="'Music'">
         <p>Your Music is here!</p>
-        <button (click)="activeD='Pictures'"
+        <button (click)="activeD=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Videos">
+      </nwb-tabs-item>
+      <nwb-tabs-item [label]="'Videos'">
         <p>Your Videos are here!</p>
-        <button (click)="activeD='Pictures'"
+        <button (click)="activeD=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Documents">
+      </nwb-tabs-item>
+      <nwb-tabs-item [label]="'Documents'">
         <p>Your Documents are here!</p>
-        <button (click)="activeD='Pictures'"
+        <button (click)="activeD=0"
           class="button is-warning">Reset</button>
-      </div>
+      </nwb-tabs-item>
     </nwb-tabs>
   </div>
 </div>
@@ -122,26 +122,26 @@
     <h1 class="subtitle has-text-grey">Alignment</h1>
     <nwb-tabs [(active)]="activeE"
       [alignment]="'right'">
-      <div nwb-tabs-item="Pictures">
+      <nwb-tabs-item label="Pictures">
         <p>Your Pictures are here!</p>
-        <button (click)="activeE='Pictures'"
+        <button (click)="activeE=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Music">
+      </nwb-tabs-item>
+      <nwb-tabs-item label="Music">
         <p>Your Music is here!</p>
-        <button (click)="activeE='Pictures'"
+        <button (click)="activeE=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Videos">
+      </nwb-tabs-item>
+      <nwb-tabs-item label="Videos">
         <p>Your Videos are here!</p>
-        <button (click)="activeE='Pictures'"
+        <button (click)="activeE=0"
           class="button is-small is-warning">Reset</button>
-      </div>
-      <div nwb-tabs-item="Documents">
+      </nwb-tabs-item>
+      <nwb-tabs-item label="Documents">
         <p>Your Documents are here!</p>
-        <button (click)="activeE='Pictures'"
+        <button (click)="activeE=0"
           class="button is-warning">Reset</button>
-      </div>
+      </nwb-tabs-item>
     </nwb-tabs>
   </div>
 </div>
@@ -150,22 +150,22 @@
   <div class="column is-12">
     <h1 class="subtitle has-text-grey">Icons</h1>
     <nwb-tabs>
-      <div nwb-tabs-item="Pictures"
+      <nwb-tabs-item label="Pictures"
         [icon]="'fa fa-camera'">
         <p>Your Pictures are here!</p>
-      </div>
-      <div nwb-tabs-item="Music"
+      </nwb-tabs-item>
+      <nwb-tabs-item label="Music"
         [icon]="'fa fa-music'">
         <p>Your Music is here!</p>
-      </div>
-      <div nwb-tabs-item="Videos"
+      </nwb-tabs-item>
+      <nwb-tabs-item label="Videos"
         [icon]="'fa fa-video-camera'">
         <p>Your Videos are here!</p>
-      </div>
-      <div nwb-tabs-item="Documents"
+      </nwb-tabs-item>
+      <nwb-tabs-item label="Documents"
         [icon]="'fa fa-file-o'">
         <p>Your Documents are here!</p>
-      </div>
+      </nwb-tabs-item>
     </nwb-tabs>
   </div>
 </div>

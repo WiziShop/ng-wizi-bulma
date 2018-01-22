@@ -1,7 +1,7 @@
 /**
- * Simple class because string objects are always copied and we need a 
- * reference to a string
+ * Simple class because number objects are always copied and we need a 
+ * reference to a number
  */
 export class NwbTabsActiveContext {
-  label: string;
+  idx: number;
 }

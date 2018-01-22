@@ -21,17 +21,18 @@ import { NwbTabsActiveContext } from './tabs-active.class';
  * </div>
  */
 @Component({
-  selector: '[nwb-tabs-item]',
+  selector: 'nwb-tabs-item',
   template: `
-  <ng-content *ngIf="active.label===label">
+  <ng-content *ngIf="active.idx===idx">
   </ng-content>
   `
 })
 export class NwbTabsItemViewComponent implements OnInit {
 
-  @Input('nwb-tabs-item') label: string;
+  @Input() label: string;
   @Input() icon: string;
-  active: NwbTabsActiveContext;
+  idx: number;                  /*!< our idx */
+  active: NwbTabsActiveContext; /*!< Active idx */
   constructor() {}
   ngOnInit() {}
 

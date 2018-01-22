@@ -34,8 +34,8 @@ import { NwbTabsActiveContext } from './tabs-active.class';
     {{fullwidth&&'is-fullwidth'}}">
     <ul>
       <li *ngFor="let tab of tabs"
-          [ngClass]="{'is-active':activeContext.label===tab.label}"
-	  (click)="whenClicked(tab.label)">
+          [ngClass]="{'is-active':activeContext.idx===tab.idx}"
+	  (click)="whenClicked(tab.idx)">
 	<a>
           <span *ngIf="tab.icon" class="icon">
             <i class="{{tab.icon}}"></i>
@@ -69,35 +69,36 @@ export class NwbTabsComponent implements OnInit, AfterContentInit, OnChanges {
   @Input() fullwidth: boolean;
 
   /** IE: [(active)]="active" (optional, will equal first tab by default) **/
-  @Input() active: string;
-  @Output() activeChange: EventEmitter < string > ;
+  @Input() active: number;
+  @Output() activeChange: EventEmitter < number > ;
 
   @ContentChildren(NwbTabsItemViewComponent) viewQuery: QueryList < NwbTabsItemViewComponent > ;
   activeContext: NwbTabsActiveContext = new NwbTabsActiveContext();
   tabs: NwbTabsItemViewComponent[];
 
   constructor() {
-    this.activeChange = new EventEmitter < string > ();
+    this.activeChange = new EventEmitter < number > ();
   }
   ngOnInit() {
     if (this.rounded) this.toggle = true;
   }
 
-  whenClicked(label: string) {
-    this.activeContext.label = label;
-    this.activeChange.emit(this.activeContext.label);
+  whenClicked(idx: number) {
+    this.activeContext.idx = idx;
+    this.activeChange.emit(this.activeContext.idx);
   }
 
   ngAfterContentInit() {
     this.tabs = this.viewQuery.toArray();
-    this.tabs.forEach((tab: NwbTabsItemViewComponent) => {
+    this.tabs.forEach((tab: NwbTabsItemViewComponent, idx: number) => {
       tab.active = this.activeContext;
+      tab.idx = idx;
     });
-    this.activeContext.label = this.active || this.tabs[0].label;
+    this.activeContext.idx = this.active || this.tabs[0].idx;
   }
 
   ngOnChanges() {
-    if (this.active) this.activeContext.label = this.active;
+    this.activeContext.idx = this.active;
   }
 
 }
