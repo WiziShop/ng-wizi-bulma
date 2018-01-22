@@ -1,3 +1,6 @@
+# 2.0.2 (2018-01-22)
+- Add tabs component thanks to [TomzOk](https://github.com/TomzOk)
+
 # 2.0.1 (2018-01-12)
 - Angular 5.2.0
 - Bulma 0.6.2

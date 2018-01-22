@@ -51,7 +51,11 @@ const appRoutes: Routes = [
   },
   {
     path: 'tabs',
-    component:TabsDemo
+    component: TabsDemo
+  },
+  {
+    path: 'tabs/:basicTabIndex',
+    component: TabsDemo
   },
   {
     path: '**',

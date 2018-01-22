@@ -1,54 +1,37 @@
 import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  ContentChildren,
-  ViewChild,
-  ViewContainerRef,
-  QueryList,
-  ComponentRef,
-  ComponentFactory,
-  ComponentFactoryResolver,
-  HostBinding,
-  OnInit,
-  AfterContentInit,
-  OnChanges
+  AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output,
+  QueryList
 } from '@angular/core';
 
-import {
-  //NwbTabsItemListComponent,
-  NwbTabsItemViewComponent
-} from './tabs-item.component';
-import { NwbTabsActiveContext } from './tabs-active.class';
+import {NwbTabComponent} from './tab.component';
 
 @Component({
   selector: 'nwb-tabs',
   template: `
-  <div class="tabs 
+    <div class="tabs
     {{alignment&&'is-'+alignment}}
-    {{size&&'is-'+size}} 
-    {{box&&'is-boxed'}} 
-    {{toggle&&'is-toggle'}} 
-    {{rounded&&'is-toggle-rounded'}} 
+    {{size&&'is-'+size}}
+    {{box&&'is-boxed'}}
+    {{toggle&&'is-toggle'}}
+    {{rounded&&'is-toggle-rounded'}}
     {{fullwidth&&'is-fullwidth'}}">
-    <ul>
-      <li *ngFor="let tab of tabs"
-          [ngClass]="{'is-active':activeContext.idx===tab.idx}"
-	  (click)="whenClicked(tab.idx)">
-	<a>
+      <ul>
+        <li *ngFor="let tab of tabList"
+            [ngClass]="{'is-active':selectedIndex===tab.index}"
+            (click)="select(tab.index)">
+          <a>
           <span *ngIf="tab.icon" class="icon">
             <i class="{{tab.icon}}"></i>
           </span>
-          <span>{{tab.label}}</span>
-	</a>
-      </li>
-    </ul>
-  </div>
-  <ng-content></ng-content>
+            <span>{{tab.label}}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <ng-content></ng-content>
   `
 })
-export class NwbTabsComponent implements OnInit, AfterContentInit, OnChanges {
+export class NwbTabsComponent implements OnInit, AfterContentInit {
 
   /** IE [box]="true" **/
   @Input() box: boolean;
@@ -68,37 +51,56 @@ export class NwbTabsComponent implements OnInit, AfterContentInit, OnChanges {
   /** IE [fullwidth]="true" **/
   @Input() fullwidth: boolean;
 
-  /** IE: [(active)]="active" (optional, will equal first tab by default) **/
-  @Input() active: number;
-  @Output() activeChange: EventEmitter < number > ;
+  /** IE: [(selectedIndex)]="active" (optional, will equal first tab by default) **/
+  _selectedIndex = 0;
+  @Input()
+  set selectedIndex(selectedIndex: number) {
+    this.select(selectedIndex);
+  }
 
-  @ContentChildren(NwbTabsItemViewComponent) viewQuery: QueryList < NwbTabsItemViewComponent > ;
-  activeContext: NwbTabsActiveContext = new NwbTabsActiveContext();
-  tabs: NwbTabsItemViewComponent[];
+  get selectedIndex() {
+    return this._selectedIndex;
+  }
+
+  @Output() selectedIndexChange: EventEmitter<number> = new EventEmitter<number>();
+
+  @ContentChildren(NwbTabComponent) tabList: QueryList<NwbTabComponent>;
 
   constructor() {
-    this.activeChange = new EventEmitter < number > ();
-  }
-  ngOnInit() {
-    if (this.rounded) this.toggle = true;
+
   }
 
-  whenClicked(idx: number) {
-    this.activeContext.idx = idx;
-    this.activeChange.emit(this.activeContext.idx);
+  ngOnInit() {
+    if (this.rounded) {
+      this.toggle = true;
+    }
+  }
+
+  select(index: number) {
+    if (this._selectedIndex === index) {
+      return;
+    }
+
+    this._selectedIndex = index;
+
+    if (this.tabList) {
+      this.tabList.forEach((tab: NwbTabComponent) => {
+        tab.setSelected(tab.index === this.selectedIndex);
+      });
+
+      this.selectedIndexChange.emit(this.selectedIndex);
+    }
+
   }
 
   ngAfterContentInit() {
-    this.tabs = this.viewQuery.toArray();
-    this.tabs.forEach((tab: NwbTabsItemViewComponent, idx: number) => {
-      tab.active = this.activeContext;
-      tab.idx = idx;
+
+    this.tabList.forEach((tab: NwbTabComponent, index) => {
+      tab.index = index;
+      tab.setSelected(tab.index === this.selectedIndex);
     });
-    this.activeContext.idx = this.active || this.tabs[0].idx;
+
   }
 
-  ngOnChanges() {
-    this.activeContext.idx = this.active;
-  }
 
 }
