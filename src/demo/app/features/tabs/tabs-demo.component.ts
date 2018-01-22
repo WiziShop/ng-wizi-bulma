@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './tabs-demo.component.html',
   styleUrls: []
 })
-export class TabsDemo {}
+export class TabsDemo {
+  Constructor() {}
+}
