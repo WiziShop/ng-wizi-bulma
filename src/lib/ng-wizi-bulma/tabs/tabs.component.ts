@@ -16,7 +16,7 @@ import {
 } from '@angular/core';
 
 import {
-  NwbTabsItemListComponent,
+  //NwbTabsItemListComponent,
   NwbTabsItemViewComponent
 } from './tabs-item.component';
 import { NwbTabsActiveContext } from './tabs-active.class';
@@ -28,8 +28,16 @@ import { NwbTabsActiveContext } from './tabs-active.class';
     {{alignment&&'is-'+alignment}}
     {{size&&'is-'+size}}">
     <ul>
-      <ng-template #list>
-      </ng-template>
+      <li *ngFor="let tab of tabs"
+          [ngClass]="{'is-active':activeContext.label===tab.label}"
+	  (click)="whenClicked(tab.label)">
+	<a>
+          <span *ngIf="tab.icon" class="icon">
+            <i class="fa fa-{{tab.icon}}"></i>
+          </span>
+          <span>{{tab.label}}</span>
+	</a>
+      </li>
     </ul>
   </div>
   <ng-content></ng-content>
@@ -51,31 +59,22 @@ export class NwbTabsComponent implements OnInit, AfterContentInit {
   @Output() activeChange: EventEmitter < string > ;
 
   @ContentChildren(NwbTabsItemViewComponent) viewQuery: QueryList < NwbTabsItemViewComponent > ;
-  @ViewChild("list", { read: ViewContainerRef }) tabsList: ViewContainerRef;
-  listFactory: ComponentFactory < NwbTabsItemListComponent > ;
-  viewFactory: ComponentFactory < NwbTabsItemViewComponent > ;
-  activeTab: NwbTabsActiveContext = new NwbTabsActiveContext();
+  activeContext: NwbTabsActiveContext = new NwbTabsActiveContext();
   tabs: NwbTabsItemViewComponent[];
 
-  constructor(private _resolver: ComponentFactoryResolver) {
-    this.listFactory = _resolver.resolveComponentFactory(NwbTabsItemListComponent);
-    this.viewFactory = _resolver.resolveComponentFactory(NwbTabsItemViewComponent);
-    this.activeChange = new EventEmitter < string > ();
-  }
+  constructor(private _resolver: ComponentFactoryResolver) {}
   ngOnInit() {}
+
+  whenClicked(label: string) {
+    this.activeContext.label = label;
+  }
 
   ngAfterContentInit() {
     this.tabs = this.viewQuery.toArray();
-    this.activeTab.label = this.active || this.tabs[0].label;
-    this.viewQuery.forEach((tab: NwbTabsItemViewComponent) => {
-      let listRef = this.tabsList.createComponent(this.listFactory);
-      listRef.instance.data = tab;
-      tab.active = this.activeTab;
-      tab.tabClick.subscribe((label: string) => {
-        this.activeTab.label = label;
-        this.activeChange.emit(label);
-      })
+    this.tabs.forEach((tab: NwbTabsItemViewComponent) => {
+      tab.active = this.activeContext;
     });
+    this.activeContext.label = this.active || this.tabs[0].label;
   }
 
 }
