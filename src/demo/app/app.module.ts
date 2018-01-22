@@ -7,6 +7,7 @@ import {FakeDialogDemoComponent} from './features/dialog/fake-dialog-demo.compon
 import {SnackbarDemo} from './features/snackbar/snackbar-demo';
 import {PaginatorDemo} from './features/paginator/paginator-demo';
 import {SpinnerDemo} from './features/spinner/spinner-demo';
+import {TabsDemo} from './features/tabs/tabs-demo.component';
 import {DropdownDemo} from './features/dropdown/dropdown-demo';
 import {ProgressBarDemo} from './features/progress-bar/progress-bar-demo';
 import {Home} from './features/home/home';
@@ -32,6 +33,7 @@ import {NwbModule} from 'ng-wizi-bulma';
     SnackbarDemo,
     PaginatorDemo,
     SpinnerDemo,
+    TabsDemo,
     DropdownDemo,
     ProgressBarDemo,
     Home,
