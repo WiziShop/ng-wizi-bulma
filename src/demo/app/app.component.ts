@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {NwbFoundRow, NwbModalSearchComponent, NwbModalSearchService} from 'ng-wizi-bulma';
@@ -38,6 +38,12 @@ export class AppComponent {
     }, {
       text: 'Spinner',
       data: './spinner',
+    }, {
+      text: 'Tabs',
+      data: './tabs',
+    }, {
+      text: 'Switch',
+      data: './switch',
     },
   ];
 

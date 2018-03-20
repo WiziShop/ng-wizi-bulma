@@ -18,6 +18,7 @@ import {NwbSnackbarComponent} from './snackbar/snackbar.component';
 import {NwbTabsComponent} from './tabs/tabs.component';
 import {FormsModule} from '@angular/forms';
 import {NwbTabComponent} from './tabs/tab.component';
+import {NwbSwitchComponent} from './switch/switch.component';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import {NwbTabComponent} from './tabs/tab.component';
     NwbProgressBarComponent,
     NwbSnackbarComponent,
     NwbTabsComponent,
-    NwbTabComponent
+    NwbTabComponent,
+    NwbSwitchComponent,
   ],
   exports: [
     NwbSpinnerComponent,
@@ -61,7 +63,8 @@ import {NwbTabComponent} from './tabs/tab.component';
     NwbProgressBarComponent,
     NwbSnackbarComponent,
     NwbTabsComponent,
-    NwbTabComponent
+    NwbTabComponent,
+    NwbSwitchComponent,
   ],
 })
 export class NwbModule {

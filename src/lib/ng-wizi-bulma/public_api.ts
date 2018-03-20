@@ -18,5 +18,11 @@ export * from './progress-bar/progress-bar.component';
 export * from './snackbar/snackbar.service';
 export * from './snackbar/snackbar.component';
 
+
+export * from './tabs/tab.component';
+export * from './tabs/tabs.component';
+
+export * from './switch/switch.component';
+
 export * from './nwb-module';
 

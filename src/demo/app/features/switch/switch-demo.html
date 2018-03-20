@@ -1,0 +1,30 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Switch
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      See doc <a href="https://wikiki.github.io/form/switch/">https://wikiki.github.io/form/switch/</a>
+    </div>
+    <div class="content">
+      <nwb-doc-preview [content]="sample1"></nwb-doc-preview>
+    </div>
+    <div class="content">
+      <nwb-doc-preview [content]="sample2">
+      </nwb-doc-preview>
+    </div>
+    <div class="content">
+      <nwb-switch
+        [(ngModel)]="sample3Value"
+        (ngModelChange)="model3Change($event)"
+        extraClasses="is-info is-big"
+      >
+        Switch example
+      </nwb-switch>
+      sample3Value = {{sample3Value}}
+    </div>
+  </div>
+</div>
+

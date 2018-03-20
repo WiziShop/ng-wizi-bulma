@@ -17,6 +17,8 @@ import {ModalSearchDemo} from './features/modal-search/modal-search-demo';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {NwbModule} from 'ng-wizi-bulma';
+import {SwitchDemo} from './features/switch/switch-demo';
+import {DocPreviewComponent} from './doc-preview/doc-preview.component';
 
 @NgModule({
   imports: [
@@ -28,6 +30,7 @@ import {NwbModule} from 'ng-wizi-bulma';
   ],
   declarations: [
     AppComponent,
+    DocPreviewComponent,
     DialogDemo,
     FakeDialogDemoComponent,
     SnackbarDemo,
@@ -40,6 +43,7 @@ import {NwbModule} from 'ng-wizi-bulma';
     DebounceDemo,
     EditUserDialogDemoComponent,
     ModalSearchDemo,
+    SwitchDemo,
   ],
   providers: [],
   entryComponents: [

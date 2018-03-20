@@ -1,0 +1,17 @@
+figure {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+pre {
+  padding: 0;
+}
+
+code {
+  display: flex;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+}

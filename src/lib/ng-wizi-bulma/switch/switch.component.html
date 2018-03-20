@@ -1,0 +1,11 @@
+<div class="field">
+  <input [id]="getId()" type="checkbox" class="switch {{extraClasses}}"
+         [(ngModel)]="checked"
+         [attr.disabled]="disabled ? 'disabled' : null"
+         (change)="change()"
+  >
+  <label [for]="getId()">
+    <ng-content>
+    </ng-content>
+  </label>
+</div>

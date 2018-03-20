@@ -1,3 +1,6 @@
+# 2.0.4 (2018-01-22)
+- Add switch component from https://wikiki.github.io/form/switch/
+
 # 2.0.2 (2018-01-22)
 - Add tabs component thanks to [TomzOk](https://github.com/TomzOk)
 

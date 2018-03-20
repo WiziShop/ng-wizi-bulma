@@ -10,6 +10,7 @@ import {Home} from './features/home/home';
 import {DebounceDemo} from './features/debounce/debounce-demo';
 import {ModalSearchDemo} from './features/modal-search/modal-search-demo';
 import {TabsDemo} from './features/tabs/tabs-demo.component';
+import {SwitchDemo} from './features/switch/switch-demo';
 
 
 const appRoutes: Routes = [
@@ -56,6 +57,10 @@ const appRoutes: Routes = [
   {
     path: 'tabs/:basicTabIndex',
     component: TabsDemo
+  },
+  {
+    path: 'switch',
+    component: SwitchDemo
   },
   {
     path: '**',
