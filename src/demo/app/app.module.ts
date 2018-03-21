@@ -19,6 +19,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {NwbModule} from 'ng-wizi-bulma';
 import {SwitchDemo} from './features/switch/switch-demo';
 import {DocPreviewComponent} from './doc-preview/doc-preview.component';
+import {TooltipDemo} from './features/tooltip/tooltip-demo';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import {DocPreviewComponent} from './doc-preview/doc-preview.component';
     EditUserDialogDemoComponent,
     ModalSearchDemo,
     SwitchDemo,
+    TooltipDemo,
   ],
   providers: [],
   entryComponents: [

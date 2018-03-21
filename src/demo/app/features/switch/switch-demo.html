@@ -9,21 +9,39 @@
       See doc <a href="https://wikiki.github.io/form/switch/">https://wikiki.github.io/form/switch/</a>
     </div>
     <div class="content">
-      <nwb-doc-preview [content]="sample1"></nwb-doc-preview>
-    </div>
-    <div class="content">
-      <nwb-doc-preview [content]="sample2">
+      <nwb-doc-preview [content]="sample1">
+        <nwb-switch
+          [(ngModel)]="sample1Value"
+          (ngModelChange)="model1Change($event)"
+          extraClasses="is-danger is-small"
+        >
+          Switch example
+        </nwb-switch>
+
+        sample1Value = {{sample1Value}}
       </nwb-doc-preview>
     </div>
     <div class="content">
-      <nwb-switch
-        [(ngModel)]="sample3Value"
-        (ngModelChange)="model3Change($event)"
-        extraClasses="is-info is-big"
-      >
-        Switch example
-      </nwb-switch>
-      sample3Value = {{sample3Value}}
+      <nwb-doc-preview [content]="sample2">
+        <nwb-switch
+          [checked]="true"
+          extraClasses="is-succes is-rtl"
+        >
+          Switch example
+        </nwb-switch>
+      </nwb-doc-preview>
+    </div>
+    <div class="content">
+      <nwb-doc-preview [content]="sample3">
+        <p>Switch with tooltip</p>
+        <div nwbToolTip="My tooltip" nwbToolTipPosition="bottom" style="display: inline-block">
+          <nwb-switch
+            [checked]="true"
+            extraClasses="is-info is-big"
+          >
+          </nwb-switch>
+        </div>
+      </nwb-doc-preview>
     </div>
   </div>
 </div>

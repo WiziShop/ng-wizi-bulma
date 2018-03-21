@@ -1,4 +1,8 @@
-# 2.0.4 (2018-01-22)
+# 2.0.5 (2018-03-21)
+- FIX switch: do not emit event if value didn't change
+- Add tooltip directive from https://wikiki.github.io/elements/tooltip/
+
+# 2.0.4 (2018-03-20)
 - Add switch component from https://wikiki.github.io/form/switch/
 
 # 2.0.2 (2018-01-22)

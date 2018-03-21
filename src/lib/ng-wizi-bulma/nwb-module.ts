@@ -19,6 +19,7 @@ import {NwbTabsComponent} from './tabs/tabs.component';
 import {FormsModule} from '@angular/forms';
 import {NwbTabComponent} from './tabs/tab.component';
 import {NwbSwitchComponent} from './switch/switch.component';
+import {NwbToolTipDirective} from './tooltip/tooltip.directive';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import {NwbSwitchComponent} from './switch/switch.component';
     NwbTabsComponent,
     NwbTabComponent,
     NwbSwitchComponent,
+    NwbToolTipDirective,
   ],
   exports: [
     NwbSpinnerComponent,
@@ -65,6 +67,7 @@ import {NwbSwitchComponent} from './switch/switch.component';
     NwbTabsComponent,
     NwbTabComponent,
     NwbSwitchComponent,
+    NwbToolTipDirective,
   ],
 })
 export class NwbModule {

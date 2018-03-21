@@ -15,7 +15,7 @@ Try out the [demo](https://ng-wizi-bulma.firebaseapp.com/)
 
 Run: 
 ```
-npm i -S ng-wizi-bulma && npm i -S bulma
+npm i -S ng-wizi-bulma && npm i -S bulma bulma-switch bulma-tooltip
 ```
 
 Import bulma css into your main css file:

@@ -22,9 +22,16 @@ extraClasses="is-succes is-rtl"
 Switch example
 </nwb-switch>`;
 
-  sample3Value = true;
+  sample3 = `<div nwbToolTip="My tooltip" nwbToolTipPosition="bottom" style="display: inline-block">
+          <nwb-switch
+            [checked]="true"
+            extraClasses="is-info is-big"
+          >
+          </nwb-switch>
+        </div>`;
 
-  model3Change(value) {
+
+  model1Change(value) {
     console.log('model3Change', value);
   }
 
