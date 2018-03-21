@@ -18,7 +18,7 @@ export class NwbSwitchComponent implements ControlValueAccessor {
 
   private _onChanged: Function;
   private _onTouched: Function;
-  private currentValue: any;
+  private currentValue: any = null;
 
   private _id = null;
 
@@ -39,9 +39,24 @@ export class NwbSwitchComponent implements ControlValueAccessor {
   }
 
   private _setValue(value: boolean) {
+
+    if (typeof value !== 'boolean') {
+      return;
+    }
+
+    const init = this.currentValue === null;
+
     this.currentValue = value;
 
-    this.checked = this.currentValue === true;
+    if (this.checked !== this.currentValue) {
+
+      this.checked = this.currentValue === true;
+    }
+
+    if (init) {
+      return;
+    }
+
     if (typeof  this._onChanged === 'function') {
       this._onChanged(this.currentValue);
     }
