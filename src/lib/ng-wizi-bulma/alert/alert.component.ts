@@ -36,6 +36,8 @@ export class NwbAlertComponent implements OnInit {
 
   dismiss() {
     this.open = false;
+    this._afterClosed.next(true);
+    this._afterClosed.complete();
   }
 
   /**

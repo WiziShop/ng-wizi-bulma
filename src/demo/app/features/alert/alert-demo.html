@@ -6,22 +6,48 @@
   </header>
   <div class="card-content">
     <div class="content">
-      <button class="button" (click)="openAlert('is-top', 'is-primary')">Open Alert From Top</button>
-      <button class="button is-danger" (click)="openAlert('is-bottom', 'is-danger')">Danger From Bottom</button>
-      <button class="button is-warning" (click)="openAlert('is-right', 'is-warning')">Warning From Right</button>
-      <button class="button is-link" (click)="openAlert('is-left', 'is-link')">Link From Right</button>
-      <button class="button is-info" (click)="openAlert('is-left', 'is-info')">Info From Left</button>
-      <button class="button is-dark" (click)="openAlert('is-left', 'is-dark')">Dark From Left</button>
-      <hr>
-      <p>With extraClasses options, you can invert color <code>extraClasses : 'is-inverted'</code> : </p>
-      <button class="button is-inverted" (click)="openAlert('is-top', 'is-primary', 'is-inverted')">Open Alert From Top</button>
-      <button class="button is-inverted is-danger" (click)="openAlert('is-bottom', 'is-danger', 'is-inverted')">Danger From Bottom</button>
-      <button class="button is-inverted is-warning" (click)="openAlert('is-right', 'is-warning', 'is-inverted')">Warning From Right</button>
-      <button class="button is-inverted is-info" (click)="openAlert('is-left', 'is-info', 'is-inverted')">Info From Left</button>
-      <button class="button is-inverted is-dark" (click)="openAlert('is-left', 'is-dark', 'is-inverted')">Dark From Left</button>
-      <hr>
-      <p>With icon <code>icon : 'fa fa-warning fa-2x'</code> :</p>
-      <button class="button is-inverted is-warning" (click)="openAlert('is-right', 'is-warning', 'is-inverted', 'fa fa-warning fa-2x')">Warning From Right</button>
+      <p><strong>For color :</strong> is-success / is-warning / is-link / is-info / is-dark</p>
+      <p><strong>For position :</strong> is-top / is-left / is-right / is-left</p>
+      <nwb-doc-preview [content]="sample1">
+        <button class="button" (click)="openAlert('is-top', 'is-primary')">Open Alert From Top</button>
+        <br>
+        <br>
+        <button class="button is-danger" (click)="openAlert('is-bottom', 'is-danger')">Danger From Bottom</button>
+        <br>
+        <br>
+        <button class="button is-warning" (click)="openAlert('is-right', 'is-warning')">Warning From Right</button>
+        <br>
+        <br>
+        <button class="button is-link" (click)="openAlert('is-left', 'is-link')">Link From Right</button>
+        <br>
+        <br>
+        <button class="button is-info" (click)="openAlert('is-left', 'is-info')">Info From Left</button>
+        <br>
+        <br>
+        <button class="button is-dark" (click)="openAlert('is-left', 'is-dark')">Dark From Left</button>
+      </nwb-doc-preview>
+      <br>
+      <p>With extraClasses options, you can invert color <code>Example : extraClasses = 'is-inverted'</code> : </p>
+      <nwb-doc-preview [content]="sample2">
+        <button class="button is-inverted" (click)="openAlert('is-top', 'is-primary', 'is-inverted')">Open Alert From Top</button>
+        <br>
+        <br>
+        <button class="button is-inverted is-danger" (click)="openAlert('is-bottom', 'is-danger', 'is-inverted')">Danger From Bottom</button>
+        <br>
+        <br>
+        <button class="button is-inverted is-warning" (click)="openAlert('is-right', 'is-warning', 'is-inverted')">Warning From Right</button>
+        <br>
+        <br>
+        <button class="button is-inverted is-info" (click)="openAlert('is-left', 'is-info', 'is-inverted')">Info From Left</button>
+        <br>
+        <br>
+        <button class="button is-inverted is-dark" (click)="openAlert('is-left', 'is-dark', 'is-inverted')">Dark From Left</button>
+      </nwb-doc-preview>
+      <br>
+      <p>With icon <code>Example : icon = 'fa fa-warning fa-2x'</code> :</p>
+      <nwb-doc-preview [content]="sample3">
+        <button class="button is-inverted is-warning" (click)="openAlert('is-right', 'is-warning', 'is-inverted', 'fa fa-warning fa-2x')">Warning From Right</button>
+      </nwb-doc-preview>
     </div>
   </div>
 </div>
