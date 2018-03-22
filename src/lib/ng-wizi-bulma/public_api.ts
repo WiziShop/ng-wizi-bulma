@@ -1,3 +1,6 @@
+export * from './alert/alert.service';
+export * from './alert/alert.component';
+
 export * from './dialog/dialog.component';
 export * from './dialog/dialog.service';
 
