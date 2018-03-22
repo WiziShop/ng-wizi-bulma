@@ -1,3 +1,6 @@
+# 2.0.9 (2018-03-22)
+- Removing useless structure for alert to a more slick one
+
 # 2.0.8 (2018-03-22)
 - Fix + nicer doc
 
