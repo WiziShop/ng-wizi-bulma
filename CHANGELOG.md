@@ -1,3 +1,6 @@
+# 2.0.7 (2018-03-22)
+- Add alert component + doc
+
 # 2.0.5 (2018-03-21)
 - FIX switch: do not emit event if value didn't change
 - Add tooltip directive from https://wikiki.github.io/elements/tooltip/
