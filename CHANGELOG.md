@@ -1,3 +1,6 @@
+# 2.0.8 (2018-03-22)
+- Fix + nicer doc
+
 # 2.0.7 (2018-03-22)
 - Add alert component + doc
 
