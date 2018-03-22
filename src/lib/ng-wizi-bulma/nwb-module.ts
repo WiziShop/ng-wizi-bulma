@@ -19,6 +19,8 @@ import {NwbTabsComponent} from './tabs/tabs.component';
 import {FormsModule} from '@angular/forms';
 import {NwbTabComponent} from './tabs/tab.component';
 import {NwbSwitchComponent} from './switch/switch.component';
+import {NwbAlertService} from './alert/alert.service';
+import {NwbAlertComponent} from './alert/alert.component';
 
 @NgModule({
   imports: [
@@ -32,11 +34,13 @@ import {NwbSwitchComponent} from './switch/switch.component';
     NwbModalSearchService,
     NwbPaginatorIntl,
     NwbSnackbarService,
+    NwbAlertService,
   ],
   entryComponents: [
     NwbDialogComponent,
     NwbModalSearchComponent,
     NwbSnackbarComponent,
+    NwbAlertComponent,
   ],
   declarations: [
     NwbSpinnerComponent,
@@ -48,6 +52,7 @@ import {NwbSwitchComponent} from './switch/switch.component';
     NwdPaginatorComponent,
     NwbProgressBarComponent,
     NwbSnackbarComponent,
+    NwbAlertComponent,
     NwbTabsComponent,
     NwbTabComponent,
     NwbSwitchComponent,
@@ -62,6 +67,7 @@ import {NwbSwitchComponent} from './switch/switch.component';
     NwdPaginatorComponent,
     NwbProgressBarComponent,
     NwbSnackbarComponent,
+    NwbAlertComponent,
     NwbTabsComponent,
     NwbTabComponent,
     NwbSwitchComponent,

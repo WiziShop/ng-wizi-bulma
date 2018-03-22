@@ -11,6 +11,7 @@ import {DebounceDemo} from './features/debounce/debounce-demo';
 import {ModalSearchDemo} from './features/modal-search/modal-search-demo';
 import {TabsDemo} from './features/tabs/tabs-demo.component';
 import {SwitchDemo} from './features/switch/switch-demo';
+import {AlertDemo} from './features/alert/alert-demo';
 
 
 const appRoutes: Routes = [
@@ -25,6 +26,10 @@ const appRoutes: Routes = [
   {
     path: 'snackbar',
     component: SnackbarDemo
+  },
+  {
+    path: 'alert',
+    component: AlertDemo
   },
   {
     path: 'paginator',

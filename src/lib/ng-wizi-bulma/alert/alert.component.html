@@ -1,0 +1,12 @@
+<div [class]="'alert ' + ((config.color) ? config.color : ' is-primary') + ((config.extraClasses) ? ' ' + config.extraClasses : '') + ((config.position) ? ' ' + config.position : '')"
+     [ngClass]="{'is-active': open}"
+>
+  <div class="columns">
+    <div class="column alert--message">
+      <span class="icon" *ngIf="config.icon">
+          <i [class]="config.icon"></i>
+      </span>
+      <p [innerHTML]="config.message"></p>
+    </div>
+  </div>
+</div>

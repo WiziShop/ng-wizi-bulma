@@ -1,0 +1,144 @@
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/derived-variables";
+
+.nwb-alert {
+  .alert {
+    position: fixed;
+    color: $white;
+    background-color: $primary;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    padding: 15px 20px;
+    transition: all 200ms;
+    opacity: 0;
+    margin: 10px auto;
+    width: 400px;
+    box-shadow: 0 0 20px rgba(50,50,50, 0.1);
+    font-size: 14px;
+
+    &.is-left {
+      left: -100px;
+      margin: 10px;
+      top: 100px;
+    }
+
+    &.is-right {
+      right: -100px;
+      margin: 10px;
+      top: 100px;
+    }
+
+    &.is-top {
+      top: -100px;
+      left: 0;
+      right: 0;
+    }
+
+    &.is-bottom {
+      bottom: -100px;
+      left: 0;
+      right: 0;
+    }
+
+    &.is-active {
+      opacity: .9;
+
+      &.is-left {
+        left: 0;
+      }
+
+      &.is-right {
+        right: 0;
+      }
+
+      &.is-top {
+        top: 0;
+      }
+
+      &.is-bottom {
+        bottom: 0;
+      }
+    }
+
+    p {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    span {
+      vertical-align: middle;
+      margin: 0 10px 0 0;
+    }
+  }
+
+  .alert.is-primary {
+    background-color: $primary;
+
+    &.is-inverted {
+      background-color: $white;
+      border: 1px solid $primary;
+      color: $primary;
+    }
+  }
+
+  .alert.is-success {
+    background-color: $success;
+
+    &.is-inverted {
+      background-color: $white;
+      border: 1px solid $primary;
+      color: $primary;
+    }
+  }
+
+  .alert.is-danger {
+    background-color: $danger;
+
+    &.is-inverted {
+      background-color: $white;
+      border: 1px solid $danger;
+      color: $danger;
+    }
+  }
+
+  .alert.is-warning {
+    background-color: $warning;
+    color: rgba(0, 0, 0, 0.7);
+
+    &.is-inverted {
+      background-color: $dark;
+      border: 1px solid $dark;
+      color: $warning;
+    }
+  }
+
+  .alert.is-info {
+    background-color: $info;
+
+    &.is-inverted {
+      background-color: $white;
+      border: 1px solid $info;
+      color: $info;
+    }
+  }
+
+  .alert.is-dark {
+    background-color: $dark;
+
+    &.is-inverted {
+      background-color: $white;
+      border: 1px solid $dark;
+      color: $dark;
+    }
+  }
+
+  .alert.is-link {
+    background-color: $link;
+
+    &.is-inverted {
+      background-color: $white;
+      border: 1px solid $link;
+      color: $link;
+    }
+  }
+}

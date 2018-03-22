@@ -1,0 +1,27 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Alert
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <button class="button" (click)="openAlert('is-top', 'is-primary')">Open Alert From Top</button>
+      <button class="button is-danger" (click)="openAlert('is-bottom', 'is-danger')">Danger From Bottom</button>
+      <button class="button is-warning" (click)="openAlert('is-right', 'is-warning')">Warning From Right</button>
+      <button class="button is-link" (click)="openAlert('is-left', 'is-link')">Link From Right</button>
+      <button class="button is-info" (click)="openAlert('is-left', 'is-info')">Info From Left</button>
+      <button class="button is-dark" (click)="openAlert('is-left', 'is-dark')">Dark From Left</button>
+      <hr>
+      <p>With extraClasses options, you can invert color <code>extraClasses : 'is-inverted'</code> : </p>
+      <button class="button is-inverted" (click)="openAlert('is-top', 'is-primary', 'is-inverted')">Open Alert From Top</button>
+      <button class="button is-inverted is-danger" (click)="openAlert('is-bottom', 'is-danger', 'is-inverted')">Danger From Bottom</button>
+      <button class="button is-inverted is-warning" (click)="openAlert('is-right', 'is-warning', 'is-inverted')">Warning From Right</button>
+      <button class="button is-inverted is-info" (click)="openAlert('is-left', 'is-info', 'is-inverted')">Info From Left</button>
+      <button class="button is-inverted is-dark" (click)="openAlert('is-left', 'is-dark', 'is-inverted')">Dark From Left</button>
+      <hr>
+      <p>With icon <code>icon : 'fa fa-warning fa-2x'</code> :</p>
+      <button class="button is-inverted is-warning" (click)="openAlert('is-right', 'is-warning', 'is-inverted', 'fa fa-warning fa-2x')">Warning From Right</button>
+    </div>
+  </div>
+</div>
