@@ -1,6 +1,6 @@
 {
   "name": "ng-wizi-bulma",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Angular Compoments using Bulma css",
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "@angular/common": "5.2.7",
     "@angular/core": "5.2.7",
     "bulma": "^0.6.2",
-    "bulma-switch": "^1.0.1"
+    "bulma-switch": "^1.0.1",
+    "bulma-tooltip": "^1.0.3"
   }
 }

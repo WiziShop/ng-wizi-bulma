@@ -1,0 +1,28 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Switch
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      See doc <a href="https://wikiki.github.io/elements/tooltip/">https://wikiki.github.io/elements/tooltip/</a>
+    </div>
+    <div class="content">
+      <nwb-doc-preview [content]="sample1">
+        <button class="button" nwbToolTip="My tooltip" nwbToolTipPosition="bottom">Bottom</button>
+      </nwb-doc-preview>
+      <nwb-doc-preview [content]="sample2">
+        <button class="button is-primary" nwbToolTip="My tooltip" nwbToolTipPosition="left">Left</button>
+      </nwb-doc-preview>
+      <nwb-doc-preview [content]="sample3">
+        <button class="button is-primary is-tooltip-danger"
+                nwbToolTip="Tooltip with a long Text. So we use is-tooltip-multiline modifier to force multiline display."
+                [nwbToolTipIsMultiline]="true">
+          Multiline Tooltip
+        </button>
+      </nwb-doc-preview>
+    </div>
+  </div>
+</div>
+

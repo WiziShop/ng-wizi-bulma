@@ -44,6 +44,9 @@ export class AppComponent {
     }, {
       text: 'Switch',
       data: './switch',
+    },{
+      text: 'Tooltip',
+      data: './tooltip',
     },
   ];
 

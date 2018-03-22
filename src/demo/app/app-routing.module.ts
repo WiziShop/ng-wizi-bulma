@@ -11,6 +11,7 @@ import {DebounceDemo} from './features/debounce/debounce-demo';
 import {ModalSearchDemo} from './features/modal-search/modal-search-demo';
 import {TabsDemo} from './features/tabs/tabs-demo.component';
 import {SwitchDemo} from './features/switch/switch-demo';
+import {TooltipDemo} from './features/tooltip/tooltip-demo';
 import {AlertDemo} from './features/alert/alert-demo';
 
 
@@ -66,6 +67,10 @@ const appRoutes: Routes = [
   {
     path: 'switch',
     component: SwitchDemo
+  },
+  {
+    path: 'tooltip',
+    component: TooltipDemo
   },
   {
     path: '**',

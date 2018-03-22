@@ -1,12 +1,12 @@
 {
   "name": "ng-wizi-bulma",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "license": "MIT",
   "scripts": {
     "chokidar": "chokidar",
     "concurrently": "concurrently",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --aot",
     "start:dev": "concurrently \"chokidar './src/lib/ng-wizi-bulma/**/*' -c 'npm run build:lib'\" \"ng serve\"",
     "build:lib": "ng-packagr -p src/lib/ng-package.json",
     "build:app": "cpr dist/ng-wizi-bulma src/demo/ng-wizi-bulma && ng build --prod && rimraf src/demo/ng-wizi-bulma",
@@ -30,6 +30,7 @@
     "@angular/router": "^5.2.7",
     "bulma": "^0.6.2",
     "bulma-switch": "^1.0.1",
+    "bulma-tooltip": "^1.0.3",
     "core-js": "^2.5.3",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.20"

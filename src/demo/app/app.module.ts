@@ -20,6 +20,7 @@ import {NwbModule} from 'ng-wizi-bulma';
 import {SwitchDemo} from './features/switch/switch-demo';
 import {DocPreviewComponent} from './doc-preview/doc-preview.component';
 import {AlertDemo} from './features/alert/alert-demo';
+import {TooltipDemo} from './features/tooltip/tooltip-demo';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import {AlertDemo} from './features/alert/alert-demo';
     ModalSearchDemo,
     SwitchDemo,
     AlertDemo,
+    TooltipDemo,
   ],
   providers: [],
   entryComponents: [
