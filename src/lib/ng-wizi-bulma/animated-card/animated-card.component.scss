@@ -1,0 +1,46 @@
+.card.is-animate {
+  .card-header {
+    cursor: pointer;
+
+    i {
+      transition: 200ms all;
+    }
+
+    &-title {
+      margin-bottom: 0;
+
+      i {
+        font-size: 1.4rem;
+        margin-right: 1rem;
+        border-right: #ddd .1rem solid;
+        padding-right: 1rem;
+      }
+    }
+  }
+
+  .card-content {
+    opacity: 0;
+    max-height: 0;
+    padding: 0.04px;
+    pointer-events: none;
+    transition: 200ms all;
+  }
+
+  &.is-active {
+    .card-content {
+      opacity: 1;
+      max-height: 1000px;
+      padding: 1.5rem;
+      pointer-events: auto;
+    }
+
+    .card-header {
+
+      &-icon {
+        i {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Animated Card
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <p>Closed by default use <code>nwbAnimatedCardClosed</code> attribute</p>
+      <nwb-doc-preview [content]="sample1">
+        <div nwbAnimatedCardClosed class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              Click me !
+            </p>
+            <a class="card-header-icon">
+              <span class="icon">
+                <i class="material-icons">keyboard_arrow_down</i>
+              </span>
+            </a>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p>My Awesome hidden content</p>
+            </div>
+          </div>
+        </div>
+      </nwb-doc-preview>
+      <br>
+      <p>Opened by default use <code>nwbAnimatedCardOpened</code> attribute</p>
+      <nwb-doc-preview [content]="sample2">
+        <div nwbAnimatedCardOpened class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              Click me !
+            </p>
+            <a class="card-header-icon">
+              <span class="icon">
+                <i class="material-icons">keyboard_arrow_down</i>
+              </span>
+            </a>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p>My Awesome content</p>
+            </div>
+          </div>
+        </div>
+      </nwb-doc-preview>
+    </div>
+  </div>
+</div>

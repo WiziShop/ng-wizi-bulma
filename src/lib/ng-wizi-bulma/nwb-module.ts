@@ -22,6 +22,7 @@ import {NwbSwitchComponent} from './switch/switch.component';
 import {NwbAlertService} from './alert/alert.service';
 import {NwbAlertComponent} from './alert/alert.component';
 import {NwbToolTipDirective} from './tooltip/tooltip.directive';
+import {NwbAnimatedCardComponent} from './animated-card/animated-card.component';
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import {NwbToolTipDirective} from './tooltip/tooltip.directive';
     NwbAlertComponent,
     NwbTabsComponent,
     NwbTabComponent,
+    NwbAnimatedCardComponent,
     NwbSwitchComponent,
     NwbToolTipDirective,
   ],
@@ -72,6 +74,7 @@ import {NwbToolTipDirective} from './tooltip/tooltip.directive';
     NwbAlertComponent,
     NwbTabsComponent,
     NwbTabComponent,
+    NwbAnimatedCardComponent,
     NwbSwitchComponent,
     NwbToolTipDirective,
   ],

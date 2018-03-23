@@ -21,6 +21,7 @@ import {SwitchDemo} from './features/switch/switch-demo';
 import {DocPreviewComponent} from './doc-preview/doc-preview.component';
 import {AlertDemo} from './features/alert/alert-demo';
 import {TooltipDemo} from './features/tooltip/tooltip-demo';
+import {AnimatedCardDemo} from './features/animated-card/animated-card-demo';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import {TooltipDemo} from './features/tooltip/tooltip-demo';
     ModalSearchDemo,
     SwitchDemo,
     AlertDemo,
+    AnimatedCardDemo,
     TooltipDemo,
   ],
   providers: [],

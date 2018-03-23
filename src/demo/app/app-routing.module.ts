@@ -13,6 +13,7 @@ import {TabsDemo} from './features/tabs/tabs-demo.component';
 import {SwitchDemo} from './features/switch/switch-demo';
 import {TooltipDemo} from './features/tooltip/tooltip-demo';
 import {AlertDemo} from './features/alert/alert-demo';
+import {AnimatedCardDemo} from './features/animated-card/animated-card-demo';
 
 
 const appRoutes: Routes = [
@@ -31,6 +32,10 @@ const appRoutes: Routes = [
   {
     path: 'alert',
     component: AlertDemo
+  },
+  {
+    path: 'animated-card',
+    component: AnimatedCardDemo
   },
   {
     path: 'paginator',

@@ -26,6 +26,7 @@ export * from './tabs/tab.component';
 export * from './tabs/tabs.component';
 
 export * from './switch/switch.component';
+export * from './animated-card/animated-card.component';
 export * from './tooltip/tooltip.directive';
 
 export * from './nwb-module';
