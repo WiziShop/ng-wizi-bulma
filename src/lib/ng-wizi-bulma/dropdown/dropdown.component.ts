@@ -1,7 +1,7 @@
 import {Component, ContentChildren, ElementRef, HostListener, Input, QueryList, ViewEncapsulation} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {NwbOptionComponent} from '../option/option.component';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'nwb-dropdown',

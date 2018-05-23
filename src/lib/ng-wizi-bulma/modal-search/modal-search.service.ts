@@ -3,7 +3,7 @@ import {DomService} from '../shared/dom/dom.service';
 import {PortalInjector} from '../shared/portal/portal-injector';
 import {extendObject} from '../shared/util/object-extend';
 import {NwbModalSearchComponent} from './modal-search.component';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class NwbModalSearchService {

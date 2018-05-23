@@ -25,7 +25,7 @@ export class NwbDialogService {
 
     componentRef.instance._setComponent(componentOrTemplateRef);
 
-    return componentRef.instance;
+    return componentRef.instance as NwbDialogComponent<T>;
   }
 
 

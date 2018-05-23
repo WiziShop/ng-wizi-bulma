@@ -1,9 +1,7 @@
 import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {Subscription} from 'rxjs/Subscription';
-
-import 'rxjs/add/operator/map';
-import {fromEvent} from 'rxjs/observable/fromEvent';
+import {Subscription, fromEvent} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Directive({
   selector: '[nwbDebounce]',
@@ -53,12 +51,12 @@ export class NwbDebounceDirective implements OnInit, ControlValueAccessor, OnDes
     this._inputValue = this.elementRef.nativeElement.value;
 
     const eventStreamKeyUp = fromEvent(this.elementRef.nativeElement, 'keyup')
-      .map(() => this.elementRef.nativeElement.value);
+      .pipe(map(() => this.elementRef.nativeElement.value));
 
     this._eventStreamKeyUp = eventStreamKeyUp.subscribe((input: any) => this.valueChange(input));
 
     const eventStreamChange = fromEvent(this.elementRef.nativeElement, 'change')
-      .map(() => this.elementRef.nativeElement.value);
+      .pipe(map(() => this.elementRef.nativeElement.value));
 
     this._eventStreamChange = eventStreamChange.subscribe((input: any) => this.valueChange(input));
 

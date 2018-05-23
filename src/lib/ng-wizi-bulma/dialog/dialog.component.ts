@@ -1,5 +1,4 @@
-import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
+import {Observable, Subject} from 'rxjs';
 import {ComponentType, NwbDialogConfig} from './dialog.service';
 import {
   Component,
@@ -72,7 +71,7 @@ export class NwbDialogComponent<T> implements OnInit {
   }
 
   @HostListener('document:keydown.escape')
-  private _keypress() {
+  _keypress() {
     if (this.config.hasBackdrop) {
       this.dismiss(false);
     }

@@ -1,0 +1,138 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ng-wizi-bulma": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/app",
+            "index": "src/demo/index.html",
+            "main": "src/demo/main.ts",
+            "tsConfig": "src/demo/tsconfig.app.json",
+            "polyfills": "src/demo/polyfills.ts",
+            "assets": [
+              "src/demo/assets",
+              "src/demo/favicon.ico"
+            ],
+            "styles": [
+              "src/demo/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/demo/environments/environment.ts",
+                  "with": "src/demo/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "dev": {
+              "aot": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ng-wizi-bulma:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ng-wizi-bulma:build:production"
+            },
+            "dev": {
+              "browserTarget": "ng-wizi-bulma:build:dev"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ng-wizi-bulma:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/demo/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "src/demo/polyfills.ts",
+            "tsConfig": "src/demo/tsconfig.spec.json",
+            "scripts": [],
+            "styles": [
+              "src/demo/styles.scss"
+            ],
+            "assets": [
+              "src/demo/assets",
+              "src/demo/favicon.ico"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/demo/tsconfig.app.json",
+              "src/demo/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ng-wizi-bulma-e2e": {
+      "root": "",
+      "sourceRoot": "",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "./protractor.conf.js",
+            "devServerTarget": "ng-wizi-bulma:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ng-wizi-bulma",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "app",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  }
+}

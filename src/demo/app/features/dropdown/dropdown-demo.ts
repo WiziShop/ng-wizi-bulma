@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NwbDialogService, NwbDropdownConfig} from 'ng-wizi-bulma';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 
 @Component({
   providers: [],

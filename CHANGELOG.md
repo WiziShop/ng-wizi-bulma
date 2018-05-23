@@ -1,3 +1,6 @@
+# 3.0.0 (2018-05-23)
+- Upgrade to Angular 6 and Bulma 0.7.2
+
 # 2.0.10 (2018-03-23)
 - Add simple animated card component
 

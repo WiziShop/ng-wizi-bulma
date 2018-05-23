@@ -1,9 +1,8 @@
 import {Component, ElementRef, HostListener, ViewChild, ViewEncapsulation} from '@angular/core';
 import {NwbFoundRow, NwbModalSearchConfig} from './modal-search.service';
-import {Subject} from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';
-import {Subscription} from 'rxjs/Subscription';
-import 'rxjs/add/operator/finally';
+import {Observable, Subject, Subscription} from 'rxjs';
+import {finalize} from 'rxjs/operators';
+
 
 @Component({
   selector: 'nwb-modal-search',
@@ -82,7 +81,7 @@ export class NwbModalSearchComponent {
 
 
   @HostListener('document:keydown', ['$event'])
-  private documentOnKeyDown(ev: KeyboardEvent) {
+  documentOnKeyDown(ev: KeyboardEvent) {
     let somethingHappened = false;
 
     somethingHappened = this.openFromKeyboard(ev) || somethingHappened;
@@ -260,7 +259,7 @@ export class NwbModalSearchComponent {
       this.isSearching = true;
 
       this.searchSubscription = obs
-        .finally(() => this.isSearching = false)
+        .pipe(finalize(() => this.isSearching = false))
         .subscribe(foundRows => {
           this.foundRows = foundRows;
           this.selectFirstSelectableRow();

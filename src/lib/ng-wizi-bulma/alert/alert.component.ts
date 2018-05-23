@@ -1,5 +1,4 @@
-import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
+import {Observable, Subject} from 'rxjs';
 import {NwbAlertConfig} from './alert.service';
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 
