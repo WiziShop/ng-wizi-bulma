@@ -31,7 +31,7 @@
   <div class="card-content">
     <p>Will change only if user selects Nintendo64 (n64) or Sega Genesis (genesis)</p>
     <div class="content">
-      <nwb-dropdown [(ngModel)]="gaming2" classes="is-info" [config]="dopdown2Config">
+      <nwb-dropdown #dropdown [(ngModel)]="gaming2" classes="is-info" [config]="dopdown2Config">
         <nwb-option value="nes" (nwbSelect)="nesHasBeenSelected($event)">NES</nwb-option>
         <nwb-option value="n64">Nintendo64</nwb-option>
         <nwb-option value="ps" [disabled]="true">Disabled value</nwb-option>
@@ -44,8 +44,8 @@
 
       <p>Selected value: {{gaming2}}</p>
     </div>
-    <button class="button" (click)="dopdown2Config.disabled = !dopdown2Config.disabled">Disable/Enable dropdown</button>
-    <button class="button" (click)="dopdown2Config.classes =  dopdown2Config.classes =='is-info' ? '' : 'is-info'">
+    <button class="button" (click)="dropdown.disabled = !dropdown.disabled">Disable/Enable dropdown</button>
+    <button class="button" (click)="dropdown.classes =  dropdown.classes =='is-info' ? '' : 'is-info'">
       Change classes
     </button>
     <pre>{{dopdown2Config|json}}</pre>
