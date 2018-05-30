@@ -17,6 +17,12 @@ export class NwbDropdownComponent implements ControlValueAccessor {
 
   @Input() isLoading: boolean;
 
+  /** Any classes to add to the button element inside the dropdown */
+  @Input() classes?: string;
+
+  /** Disable the dropdown */
+  @Input() disabled?: boolean;
+
   @Input() config: NwbDropdownConfig = {};
 
   _options: QueryList<NwbOptionComponent>;
@@ -110,7 +116,7 @@ export class NwbDropdownComponent implements ControlValueAccessor {
   }
 
   toggleActive() {
-    if (this.config.disabled === true || (this.isLoading && !this.isActive)) {
+    if (this.disabled === true || (this.isLoading && !this.isActive)) {
       return;
     }
     this.isActive = !this.isActive;
@@ -128,10 +134,4 @@ export interface NwbDropdownConfig {
    * It has to return a boolean observable. If the returned value is true then the model will change.
    */
   handler?: (value: any, data: any) => Observable<boolean>;
-
-  /** Any classes to add to the button element inside the dropdown */
-  classes?: string;
-
-  /** Disable the dropdown */
-  disabled?: boolean;
 }

@@ -31,7 +31,7 @@
   <div class="card-content">
     <p>Will change only if user selects Nintendo64 (n64) or Sega Genesis (genesis)</p>
     <div class="content">
-      <nwb-dropdown [(ngModel)]="gaming2" [config]="dopdown2Config">
+      <nwb-dropdown [(ngModel)]="gaming2" classes="is-info" [config]="dopdown2Config">
         <nwb-option value="nes" (nwbSelect)="nesHasBeenSelected($event)">NES</nwb-option>
         <nwb-option value="n64">Nintendo64</nwb-option>
         <nwb-option value="ps" [disabled]="true">Disabled value</nwb-option>

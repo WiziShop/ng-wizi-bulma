@@ -1,3 +1,6 @@
+#3.0.1 (2018-05-30)
+- Breaking changes: NwbDropdownConfig.classes and NwbDropdownConfig.disabled don't exist anymore, they've been added as component input
+
 # 3.0.0 (2018-05-23)
 - Upgrade to Angular 6 and Bulma 0.7.2
 

@@ -16,8 +16,7 @@ export class DropdownDemo {
     handler: (value: any, data: number) => {
       return this.changeHandler(value, data);
     },
-    classes: 'is-info',
-  }
+  };
 
   constructor(private dialog: NwbDialogService) {
 
