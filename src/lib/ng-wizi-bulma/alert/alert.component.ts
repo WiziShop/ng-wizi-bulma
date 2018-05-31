@@ -25,7 +25,7 @@ export class NwbAlertComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.open = true;
-    }, 1);
+    }, 50);
 
     if (this.config.duration > 0) {
 
@@ -34,9 +34,12 @@ export class NwbAlertComponent implements OnInit {
   }
 
   dismiss() {
-    this.open = false;
-    this._afterClosed.next(true);
-    this._afterClosed.complete();
+      this.open = false;
+
+      setTimeout(() => {
+        this._afterClosed.next(true);
+        this._afterClosed.complete();
+    }, 200);
   }
 
   /**
