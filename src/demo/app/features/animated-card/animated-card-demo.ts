@@ -15,7 +15,7 @@ export class AnimatedCardDemo {
             </p>
             <a class="card-header-icon">
               <span class="icon">
-                <i class="material-icons">keyboard_arrow_down</i>
+                <i class="fa fa-angle-down"></i>
               </span>
             </a>
           </header>
@@ -35,7 +35,7 @@ export class AnimatedCardDemo {
             </p>
             <a class="card-header-icon">
               <span class="icon">
-                <i class="material-icons">keyboard_arrow_down</i>
+                <i class="fa fa-angle-down"></i>
               </span>
             </a>
           </header>

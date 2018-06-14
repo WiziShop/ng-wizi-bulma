@@ -18,7 +18,7 @@
           <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
             <span>{{pageSize}}</span>
             <span class="icon is-small">
-        <i class="material-icons">arrow_drop_down</i>
+        <i class="fa fa-sort-down"></i>
       </span>
           </button>
         </div>
@@ -44,7 +44,7 @@
         class="button pagination-previous"
         (click)="previousPage()"
         [disabled]="!hasPreviousPage()">
-        <i class="material-icons">navigate_before</i>
+        <i class="fa fa-angle-left"></i>
       </button>
     </li>
 
@@ -53,7 +53,7 @@
         class="button pagination-next"
         (click)="nextPage()"
         [disabled]="!hasNextPage()">
-        <i class="material-icons">navigate_next</i>
+        <i class="fa fa-angle-right"></i>
       </button>
     </li>
 
