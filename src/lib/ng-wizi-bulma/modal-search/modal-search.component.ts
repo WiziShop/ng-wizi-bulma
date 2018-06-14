@@ -376,7 +376,7 @@ export class NwbModalSearchComponent implements AfterViewInit {
 }
 
 
-interface NwbFlattenFoundRow {
+export interface NwbFlattenFoundRow {
   text: string;
   isSelectable: boolean;
   data?: any;
