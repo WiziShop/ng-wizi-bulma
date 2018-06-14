@@ -9,34 +9,47 @@ import {Observable} from 'rxjs/index';
 export class ModalSearchService {
   private records1: NwbFoundRow[] = [
     {
-      text: 'Debounce',
-      data: './debounce',
-    }, {
-      text: 'Dialog',
-      data: './dialog',
-    }, {
-      text: 'Dropdown',
-      data: './dropdown',
-    },
+      text: 'First Components Group',
+      isSelectable: false,
+      children: [
+        {
+          text: 'Debounce',
+          data: './debounce',
+        }, {
+          text: 'Dialog',
+          data: './dialog',
+        }, {
+          text: 'Dropdown',
+          data: './dropdown',
+        },
+      ]
+    }
   ];
 
   private records2: NwbFoundRow[] = [
     {
-      text: 'Modal Search',
-      data: './modal-search',
-    }, {
-      text: 'Progress Bar',
-      data: './progress-bar',
-    }, {
-      text: 'Paginator',
-      data: './paginator',
-    }, {
-      text: 'Snackbar',
-      data: './snackbar',
-    }, {
-      text: 'Spinner',
-      data: './spinner',
-    }, {
+      text: 'Second Components Group',
+      isSelectable: false,
+      children: [
+        {
+          text: 'Modal Search',
+          data: './modal-search',
+        }, {
+          text: 'Progress Bar',
+          data: './progress-bar',
+        }, {
+          text: 'Paginator',
+          data: './paginator',
+        }, {
+          text: 'Snackbar',
+          data: './snackbar',
+        }, {
+          text: 'Spinner',
+          data: './spinner',
+        }
+      ]
+    },
+    {
       text: 'Tabs',
       data: './tabs',
     }, {
@@ -45,7 +58,7 @@ export class ModalSearchService {
     }, {
       text: 'Tooltip',
       data: './tooltip',
-    },
+    }
   ];
 
   modalSearch: NwbModalSearchComponent;
@@ -62,13 +75,38 @@ export class ModalSearchService {
         key: 'e'
       }],
       customSearchFn: (value: string) => this.searchFromRecords(value),
-      inputPlaceholder: 'Navigate to...'
+      inputPlaceholder: 'Navigate to...',
+      hasFooter: true,
     });
 
     this.modalSearch.selectedValue$
       .subscribe((value: NwbFoundRow) => {
         this.router.navigate([value.data]);
       });
+
+    this.modalSearch.afterViewInit$
+      .subscribe(() => {
+        this.modalSearch.footer.nativeElement.innerHTML = `
+          <div class="columns" style="width: 100%">
+            <div class="column">
+              <span class="icon">
+              <span class="fa fa-arrow-up"></span>
+          </span>
+              <span class="icon">
+              <span class="fa fa-arrow-down"></span>
+          </span>
+          to navigate
+            </div>
+            <div class="column">
+             <strong>enter</strong> to select
+            </div>
+            <div class="column">
+              <strong>esc</strong> to dismiss
+            </div>
+          </div>
+        `;
+      });
+
   }
 
 
@@ -76,21 +114,9 @@ export class ModalSearchService {
 
     return Observable.create((observer: any) => {
 
-      let foundRows1 = this.modalSearch.searchAllWordsInFoundRows(searchValue, this.records1);
-      if (foundRows1.length) {
-        foundRows1.unshift({
-          text: '<strong>First Components Group</strong>',
-          isSelectable: false
-        });
-      }
+      const foundRows1 = this.modalSearch.searchAllWordsInFoundRows(searchValue, this.records1);
 
-      let foundRows2 = this.modalSearch.searchAllWordsInFoundRows(searchValue, this.records2);
-      if (foundRows2.length) {
-        foundRows2.unshift({
-          text: '<strong>Second Components Group</strong>',
-          isSelectable: false
-        });
-      }
+      const foundRows2 = this.modalSearch.searchAllWordsInFoundRows(searchValue, this.records2);
 
       setTimeout(() => {
         observer.next(foundRows1.concat(foundRows2));

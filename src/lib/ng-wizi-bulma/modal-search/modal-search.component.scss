@@ -4,6 +4,23 @@
     top: 10%;
   }
 
+  .modal-card-body {
+    overflow: hidden;
+  }
+
+  .modal-card-body {
+    padding-bottom: 0;
+    &.has-no-header {
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+    }
+    &.has-no-footer {
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+      padding-bottom: 20px;
+    }
+  }
+
   input {
     font-size: 2em;
   }
@@ -31,6 +48,16 @@
     overflow: scroll;
 
     margin-top: 20px;
+    padding-bottom: 20px;
+
+    .is-parent {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .is-child {
+      padding-left: 25px;
+    }
 
     .nwb-modal-search-row {
       display: block;

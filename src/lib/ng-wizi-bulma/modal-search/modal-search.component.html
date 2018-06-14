@@ -1,7 +1,9 @@
 <div class="modal" [ngClass]="{'is-active': isActive}">
   <div class="modal-background" (click)="close()"></div>
-  <div class="modal-content" (click)="focusInputSearch()">
-    <div class="box">
+  <div class="modal-content modal-card" (click)="focusInputSearch()">
+    <header #header class="modal-card-head" *ngIf="config.hasHeader">
+    </header>
+    <section class="modal-card-body" [ngClass]="{'has-no-header':!config.hasHeader, 'has-no-footer':!config.hasFooter}">
       <div class="field nwb-modal-search">
         <div class="control has-icons-left">
           <input [ngModel]="searchString" (ngModelChange)="searching($event)"
@@ -16,7 +18,7 @@
         </div>
         <div class="nwb-modal-search-found-rows" *ngIf="!isSearching && foundRows.length > 0">
           <a *ngFor="let row of foundRows; let i = index"
-             [ngClass]="{'selected': isSelectable(row) && i === selectedFoundRow, 'not-selectable': !isSelectable(row)}"
+             [ngClass]="{'selected': row.isSelectable && i === selectedFoundRow, 'not-selectable': !row.isSelectable, 'is-child':row.isChild, 'is-parent': row.isParent}"
              (mouseover)="mouseOver(i)"
              (click)="selectValue()"
              class="nwb-modal-search-row" [tabindex]="i"
@@ -26,6 +28,8 @@
         </div>
         <nwb-spinner *ngIf="isSearching"></nwb-spinner>
       </div>
-    </div>
+    </section>
+    <footer #footer class="modal-card-foot" *ngIf="config.hasFooter">
+    </footer>
   </div>
 </div>

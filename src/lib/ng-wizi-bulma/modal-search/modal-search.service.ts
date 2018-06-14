@@ -37,6 +37,8 @@ export class NwbModalSearchService {
 
 
 export class NwbModalSearchConfig {
+  hasHeader ? = false;
+  hasFooter ? = false;
 
   /** keys combination to open the modal **/
   keyCodes?: { specialKey: 'cmd' | 'ctrl' | 'alt' | 'shift' | 'windows' | null; key: string }[] = [{
@@ -54,7 +56,7 @@ export class NwbModalSearchConfig {
   customSearchFn?: (value: string) => NwbFoundRow[] | Observable<NwbFoundRow[]>;
 
   /** search input place holder **/
-  inputPlaceholder?: string = 'Jump to...';
+  inputPlaceholder ? = 'Jump to...';
 
 }
 
@@ -62,4 +64,5 @@ export interface NwbFoundRow {
   text: string;
   isSelectable?: boolean;
   data?: any;
+  children?: NwbFoundRow[];
 }
