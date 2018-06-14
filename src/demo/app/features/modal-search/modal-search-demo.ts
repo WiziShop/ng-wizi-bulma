@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {ModalSearchService} from '../../services/modal-search.service';
 
 @Component({
   providers: [],
@@ -6,6 +7,12 @@ import {Component} from '@angular/core';
 })
 export class ModalSearchDemo {
 
+  constructor(public modalSearchService: ModalSearchService) {
 
+  }
+
+  toggleEnabled() {
+    this.modalSearchService.modalSearch.enabled = !this.modalSearchService.modalSearch.enabled;
+  }
 }
 

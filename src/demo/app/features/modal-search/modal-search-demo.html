@@ -13,5 +13,8 @@
       <p>You can give to the service an array of strings to search to and use you own filter method. See the demo
         app file</p>
     </div>
+
+    <button class="button is-danger" *ngIf="modalSearchService.modalSearch.enabled" (click)="toggleEnabled()">Disable modal search</button>
+    <button class="button is-info" *ngIf="!modalSearchService.modalSearch.enabled" (click)="toggleEnabled()">Enable modal search</button>
   </div>
 </div>

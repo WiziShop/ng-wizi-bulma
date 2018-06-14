@@ -29,6 +29,8 @@ export class NwbModalSearchComponent {
 
   searchString = '';
 
+  enabled = true;
+
   private searchSubscription: Subscription;
 
   @ViewChild('inputSearch') inputSearch: ElementRef;
@@ -42,6 +44,10 @@ export class NwbModalSearchComponent {
 
 
   open() {
+
+    if (!this.enabled) {
+      return;
+    }
 
     this._reset();
 
@@ -74,7 +80,7 @@ export class NwbModalSearchComponent {
 
   inputOnKeyDown(ev: KeyboardEvent) {
 
-    if (ev.keyCode === 27) {
+    if (ev.keyCode === 27) { // Esc
       this.close();
     }
   }
@@ -137,7 +143,8 @@ export class NwbModalSearchComponent {
 
     let somethingHappened = false;
 
-    if (keyCode === 40 || keyCode === 9) {
+
+    if (keyCode === 40 || keyCode === 9) { // Up or TAB
 
       do {
         this.selectedFoundRow++;
@@ -150,7 +157,7 @@ export class NwbModalSearchComponent {
 
       somethingHappened = true;
 
-    } else if (keyCode === 38) {
+    } else if (keyCode === 38) { // Down
 
       do {
         this.selectedFoundRow--;
@@ -199,7 +206,7 @@ export class NwbModalSearchComponent {
   private onEnter(ev: KeyboardEvent) {
     const keyCode = ev.keyCode;
 
-    if (keyCode === 13) {
+    if (keyCode === 13) { // Enter
       this.selectValue();
     }
   }

@@ -1,3 +1,6 @@
+#3.0.3 (2018-06-14)
+- NwbModalSearchComponent: Add enabled property to enable/disable the modal search component
+
 #3.0.1 (2018-05-30)
 - Breaking changes: NwbDropdownConfig.classes and NwbDropdownConfig.disabled don't exist anymore, they've been added as component input
 
