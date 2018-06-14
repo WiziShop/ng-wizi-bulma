@@ -1,3 +1,8 @@
+#3.0.4 (2018-06-14)
+- Remove use of material icon, use only font awesome
+- NwbModalSearchComponent: Add header and footer component.
+- NwbFoundRow now accepts children properties
+
 #3.0.3 (2018-06-14)
 - NwbModalSearchComponent: Add enabled property to enable/disable the modal search component
 
