@@ -1,6 +1,6 @@
 {
   "name": "ng-wizi-bulma",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Angular Compoments using Bulma css",
   "repository": {
     "type": "git",
@@ -18,11 +18,11 @@
   },
   "homepage": "https://github.com/WiziShop/ng-wizi-bulma#readme",
   "peerDependencies": {
-    "@angular/animations": "^6.0.3",
-    "@angular/common": "^6.0.3",
-    "@angular/core": "^6.0.3",
+    "@angular/animations": "^6.0.5",
+    "@angular/common": "^6.0.5",
+    "@angular/core": "^6.0.5",
     "bulma": "^0.7.1",
-    "bulma-switch": "^1.0.1",
-    "bulma-tooltip": "^1.0.3"
+    "bulma-switch": "^2.0.0",
+    "bulma-tooltip": "^2.0.1"
   }
 }

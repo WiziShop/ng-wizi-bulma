@@ -1,3 +1,6 @@
+#3.0.6 (2018-06-19)
+- Upgrade dependencies
+
 #3.0.5 (2018-06-19)
 - Fixes infinite loop that could occur when modalsearch was created but never opened
 
