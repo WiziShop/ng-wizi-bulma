@@ -1,3 +1,6 @@
+#3.0.5 (2018-06-19)
+- Fixes infinite loop that could occur when modalsearch was created but never opened
+
 #3.0.4 (2018-06-14)
 - Remove use of material icon, use only font awesome
 - NwbModalSearchComponent: Add header and footer component.

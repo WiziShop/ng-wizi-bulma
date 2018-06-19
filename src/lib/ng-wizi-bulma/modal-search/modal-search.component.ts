@@ -157,6 +157,11 @@ export class NwbModalSearchComponent implements AfterViewInit {
   private keyboardNavigate(ev: KeyboardEvent) {
     const keyCode = ev.keyCode;
 
+    if (!this.isActive) {
+      return;
+    }
+
+
     let somethingHappened = false;
 
 
