@@ -133,6 +133,7 @@ export class NwbModalSearchComponent implements AfterViewInit {
     } else if (ev.altKey) {
       return 'alt';
     }
+    return null;
   }
 
   private isSubscribedKey(ev: KeyboardEvent) {
@@ -145,7 +146,7 @@ export class NwbModalSearchComponent implements AfterViewInit {
   }
 
   private openFromKeyboard(ev: KeyboardEvent) {
-    if (this.config && this.isSubscribedKey(ev)) {
+    if (!this.isActive && this.config && this.isSubscribedKey(ev)) {
       this.open();
 
       return true;
@@ -158,7 +159,7 @@ export class NwbModalSearchComponent implements AfterViewInit {
     const keyCode = ev.keyCode;
 
     if (!this.isActive) {
-      return;
+      return false;
     }
 
 
@@ -226,6 +227,10 @@ export class NwbModalSearchComponent implements AfterViewInit {
 
   private onEnter(ev: KeyboardEvent) {
     const keyCode = ev.keyCode;
+
+    if (!this.isActive) {
+      return false;
+    }
 
     if (keyCode === 13) { // Enter
       this.selectValue();

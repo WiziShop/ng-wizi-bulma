@@ -1,3 +1,6 @@
+#3.0.7 (2018-06-20)
+- Optimize modalsearch listener
+
 #3.0.6 (2018-06-19)
 - Upgrade dependencies
 
