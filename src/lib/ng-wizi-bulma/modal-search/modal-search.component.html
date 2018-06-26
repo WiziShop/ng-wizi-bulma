@@ -1,6 +1,6 @@
 <div class="modal" [ngClass]="{'is-active': isActive}">
   <div class="modal-background" (click)="close()"></div>
-  <div class="modal-content modal-card" (click)="focusInputSearch()">
+  <div class="modal-content modal-card" (click)="focusInputSearch()" [ngClass]="{'is-active': isActive}">
     <header #header class="modal-card-head" *ngIf="config.hasHeader">
     </header>
     <section class="modal-card-body" [ngClass]="{'has-no-header':!config.hasHeader, 'has-no-footer':!config.hasFooter}">
