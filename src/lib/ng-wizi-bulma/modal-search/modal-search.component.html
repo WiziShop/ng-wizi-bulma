@@ -1,4 +1,4 @@
-<div class="modal" [ngClass]="{'is-active': isActive}">
+<div class="modal {{(config.extraClasses) ? ' ' + config.extraClasses : ''}}" [ngClass]="{'is-active': isActive}">
   <div class="modal-background" (click)="close()"></div>
   <div class="modal-content modal-card" (click)="focusInputSearch()" [ngClass]="{'is-active': isActive}">
     <header #header class="modal-card-head" *ngIf="config.hasHeader">

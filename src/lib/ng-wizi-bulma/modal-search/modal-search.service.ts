@@ -58,6 +58,9 @@ export class NwbModalSearchConfig {
   /** search input place holder **/
   inputPlaceholder ? = 'Jump to...';
 
+  /** extra classes to add **/
+  extraClasses ? = '';
+
 }
 
 export interface NwbFoundRow {

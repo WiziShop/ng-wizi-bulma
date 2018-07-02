@@ -77,6 +77,7 @@ export class ModalSearchService {
       customSearchFn: (value: string) => this.searchFromRecords(value),
       inputPlaceholder: 'Navigate to...',
       hasFooter: true,
+      extraClasses: 'extra-class'
     });
 
     this.modalSearch.selectedValue$

@@ -1,3 +1,6 @@
+#3.0.9 (2018-07-02)
+- Allow to add extra classes to modalsearch component
+
 #3.0.7 (2018-06-20)
 - Optimize modalsearch listener
 
