@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/app",
+    "public": "dist/demo",
     "rewrites": [
       {
         "source": "/**/!(*.@(js|ts|html|css|json|svg|png|jpg|jpeg))",
