@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -14,14 +15,14 @@
     "paths": {
       "ng-wizi-bulma": [
         "dist/ng-wizi-bulma"
+      ],
+      "ng-wizi-bulma/*": [
+        "dist/ng-wizi-bulma/*"
       ]
     },
     "lib": [
       "es2017",
       "dom"
     ]
-  },
-  "exclude": [
-    ".ng_build"
-  ]
+    }
 }

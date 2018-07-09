@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {NwbAlertConfig, NwbAlertService} from '../../../../lib/ng-wizi-bulma/alert/alert.service';
 
 @Component({
   providers: [],

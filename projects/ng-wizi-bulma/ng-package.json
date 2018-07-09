@@ -1,7 +1,8 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/ng-wizi-bulma",
+  "deleteDestPath": false,
   "lib": {
-    "entryFile": "ng-wizi-bulma/public_api.ts"
+    "entryFile": "src/public_api.ts"
   }
 }

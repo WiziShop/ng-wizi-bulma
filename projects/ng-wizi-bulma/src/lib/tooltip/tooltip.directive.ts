@@ -7,7 +7,8 @@ export class NwbToolTipDirective {
   @Input()
   set nwbToolTip(value) {
     this.el.nativeElement.setAttribute('data-tooltip', value);
-  };
+  }
+
 
   @Input()
   set nwbToolTipPosition(value: 'left' | 'right' | 'top' | 'bottom') {

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-wizi-bulma": {
+    "ng-wizi-bulma-demo": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -11,17 +11,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/app",
-            "index": "src/demo/index.html",
-            "main": "src/demo/main.ts",
-            "tsConfig": "src/demo/tsconfig.app.json",
-            "polyfills": "src/demo/polyfills.ts",
+            "outputPath": "dist/demo",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "polyfills": "src/polyfills.ts",
             "assets": [
-              "src/demo/assets",
-              "src/demo/favicon.ico"
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
-              "src/demo/styles.scss"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -38,8 +38,8 @@
               "buildOptimizer": true,
               "fileReplacements": [
                 {
-                  "replace": "src/demo/environments/environment.ts",
-                  "with": "src/demo/environments/environment.prod.ts"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ]
             },
@@ -51,37 +51,37 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-wizi-bulma:build"
+            "browserTarget": "ng-wizi-bulma-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-wizi-bulma:build:production"
+              "browserTarget": "ng-wizi-bulma-demo:build:production"
             },
             "dev": {
-              "browserTarget": "ng-wizi-bulma:build:dev"
+              "browserTarget": "ng-wizi-bulma-demo:build:dev"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-wizi-bulma:build"
+            "browserTarget": "ng-wizi-bulma-demo:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/demo/test.ts",
+            "main": "src/test.ts",
             "karmaConfig": "./karma.conf.js",
-            "polyfills": "src/demo/polyfills.ts",
-            "tsConfig": "src/demo/tsconfig.spec.json",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
             "styles": [
-              "src/demo/styles.scss"
+              "src/styles.scss"
             ],
             "assets": [
-              "src/demo/assets",
-              "src/demo/favicon.ico"
+              "src/assets",
+              "src/favicon.ico"
             ]
           }
         },
@@ -89,8 +89,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/demo/tsconfig.app.json",
-              "src/demo/tsconfig.spec.json"
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -99,7 +99,7 @@
         }
       }
     },
-    "ng-wizi-bulma-e2e": {
+    "ng-wizi-bulma-demo-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -108,7 +108,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "ng-wizi-bulma:serve"
+            "devServerTarget": "ng-wizi-bulma-demo:serve"
           }
         },
         "lint": {
@@ -123,9 +123,49 @@
           }
         }
       }
+    },
+    "ng-wizi-bulma": {
+      "root": "projects/ng-wizi-bulma",
+      "sourceRoot": "projects/ng-wizi-bulma/src",
+      "projectType": "library",
+      "prefix": "nwb",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ng-wizi-bulma/tsconfig.lib.json",
+            "project": "projects/ng-wizi-bulma/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ng-wizi-bulma/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-wizi-bulma/src/test.ts",
+            "tsConfig": "projects/ng-wizi-bulma/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-wizi-bulma/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-wizi-bulma/tsconfig.lib.json",
+              "projects/ng-wizi-bulma/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
-  "defaultProject": "ng-wizi-bulma",
+  "defaultProject": "ng-wizi-bulma-demo",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

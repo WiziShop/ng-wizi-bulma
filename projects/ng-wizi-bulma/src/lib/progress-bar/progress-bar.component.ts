@@ -16,7 +16,6 @@ import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@ang
  * <nwb-progress-bar> component.
  */
 @Component({
-  moduleId: module.id,
   selector: 'nwb-progress-bar',
   host: {
     'role': 'progressbar',
