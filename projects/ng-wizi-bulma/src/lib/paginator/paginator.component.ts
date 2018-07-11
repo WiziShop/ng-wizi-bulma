@@ -55,7 +55,7 @@ export class NwbPageEvent {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NwdPaginatorComponent implements OnInit, OnDestroy {
+export class NwbPaginatorComponent implements OnInit, OnDestroy {
   private _initialized: boolean;
   private _intlChanges: Subscription;
 
