@@ -14,6 +14,8 @@ import {SwitchDemo} from './features/switch/switch-demo';
 import {TooltipDemo} from './features/tooltip/tooltip-demo';
 import {AlertDemo} from './features/alert/alert-demo';
 import {AnimatedCardDemo} from './features/animated-card/animated-card-demo';
+import {TableDemo} from './features/table/table-demo';
+import {SortDemo} from './features/sort/sort-demo';
 
 
 const appRoutes: Routes = [
@@ -76,6 +78,14 @@ const appRoutes: Routes = [
   {
     path: 'tooltip',
     component: TooltipDemo
+  },
+  {
+    path: 'table',
+    component: TableDemo
+  },
+  {
+    path: 'sort',
+    component: SortDemo
   },
   {
     path: '**',

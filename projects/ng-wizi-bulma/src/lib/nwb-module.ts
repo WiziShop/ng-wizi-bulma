@@ -10,8 +10,6 @@ import {NwbDropdownComponent} from './dropdown/dropdown.component';
 import {NwbModalSearchService} from './modal-search/modal-search.service';
 import {NwbModalSearchComponent} from './modal-search/modal-search.component';
 import {NwbOptionComponent} from './option/option.component';
-import {NwbPaginatorIntl} from './paginator/paginator-intl';
-import {NwdPaginatorComponent} from './paginator/paginator.component';
 import {NwbProgressBarComponent} from './progress-bar/progress-bar.component';
 import {NwbSnackbarService} from './snackbar/snackbar.service';
 import {NwbSnackbarComponent} from './snackbar/snackbar.component';
@@ -23,18 +21,42 @@ import {NwbAlertService} from './alert/alert.service';
 import {NwbAlertComponent} from './alert/alert.component';
 import {NwbToolTipDirective} from './tooltip/tooltip.directive';
 import {NwbAnimatedCardComponent} from './animated-card/animated-card.component';
+import {NwbPaginatorModule} from './paginator/paginator-module';
+import {NwbSortModule} from './sort/sort-module';
+
+
+const EXPORTED_DECLARATIONS: any[] = [
+  NwbSpinnerComponent,
+  NwbDialogComponent,
+  NwbDebounceDirective,
+  NwbDropdownComponent,
+  NwbModalSearchComponent,
+  NwbOptionComponent,
+  NwbProgressBarComponent,
+  NwbSnackbarComponent,
+  NwbAlertComponent,
+  NwbTabsComponent,
+  NwbTabComponent,
+  NwbAnimatedCardComponent,
+  NwbSwitchComponent,
+  NwbToolTipDirective,
+];
+
+const EXPORTED_EXPORTS = EXPORTED_DECLARATIONS.concat([NwbPaginatorModule, NwbSortModule]);
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    NwbPaginatorModule,
+    NwbSortModule,
   ],
   providers: [
     OVERLAY_CONTAINER_PROVIDER,
     DOM_SERVICE_PROVIDER,
     NwbDialogService,
     NwbModalSearchService,
-    NwbPaginatorIntl,
     NwbSnackbarService,
     NwbAlertService,
   ],
@@ -44,40 +66,8 @@ import {NwbAnimatedCardComponent} from './animated-card/animated-card.component'
     NwbSnackbarComponent,
     NwbAlertComponent,
   ],
-  declarations: [
-    NwbSpinnerComponent,
-    NwbDialogComponent,
-    NwbDebounceDirective,
-    NwbDropdownComponent,
-    NwbModalSearchComponent,
-    NwbOptionComponent,
-    NwdPaginatorComponent,
-    NwbProgressBarComponent,
-    NwbSnackbarComponent,
-    NwbAlertComponent,
-    NwbTabsComponent,
-    NwbTabComponent,
-    NwbAnimatedCardComponent,
-    NwbSwitchComponent,
-    NwbToolTipDirective,
-  ],
-  exports: [
-    NwbSpinnerComponent,
-    NwbDialogComponent,
-    NwbDebounceDirective,
-    NwbDropdownComponent,
-    NwbModalSearchComponent,
-    NwbOptionComponent,
-    NwdPaginatorComponent,
-    NwbProgressBarComponent,
-    NwbSnackbarComponent,
-    NwbAlertComponent,
-    NwbTabsComponent,
-    NwbTabComponent,
-    NwbAnimatedCardComponent,
-    NwbSwitchComponent,
-    NwbToolTipDirective,
-  ],
+  declarations: EXPORTED_DECLARATIONS,
+  exports: EXPORTED_EXPORTS,
 })
 export class NwbModule {
 }

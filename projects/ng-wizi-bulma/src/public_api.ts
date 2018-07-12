@@ -17,14 +17,14 @@ export * from './lib/modal-search/modal-search.service';
 
 export * from './lib/option/option.component';
 
-export * from './lib/paginator/paginator-intl';
-export * from './lib/paginator/paginator.component';
+export * from './lib/paginator';
 
 export * from './lib/progress-bar/progress-bar.component';
 
 export * from './lib/snackbar/snackbar.service';
 export * from './lib/snackbar/snackbar.component';
 
+export * from './lib/sort';
 
 export * from './lib/tabs/tab.component';
 export * from './lib/tabs/tabs.component';

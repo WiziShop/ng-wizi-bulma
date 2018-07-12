@@ -1,6 +1,6 @@
 {
   "name": "ng-wizi-bulma",
-  "version": "3.0.9",
+  "version": "3.0.10",
   "license": "MIT",
   "scripts": {
     "chokidar": "chokidar",
@@ -19,10 +19,11 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "6.0.5",
-    "@angular/core": "6.0.5",
-    "@angular/compiler": "6.0.5",
     "@angular/animations": "6.0.5",
+    "@angular/cdk": "^6.3.3",
+    "@angular/common": "6.0.5",
+    "@angular/compiler": "6.0.5",
+    "@angular/core": "6.0.5",
     "@angular/forms": "6.0.5",
     "@angular/platform-browser": "6.0.5",
     "@angular/platform-browser-dynamic": "6.0.5",

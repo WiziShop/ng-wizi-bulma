@@ -1,0 +1,65 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Table
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <p>This table uses the <a href="https://material.angular.io/cdk/table/overview" target="_blank">table
+        component</a>
+        from angular CDK</p>
+      <div class="example-container">
+        <div class="example-loading-shade"
+             *ngIf="isLoadingResults || isRateLimitReached">
+          <nwb-spinner *ngIf="isLoadingResults" color="#4baed0"></nwb-spinner>
+          <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+            GitHub's API rate limit has been reached. It will be reset in one minute.
+          </div>
+        </div>
+
+        <div class="example-table-container">
+          <table class="table" cdk-table [dataSource]="data" nwbSort nwbSortActive="title" nwbSortStart="desc">
+            <ng-container>
+              <!-- Number Column -->
+              <ng-container cdkColumnDef="number">
+                <th cdk-header-cell *cdkHeaderCellDef nwb-sort-header>#</th>
+                <td cdk-cell *cdkCellDef="let row">{{row.number}}</td>
+              </ng-container>
+
+              <!-- Title Column -->
+              <ng-container cdkColumnDef="title">
+                <th cdk-header-cell *cdkHeaderCellDef nwb-sort-header>Title</th>
+                <td cdk-cell *cdkCellDef="let row">{{row.title}}</td>
+              </ng-container>
+
+              <!-- State Column -->
+              <ng-container cdkColumnDef="state">
+                <th cdk-header-cell *cdkHeaderCellDef>State</th>
+                <td cdk-cell *cdkCellDef="let row">{{row.state}}</td>
+              </ng-container>
+
+              <!-- Created Column -->
+              <ng-container cdkColumnDef="created">
+                <th cdk-header-cell *cdkHeaderCellDef nwb-sort-header>
+                  Created
+                </th>
+                <td cdk-cell *cdkCellDef="let row">{{row.created_at | date}}</td>
+              </ng-container>
+
+              <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+              <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+            </ng-container>
+          </table>
+        </div>
+
+        <nwb-paginator
+          [length]="resultsLength"
+          [pageSize]="30"
+        ></nwb-paginator>
+      </div>
+    </div>
+  </div>
+
+
+</div>

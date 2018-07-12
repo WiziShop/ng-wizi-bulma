@@ -58,6 +58,9 @@ export class ModalSearchService {
     }, {
       text: 'Tooltip',
       data: './tooltip',
+    }, {
+      text: 'Sort Header',
+      data: './sort',
     }
   ];
 

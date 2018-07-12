@@ -1,0 +1,12 @@
+.nwb-sort-header-container {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+
+  .nwb-sort-header-arrow {
+    padding-left: 5px;
+  }
+  .nwb-sort-header-arrow:not(.nwb-sort-header-sorted) {
+   // visibility: hidden;
+  }
+}

@@ -1,3 +1,6 @@
+#3.0.10 (2018-07-12)
+- Add sort header component which is an adaptation of the sort header from angular material 
+
 #3.0.9 (2018-07-02)
 - Allow to add extra classes to modalsearch component
 

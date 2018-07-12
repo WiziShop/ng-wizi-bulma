@@ -1,0 +1,14 @@
+<div class="nwb-sort-header-container"
+     (mouseenter)="_setIndicatorHintVisible(true)"
+     (mouseleave)="_setIndicatorHintVisible(false)"
+>
+  <ng-content></ng-content>
+  <span class="nwb-sort-header-arrow" [class.nwb-sort-header-sorted]="isSorted()"
+        [@arrowOpacity]="_getArrowViewState()"
+        [@arrowPosition]="_getArrowViewState()"
+        (@arrowPosition.start)="_disableViewStateAnimation = true"
+        (@arrowPosition.done)="_disableViewStateAnimation = false"
+  >
+     <i class="fas fa-angle-up" [@arrowDirection]="_getArrowDirectionState()"></i>
+  </span>
+</div>

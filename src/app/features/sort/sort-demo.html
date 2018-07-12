@@ -1,0 +1,38 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Sort Header
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+
+      <p> This is an adaptation from the <a href="https://material.angular.io/components/sort/overview" target="_blank">sort
+        header</a> component from angular material
+      </p>
+
+      <table class="table is-striped" nwbSort (nwbSortChange)="sortData($event)"
+             [nwbSortStart]="startSort.direction"
+             [nwbSortActive]="startSort.active">
+        <tr>
+          <th nwb-sort-header="name">Dessert (100g)</th>
+          <th nwb-sort-header="calories">Calories</th>
+          <th nwb-sort-header="fat">Fat (g)</th>
+          <th nwb-sort-header="carbs">Carbs (g)</th>
+          <th nwb-sort-header="protein">Protein (g)</th>
+        </tr>
+
+        <tr *ngFor="let dessert of sortedData">
+          <td>{{dessert.name}}</td>
+          <td>{{dessert.calories}}</td>
+          <td>{{dessert.fat}}</td>
+          <td>{{dessert.carbs}}</td>
+          <td>{{dessert.protein}}</td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+
+
+</div>

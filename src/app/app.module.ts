@@ -22,14 +22,20 @@ import {DocPreviewComponent} from './doc-preview/doc-preview.component';
 import {AlertDemo} from './features/alert/alert-demo';
 import {TooltipDemo} from './features/tooltip/tooltip-demo';
 import {AnimatedCardDemo} from './features/animated-card/animated-card-demo';
+import {TableDemo} from './features/table/table-demo';
+import {HttpClientModule} from '@angular/common/http';
+import {SortDemo} from './features/sort/sort-demo';
+import {CdkTableModule} from '@angular/cdk/table';
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     NwbModule,
     AppRoutingModule,
+    CdkTableModule,
   ],
   declarations: [
     AppComponent,
@@ -50,6 +56,8 @@ import {AnimatedCardDemo} from './features/animated-card/animated-card-demo';
     AlertDemo,
     AnimatedCardDemo,
     TooltipDemo,
+    TableDemo,
+    SortDemo,
   ],
   providers: [],
   entryComponents: [
