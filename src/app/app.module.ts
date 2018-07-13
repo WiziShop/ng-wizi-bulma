@@ -40,7 +40,7 @@ import {
   NwbSnackbarModule,
   NwbSortModule,
   NwbSwitchModule,
-  NwbTabsModule
+  NwbTabsModule,
 } from 'ng-wizi-bulma';
 
 

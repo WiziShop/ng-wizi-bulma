@@ -1,16 +1,16 @@
 import {NgModule} from '@angular/core';
-import {NwbPaginatorModule} from './paginator';
-import {NwbSortModule} from './sort';
-import {NwbModalSearchModule} from './modal-search';
-import {NwbAlertModule} from './alert';
-import {NwbDialogModule} from './dialog';
-import {NwbSnackbarModule} from './snackbar';
+import {NwbPaginatorModule} from './paginator/paginator-module';
+import {NwbSortModule} from './sort/sort-module';
+import {NwbModalSearchModule} from './modal-search/modal-search-module';
+import {NwbAlertModule} from './alert/alert-module';
+import {NwbDialogModule} from './dialog/dialog-module';
+import {NwbSnackbarModule} from './snackbar/snackbar-module';
 import {NwbCommonModule} from './shared/common-module';
-import {NwbAnimatedCardModule} from './animated-card';
-import {NwbDropdownModule} from './dropdown';
-import {NwbProgressBarModule} from './progress-bar';
-import {NwbSwitchModule} from './switch';
-import {NwbTabsModule} from './tabs';
+import {NwbAnimatedCardModule} from './animated-card/animated-card-module';
+import {NwbDropdownModule} from './dropdown/dropdown-module';
+import {NwbProgressBarModule} from './progress-bar/progress-bar-module';
+import {NwbSwitchModule} from './switch/switch-module';
+import {NwbTabsModule} from './tabs/tabs-module';
 
 
 const EXPORTED_EXPORTS = [

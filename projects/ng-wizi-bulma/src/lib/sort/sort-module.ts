@@ -1,8 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {CdkTableModule} from '@angular/cdk/table';
 import {NwbSortHeaderComponent} from './sort-header.component';
 import {NwbSort} from './sort';
-import {CdkTableModule} from '@angular/cdk/table';
 import {NwbCommonModule} from '../shared/common-module';
 
 

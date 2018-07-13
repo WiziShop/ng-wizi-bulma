@@ -1,3 +1,3 @@
-export * from './components';
-export * from './directives';
+export * from './components/index';
+export * from './directives/index';
 export * from './common-module';
