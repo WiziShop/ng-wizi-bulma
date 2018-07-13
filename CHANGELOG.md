@@ -1,3 +1,7 @@
+#4.0.0 (2018-07-13)
+- Each component has now its own module, so you can import only the components you want to use.
+- Breaking changes: `NwbModule` has been renamed to `NwbAllModule`. Il will import all the components' module for you.
+
 #3.0.10 (2018-07-12)
 - Add sort header component which is an adaptation of the sort header from angular material 
 

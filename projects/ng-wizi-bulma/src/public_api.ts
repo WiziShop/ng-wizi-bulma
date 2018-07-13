@@ -2,36 +2,19 @@
  * Public API Surface of ng-wizi-bulma
  */
 
-export * from './lib/alert/alert.service';
-export * from './lib/alert/alert.component';
+export * from './lib/shared';
 
-export * from './lib/dialog/dialog.component';
-export * from './lib/dialog/dialog.service';
-
-export * from './lib/spinner/spinner.component';
-
-export * from './lib/dropdown/dropdown.component';
-
-export * from './lib/modal-search/modal-search.component';
-export * from './lib/modal-search/modal-search.service';
-
-export * from './lib/option/option.component';
-
+export * from './lib/alert';
+export * from './lib/animated-card';
+export * from './lib/dialog';
+export * from './lib/dropdown';
+export * from './lib/modal-search';
 export * from './lib/paginator';
-
-export * from './lib/progress-bar/progress-bar.component';
-
-export * from './lib/snackbar/snackbar.service';
-export * from './lib/snackbar/snackbar.component';
-
+export * from './lib/progress-bar';
+export * from './lib/snackbar';
 export * from './lib/sort';
+export * from './lib/switch';
+export * from './lib/tabs';
 
-export * from './lib/tabs/tab.component';
-export * from './lib/tabs/tabs.component';
-
-export * from './lib/switch/switch.component';
-export * from './lib/animated-card/animated-card.component';
-export * from './lib/tooltip/tooltip.directive';
-
-export * from './lib/nwb-module';
+export * from './lib/nwb-all-module';
 

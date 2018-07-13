@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/ng-wizi-bulma.svg)](https://www.npmjs.com/package/ng-wizi-bulma)
 [![npm](https://img.shields.io/npm/dm/ng-wizi-bulma.svg)](https://www.npmjs.com/package/ng-wizi-bulma)
 
-[Bulma](http://bulma.io/) components for Angular 5+
+[Bulma](http://bulma.io/) components for Angular 56+
 
 The library uses [ng-packagr](https://github.com/dherges/ng-packagr) to transpile into the Angular Package Format
 
@@ -15,7 +15,7 @@ Try out the [demo](https://ng-wizi-bulma.firebaseapp.com/)
 
 Run: 
 ```
-npm i -S ng-wizi-bulma && npm i -S bulma bulma-switch bulma-tooltip
+npm i -S ng-wizi-bulma bulma bulma-switch bulma-tooltip @angular/cdk
 ```
 
 Import bulma css into your main css file:
@@ -24,13 +24,14 @@ Import bulma css into your main css file:
 @import '~bulma/bulma';
 ```
 
-Load the Materials icon font in your index.html.
+Load the Fontawesome icon font in your index.html.
 
 ```
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 ```
 
-Import the `NwbModule`, `BrowserAnimationsModule` and `FormsModule` into your app module: 
+Import the required modules `BrowserAnimationsModule` and `FormsModule` into your app module, then 
+import either all Nwb modules with `NwbAllModule` or only the module you want to use in your application for example `NwbDialogModule
 
 ````
 
@@ -48,7 +49,7 @@ import {NwbModule} from 'ng-wizi-bulma';
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    NwbModule,
+    NwbAllModule,
   ],
   declarations: [],
   providers: [],
