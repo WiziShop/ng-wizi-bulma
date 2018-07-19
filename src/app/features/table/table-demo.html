@@ -9,7 +9,30 @@
       <p>This table uses the <a href="https://material.angular.io/cdk/table/overview" target="_blank">table
         component</a>
         from angular CDK</p>
+      <p>
+        It's also using our <strong>NwbFilterRoutingBuilder</strong> service which allow you to mix data table's filters
+        with angular router.
+        Go ahead play with the filters (sort, query, page) and refresh the page.
+      </p>
+
+      <div class="field">
+        <p class="control">
+          <input
+            class="input"
+            [ngClass]="{'is-warning': filterGroup.get('q')}"
+            type="text"
+            placeholder="Recherche"
+            [ngModel]="filterGroup.get('q')"
+            (ngModelChange)="filterGroup.setValues({pageIndex:0,q: $event})"
+            nwbDebounce
+          >
+        </p>
+      </div>
+
+
       <div class="example-container">
+
+
         <div class="example-loading-shade"
              *ngIf="isLoadingResults || isRateLimitReached">
           <nwb-spinner *ngIf="isLoadingResults" color="#4baed0"></nwb-spinner>
@@ -19,10 +42,13 @@
         </div>
 
         <div class="example-table-container">
-          <table class="table" cdk-table [dataSource]="data" nwbSort nwbSortActive="title" nwbSortStart="desc">
+          <table class="table" cdk-table [dataSource]="data"
+                 nwbSort
+                 [nwbSortActive]="filterGroup.get('sort')" [nwbSortStart]="filterGroup.get('order')"
+          >
             <!-- Number Column -->
             <ng-container cdkColumnDef="number">
-              <th cdk-header-cell *cdkHeaderCellDef nwb-sort-header>#</th>
+              <th cdk-header-cell *cdkHeaderCellDef>#</th>
               <td cdk-cell *cdkCellDef="let row">{{row.number}}</td>
             </ng-container>
 
@@ -53,6 +79,7 @@
 
         <nwb-paginator
           [length]="resultsLength"
+          [pageIndex]="filterGroup.get('pageIndex')"
           [pageSize]="30"
         ></nwb-paginator>
       </div>

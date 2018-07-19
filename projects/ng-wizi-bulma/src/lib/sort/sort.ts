@@ -91,11 +91,11 @@ export class NwbSort implements OnChanges, OnDestroy {
     if (this.sortables.has(sortable.id)) {
       throw getSortDuplicateSortableIdError(sortable.id);
     }
+
     this.sortables.set(sortable.id, sortable);
 
     if (sortable.id === this.active) {
       this.direction = sortable.start ? sortable.start : this.start;
-      // this.sortChange.emit({active: this.active, direction: this.direction});
     }
   }
 
@@ -118,6 +118,7 @@ export class NwbSort implements OnChanges, OnDestroy {
 
 
     this.sortChange.emit({active: this.active, direction: this.direction});
+
   }
 
   /** Returns the next sort direction of the active sortable, checking for potential overrides. */

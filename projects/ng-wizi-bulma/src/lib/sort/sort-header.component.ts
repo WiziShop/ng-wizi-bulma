@@ -1,10 +1,11 @@
-import {ChangeDetectorRef, Component, HostListener, Input, OnInit, Optional} from '@angular/core';
+import {ChangeDetectorRef, Component, HostListener, Input, OnDestroy, OnInit, Optional} from '@angular/core';
 import {NwbSort, NwbSortable} from './sort';
 import {CdkColumnDef} from '@angular/cdk/table';
 import {merge} from 'rxjs';
 import {SortDirection} from './sort-direction';
 import {nwbSortAnimations} from './sort-animation';
 import {getSortHeaderNotContainedWithinSortError} from './sort-errors';
+import {Subscription} from 'rxjs/internal/Subscription';
 
 /**
  * Valid positions for the arrow to be in for its opacity and translation. If the state is a
@@ -36,7 +37,9 @@ export interface ArrowViewStateTransition {
     nwbSortAnimations.arrowPosition,
   ]
 })
-export class NwbSortHeaderComponent implements NwbSortable, OnInit {
+export class NwbSortHeaderComponent implements NwbSortable, OnInit, OnDestroy {
+  private _rerenderSubscription: Subscription;
+
   /**
    * Flag set to true when the indicator should be displayed while the sort is not active. Used to
    * provide an affordance that the header is sortable by showing on focus and hover.
@@ -73,10 +76,11 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit {
       throw getSortHeaderNotContainedWithinSortError();
     }
 
-    merge(this._sort.sortChange, this._sort._stateChanges)
+
+    this._rerenderSubscription = merge(this._sort.sortChange, this._sort._stateChanges)
       .subscribe(() => {
         if (this.isSorted()) {
-          this._updateArrowDirection();
+          this._updateArrow();
         }
 
         // If this header was recently active and now no longer sorted, animate away the arrow.
@@ -88,6 +92,25 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit {
         changeDetectorRef.markForCheck();
       });
 
+  }
+
+  private _updateArrow() {
+
+    // Do not show the animation if the header was already shown in the right position.
+    if (this._viewState.toState === 'hint' || this._viewState.toState === 'active') {
+      this._disableViewStateAnimation = true;
+    }
+
+    // If the arrow is now sorted, animate the arrow into place. Otherwise, animate it away into
+    // the direction it is facing.
+    const viewState: ArrowViewStateTransition = this.isSorted() ?
+      {fromState: this._arrowDirection, toState: 'active'} :
+      {fromState: 'active', toState: this._arrowDirection};
+    this._setAnimationTransitionState(viewState);
+
+    this._showIndicatorHint = false;
+
+    this._updateArrowDirection();
   }
 
   ngOnInit() {
@@ -108,30 +131,15 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit {
 
   }
 
-  /** Whether this MatSortHeader is currently sorted in either ascending or descending order. */
+  /** Whether this NwbSortHeader is currently sorted in either ascending or descending order. */
   isSorted() {
-    return this._sort.active === this.id &&
-      (this._sort.direction === 'asc' || this._sort.direction === 'desc');
+    return this._sort.active === this.id;
   }
 
   /** Triggers the sort on this sort header and removes the indicator hint. */
   @HostListener('click', ['$event'])
   handleClick(event: MouseEvent) {
     this._sort.sort(this);
-
-    // Do not show the animation if the header was already shown in the right position.
-    if (this._viewState.toState === 'hint' || this._viewState.toState === 'active') {
-      this._disableViewStateAnimation = true;
-    }
-
-    // If the arrow is now sorted, animate the arrow into place. Otherwise, animate it away into
-    // the direction it is facing.
-    const viewState: ArrowViewStateTransition = this.isSorted() ?
-      {fromState: this._arrowDirection, toState: 'active'} :
-      {fromState: 'active', toState: this._arrowDirection};
-    this._setAnimationTransitionState(viewState);
-
-    this._showIndicatorHint = false;
   }
 
   /**
@@ -194,6 +202,11 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit {
   /** Returns the animation state for the arrow direction (indicator and pointers). */
   _getArrowDirectionState() {
     return `${this.isSorted() ? 'active-' : ''}${this._arrowDirection}`;
+  }
+
+  ngOnDestroy() {
+    this._sort.deregister(this);
+    this._rerenderSubscription.unsubscribe();
   }
 
 }

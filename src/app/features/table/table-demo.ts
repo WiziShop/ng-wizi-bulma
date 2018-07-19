@@ -1,8 +1,16 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {NwbPaginatorComponent, NwbSort} from 'ng-wizi-bulma';
-import {merge, Observable, of} from 'rxjs';
-import {catchError, map, startWith, switchMap} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
+import {
+  NwbFilter,
+  NwbFilterGroup,
+  NwbFilterRoutingBuilder,
+  NwbPageEvent,
+  NwbPaginatorComponent,
+  NwbSort,
+  Sort
+} from 'ng-wizi-bulma';
 
 
 @Component({
@@ -19,29 +27,72 @@ export class TableDemo implements OnInit {
   @ViewChild(NwbSort) sort;
 
   resultsLength = 0;
-  isLoadingResults = true;
+  isLoadingResults = false;
   isRateLimitReached = false;
 
+  sortActive = 'title';
+  sortStart = 'asc';
 
-  constructor(private http: HttpClient) {
+  dataTableFilters = {
+    sort: this.sortActive,
+    order: this.sortStart,
+    pageIndex: 0,
+    q: 'repo:angular/angular',
+  };
+
+  filterGroup: NwbFilterGroup;
+
+  constructor(private http: HttpClient, private filterRoutingBuilder: NwbFilterRoutingBuilder) {
   }
 
   ngOnInit() {
     this.exampleDatabase = new ExampleHttpDao(this.http);
 
-    // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
-    merge(this.sort.sortChange, this.paginator.page)
+    this.filterGroup = this.filterRoutingBuilder.group(this.dataTableFilters);
+
+    this.filterGroup.valuesChange$
+      .subscribe(filters => {
+        this.updateFilters(filters);
+
+        this.fetchData();
+      });
+
+    this.updateFilters(this.filterGroup.getFilters());
+
+    this.fetchData();
+
+
+    // If the user changes the sort order, reset back to the first page.
+    this.sort.sortChange.subscribe((sort: Sort) => {
+      this.filterGroup.setValues({
+        pageIndex: 0,
+        sort: sort.active,
+        order: sort.direction
+      });
+    });
+
+    this.paginator.page.subscribe((page: NwbPageEvent) => {
+      this.filterGroup.set('pageIndex', page.pageIndex);
+    });
+
+  }
+
+  private updateFilters(filters: NwbFilter[]) {
+    filters.forEach(filter => {
+
+      this.dataTableFilters[filter.key] = filter.value;
+
+    });
+  }
+
+  private fetchData() {
+    this.isLoadingResults = true;
+    this.exampleDatabase!.getRepoIssues(
+      this.dataTableFilters.q, this.dataTableFilters.sort, this.dataTableFilters.order, this.dataTableFilters.pageIndex
+    )
       .pipe(
-        startWith({}),
-        switchMap(() => {
-          this.isLoadingResults = true;
-          return this.exampleDatabase!.getRepoIssues(
-            this.sort.active, this.sort.direction, this.paginator.pageIndex
-          );
-        }),
-        map(data => {
+        map((data) => {
           // Flip flag to show that loading has finished.
           this.isLoadingResults = false;
           this.isRateLimitReached = false;
@@ -79,10 +130,10 @@ export class ExampleHttpDao {
   constructor(private http: HttpClient) {
   }
 
-  getRepoIssues(sort: string, order: string, page: number): Observable<GithubApi> {
+  getRepoIssues(q: string, sort: string, order: string, page: number): Observable<GithubApi> {
     const href = 'https://api.github.com/search/issues';
     const requestUrl =
-      `${href}?q=repo:angular/material2&sort=${sort}&order=${order}&page=${page + 1}`;
+      `${href}?q=${q}&sort=${sort}&order=${order}&page=${+page + 1}`;
 
     return this.http.get<GithubApi>(requestUrl);
   }

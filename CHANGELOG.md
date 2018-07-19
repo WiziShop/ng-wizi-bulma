@@ -1,3 +1,7 @@
+#4.0.3 (2018-07-19)
+- FIX: wrong direction was used for the arrow in NwbSortHeaderComponent
+- Add NwbFilterRoutingBuilder service
+
 #4.0.0 (2018-07-13)
 - Each component has now its own module, so you can import only the components you want to use.
 - Breaking changes: `NwbModule` has been renamed to `NwbAllModule`. Il will import all the components' module for you.
