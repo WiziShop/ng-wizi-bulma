@@ -29,8 +29,8 @@ export const nwbSortAnimations: {
 
   /** Animation that rotates the left pointer of the indicator based on the sorting direction. */
   arrowDirection: trigger('arrowDirection', [
-    state('active-asc, asc', style({transform: 'rotate(-180deg)'})),
-    state('active-desc, desc', style({transform: 'rotate(0deg)'})),
+    state('active-asc, asc', style({transform: 'rotate(0deg)'})),
+    state('active-desc, desc', style({transform: 'rotate(-180deg)'})),
     transition('active-asc <=> active-desc', animate(SORT_ANIMATION_TRANSITION))
   ]),
 
