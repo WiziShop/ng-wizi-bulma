@@ -49,7 +49,7 @@ export class TableDemo implements OnInit {
     this.exampleDatabase = new ExampleHttpDao(this.http);
 
 
-    this.filterGroup = this.filterRoutingBuilder.group(this.dataTableFilters);
+    this.filterGroup = this.filterRoutingBuilder.group(this.dataTableFilters, 'datatable');
 
     this.filterGroup.valuesChange$
       .subscribe(filters => {

@@ -1,3 +1,6 @@
+#4.0.4 (2018-07-23)
+- In NwbFilterRoutingBuilder.group add groupName argument to let user overwrite the default one
+
 #4.0.3 (2018-07-19)
 - FIX: wrong direction was used for the arrow in NwbSortHeaderComponent
 - Add NwbFilterRoutingBuilder service

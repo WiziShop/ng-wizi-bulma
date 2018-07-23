@@ -48,8 +48,11 @@ export class NwbFilterRoutingBuilder {
     });
   }
 
-  group(group: { [key: string]: any; }) {
-    const filterGroup = new NwbFilterGroup(`${FILTER_GROUP_PARAM_PREFIX}${this.groupCounter++}`, group);
+  group(group: { [key: string]: any; }, groupName?: string) {
+    if (!groupName) {
+      groupName = `${FILTER_GROUP_PARAM_PREFIX}${this.groupCounter++}`;
+    }
+    const filterGroup = new NwbFilterGroup(groupName, group);
 
     this.filterGroups.set(filterGroup.name, filterGroup);
 
