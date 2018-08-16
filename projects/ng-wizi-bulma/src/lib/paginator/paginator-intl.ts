@@ -27,10 +27,13 @@ export class NwbPaginatorIntl {
   /** A label for the page size selector. */
   itemsPerPageLabel = 'Items per page:';
 
+  /** A label for the page size selector. */
+  ofLabel = 'of';
+
   /** A label for the range of items within the current page and the length of the whole list. */
   getRangeLabel = (page: number, pageSize: number, length: number) => {
     if (length == 0 || pageSize == 0) {
-      return `0 of ${length}`;
+      return `0 ${this.ofLabel} ${length}`;
     }
 
     length = Math.max(length, 0);
@@ -42,6 +45,6 @@ export class NwbPaginatorIntl {
       Math.min(startIndex + pageSize, length) :
       startIndex + pageSize;
 
-    return `${startIndex + 1} - ${endIndex} of ${length}`;
+    return `${startIndex + 1} - ${endIndex} ${this.ofLabel} ${length}`;
   }
 }
