@@ -1,3 +1,7 @@
+#4.0.5 (2018-08-16)
+- Angular 6.1
+- Add ofLabel property into NwbPaginatorIntl
+
 #4.0.4 (2018-07-23)
 - In NwbFilterRoutingBuilder.group add groupName argument to let user overwrite the default one
 
