@@ -1,3 +1,7 @@
+#4.0.6 (2018-08-24)
+- Angular 6.1.4
+- Set a default value for NwbAlertConfig.position
+
 #4.0.5 (2018-08-16)
 - Angular 6.1
 - Add ofLabel property into NwbPaginatorIntl

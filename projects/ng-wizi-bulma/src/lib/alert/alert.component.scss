@@ -3,6 +3,7 @@
 
 .nwb-alert {
   .alert {
+    z-index: 999999;
     position: fixed;
     color: $white;
     background-color: $primary;
@@ -13,7 +14,7 @@
     opacity: 0;
     margin: 10px auto;
     width: 400px;
-    box-shadow: 0 0 20px rgba(50,50,50, 0.1);
+    box-shadow: 0 0 20px rgba(50, 50, 50, 0.1);
     font-size: 14px;
 
     &.is-left {
