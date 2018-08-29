@@ -1,3 +1,6 @@
+#4.0.7 (2018-08-29)
+- Increase timer in modal-search component while navigating with keyboard
+
 #4.0.6 (2018-08-24)
 - Angular 6.1.4
 - Set a default value for NwbAlertConfig.position

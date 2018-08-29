@@ -106,6 +106,17 @@ export class NwbModalSearchComponent implements AfterViewInit {
   documentOnKeyDown(ev: KeyboardEvent) {
     let somethingHappened = false;
 
+    // Avoid to select a row with the mouse over event while navigating with keyboard
+    this._isNavigating = true;
+
+    if (this._isNavigatingTimerIndex) {
+      clearTimeout(this._isNavigatingTimerIndex);
+    }
+
+    this._isNavigatingTimerIndex = setTimeout(() => {
+      this._isNavigating = false;
+    }, 500);
+
     somethingHappened = this.openFromKeyboard(ev) || somethingHappened;
 
     somethingHappened = this.keyboardNavigate(ev) || somethingHappened;
@@ -203,17 +214,6 @@ export class NwbModalSearchComponent implements AfterViewInit {
         this.focusInputSearch();
       }
 
-
-      // Avoid to select a row with the mouse over event while navigating with keyboard
-      this._isNavigating = true;
-
-      if (this._isNavigatingTimerIndex) {
-        clearTimeout(this._isNavigatingTimerIndex);
-      }
-
-      this._isNavigatingTimerIndex = setTimeout(() => {
-        this._isNavigating = false;
-      }, 200);
     }
 
     return somethingHappened;
