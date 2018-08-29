@@ -47,8 +47,7 @@ export class NwbModalSearchComponent implements AfterViewInit {
   @ViewChild('inputSearch') inputSearch: ElementRef;
   @ViewChild('footer') footer: ElementRef;
 
-  private _isNavigating = false;
-  private _isNavigatingTimerIndex;
+  private _isMouseNavigating = false;
 
   constructor() {
 
@@ -107,15 +106,7 @@ export class NwbModalSearchComponent implements AfterViewInit {
     let somethingHappened = false;
 
     // Avoid to select a row with the mouse over event while navigating with keyboard
-    this._isNavigating = true;
-
-    if (this._isNavigatingTimerIndex) {
-      clearTimeout(this._isNavigatingTimerIndex);
-    }
-
-    this._isNavigatingTimerIndex = setTimeout(() => {
-      this._isNavigating = false;
-    }, 500);
+    this._isMouseNavigating = false;
 
     somethingHappened = this.openFromKeyboard(ev) || somethingHappened;
 
@@ -128,8 +119,12 @@ export class NwbModalSearchComponent implements AfterViewInit {
     }
   }
 
+  mouseMove() {
+    this._isMouseNavigating = true;
+  }
+
   mouseOver(index: number) {
-    if (!this._isNavigating) {
+    if (this._isMouseNavigating) {
       this.selectedFoundRow = index;
     }
   }

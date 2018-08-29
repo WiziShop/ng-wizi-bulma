@@ -19,6 +19,7 @@
         <div class="nwb-modal-search-found-rows" *ngIf="!isSearching && foundRows.length > 0">
           <a *ngFor="let row of foundRows; let i = index"
              [ngClass]="{'selected': row.isSelectable && i === selectedFoundRow, 'not-selectable': !row.isSelectable, 'is-child':row.isChild, 'is-parent': row.isParent}"
+             (mousemove)="mouseMove()"
              (mouseover)="mouseOver(i)"
              (click)="selectValue()"
              class="nwb-modal-search-row" [tabindex]="i"
