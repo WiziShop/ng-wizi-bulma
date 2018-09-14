@@ -15,7 +15,7 @@ Try out the [demo](https://ng-wizi-bulma.firebaseapp.com/)
 
 Run: 
 ```
-npm i -S ng-wizi-bulma bulma bulma-switch bulma-tooltip @angular/cdk
+npm i -S @wizishop/ng-wizi-bulma bulma bulma-switch bulma-tooltip @angular/cdk
 ```
 
 Import bulma css into your main css file:
@@ -41,7 +41,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 
-import {NwbModule} from 'ng-wizi-bulma';
+import {NwbModule} from '@wizishop/ng-wizi-bulma';
 
 @NgModule({
   imports: [

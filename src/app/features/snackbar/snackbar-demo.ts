@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NwbSnackbarConfig, NwbSnackbarService} from 'ng-wizi-bulma';
+import {NwbSnackbarConfig, NwbSnackbarService} from '@wizishop/ng-wizi-bulma';
 
 @Component({
   providers: [],

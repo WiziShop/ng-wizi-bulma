@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {NwbFoundRow, NwbModalSearchComponent, NwbModalSearchService} from 'ng-wizi-bulma';
+import {NwbFoundRow, NwbModalSearchComponent, NwbModalSearchService} from '@wizishop/ng-wizi-bulma';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/index';
 

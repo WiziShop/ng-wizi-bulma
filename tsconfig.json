@@ -13,11 +13,11 @@
       "node_modules/@types"
     ],
     "paths": {
-      "ng-wizi-bulma": [
-        "dist/ng-wizi-bulma"
+      "@wizishop/ng-wizi-bulma": [
+        "dist/@wizishop/ng-wizi-bulma"
       ],
-      "ng-wizi-bulma/*": [
-        "dist/ng-wizi-bulma/*"
+      "@wizishop/ng-wizi-bulma/*": [
+        "dist/@wizishop/ng-wizi-bulma/*"
       ]
     },
     "lib": [

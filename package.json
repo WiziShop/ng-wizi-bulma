@@ -1,6 +1,6 @@
 {
-  "name": "ng-wizi-bulma",
-  "version": "4.0.8",
+  "name": "@wizishop/ng-wizi-bulma",
+  "version": "5.0.0",
   "license": "MIT",
   "scripts": {
     "chokidar": "chokidar",
@@ -14,7 +14,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy": "npm run build && firebase deploy",
-    "publish:npm": "cd dist/ng-wizi-bulma && npm publish --access public && cd ../../",
+    "publish:npm": "cd dist/@wizishop/ng-wizi-bulma && npm publish --access public && cd ../../../",
     "publish": "npm run deploy && npm run publish:npm"
   },
   "private": true,

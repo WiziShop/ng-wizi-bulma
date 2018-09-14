@@ -1,3 +1,6 @@
+#5.0.0 (2018-09-14)
+- package name changed. It's now under the scope @wizishop. Then to install it run `npm i @wizishop/ng-wizi-bulma`
+
 #4.0.7 (2018-08-29)
 - Increase timer in modal-search component while navigating with keyboard
 

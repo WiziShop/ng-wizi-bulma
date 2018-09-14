@@ -41,7 +41,7 @@ import {
   NwbSortModule,
   NwbSwitchModule,
   NwbTabsModule,
-} from 'ng-wizi-bulma';
+} from '@wizishop/ng-wizi-bulma';
 
 
 @NgModule({

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NwbDialogConfig, NwbDialogService} from 'ng-wizi-bulma';
+import {NwbDialogConfig, NwbDialogService} from '@wizishop/ng-wizi-bulma';
 import {FakeDialogDemoComponent} from './fake-dialog-demo.component';
 import {User} from './edit-user-dialog-demo.component';
 
