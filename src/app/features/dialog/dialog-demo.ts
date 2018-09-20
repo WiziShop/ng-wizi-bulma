@@ -57,34 +57,23 @@ export class DialogDemo {
       }, 700);
     };
 
-    dialog
-      .afterClosed()
-      .subscribe(fromOkButton =>
-        console.log('dialogClose, fromOkButton', fromOkButton)
-      );
+    dialog.afterClosed().subscribe(fromOkButton => console.log('dialogClose, fromOkButton', fromOkButton));
   }
 
   openDialogFromComponent() {
-    const dialog = this.nwbDialog.openFromComponent(
-      FakeDialogDemoComponent,
-      this.dialogFromComponentConfig
-    );
+    const dialog = this.nwbDialog.openFromComponent(FakeDialogDemoComponent, this.dialogFromComponentConfig);
 
     dialog.componentInstance.myInput.nativeElement.value = 'Random text';
 
     dialog.afterClosed().subscribe(fromOkButton => {
       if (fromOkButton) {
-        this.fakeComponentValue =
-          dialog.componentInstance.myInput.nativeElement.value;
+        this.fakeComponentValue = dialog.componentInstance.myInput.nativeElement.value;
       }
     });
   }
 
   openDialogFromComponentWithSpinner() {
-    const dialog = this.nwbDialog.openFromComponent(
-      FakeDialogDemoComponent,
-      this.dialogFromComponentConfigWithSpinner
-    );
+    const dialog = this.nwbDialog.openFromComponent(FakeDialogDemoComponent, this.dialogFromComponentConfigWithSpinner);
 
     dialog.ready.subscribe(() => {
       console.log('openDialogFromComponentWithSpinner is ready');
@@ -98,8 +87,7 @@ export class DialogDemo {
 
     dialog.afterClosed().subscribe(fromOkButton => {
       if (fromOkButton) {
-        this.fakeComponentValue =
-          dialog.componentInstance.myInput.nativeElement.value;
+        this.fakeComponentValue = dialog.componentInstance.myInput.nativeElement.value;
       }
     });
   }

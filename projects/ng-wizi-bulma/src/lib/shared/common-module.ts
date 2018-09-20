@@ -10,17 +10,9 @@ import { NwbFilterRoutingBuilder } from './services/filter-routing/filter-routin
 
 @NgModule({
   imports: [CommonModule, FormsModule],
-  providers: [
-    OVERLAY_CONTAINER_PROVIDER,
-    DOM_SERVICE_PROVIDER,
-    NwbFilterRoutingBuilder
-  ],
+  providers: [OVERLAY_CONTAINER_PROVIDER, DOM_SERVICE_PROVIDER, NwbFilterRoutingBuilder],
   entryComponents: [],
-  declarations: [
-    NwbSpinnerComponent,
-    NwbDebounceDirective,
-    NwbToolTipDirective
-  ],
+  declarations: [NwbSpinnerComponent, NwbDebounceDirective, NwbToolTipDirective],
   exports: [NwbSpinnerComponent, NwbDebounceDirective, NwbToolTipDirective]
 })
 export class NwbCommonModule {}

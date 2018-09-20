@@ -95,23 +95,19 @@ $nwb-progress-bar-piece-animation-duration: 250ms !default;
       transition: none;
     }
     .nwb-progress-bar-primary {
-      animation: nwb-progress-bar-primary-indeterminate-translate
-        $nwb-progress-bar-full-animation-duration infinite linear;
+      animation: nwb-progress-bar-primary-indeterminate-translate $nwb-progress-bar-full-animation-duration infinite linear;
       left: -145.166611%;
     }
     .nwb-progress-bar-primary.nwb-progress-bar-fill::after {
-      animation: nwb-progress-bar-primary-indeterminate-scale
-        $nwb-progress-bar-full-animation-duration infinite linear;
+      animation: nwb-progress-bar-primary-indeterminate-scale $nwb-progress-bar-full-animation-duration infinite linear;
     }
     .nwb-progress-bar-secondary {
-      animation: nwb-progress-bar-secondary-indeterminate-translate
-        $nwb-progress-bar-full-animation-duration infinite linear;
+      animation: nwb-progress-bar-secondary-indeterminate-translate $nwb-progress-bar-full-animation-duration infinite linear;
       left: -54.888891%;
       display: block;
     }
     .nwb-progress-bar-secondary.nwb-progress-bar-fill::after {
-      animation: nwb-progress-bar-secondary-indeterminate-scale
-        $nwb-progress-bar-full-animation-duration infinite linear;
+      animation: nwb-progress-bar-secondary-indeterminate-scale $nwb-progress-bar-full-animation-duration infinite linear;
     }
   }
 }
@@ -139,73 +135,23 @@ $nwb-progress-bar-piece-animation-duration: 250ms !default;
 
 // Progress Bar Timing functions:
 // $nwb-progress-bar-primary-indeterminate-translate-step-1 has no timing function.
-$nwb-progress-bar-primary-indeterminate-translate-step-2: cubic-bezier(
-  0.5,
-  0,
-  0.701732,
-  0.495819
-) !default;
-$nwb-progress-bar-primary-indeterminate-translate-step-3: cubic-bezier(
-  0.302435,
-  0.381352,
-  0.55,
-  0.956352
-) !default;
+$nwb-progress-bar-primary-indeterminate-translate-step-2: cubic-bezier(0.5, 0, 0.701732, 0.495819) !default;
+$nwb-progress-bar-primary-indeterminate-translate-step-3: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352) !default;
 // $nwb-progress-bar-primary-indeterminate-translate-step-4 has no timing function.
 
 // $nwb-progress-bar-primary-indeterminate-scale-step-1 has no timing function
-$nwb-progress-bar-primary-indeterminate-scale-step-2: cubic-bezier(
-  0.334731,
-  0.12482,
-  0.785844,
-  1
-) !default;
-$nwb-progress-bar-primary-indeterminate-scale-step-3: cubic-bezier(
-  0.06,
-  0.11,
-  0.6,
-  1
-) !default;
+$nwb-progress-bar-primary-indeterminate-scale-step-2: cubic-bezier(0.334731, 0.12482, 0.785844, 1) !default;
+$nwb-progress-bar-primary-indeterminate-scale-step-3: cubic-bezier(0.06, 0.11, 0.6, 1) !default;
 // $nwb-progress-bar-primary-indeterminate-scale-step-4 has no timing function
 
-$nwb-progress-bar-secondary-indeterminate-translate-step-1: cubic-bezier(
-  0.15,
-  0,
-  0.515058,
-  0.409685
-) !default;
-$nwb-progress-bar-secondary-indeterminate-translate-step-2: cubic-bezier(
-  0.31033,
-  0.284058,
-  0.8,
-  0.733712
-) !default;
-$nwb-progress-bar-secondary-indeterminate-translate-step-3: cubic-bezier(
-  0.4,
-  0.627035,
-  0.6,
-  0.902026
-) !default;
+$nwb-progress-bar-secondary-indeterminate-translate-step-1: cubic-bezier(0.15, 0, 0.515058, 0.409685) !default;
+$nwb-progress-bar-secondary-indeterminate-translate-step-2: cubic-bezier(0.31033, 0.284058, 0.8, 0.733712) !default;
+$nwb-progress-bar-secondary-indeterminate-translate-step-3: cubic-bezier(0.4, 0.627035, 0.6, 0.902026) !default;
 // $nwb-progress-bar-secondary-indeterminate-translate-step-4 has no timing function
 
-$nwb-progress-bar-secondary-indeterminate-scale-step-1: cubic-bezier(
-  0.15,
-  0,
-  0.515058,
-  0.409685
-) !default;
-$nwb-progress-bar-secondary-indeterminate-scale-step-2: cubic-bezier(
-  0.31033,
-  0.284058,
-  0.8,
-  0.733712
-) !default;
-$nwb-progress-bar-secondary-indeterminate-scale-step-3: cubic-bezier(
-  0.4,
-  0.627035,
-  0.6,
-  0.902026
-) !default;
+$nwb-progress-bar-secondary-indeterminate-scale-step-1: cubic-bezier(0.15, 0, 0.515058, 0.409685) !default;
+$nwb-progress-bar-secondary-indeterminate-scale-step-2: cubic-bezier(0.31033, 0.284058, 0.8, 0.733712) !default;
+$nwb-progress-bar-secondary-indeterminate-scale-step-3: cubic-bezier(0.4, 0.627035, 0.6, 0.902026) !default;
 // $nwb-progress-bar-secondary-indeterminate-scale-step-4 has no timing function
 
 // Animations for indeterminate and query mode.

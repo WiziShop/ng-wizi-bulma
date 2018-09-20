@@ -38,14 +38,10 @@ describe('extendObject', () => {
   });
 
   it('should throw an error when the dest object is null', () => {
-    expect(() => extendObject(null, { x: 123 })).toThrowError(
-      'Cannot convert undefined or null to object'
-    );
+    expect(() => extendObject(null, { x: 123 })).toThrowError('Cannot convert undefined or null to object');
   });
 
   it('should throw an error when the dest object is undefined', () => {
-    expect(() => extendObject(undefined, { x: 123 })).toThrowError(
-      'Cannot convert undefined or null to object'
-    );
+    expect(() => extendObject(undefined, { x: 123 })).toThrowError('Cannot convert undefined or null to object');
   });
 });

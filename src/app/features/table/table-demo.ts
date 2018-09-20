@@ -43,18 +43,12 @@ export class TableDemo implements OnInit {
 
   filterGroup: NwbFilterGroup;
 
-  constructor(
-    private http: HttpClient,
-    private filterRoutingBuilder: NwbFilterRoutingBuilder
-  ) {}
+  constructor(private http: HttpClient, private filterRoutingBuilder: NwbFilterRoutingBuilder) {}
 
   ngOnInit() {
     this.exampleDatabase = new ExampleHttpDao(this.http);
 
-    this.filterGroup = this.filterRoutingBuilder.group(
-      this.dataTableFilters,
-      'datatable'
-    );
+    this.filterGroup = this.filterRoutingBuilder.group(this.dataTableFilters, 'datatable');
 
     this.filterGroup.valuesChange$.subscribe(filters => {
       this.updateFilters(filters);
@@ -130,15 +124,9 @@ export interface GithubIssue {
 export class ExampleHttpDao {
   constructor(private http: HttpClient) {}
 
-  getRepoIssues(
-    q: string,
-    sort: string,
-    order: string,
-    page: number
-  ): Observable<GithubApi> {
+  getRepoIssues(q: string, sort: string, order: string, page: number): Observable<GithubApi> {
     const href = 'https://api.github.com/search/issues';
-    const requestUrl = `${href}?q=${q}&sort=${sort}&order=${order}&page=${+page +
-      1}`;
+    const requestUrl = `${href}?q=${q}&sort=${sort}&order=${order}&page=${+page + 1}`;
 
     return this.http.get<GithubApi>(requestUrl);
   }

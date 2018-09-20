@@ -1,14 +1,7 @@
 import { Observable, Subject } from 'rxjs';
 import { NwbSnackbarConfig } from './snackbar.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {
-  animate,
-  AnimationEvent,
-  state,
-  style,
-  transition,
-  trigger
-} from '@angular/animations';
+import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'nwb-snack-bar',

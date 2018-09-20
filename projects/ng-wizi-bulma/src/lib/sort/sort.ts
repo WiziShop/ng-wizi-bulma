@@ -10,21 +10,9 @@
  */
 
 /** Container for NwbSortables to manage the sort state and provide default sort parameters. */
-import {
-  Directive,
-  EventEmitter,
-  Input,
-  isDevMode,
-  OnChanges,
-  OnDestroy,
-  Output
-} from '@angular/core';
+import { Directive, EventEmitter, Input, isDevMode, OnChanges, OnDestroy, Output } from '@angular/core';
 import { Subject } from 'rxjs';
-import {
-  getSortDuplicateSortableIdError,
-  getSortHeaderMissingIdError,
-  getSortInvalidDirectionError
-} from './sort-errors';
+import { getSortDuplicateSortableIdError, getSortHeaderMissingIdError, getSortInvalidDirectionError } from './sort-errors';
 import { SortDirection } from './sort-direction';
 
 /** Interface for a directive that holds sorting state consumed by `MatSortHeader`. */
@@ -74,12 +62,7 @@ export class NwbSort implements OnChanges, OnDestroy {
   }
 
   set direction(direction: SortDirection) {
-    if (
-      isDevMode() &&
-      direction &&
-      direction !== 'asc' &&
-      direction !== 'desc'
-    ) {
+    if (isDevMode() && direction && direction !== 'asc' && direction !== 'desc') {
       throw getSortInvalidDirectionError(direction);
     }
     this._direction = direction;

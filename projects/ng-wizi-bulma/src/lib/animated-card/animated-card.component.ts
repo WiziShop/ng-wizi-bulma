@@ -1,9 +1,4 @@
-import {
-  OnInit,
-  ElementRef,
-  Component,
-  ViewEncapsulation
-} from '@angular/core';
+import { OnInit, ElementRef, Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'div[nwbAnimatedCardClosed], div[nwbAnimatedCardOpened]',
@@ -14,19 +9,14 @@ import {
 export class NwbAnimatedCardComponent implements OnInit {
   constructor(private elementRef: ElementRef) {
     this.elementRef.nativeElement.classList.toggle('is-animate');
-    if (
-      this.elementRef.nativeElement.getAttribute('nwbAnimatedCardOpened') !==
-      null
-    ) {
+    if (this.elementRef.nativeElement.getAttribute('nwbAnimatedCardOpened') !== null) {
       this.elementRef.nativeElement.classList.toggle('is-active');
     }
   }
 
   ngOnInit() {
-    this.elementRef.nativeElement
-      .querySelector('header')
-      .addEventListener('click', () => {
-        this.elementRef.nativeElement.classList.toggle('is-active');
-      });
+    this.elementRef.nativeElement.querySelector('header').addEventListener('click', () => {
+      this.elementRef.nativeElement.classList.toggle('is-active');
+    });
   }
 }

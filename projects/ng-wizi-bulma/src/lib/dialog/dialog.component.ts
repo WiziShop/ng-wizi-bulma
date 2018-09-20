@@ -12,14 +12,7 @@ import {
   ViewContainerRef,
   ViewEncapsulation
 } from '@angular/core';
-import {
-  animate,
-  AnimationEvent,
-  keyframes,
-  style,
-  transition,
-  trigger
-} from '@angular/animations';
+import { animate, AnimationEvent, keyframes, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'nwb-dialog',
@@ -33,23 +26,11 @@ import {
     trigger('modalState', [
       transition(
         'void => active',
-        animate(
-          '200ms',
-          keyframes([
-            style({ opacity: '0', top: '5%', offset: 0 }),
-            style({ opacity: '1', top: '0', offset: 1 })
-          ])
-        )
+        animate('200ms', keyframes([style({ opacity: '0', top: '5%', offset: 0 }), style({ opacity: '1', top: '0', offset: 1 })]))
       ),
       transition(
         'active => inactive',
-        animate(
-          '200ms',
-          keyframes([
-            style({ opacity: '1', offset: 0 }),
-            style({ opacity: '0', top: '5%', offset: 1 })
-          ])
-        )
+        animate('200ms', keyframes([style({ opacity: '1', offset: 0 }), style({ opacity: '0', top: '5%', offset: 1 })]))
       )
     ])
   ]
@@ -108,10 +89,7 @@ export class NwbDialogComponent<T> implements OnInit {
 
   /** Method to call when cancel button is clicked */
   cancelHandler() {
-    if (
-      this.config.cancelHandler &&
-      typeof this.config.cancelHandler === 'function'
-    ) {
+    if (this.config.cancelHandler && typeof this.config.cancelHandler === 'function') {
       this.config.cancelHandler();
     } else {
       this.dismiss(false);
@@ -194,9 +172,7 @@ export class NwbDialogComponent<T> implements OnInit {
     if (componentOrTemplateRef instanceof TemplateRef) {
       this.componentSection.createEmbeddedView(componentOrTemplateRef);
     } else {
-      factory = this.componentFactoryResolver.resolveComponentFactory(
-        componentOrTemplateRef
-      );
+      factory = this.componentFactoryResolver.resolveComponentFactory(componentOrTemplateRef);
       const componentRef = this.componentSection.createComponent(factory);
 
       this.componentInstance = componentRef.instance as T;

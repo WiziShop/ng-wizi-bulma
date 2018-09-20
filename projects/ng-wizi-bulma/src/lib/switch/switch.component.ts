@@ -8,9 +8,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     class: 'nwb-switch'
   },
   encapsulation: ViewEncapsulation.None,
-  providers: [
-    { provide: NG_VALUE_ACCESSOR, useExisting: NwbSwitchComponent, multi: true }
-  ]
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: NwbSwitchComponent, multi: true }]
 })
 export class NwbSwitchComponent implements ControlValueAccessor {
   @Input()

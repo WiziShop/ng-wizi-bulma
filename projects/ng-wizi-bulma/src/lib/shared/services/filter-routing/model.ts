@@ -74,11 +74,7 @@ export class NwbFilterGroup {
 }
 
 export class NwbFilter {
-  constructor(
-    public key: string,
-    public defaultValue: any,
-    public value: any
-  ) {}
+  constructor(public key: string, public defaultValue: any, public value: any) {}
 
   isDefaultValue() {
     return this.defaultValue === this.value;

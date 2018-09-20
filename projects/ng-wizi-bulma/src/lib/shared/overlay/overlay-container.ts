@@ -34,9 +34,7 @@ export class OverlayContainer {
   }
 }
 
-export function OVERLAY_CONTAINER_PROVIDER_FACTORY(
-  parentContainer: OverlayContainer
-) {
+export function OVERLAY_CONTAINER_PROVIDER_FACTORY(parentContainer: OverlayContainer) {
   return parentContainer || new OverlayContainer();
 }
 

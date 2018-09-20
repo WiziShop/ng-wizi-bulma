@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  NwbFoundRow,
-  NwbModalSearchComponent,
-  NwbModalSearchService
-} from '@wizishop/ng-wizi-bulma';
+import { NwbFoundRow, NwbModalSearchComponent, NwbModalSearchService } from '@wizishop/ng-wizi-bulma';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/index';
 
@@ -79,10 +75,7 @@ export class ModalSearchService {
 
   modalSearch: NwbModalSearchComponent;
 
-  constructor(
-    private router: Router,
-    private modalSearchService: NwbModalSearchService
-  ) {
+  constructor(private router: Router, private modalSearchService: NwbModalSearchService) {
     this.modalSearch = this.modalSearchService.create({
       records: this.records1.concat(this.records2),
       keyCodes: [
@@ -130,15 +123,9 @@ export class ModalSearchService {
 
   searchFromRecords(searchValue: string): Observable<NwbFoundRow[]> {
     return Observable.create((observer: any) => {
-      const foundRows1 = this.modalSearch.searchAllWordsInFoundRows(
-        searchValue,
-        this.records1
-      );
+      const foundRows1 = this.modalSearch.searchAllWordsInFoundRows(searchValue, this.records1);
 
-      const foundRows2 = this.modalSearch.searchAllWordsInFoundRows(
-        searchValue,
-        this.records2
-      );
+      const foundRows2 = this.modalSearch.searchAllWordsInFoundRows(searchValue, this.records2);
 
       setTimeout(() => {
         observer.next(foundRows1.concat(foundRows2));

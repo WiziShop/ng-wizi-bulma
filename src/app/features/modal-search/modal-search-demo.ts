@@ -9,7 +9,6 @@ export class ModalSearchDemo {
   constructor(public modalSearchService: ModalSearchService) {}
 
   toggleEnabled() {
-    this.modalSearchService.modalSearch.enabled = !this.modalSearchService
-      .modalSearch.enabled;
+    this.modalSearchService.modalSearch.enabled = !this.modalSearchService.modalSearch.enabled;
   }
 }

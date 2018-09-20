@@ -17,9 +17,7 @@ export class NwbSpinnerComponent implements OnInit {
 
   ngOnInit() {
     if (!this.color) {
-      this.color = this.availableColors[
-        Math.floor(Math.random() * this.availableColors.length)
-      ];
+      this.color = this.availableColors[Math.floor(Math.random() * this.availableColors.length)];
     }
   }
 }

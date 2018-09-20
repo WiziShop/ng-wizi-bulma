@@ -22,9 +22,7 @@ export class NwbFilterRoutingBuilder {
     Object.keys(params).forEach(key => {
       const parsedKeys = this.getParsedKey(key);
 
-      const values = groupChanges.has(parsedKeys.filterGroupName)
-        ? groupChanges.get(parsedKeys.filterGroupName)
-        : {};
+      const values = groupChanges.has(parsedKeys.filterGroupName) ? groupChanges.get(parsedKeys.filterGroupName) : {};
 
       values[parsedKeys.filterKey] = params[key];
 
@@ -38,9 +36,7 @@ export class NwbFilterRoutingBuilder {
         defaultValues[filter.key] = filter.defaultValue;
       });
 
-      const newValues = groupChanges.has(filterGroup.name)
-        ? groupChanges.get(filterGroup.name)
-        : {};
+      const newValues = groupChanges.has(filterGroup.name) ? groupChanges.get(filterGroup.name) : {};
 
       filterGroup.setValues(Object.assign(defaultValues, newValues));
     });
@@ -68,10 +64,7 @@ export class NwbFilterRoutingBuilder {
     return filterGroup;
   }
 
-  private addFilterGroupNameToQueryParamKey(
-    filterGroupName: string,
-    key: string
-  ) {
+  private addFilterGroupNameToQueryParamKey(filterGroupName: string, key: string) {
     return filterGroupName + ':' + key;
   }
 
@@ -93,10 +86,7 @@ export class NwbFilterRoutingBuilder {
         const queryParams = Object.assign({}, params);
 
         filters.forEach(filter => {
-          const paramKey = this.addFilterGroupNameToQueryParamKey(
-            filterGroupName,
-            filter.key
-          );
+          const paramKey = this.addFilterGroupNameToQueryParamKey(filterGroupName, filter.key);
 
           if (!filter.isDefaultValue()) {
             let value = filter.value;

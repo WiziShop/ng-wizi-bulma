@@ -13,9 +13,7 @@ export class NwbAlertService {
   }
 
   private getComponentRef(config: NwbAlertConfig) {
-    const componentRef = this.domService.attachComponentPortal(
-      NwbAlertComponent
-    );
+    const componentRef = this.domService.attachComponentPortal(NwbAlertComponent);
 
     config = Object.assign(
       {

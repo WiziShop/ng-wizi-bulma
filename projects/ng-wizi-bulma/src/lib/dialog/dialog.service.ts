@@ -14,10 +14,7 @@ export class NwbDialogService {
     return componentRef.instance;
   }
 
-  openFromComponent<T>(
-    componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
-    config: NwbDialogConfig
-  ): NwbDialogComponent<T> {
+  openFromComponent<T>(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>, config: NwbDialogConfig): NwbDialogComponent<T> {
     const componentRef = this.getComponentRef(config);
 
     componentRef.instance._setComponent(componentOrTemplateRef);
@@ -32,10 +29,7 @@ export class NwbDialogService {
 
     let injector = new PortalInjector(this.injector, injectionTokens);
 
-    const componentRef = this.domService.attachComponentPortal(
-      NwbDialogComponent,
-      injector
-    );
+    const componentRef = this.domService.attachComponentPortal(NwbDialogComponent, injector);
 
     componentRef.instance.config = extendObject(new NwbDialogConfig(), config);
 

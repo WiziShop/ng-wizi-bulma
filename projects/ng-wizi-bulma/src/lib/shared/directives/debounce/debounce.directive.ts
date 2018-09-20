@@ -1,12 +1,4 @@
-import {
-  Directive,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output
-} from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subscription, fromEvent } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -21,8 +13,7 @@ import { map } from 'rxjs/operators';
     }
   ]
 })
-export class NwbDebounceDirective
-  implements OnInit, ControlValueAccessor, OnDestroy {
+export class NwbDebounceDirective implements OnInit, ControlValueAccessor, OnDestroy {
   @Input()
   nwbDebounceDelay = 700;
   @Output()
@@ -64,23 +55,13 @@ export class NwbDebounceDirective
   ngOnInit(): void {
     this._inputValue = this.elementRef.nativeElement.value;
 
-    const eventStreamKeyUp = fromEvent(
-      this.elementRef.nativeElement,
-      'keyup'
-    ).pipe(map(() => this.elementRef.nativeElement.value));
+    const eventStreamKeyUp = fromEvent(this.elementRef.nativeElement, 'keyup').pipe(map(() => this.elementRef.nativeElement.value));
 
-    this._eventStreamKeyUp = eventStreamKeyUp.subscribe((input: any) =>
-      this.valueChange(input)
-    );
+    this._eventStreamKeyUp = eventStreamKeyUp.subscribe((input: any) => this.valueChange(input));
 
-    const eventStreamChange = fromEvent(
-      this.elementRef.nativeElement,
-      'change'
-    ).pipe(map(() => this.elementRef.nativeElement.value));
+    const eventStreamChange = fromEvent(this.elementRef.nativeElement, 'change').pipe(map(() => this.elementRef.nativeElement.value));
 
-    this._eventStreamChange = eventStreamChange.subscribe((input: any) =>
-      this.valueChange(input)
-    );
+    this._eventStreamChange = eventStreamChange.subscribe((input: any) => this.valueChange(input));
   }
 
   ngOnDestroy() {

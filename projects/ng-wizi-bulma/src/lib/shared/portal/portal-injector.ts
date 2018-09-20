@@ -14,10 +14,7 @@ import { Injector } from '@angular/core';
  * @docs-private
  */
 export class PortalInjector implements Injector {
-  constructor(
-    private _parentInjector: Injector,
-    private _customTokens: WeakMap<any, any>
-  ) {}
+  constructor(private _parentInjector: Injector, private _customTokens: WeakMap<any, any>) {}
 
   get(token: any, notFoundValue?: any): any {
     const value = this._customTokens.get(token);

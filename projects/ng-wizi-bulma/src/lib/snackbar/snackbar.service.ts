@@ -13,9 +13,7 @@ export class NwbSnackbarService {
   }
 
   private getComponentRef(config: NwbSnackbarConfig) {
-    const componentRef = this.domService.attachComponentPortal(
-      NwbSnackbarComponent
-    );
+    const componentRef = this.domService.attachComponentPortal(NwbSnackbarComponent);
 
     componentRef.instance.config = config;
 

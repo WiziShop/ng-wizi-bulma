@@ -22,15 +22,9 @@ export class NwbModalSearchService {
 
     let injector = new PortalInjector(this.injector, injectionTokens);
 
-    const componentRef = this.domService.attachComponentPortal(
-      NwbModalSearchComponent,
-      injector
-    );
+    const componentRef = this.domService.attachComponentPortal(NwbModalSearchComponent, injector);
 
-    componentRef.instance.config = extendObject(
-      new NwbModalSearchConfig(),
-      config
-    );
+    componentRef.instance.config = extendObject(new NwbModalSearchConfig(), config);
 
     return componentRef;
   }

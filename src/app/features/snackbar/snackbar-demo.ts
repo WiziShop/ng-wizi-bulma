@@ -19,8 +19,6 @@ export class SnackbarDemo {
     this.nwbSnackbar
       .open(this.snackBarNewVersionConfig)
       .afterClosed()
-      .subscribe(manualClose =>
-        console.log('snackBarClose, manualClose', manualClose)
-      );
+      .subscribe(manualClose => console.log('snackBarClose, manualClose', manualClose));
   }
 }
