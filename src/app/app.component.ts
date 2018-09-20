@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {ModalSearchService} from './services/modal-search.service';
+import { Component } from '@angular/core';
+import { ModalSearchService } from './services/modal-search.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +7,7 @@ import {ModalSearchService} from './services/modal-search.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  constructor(private modalSearchService: ModalSearchService) {
-
-  }
+  constructor(private modalSearchService: ModalSearchService) {}
 
   openModalSearch() {
     this.modalSearchService.modalSearch.open();

@@ -4,7 +4,8 @@
     width: auto;
   }
 
-  .modal-card-head, .modal-card-foot {
+  .modal-card-head,
+  .modal-card-foot {
     border: 0;
     border-radius: 0;
   }
@@ -29,10 +30,11 @@
   }
 
   @media screen and (max-width: 640px) {
-    .modal-content, .modal-card {
+    .modal-content,
+    .modal-card {
       min-width: inherit;
       width: 100%;
-      margin:0;
+      margin: 0;
     }
   }
 

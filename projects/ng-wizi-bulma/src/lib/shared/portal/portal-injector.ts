@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Injector} from '@angular/core';
+import { Injector } from '@angular/core';
 
 /**
  * Custom injector to be used when providing custom
@@ -16,7 +16,8 @@ import {Injector} from '@angular/core';
 export class PortalInjector implements Injector {
   constructor(
     private _parentInjector: Injector,
-    private _customTokens: WeakMap<any, any>) { }
+    private _customTokens: WeakMap<any, any>
+  ) {}
 
   get(token: any, notFoundValue?: any): any {
     const value = this._customTokens.get(token);

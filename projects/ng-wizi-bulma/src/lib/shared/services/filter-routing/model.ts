@@ -1,28 +1,21 @@
-import {Subject} from 'rxjs/internal/Subject';
+import { Subject } from 'rxjs/internal/Subject';
 
 export class NwbFilterGroup {
-
   valuesChange$ = new Subject<NwbFilter[]>();
 
   private group = new Map<string, NwbFilter>();
 
-  constructor(public name: string, group: { [key: string]: any; }) {
-
-    Object.keys(group).forEach((key) => {
-
+  constructor(public name: string, group: { [key: string]: any }) {
+    Object.keys(group).forEach(key => {
       const value = group[key];
 
       const filter = new NwbFilter(key, value, value);
 
-
       this.group.set(key, filter);
     });
-
   }
 
-
   set(key, value) {
-
     if (this._valueChange(key, value)) {
       this.emitChange();
     }
@@ -38,7 +31,7 @@ export class NwbFilterGroup {
 
   setValues(values: { [key: string]: any }) {
     let valueHasChanged = false;
-    Object.keys(values).forEach((key) => {
+    Object.keys(values).forEach(key => {
       if (this._valueChange(key, values[key])) {
         valueHasChanged = true;
       }
@@ -48,7 +41,6 @@ export class NwbFilterGroup {
       this.emitChange();
     }
   }
-
 
   private _valueChange(key, value) {
     if (!this.group.has(key)) {
@@ -67,7 +59,6 @@ export class NwbFilterGroup {
   }
 
   private emitChange() {
-
     const filters: NwbFilter[] = [];
     this.group.forEach(filter => filters.push(filter));
 
@@ -82,16 +73,14 @@ export class NwbFilterGroup {
   }
 }
 
-
 export class NwbFilter {
-
-  constructor(public key: string, public defaultValue: any, public value: any) {
-
-  }
-
+  constructor(
+    public key: string,
+    public defaultValue: any,
+    public value: any
+  ) {}
 
   isDefaultValue() {
     return this.defaultValue === this.value;
   }
-
 }

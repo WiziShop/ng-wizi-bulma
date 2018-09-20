@@ -1,7 +1,11 @@
-import {Injectable} from '@angular/core';
-import {NwbFoundRow, NwbModalSearchComponent, NwbModalSearchService} from '@wizishop/ng-wizi-bulma';
-import {Router} from '@angular/router';
-import {Observable} from 'rxjs/index';
+import { Injectable } from '@angular/core';
+import {
+  NwbFoundRow,
+  NwbModalSearchComponent,
+  NwbModalSearchService
+} from '@wizishop/ng-wizi-bulma';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/index';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +18,16 @@ export class ModalSearchService {
       children: [
         {
           text: 'Debounce',
-          data: './debounce',
-        }, {
-          text: 'Dialog',
-          data: './dialog',
-        }, {
-          text: 'Dropdown',
-          data: './dropdown',
+          data: './debounce'
         },
+        {
+          text: 'Dialog',
+          data: './dialog'
+        },
+        {
+          text: 'Dropdown',
+          data: './dropdown'
+        }
       ]
     }
   ];
@@ -33,64 +39,74 @@ export class ModalSearchService {
       children: [
         {
           text: 'Modal Search',
-          data: './modal-search',
-        }, {
+          data: './modal-search'
+        },
+        {
           text: 'Progress Bar',
-          data: './progress-bar',
-        }, {
+          data: './progress-bar'
+        },
+        {
           text: 'Paginator',
-          data: './paginator',
-        }, {
+          data: './paginator'
+        },
+        {
           text: 'Snackbar',
-          data: './snackbar',
-        }, {
+          data: './snackbar'
+        },
+        {
           text: 'Spinner',
-          data: './spinner',
+          data: './spinner'
         }
       ]
     },
     {
       text: 'Tabs',
-      data: './tabs',
-    }, {
+      data: './tabs'
+    },
+    {
       text: 'Switch',
-      data: './switch',
-    }, {
+      data: './switch'
+    },
+    {
       text: 'Tooltip',
-      data: './tooltip',
-    }, {
+      data: './tooltip'
+    },
+    {
       text: 'Sort Header',
-      data: './sort',
+      data: './sort'
     }
   ];
 
   modalSearch: NwbModalSearchComponent;
 
-  constructor(private router: Router, private modalSearchService: NwbModalSearchService) {
-
+  constructor(
+    private router: Router,
+    private modalSearchService: NwbModalSearchService
+  ) {
     this.modalSearch = this.modalSearchService.create({
       records: this.records1.concat(this.records2),
-      keyCodes: [{
-        specialKey: 'cmd',
-        key: 'k'
-      }, {
-        specialKey: 'ctrl',
-        key: 'e'
-      }],
+      keyCodes: [
+        {
+          specialKey: 'cmd',
+          key: 'k'
+        },
+        {
+          specialKey: 'ctrl',
+          key: 'e'
+        }
+      ],
       customSearchFn: (value: string) => this.searchFromRecords(value),
       inputPlaceholder: 'Navigate to...',
       hasFooter: true,
       extraClasses: 'extra-class'
     });
 
-    this.modalSearch.selectedValue$
-      .subscribe((value: NwbFoundRow) => {
-        this.router.navigate([value.data]);
-      });
+    this.modalSearch.selectedValue$.subscribe((value: NwbFoundRow) => {
+      this.router.navigate([value.data]);
+    });
 
-    this.modalSearch.afterViewInit$
-      .subscribe(() => {
-        this.modalSearch.footer.nativeElement.innerHTML = `
+    this.modalSearch.afterViewInit$.subscribe(() => {
+      this.modalSearch.footer.nativeElement.innerHTML = `
           <div class="columns" style="width: 100%">
             <div class="column">
               <span class="icon">
@@ -109,26 +125,25 @@ export class ModalSearchService {
             </div>
           </div>
         `;
-      });
-
+    });
   }
 
-
   searchFromRecords(searchValue: string): Observable<NwbFoundRow[]> {
-
     return Observable.create((observer: any) => {
+      const foundRows1 = this.modalSearch.searchAllWordsInFoundRows(
+        searchValue,
+        this.records1
+      );
 
-      const foundRows1 = this.modalSearch.searchAllWordsInFoundRows(searchValue, this.records1);
-
-      const foundRows2 = this.modalSearch.searchAllWordsInFoundRows(searchValue, this.records2);
+      const foundRows2 = this.modalSearch.searchAllWordsInFoundRows(
+        searchValue,
+        this.records2
+      );
 
       setTimeout(() => {
         observer.next(foundRows1.concat(foundRows2));
         observer.complete();
       }, 500);
-
     });
-
-
   }
 }

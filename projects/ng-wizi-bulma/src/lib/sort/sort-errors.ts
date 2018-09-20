@@ -13,7 +13,9 @@ export function getSortDuplicateSortableIdError(id: string): Error {
 
 /** @docs-private */
 export function getSortHeaderNotContainedWithinSortError(): Error {
-  return Error(`NwbSortHeader must be placed within a parent element with the NwbSort directive.`);
+  return Error(
+    `NwbSortHeader must be placed within a parent element with the NwbSort directive.`
+  );
 }
 
 /** @docs-private */

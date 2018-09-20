@@ -15,7 +15,8 @@
     "e2e": "ng e2e",
     "deploy": "npm run build && firebase deploy",
     "publish:npm": "cd dist/@wizishop/ng-wizi-bulma && npm publish --access public && cd ../../../",
-    "publish": "npm run deploy && npm run publish:npm"
+    "publish": "npm run deploy && npm run publish:npm",
+    "precommit": "pretty-quick --staged"
   },
   "private": true,
   "dependencies": {
@@ -48,6 +49,7 @@
     "chokidar-cli": "^1.2.0",
     "codelyzer": "^4.1.0",
     "concurrently": "^3.6.0",
+    "husky": "^0.14.3",
     "jasmine-core": "~3.1.0",
     "jasmine-spec-reporter": "~4.2.0",
     "karma": "~2.0.0",
@@ -57,6 +59,8 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^1.0.0",
     "ng-packagr": "^4.1.1",
+    "prettier": "1.14.3",
+    "pretty-quick": "^1.7.0",
     "protractor": "~5.3.0",
     "rimraf": "^2.6.1",
     "ts-node": "~6.0.0",

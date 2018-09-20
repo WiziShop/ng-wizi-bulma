@@ -1,5 +1,5 @@
-import {Observable, Subject} from 'rxjs';
-import {ComponentType, NwbDialogConfig} from './dialog.service';
+import { Observable, Subject } from 'rxjs';
+import { ComponentType, NwbDialogConfig } from './dialog.service';
 import {
   Component,
   ComponentFactoryResolver,
@@ -12,39 +12,63 @@ import {
   ViewContainerRef,
   ViewEncapsulation
 } from '@angular/core';
-import {animate, AnimationEvent, keyframes, style, transition, trigger} from '@angular/animations';
+import {
+  animate,
+  AnimationEvent,
+  keyframes,
+  style,
+  transition,
+  trigger
+} from '@angular/animations';
 
 @Component({
   selector: 'nwb-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss'],
   host: {
-    'class': 'nwb-dialog',
+    class: 'nwb-dialog'
   },
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('modalState', [
-      transition('void => active', animate('200ms', keyframes([
-        style({opacity: '0', top: '5%', offset: 0}),
-        style({opacity: '1', top: '0', offset: 1}),
-      ]))),
-      transition('active => inactive', animate('200ms', keyframes([
-        style({opacity: '1', offset: 0}),
-        style({opacity: '0', top: '5%', offset: 1}),
-      ])))
+      transition(
+        'void => active',
+        animate(
+          '200ms',
+          keyframes([
+            style({ opacity: '0', top: '5%', offset: 0 }),
+            style({ opacity: '1', top: '0', offset: 1 })
+          ])
+        )
+      ),
+      transition(
+        'active => inactive',
+        animate(
+          '200ms',
+          keyframes([
+            style({ opacity: '1', offset: 0 }),
+            style({ opacity: '0', top: '5%', offset: 1 })
+          ])
+        )
+      )
     ])
   ]
 })
 export class NwbDialogComponent<T> implements OnInit {
+  @ViewChild('componentSection', { read: ViewContainerRef })
+  componentSection: ViewContainerRef;
 
-  @ViewChild('componentSection', {read: ViewContainerRef}) componentSection: ViewContainerRef;
+  @ViewChild('okButton')
+  okButtonEl: ElementRef;
+  @ViewChild('cancelButton')
+  cancelButtonEl: ElementRef;
+  @ViewChild('backdropButton')
+  backdropButtonEl: ElementRef;
 
-  @ViewChild('okButton') okButtonEl: ElementRef;
-  @ViewChild('cancelButton') cancelButtonEl: ElementRef;
-  @ViewChild('backdropButton') backdropButtonEl: ElementRef;
-
-  @ViewChild('header') headerEl: ElementRef;
-  @ViewChild('footer') footerEl: ElementRef;
+  @ViewChild('header')
+  headerEl: ElementRef;
+  @ViewChild('footer')
+  footerEl: ElementRef;
 
   ready = new EventEmitter<boolean>();
 
@@ -61,9 +85,7 @@ export class NwbDialogComponent<T> implements OnInit {
 
   private fromOkButton = false;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
-
-  }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit() {
     this.open = true;
@@ -75,7 +97,6 @@ export class NwbDialogComponent<T> implements OnInit {
     if (this.config.hasBackdrop) {
       this.dismiss(false);
     }
-
   }
 
   /** Method to call when backdrop button is clicked */
@@ -85,10 +106,12 @@ export class NwbDialogComponent<T> implements OnInit {
     }
   }
 
-
   /** Method to call when cancel button is clicked */
   cancelHandler() {
-    if (this.config.cancelHandler && typeof this.config.cancelHandler === 'function') {
+    if (
+      this.config.cancelHandler &&
+      typeof this.config.cancelHandler === 'function'
+    ) {
       this.config.cancelHandler();
     } else {
       this.dismiss(false);
@@ -141,7 +164,6 @@ export class NwbDialogComponent<T> implements OnInit {
     this.open = false;
 
     this.fromOkButton = fromOkButton;
-
   }
 
   animationDone(event: AnimationEvent) {
@@ -172,7 +194,9 @@ export class NwbDialogComponent<T> implements OnInit {
     if (componentOrTemplateRef instanceof TemplateRef) {
       this.componentSection.createEmbeddedView(componentOrTemplateRef);
     } else {
-      factory = this.componentFactoryResolver.resolveComponentFactory(componentOrTemplateRef);
+      factory = this.componentFactoryResolver.resolveComponentFactory(
+        componentOrTemplateRef
+      );
       const componentRef = this.componentSection.createComponent(factory);
 
       this.componentInstance = componentRef.instance as T;

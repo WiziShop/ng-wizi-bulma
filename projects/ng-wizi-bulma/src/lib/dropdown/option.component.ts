@@ -1,5 +1,10 @@
-import {Directive, ElementRef, EventEmitter, Input, Output} from '@angular/core';
-
+import {
+  Directive,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 
 /**
  * @name Option
@@ -11,7 +16,6 @@ import {Directive, ElementRef, EventEmitter, Input, Output} from '@angular/core'
   selector: 'nwb-option'
 })
 export class NwbOptionComponent {
-
   _selected: boolean = false;
   _disabled: boolean = false;
   _value: any;
@@ -58,10 +62,10 @@ export class NwbOptionComponent {
   /**
    * @output {any} Event to evaluate when option is selected.
    */
-  @Output() nwbSelect: EventEmitter<any> = new EventEmitter();
+  @Output()
+  nwbSelect: EventEmitter<any> = new EventEmitter();
 
-  constructor(private _elementRef: ElementRef) {
-  }
+  constructor(private _elementRef: ElementRef) {}
 
   /**
    * @hidden

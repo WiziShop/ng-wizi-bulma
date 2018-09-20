@@ -9,8 +9,12 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
-
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  ViewEncapsulation
+} from '@angular/core';
 
 /**
  * <nwb-progress-bar> component.
@@ -18,7 +22,7 @@ import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@ang
 @Component({
   selector: 'nwb-progress-bar',
   host: {
-    'role': 'progressbar',
+    role: 'progressbar',
     'aria-valuemin': '0',
     'aria-valuemax': '100',
     '[attr.aria-valuenow]': 'value',
@@ -27,16 +31,17 @@ import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@ang
     '[class.is-info]': 'color == "info"',
     '[class.is-warning]': 'color == "warning"',
     '[class.is-danger]': 'color == "danger"',
-    'class': 'nwb-progress-bar',
+    class: 'nwb-progress-bar'
   },
   templateUrl: './progress-bar.component.html',
   styleUrls: ['./progress-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 export class NwbProgressBarComponent {
   /** Color of the progress bar. */
-  @Input() color: 'primary' | 'info' | 'warning' | 'danger' = 'primary';
+  @Input()
+  color: 'primary' | 'info' | 'warning' | 'danger' = 'primary';
 
   private _value: number = 0;
 
@@ -57,14 +62,14 @@ export class NwbProgressBarComponent {
    * 'determinate'.
    * Mirrored to mode attribute.
    */
-  @Input() mode: 'determinate' | 'indeterminate' | 'query' = 'determinate';
+  @Input()
+  mode: 'determinate' | 'indeterminate' | 'query' = 'determinate';
 
   /** Gets the current transform value for the progress bar's primary indicator. */
   _primaryTransform() {
     let scale = this.value / 100;
-    return {transform: `scaleX(${scale})`};
+    return { transform: `scaleX(${scale})` };
   }
-
 }
 
 /** Clamps a value to be between two numbers, by default 0 and 100. */

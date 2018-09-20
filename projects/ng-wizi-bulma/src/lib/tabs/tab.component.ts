@@ -1,5 +1,4 @@
-import {Component, Input} from '@angular/core';
-
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'nwb-tab',
@@ -9,9 +8,10 @@ import {Component, Input} from '@angular/core';
   `
 })
 export class NwbTabComponent {
-
-  @Input() label: string;
-  @Input() icon: string;
+  @Input()
+  label: string;
+  @Input()
+  icon: string;
   index: number;
 
   isSelected: boolean;

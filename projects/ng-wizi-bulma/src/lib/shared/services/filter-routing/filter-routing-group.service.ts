@@ -1,54 +1,52 @@
-import {Injectable} from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
-import {NwbFilter, NwbFilterGroup} from './model';
+import { Injectable } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { NwbFilter, NwbFilterGroup } from './model';
 
 const FILTER_GROUP_PARAM_PREFIX = 'fg_';
 
 @Injectable()
 export class NwbFilterRoutingBuilder {
-
   private groupCounter = 0;
 
   private filterGroups = new Map<string, NwbFilterGroup>();
 
   constructor(private router: Router, private route: ActivatedRoute) {
-
-
-    this.route.queryParams
-      .subscribe(params => {
-        this.queryParamsChange(params);
-      });
+    this.route.queryParams.subscribe(params => {
+      this.queryParamsChange(params);
+    });
   }
 
   private queryParamsChange(params: Params) {
-
-    const groupChanges = new Map<string, { [key: string]: any; }>();
+    const groupChanges = new Map<string, { [key: string]: any }>();
 
     Object.keys(params).forEach(key => {
       const parsedKeys = this.getParsedKey(key);
 
-      const values = groupChanges.has(parsedKeys.filterGroupName) ? groupChanges.get(parsedKeys.filterGroupName) : {};
+      const values = groupChanges.has(parsedKeys.filterGroupName)
+        ? groupChanges.get(parsedKeys.filterGroupName)
+        : {};
 
       values[parsedKeys.filterKey] = params[key];
 
       groupChanges.set(parsedKeys.filterGroupName, values);
     });
 
-    this.filterGroups.forEach((filterGroup) => {
-
+    this.filterGroups.forEach(filterGroup => {
       const defaultValues = {};
 
       filterGroup.getFilters().forEach(filter => {
         defaultValues[filter.key] = filter.defaultValue;
       });
 
-      const newValues = groupChanges.has(filterGroup.name) ? groupChanges.get(filterGroup.name) : {};
+      const newValues = groupChanges.has(filterGroup.name)
+        ? groupChanges.get(filterGroup.name)
+        : {};
 
       filterGroup.setValues(Object.assign(defaultValues, newValues));
     });
   }
 
-  group(group: { [key: string]: any; }, groupName?: string) {
+  group(group: { [key: string]: any }, groupName?: string) {
     if (!groupName) {
       groupName = `${FILTER_GROUP_PARAM_PREFIX}${this.groupCounter++}`;
     }
@@ -56,10 +54,9 @@ export class NwbFilterRoutingBuilder {
 
     this.filterGroups.set(filterGroup.name, filterGroup);
 
-    filterGroup.valuesChange$
-      .subscribe(filters => {
-        this.updateRouting(filterGroup.name, filters);
-      });
+    filterGroup.valuesChange$.subscribe(filters => {
+      this.updateRouting(filterGroup.name, filters);
+    });
 
     // Check values from query parameters
     this.route.queryParams
@@ -71,24 +68,24 @@ export class NwbFilterRoutingBuilder {
     return filterGroup;
   }
 
-  private addFilterGroupNameToQueryParamKey(filterGroupName: string, key: string) {
+  private addFilterGroupNameToQueryParamKey(
+    filterGroupName: string,
+    key: string
+  ) {
     return filterGroupName + ':' + key;
   }
 
   private getParsedKey(encodedKey: string) {
-
     const value = encodedKey.split(':');
     const filterGroupName = value[0];
     const filterKey = value[1];
 
-    return {filterGroupName, filterKey};
+    return { filterGroupName, filterKey };
   }
 
   private updateRouting(filterGroupName: string, filters: NwbFilter[]) {
-    this.route
-      .queryParamMap
-      .subscribe((paramsMap) => {
-
+    this.route.queryParamMap
+      .subscribe(paramsMap => {
         const params = {};
         paramsMap.keys.forEach(key => {
           params[key] = paramsMap.get(key);
@@ -96,8 +93,10 @@ export class NwbFilterRoutingBuilder {
         const queryParams = Object.assign({}, params);
 
         filters.forEach(filter => {
-
-          const paramKey = this.addFilterGroupNameToQueryParamKey(filterGroupName, filter.key);
+          const paramKey = this.addFilterGroupNameToQueryParamKey(
+            filterGroupName,
+            filter.key
+          );
 
           if (!filter.isDefaultValue()) {
             let value = filter.value;
@@ -120,7 +119,6 @@ export class NwbFilterRoutingBuilder {
         });
       })
       .unsubscribe();
-
   }
 
   remove(filterGroup: NwbFilterGroup) {
@@ -129,4 +127,3 @@ export class NwbFilterRoutingBuilder {
     }
   }
 }
-

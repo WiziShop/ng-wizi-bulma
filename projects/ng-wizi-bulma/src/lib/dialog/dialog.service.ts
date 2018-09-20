@@ -1,33 +1,29 @@
-import {Injectable, Injector, TemplateRef} from '@angular/core';
-import {NwbDialogComponent} from './dialog.component';
-import {DomService} from '../shared/dom/dom.service';
-import {PortalInjector} from '../shared/portal/portal-injector';
-import {extendObject} from '../shared/util/object-extend';
+import { Injectable, Injector, TemplateRef } from '@angular/core';
+import { NwbDialogComponent } from './dialog.component';
+import { DomService } from '../shared/dom/dom.service';
+import { PortalInjector } from '../shared/portal/portal-injector';
+import { extendObject } from '../shared/util/object-extend';
 
 @Injectable()
 export class NwbDialogService {
-
-  constructor(private domService: DomService, private injector: Injector) {
-  }
+  constructor(private domService: DomService, private injector: Injector) {}
 
   open(config: NwbDialogConfig): NwbDialogComponent<any> {
-
     const componentRef = this.getComponentRef(config);
 
     return componentRef.instance;
   }
 
-  openFromComponent<T>(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
-                       config: NwbDialogConfig): NwbDialogComponent<T> {
-
-
+  openFromComponent<T>(
+    componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
+    config: NwbDialogConfig
+  ): NwbDialogComponent<T> {
     const componentRef = this.getComponentRef(config);
 
     componentRef.instance._setComponent(componentOrTemplateRef);
 
     return componentRef.instance as NwbDialogComponent<T>;
   }
-
 
   private getComponentRef(config: NwbDialogConfig) {
     const injectionTokens = new WeakMap();
@@ -36,22 +32,22 @@ export class NwbDialogService {
 
     let injector = new PortalInjector(this.injector, injectionTokens);
 
-    const componentRef = this.domService.attachComponentPortal(NwbDialogComponent, injector);
+    const componentRef = this.domService.attachComponentPortal(
+      NwbDialogComponent,
+      injector
+    );
 
     componentRef.instance.config = extendObject(new NwbDialogConfig(), config);
 
-    componentRef.instance.afterClosed()
-      .subscribe(() => {
-        componentRef.destroy();
-      });
+    componentRef.instance.afterClosed().subscribe(() => {
+      componentRef.destroy();
+    });
 
     return componentRef;
   }
 }
 
-
 export class NwbDialogConfig {
-
   /** Dialog's content */
   message?: string;
 
@@ -79,7 +75,6 @@ export class NwbDialogConfig {
   /** Display the spinner inside the dialog **/
   loading?: boolean = false;
 }
-
 
 export interface ComponentType<T> {
   new (...args: any[]): T;

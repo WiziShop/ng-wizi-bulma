@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, ViewChild} from '@angular/core';
+import { Component, ElementRef, EventEmitter, ViewChild } from '@angular/core';
 
 @Component({
   providers: [],
@@ -17,11 +17,11 @@ import {Component, ElementRef, EventEmitter, ViewChild} from '@angular/core';
         <textarea class="textarea" placeholder="Other"></textarea>
       </p>
     </div>
-  `,
+  `
 })
 export class FakeDialogDemoComponent {
-
-  @ViewChild('myInput') myInput: ElementRef;
+  @ViewChild('myInput')
+  myInput: ElementRef;
 
   loading = new EventEmitter<boolean>();
 
@@ -32,6 +32,4 @@ export class FakeDialogDemoComponent {
 
     setTimeout(() => this.loading.next(false), 3000);
   }
-
-
 }

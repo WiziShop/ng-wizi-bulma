@@ -1,11 +1,19 @@
-import {ChangeDetectorRef, Component, HostListener, Input, OnDestroy, OnInit, Optional} from '@angular/core';
-import {NwbSort, NwbSortable} from './sort';
-import {CdkColumnDef} from '@angular/cdk/table';
-import {merge} from 'rxjs';
-import {SortDirection} from './sort-direction';
-import {nwbSortAnimations} from './sort-animation';
-import {getSortHeaderNotContainedWithinSortError} from './sort-errors';
-import {Subscription} from 'rxjs/internal/Subscription';
+import {
+  ChangeDetectorRef,
+  Component,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
+  Optional
+} from '@angular/core';
+import { NwbSort, NwbSortable } from './sort';
+import { CdkColumnDef } from '@angular/cdk/table';
+import { merge } from 'rxjs';
+import { SortDirection } from './sort-direction';
+import { nwbSortAnimations } from './sort-animation';
+import { getSortHeaderNotContainedWithinSortError } from './sort-errors';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 /**
  * Valid positions for the arrow to be in for its opacity and translation. If the state is a
@@ -34,7 +42,7 @@ export interface ArrowViewStateTransition {
   animations: [
     nwbSortAnimations.arrowDirection,
     nwbSortAnimations.arrowOpacity,
-    nwbSortAnimations.arrowPosition,
+    nwbSortAnimations.arrowPosition
   ]
 })
 export class NwbSortHeaderComponent implements NwbSortable, OnInit, OnDestroy {
@@ -61,51 +69,61 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit, OnDestroy {
   /** The direction the arrow should be facing according to the current state. */
   _arrowDirection: SortDirection = '';
 
-
-  @Input('nwb-sort-header') id: string;
-
+  @Input('nwb-sort-header')
+  id: string;
 
   /** Overrides the sort start value of the containing NwbSort for this NwbSortable. */
-  @Input() start: 'asc' | 'desc';
+  @Input()
+  start: 'asc' | 'desc';
 
-  constructor(changeDetectorRef: ChangeDetectorRef,
-              @Optional() public _sort: NwbSort,
-              @Optional() private _cdkColumnDef: CdkColumnDef) {
-
+  constructor(
+    changeDetectorRef: ChangeDetectorRef,
+    @Optional() public _sort: NwbSort,
+    @Optional() private _cdkColumnDef: CdkColumnDef
+  ) {
     if (!_sort) {
       throw getSortHeaderNotContainedWithinSortError();
     }
 
+    this._rerenderSubscription = merge(
+      this._sort.sortChange,
+      this._sort._stateChanges
+    ).subscribe(() => {
+      if (this.isSorted()) {
+        this._updateArrow();
+      }
 
-    this._rerenderSubscription = merge(this._sort.sortChange, this._sort._stateChanges)
-      .subscribe(() => {
-        if (this.isSorted()) {
-          this._updateArrow();
-        }
+      // If this header was recently active and now no longer sorted, animate away the arrow.
+      if (
+        !this.isSorted() &&
+        this._viewState &&
+        this._viewState.toState === 'active'
+      ) {
+        this._disableViewStateAnimation = false;
+        this._setAnimationTransitionState({
+          fromState: 'active',
+          toState: this._arrowDirection
+        });
+      }
 
-        // If this header was recently active and now no longer sorted, animate away the arrow.
-        if (!this.isSorted() && this._viewState && this._viewState.toState === 'active') {
-          this._disableViewStateAnimation = false;
-          this._setAnimationTransitionState({fromState: 'active', toState: this._arrowDirection});
-        }
-
-        changeDetectorRef.markForCheck();
-      });
-
+      changeDetectorRef.markForCheck();
+    });
   }
 
   private _updateArrow() {
-
     // Do not show the animation if the header was already shown in the right position.
-    if (this._viewState.toState === 'hint' || this._viewState.toState === 'active') {
+    if (
+      this._viewState.toState === 'hint' ||
+      this._viewState.toState === 'active'
+    ) {
       this._disableViewStateAnimation = true;
     }
 
     // If the arrow is now sorted, animate the arrow into place. Otherwise, animate it away into
     // the direction it is facing.
-    const viewState: ArrowViewStateTransition = this.isSorted() ?
-      {fromState: this._arrowDirection, toState: 'active'} :
-      {fromState: 'active', toState: this._arrowDirection};
+    const viewState: ArrowViewStateTransition = this.isSorted()
+      ? { fromState: this._arrowDirection, toState: 'active' }
+      : { fromState: 'active', toState: this._arrowDirection };
     this._setAnimationTransitionState(viewState);
 
     this._showIndicatorHint = false;
@@ -123,12 +141,9 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit, OnDestroy {
     // Initialize the direction of the arrow and set the view state to be immediately that state.
     this._updateArrowDirection();
 
-    this._setAnimationTransitionState(
-      {
-        toState: this.isSorted() ? 'active' : this._arrowDirection
-      }
-    );
-
+    this._setAnimationTransitionState({
+      toState: this.isSorted() ? 'active' : this._arrowDirection
+    });
   }
 
   /** Whether this NwbSortHeader is currently sorted in either ascending or descending order. */
@@ -147,15 +162,20 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit, OnDestroy {
    * user showing what the active sort will become. If set to false, the arrow will fade away.
    */
   _setIndicatorHintVisible(visible: boolean) {
-
     this._showIndicatorHint = visible;
 
     if (!this.isSorted()) {
       this._updateArrowDirection();
       if (this._showIndicatorHint) {
-        this._setAnimationTransitionState({fromState: this._arrowDirection, toState: 'hint'});
+        this._setAnimationTransitionState({
+          fromState: this._arrowDirection,
+          toState: 'hint'
+        });
       } else {
-        this._setAnimationTransitionState({fromState: 'hint', toState: this._arrowDirection});
+        this._setAnimationTransitionState({
+          fromState: 'hint',
+          toState: this._arrowDirection
+        });
       }
     }
   }
@@ -171,7 +191,7 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit, OnDestroy {
     // If the animation for arrow position state (opacity/translation) should be disabled,
     // remove the fromState so that it jumps right to the toState.
     if (this._disableViewStateAnimation) {
-      this._viewState = {toState: viewState.toState};
+      this._viewState = { toState: viewState.toState };
     }
   }
 
@@ -186,9 +206,9 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit, OnDestroy {
    * only be changed once the arrow displays again (hint or activation).
    */
   _updateArrowDirection() {
-    this._arrowDirection = this.isSorted() ?
-      this._sort.direction :
-      (this.start || this._sort.start);
+    this._arrowDirection = this.isSorted()
+      ? this._sort.direction
+      : this.start || this._sort.start;
   }
 
   /** Returns the arrow position state (opacity, translation). */
@@ -197,7 +217,6 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit, OnDestroy {
 
     return (fromState ? `${fromState}-to-` : '') + this._viewState.toState;
   }
-
 
   /** Returns the animation state for the arrow direction (indicator and pointers). */
   _getArrowDirectionState() {
@@ -208,5 +227,4 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit, OnDestroy {
     this._sort.deregister(this);
     this._rerenderSubscription.unsubscribe();
   }
-
 }

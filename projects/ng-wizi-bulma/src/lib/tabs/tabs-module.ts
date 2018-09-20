@@ -1,25 +1,14 @@
-import {CommonModule} from '@angular/common';
-import {NgModule} from '@angular/core';
-import {NwbTabComponent} from './tab.component';
-import {NwbTabsComponent} from './tabs.component';
-import {NwbCommonModule} from '../shared/common-module';
-
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { NwbTabComponent } from './tab.component';
+import { NwbTabsComponent } from './tabs.component';
+import { NwbCommonModule } from '../shared/common-module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NwbCommonModule,
-  ],
+  imports: [CommonModule, NwbCommonModule],
   providers: [],
   entryComponents: [],
-  declarations: [
-    NwbTabsComponent,
-    NwbTabComponent
-  ],
-  exports: [
-    NwbTabsComponent,
-    NwbTabComponent
-  ],
+  declarations: [NwbTabsComponent, NwbTabComponent],
+  exports: [NwbTabsComponent, NwbTabComponent]
 })
-export class NwbTabsModule {
-}
+export class NwbTabsModule {}

@@ -1,5 +1,4 @@
-import {Injectable, Optional, SkipSelf} from '@angular/core';
-
+import { Injectable, Optional, SkipSelf } from '@angular/core';
 
 /**
  * The OverlayContainer is the container in which all overlays will load.
@@ -8,7 +7,6 @@ import {Injectable, Optional, SkipSelf} from '@angular/core';
 @Injectable()
 export class OverlayContainer {
   protected _containerElement: HTMLElement;
-
 
   /**
    * This method returns the overlay container element.  It will lazily
@@ -31,13 +29,14 @@ export class OverlayContainer {
     let container = document.createElement('div');
     container.classList.add('nwb-overlay-container');
 
-
     document.body.appendChild(container);
     this._containerElement = container;
   }
 }
 
-export function OVERLAY_CONTAINER_PROVIDER_FACTORY(parentContainer: OverlayContainer) {
+export function OVERLAY_CONTAINER_PROVIDER_FACTORY(
+  parentContainer: OverlayContainer
+) {
   return parentContainer || new OverlayContainer();
 }
 

@@ -1,9 +1,7 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   providers: [],
-  templateUrl: './home.html',
+  templateUrl: './home.html'
 })
-export class Home {
-
-}
+export class Home {}

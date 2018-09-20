@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import {
   NwbFilter,
   NwbFilterGroup,
@@ -11,7 +11,6 @@ import {
   NwbSort,
   Sort
 } from '@wizishop/ng-wizi-bulma';
-
 
 @Component({
   providers: [],
@@ -23,8 +22,10 @@ export class TableDemo implements OnInit {
   exampleDatabase: ExampleHttpDao | null;
   data: GithubIssue[] = [];
 
-  @ViewChild(NwbPaginatorComponent) paginator;
-  @ViewChild(NwbSort) sort;
+  @ViewChild(NwbPaginatorComponent)
+  paginator;
+  @ViewChild(NwbSort)
+  sort;
 
   resultsLength = 0;
   isLoadingResults = false;
@@ -37,31 +38,33 @@ export class TableDemo implements OnInit {
     sort: this.sortActive,
     order: this.sortStart,
     pageIndex: 0,
-    q: 'repo:angular/angular',
+    q: 'repo:angular/angular'
   };
 
   filterGroup: NwbFilterGroup;
 
-  constructor(private http: HttpClient, private filterRoutingBuilder: NwbFilterRoutingBuilder) {
-  }
+  constructor(
+    private http: HttpClient,
+    private filterRoutingBuilder: NwbFilterRoutingBuilder
+  ) {}
 
   ngOnInit() {
     this.exampleDatabase = new ExampleHttpDao(this.http);
 
+    this.filterGroup = this.filterRoutingBuilder.group(
+      this.dataTableFilters,
+      'datatable'
+    );
 
-    this.filterGroup = this.filterRoutingBuilder.group(this.dataTableFilters, 'datatable');
+    this.filterGroup.valuesChange$.subscribe(filters => {
+      this.updateFilters(filters);
 
-    this.filterGroup.valuesChange$
-      .subscribe(filters => {
-        this.updateFilters(filters);
-
-        this.fetchData();
-      });
+      this.fetchData();
+    });
 
     this.updateFilters(this.filterGroup.getFilters());
 
     this.fetchData();
-
 
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe((sort: Sort) => {
@@ -75,24 +78,24 @@ export class TableDemo implements OnInit {
     this.paginator.page.subscribe((page: NwbPageEvent) => {
       this.filterGroup.set('pageIndex', page.pageIndex);
     });
-
   }
 
   private updateFilters(filters: NwbFilter[]) {
     filters.forEach(filter => {
-
       this.dataTableFilters[filter.key] = filter.value;
-
     });
   }
 
   private fetchData() {
     this.isLoadingResults = true;
     this.exampleDatabase!.getRepoIssues(
-      this.dataTableFilters.q, this.dataTableFilters.sort, this.dataTableFilters.order, this.dataTableFilters.pageIndex
+      this.dataTableFilters.q,
+      this.dataTableFilters.sort,
+      this.dataTableFilters.order,
+      this.dataTableFilters.pageIndex
     )
       .pipe(
-        map((data) => {
+        map(data => {
           // Flip flag to show that loading has finished.
           this.isLoadingResults = false;
           this.isRateLimitReached = false;
@@ -106,10 +109,9 @@ export class TableDemo implements OnInit {
           this.isRateLimitReached = true;
           return of([]);
         })
-      ).subscribe(data => this.data = data);
+      )
+      .subscribe(data => (this.data = data));
   }
-
-
 }
 
 export interface GithubApi {
@@ -124,16 +126,19 @@ export interface GithubIssue {
   title: string;
 }
 
-
 /** An example database that the data source uses to retrieve data for the table. */
 export class ExampleHttpDao {
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
-  getRepoIssues(q: string, sort: string, order: string, page: number): Observable<GithubApi> {
+  getRepoIssues(
+    q: string,
+    sort: string,
+    order: string,
+    page: number
+  ): Observable<GithubApi> {
     const href = 'https://api.github.com/search/issues';
-    const requestUrl =
-      `${href}?q=${q}&sort=${sort}&order=${order}&page=${+page + 1}`;
+    const requestUrl = `${href}?q=${q}&sort=${sort}&order=${order}&page=${+page +
+      1}`;
 
     return this.http.get<GithubApi>(requestUrl);
   }

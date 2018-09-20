@@ -1,18 +1,13 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {NwbCommonModule} from '../shared/common-module';
-import {NwbAnimatedCardComponent} from './animated-card.component';
-
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NwbCommonModule } from '../shared/common-module';
+import { NwbAnimatedCardComponent } from './animated-card.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NwbCommonModule,
-  ],
+  imports: [CommonModule, NwbCommonModule],
   providers: [],
   entryComponents: [],
   declarations: [NwbAnimatedCardComponent],
-  exports: [NwbAnimatedCardComponent],
+  exports: [NwbAnimatedCardComponent]
 })
-export class NwbAnimatedCardModule {
-}
+export class NwbAnimatedCardModule {}

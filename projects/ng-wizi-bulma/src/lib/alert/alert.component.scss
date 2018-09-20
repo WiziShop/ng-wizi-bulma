@@ -1,5 +1,5 @@
-@import "../../../../../node_modules/bulma/sass/utilities/initial-variables";
-@import "../../../../../node_modules/bulma/sass/utilities/derived-variables";
+@import '../../../../../node_modules/bulma/sass/utilities/initial-variables';
+@import '../../../../../node_modules/bulma/sass/utilities/derived-variables';
 
 .nwb-alert {
   .alert {
@@ -42,7 +42,7 @@
     }
 
     &.is-active {
-      opacity: .9;
+      opacity: 0.9;
 
       &.is-left {
         left: 0;

@@ -1,27 +1,43 @@
-import {Observable, Subject} from 'rxjs';
-import {NwbSnackbarConfig} from './snackbar.service';
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {animate, AnimationEvent, state, style, transition, trigger} from '@angular/animations';
+import { Observable, Subject } from 'rxjs';
+import { NwbSnackbarConfig } from './snackbar.service';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  animate,
+  AnimationEvent,
+  state,
+  style,
+  transition,
+  trigger
+} from '@angular/animations';
 
 @Component({
   selector: 'nwb-snack-bar',
   templateUrl: './snackbar.component.html',
   styleUrls: ['./snackbar.component.scss'],
   host: {
-    'class': 'nwb-snack-bar',
+    class: 'nwb-snack-bar'
   },
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('state', [
-      state('void', style({
-        bottom: '-100px'
-      })),
-      state('inactive', style({
-        bottom: '-100px'
-      })),
-      state('active', style({
-        bottom: '0px'
-      })),
+      state(
+        'void',
+        style({
+          bottom: '-100px'
+        })
+      ),
+      state(
+        'inactive',
+        style({
+          bottom: '-100px'
+        })
+      ),
+      state(
+        'active',
+        style({
+          bottom: '0px'
+        })
+      ),
       transition('void => active', animate(300)),
       transition('active => inactive', animate(300))
     ])
@@ -39,11 +55,9 @@ export class NwbSnackbarComponent implements OnInit {
 
   private timer: any;
 
-
   ngOnInit() {
     this.open = true;
     if (this.config.duration > 0) {
-
       this.timer = setTimeout(() => this.dismiss(false), this.config.duration);
     }
   }
@@ -52,7 +66,6 @@ export class NwbSnackbarComponent implements OnInit {
     this.open = false;
 
     this.manualClose = manualClose;
-
   }
 
   animationDone(event: AnimationEvent) {

@@ -17,10 +17,11 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  Output, ViewEncapsulation,
+  Output,
+  ViewEncapsulation
 } from '@angular/core';
-import {Subscription} from 'rxjs';
-import {NwbPaginatorIntl} from './paginator-intl';
+import { Subscription } from 'rxjs';
+import { NwbPaginatorIntl } from './paginator-intl';
 
 /** The default page size if there is no page size and there are no provided page size options. */
 const DEFAULT_PAGE_SIZE = 50;
@@ -50,10 +51,10 @@ export class NwbPageEvent {
   templateUrl: 'paginator.component.html',
   styleUrls: ['./paginator.component.scss'],
   host: {
-    'class': 'nwb-paginator',
+    class: 'nwb-paginator'
   },
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NwbPaginatorComponent implements OnInit, OnDestroy {
   private _initialized: boolean;
@@ -114,14 +115,19 @@ export class NwbPaginatorComponent implements OnInit, OnDestroy {
   private _pageSizeOptions: number[] = [];
 
   /** Event emitted when the paginator changes the page size or page index. */
-  @Output() page = new EventEmitter<NwbPageEvent>();
+  @Output()
+  page = new EventEmitter<NwbPageEvent>();
 
   /** Displayed set of page size options. Will be sorted and include current page size. */
   _displayedPageSizeOptions: number[];
 
-  constructor(public _intl: NwbPaginatorIntl,
-              private _changeDetectorRef: ChangeDetectorRef) {
-    this._intlChanges = _intl.changes.subscribe(() => this._changeDetectorRef.markForCheck());
+  constructor(
+    public _intl: NwbPaginatorIntl,
+    private _changeDetectorRef: ChangeDetectorRef
+  ) {
+    this._intlChanges = _intl.changes.subscribe(() =>
+      this._changeDetectorRef.markForCheck()
+    );
   }
 
   ngOnInit() {
@@ -191,9 +197,10 @@ export class NwbPaginatorComponent implements OnInit, OnDestroy {
 
     // If no page size is provided, use the first page size option or the default page size.
     if (!this.pageSize) {
-      this._pageSize = this.pageSizeOptions.length != 0 ?
-        this.pageSizeOptions[0] :
-        DEFAULT_PAGE_SIZE;
+      this._pageSize =
+        this.pageSizeOptions.length != 0
+          ? this.pageSizeOptions[0]
+          : DEFAULT_PAGE_SIZE;
     }
 
     this._displayedPageSizeOptions = this.pageSizeOptions.slice();

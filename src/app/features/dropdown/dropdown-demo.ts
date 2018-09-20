@@ -1,13 +1,12 @@
-import {Component} from '@angular/core';
-import {NwbDialogService, NwbDropdownConfig} from '@wizishop/ng-wizi-bulma';
-import {Observable} from 'rxjs';
+import { Component } from '@angular/core';
+import { NwbDialogService, NwbDropdownConfig } from '@wizishop/ng-wizi-bulma';
+import { Observable } from 'rxjs';
 
 @Component({
   providers: [],
-  templateUrl: './dropdown-demo.html',
+  templateUrl: './dropdown-demo.html'
 })
 export class DropdownDemo {
-
   gaming = 'nes';
   gaming2 = 'genesis';
 
@@ -15,13 +14,10 @@ export class DropdownDemo {
     data: 20,
     handler: (value: any, data: number) => {
       return this.changeHandler(value, data);
-    },
+    }
   };
 
-  constructor(private dialog: NwbDialogService) {
-
-  }
-
+  constructor(private dialog: NwbDialogService) {}
 
   modelChange(event: any) {
     console.log('modelChange', event);
@@ -40,14 +36,12 @@ export class DropdownDemo {
         } else {
           this.dialog.open({
             title: 'Not changed',
-            message: `Value: <b>${value}</b> is not allowed`,
+            message: `Value: <b>${value}</b> is not allowed`
           });
           observer.next(false);
         }
         observer.complete();
       }, 700);
-
     });
   }
 }
-

@@ -1,9 +1,15 @@
 import {
-  AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output,
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
   QueryList
 } from '@angular/core';
 
-import {NwbTabComponent} from './tab.component';
+import { NwbTabComponent } from './tab.component';
 
 @Component({
   selector: 'nwb-tabs',
@@ -32,24 +38,29 @@ import {NwbTabComponent} from './tab.component';
   `
 })
 export class NwbTabsComponent implements OnInit, AfterContentInit {
-
   /** IE [box]="true" **/
-  @Input() box: boolean;
+  @Input()
+  box: boolean;
 
   /** IE: [alignment]="'center|left|right'" **/
-  @Input() alignment: string;
+  @Input()
+  alignment: string;
 
   /** IE: [size]="'small|medium|large'" **/
-  @Input() size: boolean;
+  @Input()
+  size: boolean;
 
   /** IE: [toggle]="true" **/
-  @Input() toggle: boolean;
+  @Input()
+  toggle: boolean;
 
   /** IE: [rounded]="true" **/
-  @Input() rounded: boolean;
+  @Input()
+  rounded: boolean;
 
   /** IE [fullwidth]="true" **/
-  @Input() fullwidth: boolean;
+  @Input()
+  fullwidth: boolean;
 
   /** IE: [(selectedIndex)]="active" (optional, will equal first tab by default) **/
   _selectedIndex = 0;
@@ -62,13 +73,13 @@ export class NwbTabsComponent implements OnInit, AfterContentInit {
     return this._selectedIndex;
   }
 
-  @Output() selectedIndexChange: EventEmitter<number> = new EventEmitter<number>();
+  @Output()
+  selectedIndexChange: EventEmitter<number> = new EventEmitter<number>();
 
-  @ContentChildren(NwbTabComponent) tabList: QueryList<NwbTabComponent>;
+  @ContentChildren(NwbTabComponent)
+  tabList: QueryList<NwbTabComponent>;
 
-  constructor() {
-
-  }
+  constructor() {}
 
   ngOnInit() {
     if (this.rounded) {
@@ -90,17 +101,12 @@ export class NwbTabsComponent implements OnInit, AfterContentInit {
 
       this.selectedIndexChange.emit(this.selectedIndex);
     }
-
   }
 
   ngAfterContentInit() {
-
     this.tabList.forEach((tab: NwbTabComponent, index) => {
       tab.index = index;
       tab.setSelected(tab.index === this.selectedIndex);
     });
-
   }
-
-
 }

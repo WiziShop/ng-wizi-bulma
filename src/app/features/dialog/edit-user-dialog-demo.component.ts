@@ -1,13 +1,19 @@
-import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
-import {NwbDialogComponent, NwbDialogService} from '@wizishop/ng-wizi-bulma';
-
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  TemplateRef,
+  ViewChild
+} from '@angular/core';
+import { NwbDialogComponent, NwbDialogService } from '@wizishop/ng-wizi-bulma';
 
 @Component({
   selector: 'demo-add-user-dialog',
-  templateUrl: './edit-user-dialog-demo.component.html',
+  templateUrl: './edit-user-dialog-demo.component.html'
 })
 export class EditUserDialogDemoComponent implements OnInit {
-
   private _id: number;
 
   @Input()
@@ -20,20 +26,20 @@ export class EditUserDialogDemoComponent implements OnInit {
     return this._id;
   }
 
-  @Output() userChange = new EventEmitter<User>();
+  @Output()
+  userChange = new EventEmitter<User>();
 
-  @Output() close = new EventEmitter<boolean>();
+  @Output()
+  close = new EventEmitter<boolean>();
 
   user: User;
 
-  @ViewChild('dialogTemplateRef') dialogTemplateRef: TemplateRef<any>;
-
+  @ViewChild('dialogTemplateRef')
+  dialogTemplateRef: TemplateRef<any>;
 
   private dialog: NwbDialogComponent<any>;
 
-  constructor(private nwbDialog: NwbDialogService) {
-
-  }
+  constructor(private nwbDialog: NwbDialogService) {}
 
   ngOnInit() {
     setTimeout(() => {
@@ -44,24 +50,17 @@ export class EditUserDialogDemoComponent implements OnInit {
         loading: true,
         okHandler: () => {
           return this.setUser();
-        },
+        }
       });
 
-      this.dialog
-        .afterClosed()
-        .subscribe((fromOk) => {
-          this.close.emit(fromOk);
-        });
-
+      this.dialog.afterClosed().subscribe(fromOk => {
+        this.close.emit(fromOk);
+      });
     });
-
   }
 
-
   private fetch() {
-
     setTimeout(() => {
-
       this.user = new User();
       this.user.name = 'Joe';
       this.user.userName = 'bulma';

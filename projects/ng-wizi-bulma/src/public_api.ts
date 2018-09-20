@@ -17,4 +17,3 @@ export * from './lib/switch/index';
 export * from './lib/tabs/index';
 
 export * from './lib/nwb-all-module';
-

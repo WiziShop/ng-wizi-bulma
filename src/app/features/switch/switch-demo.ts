@@ -1,11 +1,10 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   providers: [],
-  templateUrl: './switch-demo.html',
+  templateUrl: './switch-demo.html'
 })
 export class SwitchDemo {
-
   sample1Value = true;
 
   sample1 = `<nwb-switch 
@@ -30,11 +29,7 @@ Switch example
           </nwb-switch>
         </div>`;
 
-
   model1Change(value) {
     console.log('model3Change', value);
   }
-
-
 }
-

@@ -1,11 +1,10 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   providers: [],
-  templateUrl: './animated-card-demo.html',
+  templateUrl: './animated-card-demo.html'
 })
 export class AnimatedCardDemo {
-
   sample1 = `
     <div nwbAnimatedCardClosed class="card">
           <header class="card-header">
@@ -45,6 +44,4 @@ export class AnimatedCardDemo {
           </div>
     </div>
 `;
-
 }
-

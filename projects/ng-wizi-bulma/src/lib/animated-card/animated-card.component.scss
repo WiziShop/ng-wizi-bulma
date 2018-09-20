@@ -12,7 +12,7 @@
       i {
         font-size: 1.4rem;
         margin-right: 1rem;
-        border-right: #ddd .1rem solid;
+        border-right: #ddd 0.1rem solid;
         padding-right: 1rem;
       }
     }
@@ -35,7 +35,6 @@
     }
 
     .card-header {
-
       &-icon {
         i {
           transform: rotate(180deg);

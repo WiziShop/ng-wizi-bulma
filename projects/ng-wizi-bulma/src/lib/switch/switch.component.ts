@@ -1,20 +1,24 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'nwb-switch',
   templateUrl: './switch.component.html',
   host: {
-    'class': 'nwb-switch',
+    class: 'nwb-switch'
   },
   encapsulation: ViewEncapsulation.None,
-  providers: [{provide: NG_VALUE_ACCESSOR, useExisting: NwbSwitchComponent, multi: true}],
+  providers: [
+    { provide: NG_VALUE_ACCESSOR, useExisting: NwbSwitchComponent, multi: true }
+  ]
 })
 export class NwbSwitchComponent implements ControlValueAccessor {
-  @Input() extraClasses: '';
-  @Input() disabled = false;
-  @Input() checked = true;
-
+  @Input()
+  extraClasses: '';
+  @Input()
+  disabled = false;
+  @Input()
+  checked = true;
 
   private _onChanged: Function;
   private _onTouched: Function;
@@ -39,7 +43,6 @@ export class NwbSwitchComponent implements ControlValueAccessor {
   }
 
   private _setValue(value: boolean) {
-
     if (typeof value !== 'boolean') {
       return;
     }
@@ -49,7 +52,6 @@ export class NwbSwitchComponent implements ControlValueAccessor {
     this.currentValue = value;
 
     if (this.checked !== this.currentValue) {
-
       this.checked = this.currentValue === true;
     }
 
@@ -57,16 +59,19 @@ export class NwbSwitchComponent implements ControlValueAccessor {
       return;
     }
 
-    if (typeof  this._onChanged === 'function') {
+    if (typeof this._onChanged === 'function') {
       this._onChanged(this.currentValue);
     }
   }
 
   getId() {
     if (!this._id) {
-      this._id = 'search-' + Math.random().toString().replace('.', '-');
+      this._id =
+        'search-' +
+        Math.random()
+          .toString()
+          .replace('.', '-');
     }
     return this._id;
   }
-
 }

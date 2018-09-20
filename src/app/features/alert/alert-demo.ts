@@ -1,14 +1,12 @@
-import {Component} from '@angular/core';
-import {NwbAlertConfig, NwbAlertService} from '@wizishop/ng-wizi-bulma';
+import { Component } from '@angular/core';
+import { NwbAlertConfig, NwbAlertService } from '@wizishop/ng-wizi-bulma';
 
 @Component({
   providers: [],
-  templateUrl: './alert-demo.html',
+  templateUrl: './alert-demo.html'
 })
 export class AlertDemo {
-
-  constructor(private nwbAlert: NwbAlertService) {
-  }
+  constructor(private nwbAlert: NwbAlertService) {}
 
   sample1 = `
     const position = '{your position}';
@@ -73,10 +71,9 @@ export class AlertDemo {
       alertConfig.icon = icon;
     }
 
-    this.nwbAlert.open(alertConfig)
+    this.nwbAlert
+      .open(alertConfig)
       .afterClosed()
       .subscribe(() => console.log('alertClose'));
   }
-
 }
-
