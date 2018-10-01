@@ -27,6 +27,7 @@ import { AnimatedCardDemo } from './features/animated-card/animated-card-demo';
 import { TableDemo } from './features/table/table-demo';
 import { HttpClientModule } from '@angular/common/http';
 import { SortDemo } from './features/sort/sort-demo';
+import { EditInPlaceDemo } from './features/edit-in-place/edit-in-place-demo';
 
 import {
   NwbAlertModule,
@@ -42,6 +43,7 @@ import {
   NwbSwitchModule,
   NwbTabsModule
 } from '@wizishop/ng-wizi-bulma';
+import { NwbEditInPlaceModule } from '../../projects/ng-wizi-bulma/src/lib/edit-in-place';
 
 @NgModule({
   imports: [
@@ -63,7 +65,8 @@ import {
     NwbSnackbarModule,
     NwbSortModule,
     NwbSwitchModule,
-    NwbTabsModule
+    NwbTabsModule,
+    NwbEditInPlaceModule
   ],
   declarations: [
     AppComponent,
@@ -85,7 +88,8 @@ import {
     AnimatedCardDemo,
     TooltipDemo,
     TableDemo,
-    SortDemo
+    SortDemo,
+    EditInPlaceDemo
   ],
   providers: [],
   entryComponents: [FakeDialogDemoComponent],

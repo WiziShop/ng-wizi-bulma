@@ -16,6 +16,7 @@ import { AlertDemo } from './features/alert/alert-demo';
 import { AnimatedCardDemo } from './features/animated-card/animated-card-demo';
 import { TableDemo } from './features/table/table-demo';
 import { SortDemo } from './features/sort/sort-demo';
+import { EditInPlaceDemo } from './features/edit-in-place/edit-in-place-demo';
 
 const appRoutes: Routes = [
   {
@@ -81,6 +82,10 @@ const appRoutes: Routes = [
   {
     path: 'table',
     component: TableDemo
+  },
+  {
+    path: 'edit-in-place',
+    component: EditInPlaceDemo
   },
   {
     path: 'sort',

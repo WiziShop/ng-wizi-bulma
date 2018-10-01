@@ -1,0 +1,26 @@
+input {
+  font-size: inherit;
+  margin-right: 6px;
+  margin-left: 6px;
+  transition: width 50ms;
+}
+
+.editable {
+  text-decoration: none;
+  color: black;
+  border: none;
+  border-bottom: dashed 1px #428bca;
+  cursor: pointer;
+  height: 26px;
+}
+
+.editing {
+  color: #a8a8a8;
+}
+
+#invisibleTextID {
+  white-space: pre;
+  position: absolute;
+  height: 0;
+  overflow: hidden;
+}

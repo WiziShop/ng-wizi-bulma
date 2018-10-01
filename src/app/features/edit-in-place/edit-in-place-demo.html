@@ -1,0 +1,27 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Edit In Place Input
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <p>I am a <nwb-edit-in-place [(ngModel)]="developer" (ngModelChange)="modelChange($event)"></nwb-edit-in-place></p>
+      <p>Entered value: {{developer}}</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Edit In Place Input
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <p>I am a <nwb-edit-in-place [(ngModel)]="devops" [config]="editInPlaceConfig"></nwb-edit-in-place></p>
+    </div>
+  </div>
+</div>

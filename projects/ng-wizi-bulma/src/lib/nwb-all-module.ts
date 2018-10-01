@@ -11,6 +11,7 @@ import { NwbDropdownModule } from './dropdown/dropdown-module';
 import { NwbProgressBarModule } from './progress-bar/progress-bar-module';
 import { NwbSwitchModule } from './switch/switch-module';
 import { NwbTabsModule } from './tabs/tabs-module';
+import { NwbEditInPlaceModule } from './edit-in-place/edit-in-place-module';
 
 const EXPORTED_EXPORTS = [
   NwbCommonModule,
@@ -25,7 +26,8 @@ const EXPORTED_EXPORTS = [
   NwbSnackbarModule,
   NwbSortModule,
   NwbSwitchModule,
-  NwbTabsModule
+  NwbTabsModule,
+  NwbEditInPlaceModule
 ];
 
 @NgModule({

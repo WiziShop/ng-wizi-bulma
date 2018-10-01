@@ -8,6 +8,7 @@ export * from './lib/alert/index';
 export * from './lib/animated-card/index';
 export * from './lib/dialog/index';
 export * from './lib/dropdown/index';
+export * from './lib/edit-in-place/index';
 export * from './lib/modal-search/index';
 export * from './lib/paginator/index';
 export * from './lib/progress-bar/index';
