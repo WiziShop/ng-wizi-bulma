@@ -3,10 +3,9 @@ import { NgModule } from '@angular/core';
 import { NwbEditInPlaceComponent } from './edit-in-place.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NwbCommonModule } from '../shared/common-module';
-import { AutoSizeInputModule } from 'ngx-autosize-input';
 
 @NgModule({
-  imports: [CommonModule, NwbCommonModule, FormsModule, ReactiveFormsModule, AutoSizeInputModule],
+  imports: [CommonModule, NwbCommonModule, FormsModule, ReactiveFormsModule],
   providers: [],
   entryComponents: [],
   declarations: [NwbEditInPlaceComponent],
