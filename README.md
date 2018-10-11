@@ -1,7 +1,7 @@
 # NG Wizi Bulma
 
-[![npm](https://img.shields.io/npm/v/ng-wizi-bulma.svg)](https://www.npmjs.com/package/ng-wizi-bulma)
-[![npm](https://img.shields.io/npm/dm/ng-wizi-bulma.svg)](https://www.npmjs.com/package/ng-wizi-bulma)
+[![npm](https://img.shields.io/npm/v/@wizishop/ng-wizi-bulma.svg)](https://www.npmjs.com/package/@wizishop/ng-wizi-bulma)
+[![npm](https://img.shields.io/npm/dm/@wizishop/ng-wizi-bulma.svg)](https://www.npmjs.com/package/@wizishop/ng-wizi-bulma)
 
 [Bulma](http://bulma.io/) components for Angular 6+
 
