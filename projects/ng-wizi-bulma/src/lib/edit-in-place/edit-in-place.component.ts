@@ -98,14 +98,12 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, OnInit {
   }
 
   resizeInput() {
-    setTimeout(() => {
-      const minWidth = 32;
-      if (this.invisibleText.nativeElement.offsetWidth > minWidth) {
-        this.inputWidth = this.invisibleText.nativeElement.offsetWidth + 2;
-      } else {
-        this.inputWidth = minWidth;
-      }
-    }, 0);
+    const minWidth = 32;
+    if (this.invisibleText.nativeElement.offsetWidth > minWidth) {
+      this.inputWidth = this.invisibleText.nativeElement.offsetWidth + 2;
+    } else {
+      this.inputWidth = minWidth;
+    }
   }
 }
 
