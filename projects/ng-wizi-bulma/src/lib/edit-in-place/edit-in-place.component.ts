@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 
@@ -15,13 +15,7 @@ import { Observable } from 'rxjs';
     }
   ]
 })
-export class NwbEditInPlaceComponent implements ControlValueAccessor, OnInit {
-  @ViewChild('editInPlace')
-  editInPlace: ElementRef;
-
-  @ViewChild('invisibleText')
-  invisibleText: ElementRef;
-
+export class NwbEditInPlaceComponent implements ControlValueAccessor {
   @Input()
   config: NwbEditInPlaceConfig = {};
 
@@ -34,10 +28,6 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, OnInit {
 
   public onChange: any = Function.prototype;
   public onTouched: any = Function.prototype;
-
-  ngOnInit() {
-    this.resizeInput();
-  }
 
   get value(): any {
     return this.currentValue;
@@ -78,8 +68,15 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, OnInit {
       if (typeof this.config.handler === 'function') {
         this.isLoading = true;
         this.config.handler(this.currentValue, this.config.data).subscribe(
-          hasChanged => {
+          data => {
+            let hasChanged: boolean;
             this.isLoading = false;
+            if (typeof data !== 'boolean') {
+              this.currentValue = data.value;
+              hasChanged = data.success;
+            } else {
+              hasChanged = data;
+            }
             if (hasChanged) {
               this._setValue(this.currentValue);
             } else {
@@ -96,15 +93,6 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, OnInit {
       }
     }
   }
-
-  resizeInput() {
-    const minWidth = 32;
-    if (this.invisibleText.nativeElement.offsetWidth > minWidth) {
-      this.inputWidth = this.invisibleText.nativeElement.offsetWidth + 2;
-    } else {
-      this.inputWidth = minWidth;
-    }
-  }
 }
 
 export interface NwbEditInPlaceConfig {
@@ -119,5 +107,10 @@ export interface NwbEditInPlaceConfig {
    * This allows you to perform any action before setting new value to the model
    * It has to return a boolean observable. If the returned value is true then the model will change.
    */
-  handler?: (value: any, data: any) => Observable<boolean>;
+  handler?: (value: any, data: any) => Observable<boolean | ReturnedData>;
+}
+
+export interface ReturnedData {
+  success: boolean;
+  value: any;
 }

@@ -1,12 +1,10 @@
 <div [class.wrapper--editable]="!editing && !isLoading" class="wrapper">
   <span
     class="__span"
-    #invisibleText
     data-text="">
   {{ currentValue }}
   </span>
   <input
-    #editInPlace
     class="__input"
     [class.__input--editable]="!editing"
     [class.__input--editing]="editing"

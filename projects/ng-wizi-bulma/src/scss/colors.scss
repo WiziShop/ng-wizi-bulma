@@ -1,0 +1,96 @@
+$amount-hover: 8%;
+
+$wizishop-blue: #4baed0;
+$wizishop-blue-hover: darken($wizishop-blue, $amount-hover);
+
+$sidebar-color: #e6effa;
+$sidebar-color-hover: #e6effa;
+
+$dropizi-button-color: #fa096a;
+$dropizi-l-color: #ab2ca2;
+$dropizi-r-color: #f9075f;
+$dropizi-bg: #262a64;
+
+$firefox: #ff5714;
+$google: #3e6ccd;
+
+$primary-button: #e95656;
+$red-color: #e74c3c;
+$green-color: #2ecc71;
+$yellow-color: #faa945;
+$primary-button-hover: darken($primary-button, $amount-hover);
+$white: #ffffff;
+$light-white: #cdd0d2;
+$black: #000000;
+$light-gray: #eaeef1;
+$base-font-color: #212121;
+
+$border-color-pr: #b24242;
+$border-color-pr-l: #e3565a;
+
+$table-selected: #ddff98;
+$notification-color: #a2c739;
+$notification-back: #f0f5e2;
+
+$gray-title: #b7b8bb;
+$title-background: #f2f7fd;
+$dropizi-blue-color: #41d9ee;
+$main-text: #23272b;
+$secondary-text: #6c6c6c;
+$lightened-secondary: #d8d8d8;
+
+$input-border: #dce0e3;
+
+$gray-background: #f5f8fa;
+$gray-background-hover: darken($gray-background, 3%);
+
+$background-color: #ecf0f1;
+$table-background-color: #fafafa;
+
+$really-bad-bad-bad-green: #a2c739;
+$really-bad-bad-bad-green-hover: #88af00;
+
+$bg-switch: #d7dbdc;
+
+$transparent-black: lighten($black, 90%);
+$shadow: rgba(0, 0, 0, 0.1);
+
+$guide-shopping: #d14234;
+
+$header-color: #1e2e43;
+$header-color-hover: #345562;
+$header-color-separator: #34515c;
+
+$header-border-color: lighten($header-color, 2%);
+$header-border-menu-color: lighten($header-border-color, 2%);
+
+$beta-color: #34495e;
+
+/**
+ * Unused Colors? Don't know where it is in html. Keeping it for backward compatibility
+ */
+$base-red: #f00;
+$darkish: #151515;
+
+$loader-first: $wizishop-blue;
+$loader-middle: $primary-button;
+$loader-last: $really-bad-bad-bad-green;
+
+$creation-dropizi-bg: #2b306f;
+$creation-dropizi-bg2: #fa096a;
+$creation-dropizi-bg3: #40d9ed;
+$creation-dropizi-bg4: #a23dbd;
+
+$login-color: #272d36;
+$login-secondary-font: #9fa7b2;
+$register-background-color: $gray-background;
+$gray-background-hover: darken($gray-background, 3%);
+
+$message-body-color-info: #d5eef3;
+$message-body-color-danger: #f2dada;
+$message-body-color-success: #e4f4d9;
+
+$placeholder: #b5b5b5;
+
+$color-loader: $wizishop-blue;
+$color-loader2: $really-bad-bad-bad-green;
