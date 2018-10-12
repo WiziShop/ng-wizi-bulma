@@ -1,10 +1,24 @@
+@import '../../scss/colors';
+
 .wrapper {
   display: inline-block;
   position: relative;
   width: auto;
   margin-left: 5px;
+  min-width: 26px;
+  min-height: 1.2em;
 }
-input {
+
+.wrapper--editable:after {
+  position: absolute;
+  content: '';
+  border-bottom: dashed 1px $primary-button;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+.__input {
   font-size: inherit;
   transition: width 50ms;
   position: absolute;
@@ -17,22 +31,44 @@ input {
   margin: 0;
   outline: none !important;
   border: 1px solid #a8a8a8;
-  background: #fff;
+  background: inherit;
 }
 
-.editable {
+.__input--is-loading {
+  text-shadow: 0 0 0.5em rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.4);
+  opacity: 0.25;
+}
+
+.__input--editable {
   text-decoration: none;
-  color: black;
+  color: inherit;
   border: none;
-  border-bottom: dashed 1px #428bca;
   cursor: pointer;
   height: 26px;
 }
 
-.editing {
+.__input--editing {
   color: #a8a8a8;
 }
 
-span {
+.__span {
   opacity: 0;
+}
+
+.__span--is-loading {
+  z-index: 2;
+  opacity: 1;
+  position: absolute;
+  top: -7px;
+  left: -7px;
+  width: calc(100% + 16px) !important;
+  height: calc(100% + 14px) !important;
+  min-width: 26px;
+  min-height: 1em;
+  margin: 0;
+  background-size: auto 70%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30px' height='30px' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid' class='lds-ellipsis' style='background: none;'%3E%3C!--circle(cx='16',cy='50',r='10')--%3E%3Ccircle cx='84' cy='50' r='0' fill='%236c6c6c'%3E%3Canimate attributeName='r' values='10;0;0;0;0' keyTimes='0;0.25;0.5;0.75;1' keySplines='0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1' calcMode='spline' dur='2s' repeatCount='indefinite' begin='0s'/%3E%3Canimate attributeName='cx' values='84;84;84;84;84' keyTimes='0;0.25;0.5;0.75;1' keySplines='0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1' calcMode='spline' dur='2s' repeatCount='indefinite' begin='0s'/%3E%3C/circle%3E%3Ccircle cx='28.6338' cy='50' r='10' fill='%236c6c6c'%3E%3Canimate attributeName='r' values='0;10;10;10;0' keyTimes='0;0.25;0.5;0.75;1' keySplines='0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1' calcMode='spline' dur='2s' repeatCount='indefinite' begin='-1s'/%3E%3Canimate attributeName='cx' values='16;16;50;84;84' keyTimes='0;0.25;0.5;0.75;1' keySplines='0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1' calcMode='spline' dur='2s' repeatCount='indefinite' begin='-1s'/%3E%3C/circle%3E%3Ccircle cx='16' cy='50' r='3.71582' fill='%236c6c6c'%3E%3Canimate attributeName='r' values='0;10;10;10;0' keyTimes='0;0.25;0.5;0.75;1' keySplines='0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1' calcMode='spline' dur='2s' repeatCount='indefinite' begin='-0.5s'/%3E%3Canimate attributeName='cx' values='16;16;50;84;84' keyTimes='0;0.25;0.5;0.75;1' keySplines='0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1' calcMode='spline' dur='2s' repeatCount='indefinite' begin='-0.5s'/%3E%3C/circle%3E%3Ccircle cx='84' cy='50' r='6.28418' fill='%236c6c6c'%3E%3Canimate attributeName='r' values='0;10;10;10;0' keyTimes='0;0.25;0.5;0.75;1' keySplines='0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1' calcMode='spline' dur='2s' repeatCount='indefinite' begin='0s'/%3E%3Canimate attributeName='cx' values='16;16;50;84;84' keyTimes='0;0.25;0.5;0.75;1' keySplines='0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1' calcMode='spline' dur='2s' repeatCount='indefinite' begin='0s'/%3E%3C/circle%3E%3Ccircle cx='62.6338' cy='50' r='10' fill='%236c6c6c'%3E%3Canimate attributeName='r' values='0;0;10;10;10' keyTimes='0;0.25;0.5;0.75;1' keySplines='0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1' calcMode='spline' dur='2s' repeatCount='indefinite' begin='0s'/%3E%3Canimate attributeName='cx' values='16;16;16;50;84' keyTimes='0;0.25;0.5;0.75;1' keySplines='0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1' calcMode='spline' dur='2s' repeatCount='indefinite' begin='0s'/%3E%3C/circle%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center center;
 }

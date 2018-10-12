@@ -1,20 +1,23 @@
-<div class="wrapper">
+<div [class.wrapper--editable]="!editing && !isLoading" class="wrapper">
   <span
+    class="__span"
     #invisibleText
     data-text="">
   {{ currentValue }}
   </span>
   <input
     #editInPlace
-    [class.editable]="!editing"
-    [class.editing]="editing"
-    [class.isLoading]="isLoading"
+    class="__input"
+    [class.__input--editable]="!editing"
+    [class.__input--editing]="editing"
+    [class.__input--is-loading]="isLoading"
+    [disabled]="isLoading"
     type="text"
     [(ngModel)]="value"
     (focus)="edit()"
     (blur)="onSubmit()"
-    (keypress.enter)="onSubmit()"
-    (input)="resizeInput()"
+    (keyup.enter)="onSubmit()"
     [ngStyle]="{'width.px': inputWidth}"
   />
+  <span class="__span" [class.__span--is-loading]="isLoading"></span>
 </div>
