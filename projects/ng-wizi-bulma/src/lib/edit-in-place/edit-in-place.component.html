@@ -1,21 +1,24 @@
-<div [class.wrapper--editable]="!editing && !isLoading" class="wrapper">
+<div [class.nwb-wrapper--editable]="!editing && !isLoading" class="nwb-wrapper" (click)="startEditing()">
   <span
-    class="__span"
-    data-text="">
-  {{ currentValue }}
-  </span>
-  <input
-    class="__input"
-    [class.__input--editable]="!editing"
-    [class.__input--editing]="editing"
-    [class.__input--is-loading]="isLoading"
-    [disabled]="isLoading"
-    type="text"
-    [(ngModel)]="value"
-    (focus)="edit()"
-    (blur)="onSubmit()"
-    (keyup.enter)="onSubmit()"
-    [ngStyle]="{'width.px': inputWidth}"
-  />
-  <span class="__span" [class.__span--is-loading]="isLoading"></span>
+  data-text=""
+  [class.nwb-is-loading]="isLoading"
+  [class.nwb-editing]="editing">
+  {{currentValue}}
+</span>
+
+<input
+#input
+*ngIf="editing"
+[class.nwb-editable]="!editing"
+[class.nwb-editing]="editing"
+[class.nwb-is-loading]="isLoading"
+type="text"
+[(ngModel)]="value"
+(focus)="edit()"
+(blur)="onSubmit()"
+(keyup.enter)="onSubmit()"
+[ngStyle]="{'width.px': inputWidth}"
+/>
+
+  <span class="nwb-loader" [class.nwb-is-loading]="isLoading"></span>
 </div>

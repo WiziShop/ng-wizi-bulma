@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 
@@ -15,9 +15,12 @@ import { Observable } from 'rxjs';
     }
   ]
 })
-export class NwbEditInPlaceComponent implements ControlValueAccessor {
+export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewChecked {
   @Input()
   config: NwbEditInPlaceConfig = {};
+
+  @ViewChild('input')
+  input: ElementRef;
 
   public currentValue = '';
   private preValue = '';
@@ -55,6 +58,17 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor {
     this.onChange(v);
     this.writeValue(v);
     this.value = v;
+  }
+
+  ngAfterViewChecked() {
+    if (this.input && this.editing) {
+      this.input.nativeElement.focus();
+    }
+  }
+
+  startEditing() {
+    this.editing = true;
+    console.log('start editing');
   }
 
   edit() {
