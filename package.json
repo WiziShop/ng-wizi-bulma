@@ -7,7 +7,7 @@
     "start": "npm run build:lib --watch && ng serve",
     "build:lib": "ng build ng-wizi-bulma",
     "build:demo": "ng build ng-wizi-bulma-demo --prod",
-    "build": "npm run build:lib && npm run build:demo",
+    "build": "rm -rf dist && npm run build:lib && npm run build:demo && cp README.md dist/@wizishop/ng-wizi-bulma",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
