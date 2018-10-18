@@ -1,0 +1,8 @@
+:host(.tab) {
+  visibility: hidden;
+  height: 0;
+  &.is-active {
+    visibility: visible;
+    height: 100%;
+  }
+}
