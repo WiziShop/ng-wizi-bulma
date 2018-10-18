@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'nwb-tab',
   template: `
-    <ng-content *ngIf="isSelected">
+    <ng-content>
     </ng-content>
   `
 })
@@ -13,6 +13,9 @@ export class NwbTabComponent {
   @Input()
   icon: string;
   index: number;
+  
+  @HostBinding('class.is-active') get isActive() { return this.isSelected; }
+  @HostBinding('class.tab') true;
 
   isSelected: boolean;
 
