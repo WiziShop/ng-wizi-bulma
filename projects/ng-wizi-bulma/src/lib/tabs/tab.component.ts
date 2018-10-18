@@ -2,6 +2,7 @@ import { Component, Input, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'nwb-tab',
+  styleUrls: ['./tab.component.scss'],
   template: `
     <ng-content>
     </ng-content>
