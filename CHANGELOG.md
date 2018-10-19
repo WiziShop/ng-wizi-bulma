@@ -1,6 +1,6 @@
 # 7.0.0 (2018-10-19)
 
-- New major version number that follows Angular major version number
+- New major version number follows Angular major version number
 
 # 5.0.1 (2018-10-16)
 
