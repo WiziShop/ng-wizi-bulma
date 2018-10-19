@@ -5,24 +5,16 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+    "module": "es2015",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"],
     "paths": {
-      "@wizishop/ng-wizi-bulma": [
-        "dist/@wizishop/ng-wizi-bulma"
-      ],
-      "@wizishop/ng-wizi-bulma/*": [
-        "dist/@wizishop/ng-wizi-bulma/*"
-      ]
-    },
-    "lib": [
-      "es2017",
-      "dom"
-    ]
+      "@wizishop/ng-wizi-bulma": ["dist/@wizishop/ng-wizi-bulma"],
+      "@wizishop/ng-wizi-bulma/*": ["dist/@wizishop/ng-wizi-bulma/*"]
     }
+  }
 }

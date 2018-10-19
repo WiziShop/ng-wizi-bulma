@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/@wizishop/ng-wizi-bulma.svg)](https://www.npmjs.com/package/@wizishop/ng-wizi-bulma)
 [![npm](https://img.shields.io/npm/dm/@wizishop/ng-wizi-bulma.svg)](https://www.npmjs.com/package/@wizishop/ng-wizi-bulma)
 
-[Bulma](http://bulma.io/) components for Angular 6+
+[Bulma](http://bulma.io/) components for Angular 7+
 
 The library uses [ng-packagr](https://github.com/dherges/ng-packagr) to transpile into the Angular Package Format
 
@@ -13,7 +13,8 @@ Try out the [demo](https://ng-wizi-bulma.firebaseapp.com/)
 
 ## Install
 
-Run: 
+Run:
+
 ```
 npm i -S @wizishop/ng-wizi-bulma bulma bulma-switch bulma-tooltip @angular/cdk
 ```
@@ -30,11 +31,10 @@ Load the Fontawesome icon font in your index.html.
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 ```
 
-Import the required modules `BrowserAnimationsModule` and `FormsModule` into your app module, then 
+Import the required modules `BrowserAnimationsModule` and `FormsModule` into your app module, then
 import either all Nwb modules with `NwbAllModule` or only the module you want to use in your application for example `NwbDialogModule
 
-````
-
+```
 import {ApplicationRef, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -56,12 +56,9 @@ import {NwbModule} from '@wizishop/ng-wizi-bulma';
   entryComponents: [],
 })
 export class AppModule {
- 
+
 }
-
-````
-
-
+```
 
 ## How to use it
 
