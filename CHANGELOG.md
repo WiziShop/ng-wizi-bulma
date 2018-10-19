@@ -1,21 +1,21 @@
-#7.0.0 (2018-10-19)
+# 7.0.0 (2018-10-19)
 
 - New major version number that follows Angular major version number
 
-#5.0.1 (2018-10-16)
+# 5.0.1 (2018-10-16)
 
 - Upgrade bulma deps
 - Add new component `nwb-edit-in-place`
 
-#5.0.0 (2018-09-14)
+# 5.0.0 (2018-09-14)
 
 - package name changed. It's now under the scope @wizishop. Then to install it run `npm i @wizishop/ng-wizi-bulma`
 
-#4.0.7 (2018-08-29)
+# 4.0.7 (2018-08-29)
 
 - Increase timer in modal-search component while navigating with keyboard
 
-#4.0.6 (2018-08-24)
+# 4.0.6 (2018-08-24)
 
 - Angular 6.1.4
 - Set a default value for NwbAlertConfig.position
@@ -39,37 +39,37 @@
 - Each component has now its own module, so you can import only the components you want to use.
 - Breaking changes: `NwbModule` has been renamed to `NwbAllModule`. Il will import all the components' module for you.
 
-#3.0.10 (2018-07-12)
+# 3.0.10 (2018-07-12)
 
 - Add sort header component which is an adaptation of the sort header from angular material
 
-#3.0.9 (2018-07-02)
+# 3.0.9 (2018-07-02)
 
 - Allow to add extra classes to modalsearch component
 
-#3.0.7 (2018-06-20)
+# 3.0.7 (2018-06-20)
 
 - Optimize modalsearch listener
 
-#3.0.6 (2018-06-19)
+# 3.0.6 (2018-06-19)
 
 - Upgrade dependencies
 
-#3.0.5 (2018-06-19)
+# 3.0.5 (2018-06-19)
 
 - Fixes infinite loop that could occur when modalsearch was created but never opened
 
-#3.0.4 (2018-06-14)
+# 3.0.4 (2018-06-14)
 
 - Remove use of material icon, use only font awesome
 - NwbModalSearchComponent: Add header and footer component.
 - NwbFoundRow now accepts children properties
 
-#3.0.3 (2018-06-14)
+# 3.0.3 (2018-06-14)
 
 - NwbModalSearchComponent: Add enabled property to enable/disable the modal search component
 
-#3.0.1 (2018-05-30)
+# 3.0.1 (2018-05-30)
 
 - Breaking changes: NwbDropdownConfig.classes and NwbDropdownConfig.disabled don't exist anymore, they've been added as component input
 
