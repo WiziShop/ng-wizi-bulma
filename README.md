@@ -41,7 +41,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 
-import {NwbModule} from '@wizishop/ng-wizi-bulma';
+import {NwbAllModule} from '@wizishop/ng-wizi-bulma';
 
 @NgModule({
   imports: [
