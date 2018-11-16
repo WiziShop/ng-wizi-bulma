@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"npm run watch-scss\" \"ng build ng-wizi-bulma --watch \" \"ng serve\"",
-    "build:lib": "ng build ng-wizi-bulma --prod",
+    "build:lib": "ng build ng-wizi-bulma --prod && npm run block-scss",
     "build:demo": "ng build ng-wizi-bulma-demo --prod",
     "build": "rm -rf dist && npm run build:lib && npm run build:demo && cp README.md dist/@wizishop/ng-wizi-bulma",
     "test": "ng test",
