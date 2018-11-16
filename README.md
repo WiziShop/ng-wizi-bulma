@@ -36,7 +36,7 @@ After Bulma, import ng-wizi-bulma scss into your main scss file allowing you to 
 Load the Fontawesome icon font in your index.html.
 
 ```
- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
 ```
 
 Import the required modules `BrowserAnimationsModule` and `FormsModule` into your app module, then
