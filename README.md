@@ -19,16 +19,22 @@ Run:
 npm i -S @wizishop/ng-wizi-bulma bulma bulma-switch bulma-tooltip @angular/cdk
 ```
 
-Import bulma css into your main css file:
+Import bulma scss into your main scss file:
 
 ```
 @import '~bulma/bulma';
 ```
 
+After Bulma, import ng-wizi-bulma scss into your main scss file allowing you to custom all variable from bulma:
+
+```
+@import '~@wizishop/ng-wizi-buma/ng-wizi-bulma';
+```
+
 Load the Fontawesome icon font in your index.html.
 
 ```
- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" crossorigin="anonymous">
 ```
 
 Import the required modules `BrowserAnimationsModule` and `FormsModule` into your app module, then

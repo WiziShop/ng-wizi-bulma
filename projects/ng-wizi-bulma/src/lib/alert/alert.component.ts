@@ -5,7 +5,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'nwb-alert',
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.scss'],
   host: {
     class: 'nwb-alert'
   },

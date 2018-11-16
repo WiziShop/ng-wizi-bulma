@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'nwb-edit-in-place',
   templateUrl: './edit-in-place.component.html',
-  styleUrls: ['./edit-in-place.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [
     {

@@ -29,7 +29,6 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
     class: 'nwb-progress-bar'
   },
   templateUrl: './progress-bar.component.html',
-  styleUrls: ['./progress-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })

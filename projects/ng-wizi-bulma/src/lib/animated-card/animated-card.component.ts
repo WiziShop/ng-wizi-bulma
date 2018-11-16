@@ -2,8 +2,9 @@ import { OnInit, ElementRef, Component, ViewEncapsulation } from '@angular/core'
 
 @Component({
   selector: 'div[nwbAnimatedCardClosed], div[nwbAnimatedCardOpened]',
-  styleUrls: ['./animated-card.component.scss'],
-  template: `<ng-content></ng-content>`,
+  template: `
+    <ng-content></ng-content>
+  `,
   encapsulation: ViewEncapsulation.None
 })
 export class NwbAnimatedCardComponent implements OnInit {

@@ -3,7 +3,6 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'nwb-spinner',
   templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.component.scss'],
   host: {
     class: 'nwb-spinner'
   },

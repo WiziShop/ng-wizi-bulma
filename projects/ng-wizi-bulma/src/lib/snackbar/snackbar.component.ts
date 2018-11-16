@@ -6,7 +6,6 @@ import { animate, AnimationEvent, state, style, transition, trigger } from '@ang
 @Component({
   selector: 'nwb-snack-bar',
   templateUrl: './snackbar.component.html',
-  styleUrls: ['./snackbar.component.scss'],
   host: {
     class: 'nwb-snack-bar'
   },

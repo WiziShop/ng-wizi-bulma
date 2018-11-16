@@ -6,7 +6,6 @@ import { finalize } from 'rxjs/operators';
 @Component({
   selector: 'nwb-modal-search',
   templateUrl: './modal-search.component.html',
-  styleUrls: ['./modal-search.component.scss'],
   host: {
     class: 'nwb-modal-search'
   },

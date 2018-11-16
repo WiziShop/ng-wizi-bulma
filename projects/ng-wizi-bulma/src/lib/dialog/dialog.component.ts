@@ -17,7 +17,6 @@ import { animate, AnimationEvent, keyframes, style, transition, trigger } from '
 @Component({
   selector: 'nwb-dialog',
   templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss'],
   host: {
     class: 'nwb-dialog'
   },

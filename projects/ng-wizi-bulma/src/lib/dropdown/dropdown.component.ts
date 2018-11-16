@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'nwb-dropdown',
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss'],
   host: {
     class: 'nwb-dropdown'
   },

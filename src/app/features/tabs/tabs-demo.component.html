@@ -3,29 +3,17 @@
   <div class="column is-12">
     <h1 class="subtitle has-text-grey">Basic combine with router</h1>
 
-    <button (click)="tabBasicIndex=0"
-            class="button is-warning">
-      Set Pictures
-    </button>
+    <button (click)="tabBasicIndex = 0" class="button is-warning">Set Pictures</button>
 
-    <p>Selected index: {{tabBasicIndex}}</p>
+    <p>Selected index: {{ tabBasicIndex }}</p>
 
     <nwb-tabs [(selectedIndex)]="tabBasicIndex" (selectedIndexChange)="tabBasicIndexChange($event)">
-      <nwb-tab [label]="'Pictures'">
-        <p>Your Pictures are here!</p>
-      </nwb-tab>
+      <nwb-tab [label]="'Pictures'"> <p>Your Pictures are here!</p> </nwb-tab>
 
-      <nwb-tab [label]="'Music'">
-        <p>Your Music is here!</p>
-      </nwb-tab>
+      <nwb-tab [label]="'Music'"> <p>Your Music is here!</p> </nwb-tab>
 
-      <nwb-tab [label]="'Videos'">
-        <p>Your Videos are here!</p>
-
-      </nwb-tab>
-      <nwb-tab [label]="'Documents'">
-        <p>Your Documents are here!</p>
-      </nwb-tab>
+      <nwb-tab [label]="'Videos'"> <p>Your Videos are here!</p> </nwb-tab>
+      <nwb-tab [label]="'Documents'"> <p>Your Documents are here!</p> </nwb-tab>
     </nwb-tabs>
   </div>
 </div>
@@ -33,24 +21,11 @@
 <div class="columns">
   <div class="column is-12">
     <h1 class="subtitle has-text-grey">Small | Toggle</h1>
-    <nwb-tabs [size]="'small'"
-              [toggle]="true">
-      <nwb-tab [label]="'Pictures'">
-        <p>Your Pictures are here!</p>
-
-      </nwb-tab>
-      <nwb-tab [label]="'Music'">
-        <p>Your Music is here!</p>
-
-      </nwb-tab>
-      <nwb-tab [label]="'Videos'">
-        <p>Your Videos are here!</p>
-
-      </nwb-tab>
-      <nwb-tab [label]="'Documents'">
-        <p>Your Documents are here!</p>
-
-      </nwb-tab>
+    <nwb-tabs [size]="'small'" [toggle]="true">
+      <nwb-tab [label]="'Pictures'"> <p>Your Pictures are here!</p> </nwb-tab>
+      <nwb-tab [label]="'Music'"> <p>Your Music is here!</p> </nwb-tab>
+      <nwb-tab [label]="'Videos'"> <p>Your Videos are here!</p> </nwb-tab>
+      <nwb-tab [label]="'Documents'"> <p>Your Documents are here!</p> </nwb-tab>
     </nwb-tabs>
   </div>
 </div>
@@ -58,24 +33,11 @@
 <div class="columns">
   <div class="column is-12">
     <h1 class="subtitle has-text-grey">Large | Rounded</h1>
-    <nwb-tabs [size]="'large'"
-              [rounded]="true">
-
-      <nwb-tab [label]="'Pictures'">
-        <p>Your Pictures are here!</p>
-
-      </nwb-tab>
-      <nwb-tab [label]="'Music'">
-        <p>Your Music is here!</p>
-      </nwb-tab>
-      <nwb-tab [label]="'Videos'">
-        <p>Your Videos are here!</p>
-
-      </nwb-tab>
-      <nwb-tab [label]="'Documents'">
-        <p>Your Documents are here!</p>
-
-      </nwb-tab>
+    <nwb-tabs [size]="'large'" [rounded]="true">
+      <nwb-tab [label]="'Pictures'"> <p>Your Pictures are here!</p> </nwb-tab>
+      <nwb-tab [label]="'Music'"> <p>Your Music is here!</p> </nwb-tab>
+      <nwb-tab [label]="'Videos'"> <p>Your Videos are here!</p> </nwb-tab>
+      <nwb-tab [label]="'Documents'"> <p>Your Documents are here!</p> </nwb-tab>
     </nwb-tabs>
   </div>
 </div>
@@ -83,20 +45,11 @@
 <div class="columns">
   <div class="column is-12">
     <h1 class="subtitle has-text-grey">Fullwidth | Boxed</h1>
-    <nwb-tabs [fullwidth]="true"
-              [box]="true">
-      <nwb-tab [label]="'Pictures'">
-        <p>Your Pictures are here!</p>
-      </nwb-tab>
-      <nwb-tab [label]="'Music'">
-        <p>Your Music is here!</p>
-      </nwb-tab>
-      <nwb-tab [label]="'Videos'">
-        <p>Your Videos are here!</p>
-      </nwb-tab>
-      <nwb-tab [label]="'Documents'">
-        <p>Your Documents are here!</p>
-      </nwb-tab>
+    <nwb-tabs [fullwidth]="true" [box]="true">
+      <nwb-tab [label]="'Pictures'"> <p>Your Pictures are here!</p> </nwb-tab>
+      <nwb-tab [label]="'Music'"> <p>Your Music is here!</p> </nwb-tab>
+      <nwb-tab [label]="'Videos'"> <p>Your Videos are here!</p> </nwb-tab>
+      <nwb-tab [label]="'Documents'"> <p>Your Documents are here!</p> </nwb-tab>
     </nwb-tabs>
   </div>
 </div>
@@ -105,22 +58,10 @@
   <div class="column is-12">
     <h1 class="subtitle has-text-grey">Alignment</h1>
     <nwb-tabs [alignment]="'right'">
-      <nwb-tab label="Pictures">
-        <p>Your Pictures are here!</p>
-
-      </nwb-tab>
-      <nwb-tab label="Music">
-        <p>Your Music is here!</p>
-
-      </nwb-tab>
-      <nwb-tab label="Videos">
-        <p>Your Videos are here!</p>
-
-      </nwb-tab>
-      <nwb-tab label="Documents">
-        <p>Your Documents are here!</p>
-
-      </nwb-tab>
+      <nwb-tab label="Pictures"> <p>Your Pictures are here!</p> </nwb-tab>
+      <nwb-tab label="Music"> <p>Your Music is here!</p> </nwb-tab>
+      <nwb-tab label="Videos"> <p>Your Videos are here!</p> </nwb-tab>
+      <nwb-tab label="Documents"> <p>Your Documents are here!</p> </nwb-tab>
     </nwb-tabs>
   </div>
 </div>
@@ -129,22 +70,10 @@
   <div class="column is-12">
     <h1 class="subtitle has-text-grey">Icons</h1>
     <nwb-tabs>
-      <nwb-tab label="Pictures"
-               [icon]="'fa fa-camera'">
-        <p>Your Pictures are here!</p>
-      </nwb-tab>
-      <nwb-tab label="Music"
-               [icon]="'fa fa-music'">
-        <p>Your Music is here!</p>
-      </nwb-tab>
-      <nwb-tab label="Videos"
-               [icon]="'fa fa-video-camera'">
-        <p>Your Videos are here!</p>
-      </nwb-tab>
-      <nwb-tab label="Documents"
-               [icon]="'fa fa-file-o'">
-        <p>Your Documents are here!</p>
-      </nwb-tab>
+      <nwb-tab label="Pictures" [icon]="'fa fa-camera'"> <p>Your Pictures are here!</p> </nwb-tab>
+      <nwb-tab label="Music" [icon]="'fas fa-music'"> <p>Your Music is here!</p> </nwb-tab>
+      <nwb-tab label="Videos" [icon]="'fas fa-video'"> <p>Your Videos are here!</p> </nwb-tab>
+      <nwb-tab label="Documents" [icon]="'far fa-file'"> <p>Your Documents are here!</p> </nwb-tab>
     </nwb-tabs>
   </div>
 </div>

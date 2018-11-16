@@ -49,7 +49,6 @@ export class NwbPageEvent {
 @Component({
   selector: 'nwb-paginator',
   templateUrl: 'paginator.component.html',
-  styleUrls: ['./paginator.component.scss'],
   host: {
     class: 'nwb-paginator'
   },
