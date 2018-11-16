@@ -16,13 +16,15 @@ Try out the [demo](https://ng-wizi-bulma.firebaseapp.com/)
 Run:
 
 ```
-npm i -S @wizishop/ng-wizi-bulma bulma bulma-switch bulma-tooltip @angular/cdk
+npm i -S @wizishop/ng-wizi-bulma bulma bulma-extensions @angular/cdk
 ```
 
-Import bulma scss into your main scss file:
+Import bulma (and needed extensions) scss into your main scss file:
 
 ```
 @import '~bulma/bulma';
+@import '~bulma-extensions/bulma-switch/dist/css/bulma-switch';
+@import '~bulma-extensions/bulma-tooltip/dist/css/bulma-tooltip';
 ```
 
 After Bulma, import ng-wizi-bulma scss into your main scss file allowing you to custom all variable from bulma:
