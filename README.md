@@ -30,7 +30,7 @@ Import bulma (and needed extensions) scss into your main scss file:
 After Bulma, import ng-wizi-bulma scss into your main scss file allowing you to custom all variable from bulma:
 
 ```
-@import '~@wizishop/ng-wizi-buma/ng-wizi-bulma';
+@import '~@wizishop/ng-wizi-bulma/ng-wizi-bulma';
 ```
 
 Load the Fontawesome icon font in your index.html.
