@@ -1,3 +1,10 @@
+# 7.0.4 (2018-11-16)
+
+- Update to angular 7.0.4
+- Add new scss @import '~@wizishop/ng-wizi-buma/ng-wizi-bulma'; to allow custom all color from bulma
+- Move from bulma-switch / bulma-pageloader to bulma-extensions to avoid some error message
+- Update fontawesome to last 5.5.0 version
+
 # 7.0.0 (2018-10-19)
 
 - New major version number follows Angular major version number
