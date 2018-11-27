@@ -1,3 +1,8 @@
+# 7.0.5 (2018-11-27)
+
+- Angular 7.1.0
+- fix: upgrade nodemon to remove [vulnerability](https://github.com/remy/nodemon/commit/21e052eddf144b27a7c0eb9c603236707003d75d)
+
 # 7.0.4 (2018-11-16)
 
 - Update to angular 7.0.4
