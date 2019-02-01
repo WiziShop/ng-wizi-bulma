@@ -1,3 +1,7 @@
+# 7.0.7 (2019-02-01)
+
+- Display dialog's footer even if there's only one of the buttons present (PR #9)
+
 # 7.0.6 (2019-01-23)
 
 - Angular 7.2.2
