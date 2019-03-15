@@ -1,5 +1,6 @@
-import { Component, Input, ViewEncapsulation, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, Input, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 import { Observable } from 'rxjs';
 
 @Component({
@@ -26,7 +27,8 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
 
   public inputWidth: number;
   public editing = false;
-  public isLoading;
+  public isLoading: boolean;
+  private firstEdit: boolean;
 
   public onChange: any = Function.prototype;
   public onTouched: any = Function.prototype;
@@ -62,11 +64,16 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
   ngAfterViewChecked() {
     if (this.input && this.editing) {
       this.input.nativeElement.focus();
+      if (this.config.selectTextUponClick && this.firstEdit && this.preValue && this.input.nativeElement.value) {
+        this.input.nativeElement.select();
+        this.firstEdit = false;
+      }
     }
   }
 
   startEditing() {
     this.editing = true;
+    this.firstEdit = true;
     console.log('start editing');
   }
 
@@ -111,6 +118,9 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
 export interface NwbEditInPlaceConfig {
   /** TODO Options to pass to populate a Dropdown **/
   // _options?: QueryList<NwbOptionComponent>;
+
+  /** Whether to select the whole text inside the input upon click */
+  selectTextUponClick?: boolean;
 
   /** Data to pass as the second argument for the handler method if any **/
   data?: any;
