@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NwbDialogService } from '@wizishop/ng-wizi-bulma';
-import { Observable, timer } from 'rxjs';
+import { timer } from 'rxjs';
 import { NwbEditInPlaceConfig } from '../../../../projects/ng-wizi-bulma/src/lib/edit-in-place';
-import { switchMap, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   providers: [],
@@ -51,6 +51,23 @@ export class EditInPlaceDemo {
   }
 `;
 
+  docPreview3 = `
+ editInPlaceConfig2: NwbEditInPlaceConfig = {
+    selectTextUponClick: true
+  };
+  
+ <nwb-edit-in-place 
+ [(ngModel)]="developer"
+ (ngModelChange)="modelChange($event)"  
+ [config]="editInPlaceConfig2">
+ 
+</nwb-edit-in-place>
+
+  modelChange(event: any) {
+    console.log('modelChange', event);
+  }
+`;
+
   developer = 'developer';
   devops = 'devops';
 
@@ -59,6 +76,10 @@ export class EditInPlaceDemo {
     handler: (value: any, data: number) => {
       return this.changeHandler(value, data);
     }
+  };
+
+  editInPlaceConfig2: NwbEditInPlaceConfig = {
+    selectTextUponClick: true
   };
 
   constructor(private dialog: NwbDialogService) {}

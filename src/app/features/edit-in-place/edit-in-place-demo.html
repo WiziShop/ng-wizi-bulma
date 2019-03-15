@@ -7,12 +7,9 @@
   <div class="card-content">
     <div class="content">
       <nwb-doc-preview [content]="docPreview1">
-        <h1>I am a <nwb-edit-in-place [(ngModel)]="developer" (ngModelChange)="modelChange($event)"></nwb-edit-in-place>
-        </h1>
+        <h1>I am a <nwb-edit-in-place [(ngModel)]="developer" (ngModelChange)="modelChange($event)"></nwb-edit-in-place></h1>
         <p>Entered value: {{developer}}</p>
       </nwb-doc-preview>
-
-
     </div>
   </div>
 </div>
@@ -26,9 +23,31 @@
   <div class="card-content">
     <div class="content">
       <nwb-doc-preview [content]="docPreview2">
-        <p>I am a <nwb-edit-in-place [(ngModel)]="devops" [config]="editInPlaceConfig"></nwb-edit-in-place>
-        </p>
+        <p>I am a <nwb-edit-in-place [(ngModel)]="devops" [config]="editInPlaceConfig"></nwb-edit-in-place></p>
         <p><em>Allowed values: developer, devops</em></p>
+      </nwb-doc-preview>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      Edit In Place Input with auto select
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <nwb-doc-preview [content]="docPreview3">
+        <h1>
+          I am a
+          <nwb-edit-in-place
+            [(ngModel)]="developer"
+            (ngModelChange)="modelChange($event)"
+            [config]="editInPlaceConfig2"
+          ></nwb-edit-in-place>
+        </h1>
+        <p>Entered value: {{developer}}</p>
       </nwb-doc-preview>
     </div>
   </div>
