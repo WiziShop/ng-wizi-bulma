@@ -72,9 +72,10 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
   }
 
   startEditing() {
-    this.editing = true;
-    this.firstEdit = true;
-    console.log('start editing');
+    if (!this.editing) {
+      this.editing = true;
+      this.firstEdit = true;
+    }
   }
 
   edit() {
@@ -116,9 +117,6 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
 }
 
 export interface NwbEditInPlaceConfig {
-  /** TODO Options to pass to populate a Dropdown **/
-  // _options?: QueryList<NwbOptionComponent>;
-
   /** Whether to select the whole text inside the input upon click */
   selectTextUponClick?: boolean;
 
