@@ -1,3 +1,8 @@
+# 7.0.8 (2019-03-15)
+
+- Add option selectTextUponClick in edit in place component (PR #11)
+- Upgrade deps
+
 # 7.0.7 (2019-02-01)
 
 - Display dialog's footer even if there's only one of the buttons present (PR #9)
