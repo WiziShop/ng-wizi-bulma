@@ -41,9 +41,11 @@ import {
   NwbSnackbarModule,
   NwbSortModule,
   NwbSwitchModule,
-  NwbTabsModule
+  NwbTabsModule,
+  NwbDatePickerModule
 } from '@wizishop/ng-wizi-bulma';
 import { NwbEditInPlaceModule } from '../../projects/ng-wizi-bulma/src/lib/edit-in-place';
+import { DatePickerDemo } from './features/date-picker/date-picker-demo';
 
 @NgModule({
   imports: [
@@ -66,7 +68,8 @@ import { NwbEditInPlaceModule } from '../../projects/ng-wizi-bulma/src/lib/edit-
     NwbSortModule,
     NwbSwitchModule,
     NwbTabsModule,
-    NwbEditInPlaceModule
+    NwbEditInPlaceModule,
+    NwbDatePickerModule
   ],
   declarations: [
     AppComponent,
@@ -89,7 +92,8 @@ import { NwbEditInPlaceModule } from '../../projects/ng-wizi-bulma/src/lib/edit-
     TooltipDemo,
     TableDemo,
     SortDemo,
-    EditInPlaceDemo
+    EditInPlaceDemo,
+    DatePickerDemo
   ],
   providers: [],
   entryComponents: [FakeDialogDemoComponent],

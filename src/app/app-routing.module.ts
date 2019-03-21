@@ -17,6 +17,7 @@ import { AnimatedCardDemo } from './features/animated-card/animated-card-demo';
 import { TableDemo } from './features/table/table-demo';
 import { SortDemo } from './features/sort/sort-demo';
 import { EditInPlaceDemo } from './features/edit-in-place/edit-in-place-demo';
+import { DatePickerDemo } from './features/date-picker/date-picker-demo';
 
 const appRoutes: Routes = [
   {
@@ -90,6 +91,10 @@ const appRoutes: Routes = [
   {
     path: 'sort',
     component: SortDemo
+  },
+  {
+    path: 'date-picker',
+    component: DatePickerDemo
   },
   {
     path: '**',

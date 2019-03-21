@@ -16,5 +16,6 @@ export * from './lib/snackbar/index';
 export * from './lib/sort/index';
 export * from './lib/switch/index';
 export * from './lib/tabs/index';
+export * from './lib/date-picker/index';
 
 export * from './lib/nwb-all-module';
