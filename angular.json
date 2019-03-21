@@ -91,7 +91,7 @@
       }
     },
     "ng-wizi-bulma-demo-e2e": {
-      "root": "",
+      "root": "e2e/",
       "sourceRoot": "",
       "projectType": "application",
       "architect": {
@@ -116,6 +116,11 @@
       "sourceRoot": "projects/ng-wizi-bulma/src",
       "projectType": "library",
       "prefix": "nwb",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
