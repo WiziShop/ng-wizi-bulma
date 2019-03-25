@@ -1,3 +1,7 @@
+# 7.0.9 (2019-03-25)
+
+- Dropdown: fix performance issue due to global document click listener
+
 # 7.0.8 (2019-03-15)
 
 - Add option selectTextUponClick in edit in place component (PR #11)
