@@ -1,4 +1,4 @@
-import { Component, ContentChildren, ElementRef, HostListener, Input, QueryList, ViewEncapsulation } from '@angular/core';
+import { Component, ContentChildren, ElementRef, Input, QueryList, Renderer2, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NwbOptionComponent } from './option.component';
 import { Observable } from 'rxjs';
@@ -39,11 +39,13 @@ export class NwbDropdownComponent implements ControlValueAccessor {
 
   currentText: any;
 
+  private documentClickListener;
+
   private _onChanged: Function;
   private _onTouched: Function;
   private currentValue: any;
 
-  constructor(private _elementRef: ElementRef) {}
+  constructor(private _elementRef: ElementRef, private renderer: Renderer2) {}
 
   writeValue(obj: any): void {
     this.currentValue = obj;
@@ -59,11 +61,14 @@ export class NwbDropdownComponent implements ControlValueAccessor {
     this._onTouched = fn;
   }
 
-  @HostListener('document:click', ['$event'])
-  _click(ev: UIEvent) {
+  private documentClick(ev: UIEvent) {
     if (!this._elementRef.nativeElement.contains(ev.target)) {
       // Outside host, close dropdown
       this.isActive = false;
+
+      if (this.documentClickListener) {
+        this.documentClickListener();
+      }
     }
   }
 
@@ -120,6 +125,10 @@ export class NwbDropdownComponent implements ControlValueAccessor {
       return;
     }
     this.isActive = !this.isActive;
+
+    if (this.isActive) {
+      this.documentClickListener = this.renderer.listen('document', 'click', ev => this.documentClick(ev));
+    }
   }
 }
 
