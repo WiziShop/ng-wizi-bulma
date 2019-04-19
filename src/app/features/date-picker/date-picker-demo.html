@@ -8,51 +8,51 @@
     <div class="content">
       <nwb-doc-preview [content]="sample1">
         <p>DatePicker simple</p>
-        <nwb-date-picker (change)="valueChange($event)" [options]="{'lang':'uk','format':'MM/DD/YYYY'}">
+        <nwb-date-picker (change)="valueChange($event)">
           <input type="date" />
         </nwb-date-picker>
       </nwb-doc-preview>
       <br />
-      <nwb-doc-preview [content]="sample2">
-        <p>DatePicker with timer</p>
-        <nwb-date-picker (change)="valueChange($event)" [options]="{'lang':'uk','format':'MM/DD/YYYY'}">
-          <input type="time" />
-        </nwb-date-picker>
-      </nwb-doc-preview>
-      <br />
-      <nwb-doc-preview [content]="sample3">
-        <p>DatePicker range and Label</p>
-        <nwb-date-picker
-          (change)="valueChange($event)"
-          [options]="{'lang':'uk','format':'MM/DD/YYYY','labelFrom':'From start','labelTo':'To end'}"
-        >
-          <input type="date" />
-          <input type="date" />
-        </nwb-date-picker>
-      </nwb-doc-preview>
-      <br />
-      <nwb-doc-preview [content]="sample4">
-        <p>DatePicker range with timer and Label</p>
-        <nwb-date-picker
-          (change)="valueChange($event)"
-          [options]="{'lang':'uk','format':'MM/DD/YYYY','labelFrom':'From start','labelTo':'To end'}"
-        >
-          <input type="time" />
-          <input type="time" />
-        </nwb-date-picker>
-      </nwb-doc-preview>
-      <br />
-      <nwb-doc-preview [content]="sample5">
-        <p>DatePicker inline</p>
-        <nwb-date-picker (change)="valueChange($event)" [options]="{'displayMode':'inline'}">
-          <input type="date" />
-        </nwb-date-picker>
-        <br />
-        <p>DatePicker dialog</p>
-        <nwb-date-picker (change)="valueChange($event)" [options]="{'displayMode':'dialog'}">
-          <input type="date" />
-        </nwb-date-picker>
-      </nwb-doc-preview>
+      <!--      <nwb-doc-preview [content]="sample2">-->
+      <!--        <p>DatePicker with timer</p>-->
+      <!--        <nwb-date-picker (change)="valueChange($event)" [options]="{'lang':'uk','format':'MM/DD/YYYY'}">-->
+      <!--          <input type="time" />-->
+      <!--        </nwb-date-picker>-->
+      <!--      </nwb-doc-preview>-->
+      <!--      <br />-->
+      <!--      <nwb-doc-preview [content]="sample3">-->
+      <!--        <p>DatePicker range and Label</p>-->
+      <!--        <nwb-date-picker-->
+      <!--          (change)="valueChange($event)"-->
+      <!--          [options]="{'lang':'uk','format':'MM/DD/YYYY','labelFrom':'From start','labelTo':'To end'}"-->
+      <!--        >-->
+      <!--          <input type="date" />-->
+      <!--          <input type="date" />-->
+      <!--        </nwb-date-picker>-->
+      <!--      </nwb-doc-preview>-->
+      <!--      <br />-->
+      <!--      <nwb-doc-preview [content]="sample4">-->
+      <!--        <p>DatePicker range with timer and Label</p>-->
+      <!--        <nwb-date-picker-->
+      <!--          (change)="valueChange($event)"-->
+      <!--          [options]="{'lang':'uk','format':'MM/DD/YYYY','labelFrom':'From start','labelTo':'To end'}"-->
+      <!--        >-->
+      <!--          <input type="time" />-->
+      <!--          <input type="time" />-->
+      <!--        </nwb-date-picker>-->
+      <!--      </nwb-doc-preview>-->
+      <!--      <br />-->
+      <!--      <nwb-doc-preview [content]="sample5">-->
+      <!--        <p>DatePicker inline</p>-->
+      <!--        <nwb-date-picker (change)="valueChange($event)" [options]="{'displayMode':'inline'}">-->
+      <!--          <input type="date" />-->
+      <!--        </nwb-date-picker>-->
+      <!--        <br />-->
+      <!--        <p>DatePicker dialog</p>-->
+      <!--        <nwb-date-picker (change)="valueChange($event)" [options]="{'displayMode':'dialog'}">-->
+      <!--          <input type="date" />-->
+      <!--        </nwb-date-picker>-->
+      <!--      </nwb-doc-preview>-->
     </div>
   </div>
 </div>

@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { DatePickerIntl } from './date-picker-intl';
+import { DatePickerFormat } from './date-picker-format';
+import { DatePickerSettings } from './date-picker-settings';
 
 declare const bulmaCalendar: any;
 
@@ -9,20 +11,27 @@ declare const bulmaCalendar: any;
   styleUrls: ['./date-picker.component.scss']
 })
 export class NwbDatePickerComponent implements AfterViewInit {
-  private bulmaCalendar = null;
-  @Input() options: NwbDatePickerOptions = new NwbDatePickerOptions();
-  @Input() content: any;
+  @Input() options: NwbDatePickerOptions = {};
 
   @Output() change = new EventEmitter<NwbDatePickerEvent>();
+
+  private bulmaCalendar = null;
   private currentValueStart: Date = new Date();
   private currentValueEnd: Date = new Date();
+
   @ViewChild('ngWiziDatePicker') ngWiziDatePicker: ElementRef;
 
   @ViewChild('contentWrapper') contentWrapper: ElementRef;
 
-  constructor(private datePickerIntl: DatePickerIntl) {}
+  constructor(
+    private datePickerIntl: DatePickerIntl,
+    private datePickerFormat: DatePickerFormat,
+    private datePrickerSettings: DatePickerSettings
+  ) {
+    console.log('lang', this.datePickerFormat.lang);
+  }
 
-  private _setValue(value: any) {
+  private setValue(value: any) {
     if (typeof value.data.datePicker.date.start !== 'object') {
       return;
     }
@@ -48,18 +57,21 @@ export class NwbDatePickerComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.content = this.contentWrapper.nativeElement;
-    if (this.content.children.length > 1) {
+    const content = this.contentWrapper.nativeElement;
+    if (content.children.length > 1) {
       this.options.isRange = true;
     }
-    if (this.content.firstChild.getAttribute('type') === 'time') {
+    if (content.firstChild.getAttribute('type') === 'time') {
       this.options.showFooter = true;
       this.options.showButtons = true;
       this.ngWiziDatePicker.nativeElement.type = 'text';
     }
-    this.bulmaCalendar = new bulmaCalendar(this.ngWiziDatePicker.nativeElement, this.options);
+
+    const options = Object.assign({}, this.datePickerFormat, this.datePickerIntl, this.datePrickerSettings, this.options);
+    console.log(options);
+    this.bulmaCalendar = new bulmaCalendar(this.ngWiziDatePicker.nativeElement, options);
     this.bulmaCalendar.on('select', data => {
-      this._setValue(data);
+      this.setValue(data);
     });
   }
 }
@@ -69,37 +81,42 @@ export interface NwbDatePickerEvent {
   endDate: Date;
 }
 
-export class NwbDatePickerOptions {
-  startDate?: Date;
-  endDate?: Date;
-  minDate = null;
-  maxDate = null;
-  type = 'Date';
-  color = 'primary';
-  isRange = false;
-  allowSameDayRange = true;
-  lang = navigator.language.substring(0, 2) || 'en';
+export interface NwbDatePickerOptions {
+  type?: 'date' | 'time' | 'datetime';
+  color?: string;
+  isRange?: boolean;
+  allowSameDayRange?: boolean;
+  lang?: string;
   dateFormat?: string;
-  timeFormat = 'HH:mm';
-  displayMode = 'default';
-  showHeader = false;
-  headerPosition = 'top';
-  showFooter = false;
-  showButtons = false;
-  showTodayButton = false;
-  showClearButton = false;
+  timeFormat?: string;
+  displayMode?: string;
+  position?: string;
+  showHeader?: boolean;
+  headerPosition?: 'top' | 'bottom';
+  showFooter?: boolean;
+  showButtons?: boolean;
+  showTodayButton?: boolean;
+  showClearButton?: boolean;
   cancelLabel?: string;
   clearLabel?: string;
   todayLabel?: string;
   nowLabel?: string;
   validateLabel?: string;
-  enableMonthSwitch = true;
-  enableYearSwitch = true;
-  disabledWeekDays = false;
-  minuteSteps = 5;
-  labelFrom = '';
-  labelTo = '';
-  closeOnOverlayClick = true;
-  closeOnSelect = true;
-  toggleOnInputClick = true;
+  enableMonthSwitch?: boolean;
+  enableYearSwitch?: boolean;
+  startDate?: Date;
+  endDate?: Date;
+  minDate?: Date;
+  maxDate?: Date;
+  disabledDates?: Date[];
+  disabledWeekDays?: number[];
+  weekStart?: number;
+  startTime?: Date;
+  endTime?: Date;
+  minuteSteps?: number;
+  labelFrom?: string;
+  labelTo?: string;
+  closeOnOverlayClick?: boolean;
+  closeOnSelect?: boolean;
+  toggleOnInputClick?: boolean;
 }

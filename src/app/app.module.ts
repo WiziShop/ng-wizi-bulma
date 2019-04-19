@@ -30,22 +30,41 @@ import { SortDemo } from './features/sort/sort-demo';
 import { EditInPlaceDemo } from './features/edit-in-place/edit-in-place-demo';
 
 import {
+  DatePickerFormat,
+  DatePickerIntl,
+  NWB_DATE_LOCALE,
   NwbAlertModule,
   NwbAnimatedCardModule,
   NwbCommonModule,
+  NwbDatePickerModule,
   NwbDialogModule,
   NwbDropdownModule,
+  NwbEditInPlaceModule,
   NwbModalSearchModule,
   NwbPaginatorModule,
   NwbProgressBarModule,
   NwbSnackbarModule,
   NwbSortModule,
   NwbSwitchModule,
-  NwbTabsModule,
-  NwbDatePickerModule
+  NwbTabsModule
 } from '@wizishop/ng-wizi-bulma';
-import { NwbEditInPlaceModule } from '../../projects/ng-wizi-bulma/src/lib/edit-in-place';
 import { DatePickerDemo } from './features/date-picker/date-picker-demo';
+
+export class MyDatePickerFormat {
+  lang: any;
+  timeFormat = 'HH:mm';
+  dateFormat = 'DD/MM/YYYY';
+}
+
+export class MyDatePickerIntl {
+  cancelLabel = 'Cancel';
+  clearLabel = 'Clear';
+  todayLabel = "Aujourd'hui";
+  nowLabel = 'Now';
+  validateLabel = 'Validate';
+  labelFrom = '';
+  labelTo = '';
+}
 
 @NgModule({
   imports: [
@@ -95,7 +114,11 @@ import { DatePickerDemo } from './features/date-picker/date-picker-demo';
     EditInPlaceDemo,
     DatePickerDemo
   ],
-  providers: [],
+  providers: [
+    // {provide: NWB_DATE_LOCALE, useValue: 'fr-FR'},
+    // {provide: DatePickerIntl, useClass: MyDatePickerIntl},
+    // {provide: DatePickerFormat, useClass: MyDatePickerFormat, deps: [NWB_DATE_LOCALE]},
+  ],
   entryComponents: [FakeDialogDemoComponent],
   bootstrap: [AppComponent]
 })
