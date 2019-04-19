@@ -1,3 +1,6 @@
+~bulma-extensions/bulma-calendar/dist/css/bulma-calendar.min.css
+node_modules/bulma-extensions/bulma-calendar/dist/js/bulma-calendar.js
+
 # 7.0.8 (2019-03-15)
 
 - Add option selectTextUponClick in edit in place component (PR #11)
