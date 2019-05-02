@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, NgZone, Output, ViewChild } from '@angular/core';
 import { DatePickerIntl } from './date-picker-intl';
 import { DatePickerFormat } from './date-picker-format';
 import { DatePickerSettings } from './date-picker-settings';
@@ -26,12 +26,12 @@ export class NwbDatePickerComponent implements AfterViewInit {
   constructor(
     private datePickerIntl: DatePickerIntl,
     private datePickerFormat: DatePickerFormat,
-    private datePrickerSettings: DatePickerSettings
-  ) {
-    console.log('lang', this.datePickerFormat.lang);
-  }
+    private datePrickerSettings: DatePickerSettings,
+    private ngZone: NgZone
+  ) {}
 
   private setValue(value: any) {
+    const content = this.contentWrapper.nativeElement;
     if (typeof value.data.datePicker.date.start !== 'object') {
       return;
     }
@@ -42,11 +42,26 @@ export class NwbDatePickerComponent implements AfterViewInit {
       ) {
         this.currentValueStart = value.data.datePicker.date.start;
         this.currentValueEnd = value.data.datePicker.date.end;
+        content.firstChild.value = new Date(
+          value.data.datePicker.date.start.getTime() - value.data.datePicker.date.start.getTimezoneOffset() * 60000
+        )
+          .toISOString()
+          .split('T')[0];
+        content.lastChild.value = new Date(
+          value.data.datePicker.date.end.getTime() - value.data.datePicker.date.end.getTimezoneOffset() * 60000
+        )
+          .toISOString()
+          .split('T')[0];
       }
     } else {
       if (this.currentValueStart.getTime() !== value.data.datePicker.date.start.getTime()) {
         this.currentValueStart = value.data.datePicker.date.start;
         this.currentValueStart = value.data.datePicker.date.start;
+        content.firstChild.value = new Date(
+          value.data.datePicker.date.start.getTime() - value.data.datePicker.date.start.getTimezoneOffset() * 60000
+        )
+          .toISOString()
+          .split('T')[0];
       }
     }
     this.change.emit({
@@ -60,18 +75,23 @@ export class NwbDatePickerComponent implements AfterViewInit {
     const content = this.contentWrapper.nativeElement;
     if (content.children.length > 1) {
       this.options.isRange = true;
+      this.options.startDate = content.firstChild.value ? new Date(content.firstChild.value) : null;
+      this.options.endDate = content.lastChild.value ? new Date(content.lastChild.value) : null;
+    } else {
+      this.options.isRange = false;
+      this.options.startDate = content.firstChild.value ? new Date(content.firstChild.value) : null;
     }
-    if (content.firstChild.getAttribute('type') === 'time') {
+    if (content.firstChild.getAttribute('type') !== 'date') {
       this.options.showFooter = true;
       this.options.showButtons = true;
       this.ngWiziDatePicker.nativeElement.type = 'text';
     }
-
-    const options = Object.assign({}, this.datePickerFormat, this.datePickerIntl, this.datePrickerSettings, this.options);
-    console.log(options);
+    const options = Object.assign(this.datePickerFormat, this.datePickerIntl, this.datePrickerSettings, this.options);
     this.bulmaCalendar = new bulmaCalendar(this.ngWiziDatePicker.nativeElement, options);
     this.bulmaCalendar.on('select', data => {
-      this.setValue(data);
+      this.ngZone.run(() => {
+        this.setValue(data);
+      });
     });
   }
 }

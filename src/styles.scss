@@ -8,3 +8,51 @@
 @import 'bulma-docs.css';
 
 @import '../dist/@wizishop/ng-wizi-bulma/ng-wizi-bulma';
+
+.textarea:not([rows]).textarea--exampleBulmaCalendar {
+  min-height: 200px;
+  cursor: default;
+  resize: none;
+}
+
+.textarea:not([rows]).textarea--settingDefault {
+  min-height: 470px;
+  cursor: default;
+  resize: none;
+}
+
+.textarea:not([rows]).textarea--settingClass {
+  min-height: 800px;
+  cursor: default;
+  resize: none;
+}
+
+.textarea:not([rows]).textarea--settingComp {
+  min-height: 150px;
+  cursor: default;
+  resize: none;
+}
+
+.textarea:not([rows]).textarea--formatDefault {
+  min-height: 340px;
+  cursor: default;
+  resize: none;
+}
+
+.textarea:not([rows]).textarea--formatClass {
+  min-height: 480px;
+  cursor: default;
+  resize: none;
+}
+
+.textarea:not([rows]).textarea--formatComp {
+  min-height: 150px;
+  cursor: default;
+  resize: none;
+}
+
+.textarea:not([rows]).textarea--formatUse {
+  min-height: 150px;
+  cursor: default;
+  resize: none;
+}

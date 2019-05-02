@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CdkTableModule } from '@angular/cdk/table';
 
 import { DialogDemo } from './features/dialog/dialog-demo';
@@ -50,27 +50,12 @@ import {
 } from '@wizishop/ng-wizi-bulma';
 import { DatePickerDemo } from './features/date-picker/date-picker-demo';
 
-export class MyDatePickerFormat {
-  lang: any;
-  timeFormat = 'HH:mm';
-  dateFormat = 'DD/MM/YYYY';
-}
-
-export class MyDatePickerIntl {
-  cancelLabel = 'Cancel';
-  clearLabel = 'Clear';
-  todayLabel = "Aujourd'hui";
-  nowLabel = 'Now';
-  validateLabel = 'Validate';
-  labelFrom = '';
-  labelTo = '';
-}
-
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     CdkTableModule,
@@ -114,11 +99,7 @@ export class MyDatePickerIntl {
     EditInPlaceDemo,
     DatePickerDemo
   ],
-  providers: [
-    // {provide: NWB_DATE_LOCALE, useValue: 'fr-FR'},
-    // {provide: DatePickerIntl, useClass: MyDatePickerIntl},
-    // {provide: DatePickerFormat, useClass: MyDatePickerFormat, deps: [NWB_DATE_LOCALE]},
-  ],
+  providers: [],
   entryComponents: [FakeDialogDemoComponent],
   bootstrap: [AppComponent]
 })
