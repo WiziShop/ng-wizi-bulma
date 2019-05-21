@@ -1,4 +1,8 @@
-# 7.0.9 (2019-03-25)
+#7.0.10 (2019-05-21)
+
+- Add Edit-in-place with currency / fixed numbers
+
+#7.0.9 (2019-03-25)
 
 - Dropdown: fix performance issue due to global document click listener
 

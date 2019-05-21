@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, ElementRef, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { Observable } from 'rxjs';
@@ -18,6 +18,8 @@ import { Observable } from 'rxjs';
 export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewChecked {
   @Input()
   config: NwbEditInPlaceConfig = {};
+
+  @Output() customChange = new EventEmitter<any>();
 
   @ViewChild('input')
   input: ElementRef;
@@ -44,7 +46,17 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
   }
 
   writeValue(value: any) {
-    this.currentValue = value;
+    if (value !== null) {
+      if (this.config.currency) {
+        this.currentValue = this.parseValueToNumber(value);
+        if (this.config.separator !== '.') {
+          this.currentValue = this.parseValueToSeparator(this.currentValue);
+        }
+        this.currentValue += this.config.currency;
+      } else {
+        this.currentValue = value;
+      }
+    }
   }
 
   public registerOnChange(fn: (_: any) => {}): void {
@@ -56,7 +68,17 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
   }
 
   private _setValue(v: string) {
-    this.onChange(v);
+    if (typeof this.config.currency === 'string') {
+      v = this.parseValueToNumber(v);
+      this.onChange(v);
+      if (this.config.separator !== '.') {
+        v = this.parseValueToSeparator(v);
+      }
+      v = v + this.config.currency;
+      this.customChange.emit(v);
+    } else {
+      this.onChange(v);
+    }
     this.writeValue(v);
     this.value = v;
   }
@@ -74,6 +96,7 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
   startEditing() {
     if (!this.editing) {
       this.editing = true;
+      this.currentValue = this.checkAndRemoveCurrency(this.currentValue);
       this.firstEdit = true;
     }
   }
@@ -112,7 +135,50 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
       } else {
         this._setValue(this.currentValue);
       }
+    } else {
+      if (typeof this.config.currency === 'string') {
+        this.currentValue = this.currentValue + this.config.currency;
+      }
     }
+  }
+
+  checkAndRemoveCurrency(value) {
+    if (typeof this.config.currency === 'string') {
+      return value.slice(0, -1);
+    }
+
+    return value;
+  }
+
+  parseValueToNumber(value) {
+    if (!isNaN(value)) {
+      return parseFloat(value).toFixed(2);
+    }
+    if (typeof this.config.currency === 'string') {
+      const indexComma = value.indexOf(',');
+      const indexDot = value.indexOf('.');
+      if (indexComma > 0 && indexDot === -1) {
+        const parsedValue = value.replace(',', '.');
+        if (!isNaN(parsedValue)) {
+          return parseFloat(parsedValue).toFixed(2);
+        }
+      }
+      if (indexDot > 0 && indexComma === -1) {
+        if (!isNaN(value)) {
+          return parseFloat(value).toFixed(2);
+        }
+      }
+
+      return '0.00';
+    }
+  }
+
+  parseValueToSeparator(value) {
+    if (typeof this.config.separator === 'string') {
+      return value.replace('.', this.config.separator);
+    }
+
+    return value;
   }
 }
 
@@ -122,6 +188,10 @@ export interface NwbEditInPlaceConfig {
 
   /** Data to pass as the second argument for the handler method if any **/
   data?: any;
+
+  currency?: string;
+
+  separator?: string;
 
   /**
    * handler method to call on change.

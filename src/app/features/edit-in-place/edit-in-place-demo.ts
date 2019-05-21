@@ -68,8 +68,37 @@ export class EditInPlaceDemo {
   }
 `;
 
+  docPreview4 = `
+number = 12.5;
+formattedString: string;
+
+editInPlaceConfig3: NwbEditInPlaceConfig = {
+        currency: '$',
+        separator: ',',
+        selectTextUponClick: true
+};
+
+<nwb-edit-in-place [(ngModel)]="number"
+                   [config]="editInPlaceConfig3"
+                   (ngModelChange)="modelChange($event)"
+                   (customChange)="getFormattedString($event)"
+></nwb-edit-in-place>
+
+modelChange(event: any) {
+    console.log('modelChange', event);
+}
+
+    //CustomChange is optional
+getFormattedString(event: string) {
+    this.formattedString = event;
+    console.log(event);
+}
+`;
+
   developer = 'developer';
   devops = 'devops';
+  number = 12.5;
+  formattedString: string;
 
   editInPlaceConfig: NwbEditInPlaceConfig = {
     data: 20,
@@ -82,11 +111,13 @@ export class EditInPlaceDemo {
     selectTextUponClick: true
   };
 
-  constructor(private dialog: NwbDialogService) {}
+  editInPlaceConfig3: NwbEditInPlaceConfig = {
+    currency: '$',
+    separator: ',',
+    selectTextUponClick: true
+  };
 
-  modelChange(event: any) {
-    console.log('modelChange', event);
-  }
+  constructor(private dialog: NwbDialogService) {}
 
   changeHandler(value: any, data: number) {
     return timer(700).pipe(
@@ -103,5 +134,16 @@ export class EditInPlaceDemo {
         return false;
       })
     );
+  }
+
+  modelChange(event: any) {
+    console.log('modelChange', event);
+    console.log(this.number);
+  }
+
+  // CustomChange is optional
+  getFormattedString(event: string) {
+    this.formattedString = event;
+    console.log(event);
   }
 }
