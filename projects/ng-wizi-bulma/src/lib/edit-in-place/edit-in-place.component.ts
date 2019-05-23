@@ -24,8 +24,8 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
   @ViewChild('input')
   input: ElementRef;
 
-  public currentValue = '';
-  private preValue = '';
+  public currentValue: string | number;
+  private preValue: string | number;
 
   public inputWidth: number;
   public editing = false;
@@ -67,7 +67,7 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
     this.onTouched = fn;
   }
 
-  private _setValue(v: string) {
+  private _setValue(v: string | number) {
     if (typeof this.config.currency === 'string') {
       v = this.parseValueToNumber(v);
       this.onChange(v);
@@ -151,8 +151,8 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
   }
 
   parseValueToNumber(value) {
-    if (!isNaN(value)) {
-      return parseFloat(value).toFixed(2);
+    if (!isNaN(value) && value !== '') {
+      return parseFloat(value);
     }
     if (typeof this.config.currency === 'string') {
       const indexComma = value.indexOf(',');
@@ -160,21 +160,21 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
       if (indexComma > 0 && indexDot === -1) {
         const parsedValue = value.replace(',', '.');
         if (!isNaN(parsedValue)) {
-          return parseFloat(parsedValue).toFixed(2);
+          return parseFloat(parsedValue);
         }
       }
       if (indexDot > 0 && indexComma === -1) {
         if (!isNaN(value)) {
-          return parseFloat(value).toFixed(2);
+          return parseFloat(value);
         }
       }
-
-      return '0.00';
+      return 0;
     }
   }
 
   parseValueToSeparator(value) {
     if (typeof this.config.separator === 'string') {
+      value = parseFloat(value).toFixed(2);
       return value.replace('.', this.config.separator);
     }
 

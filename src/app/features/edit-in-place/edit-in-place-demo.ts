@@ -137,13 +137,13 @@ getFormattedString(event: string) {
   }
 
   modelChange(event: any) {
-    console.log('modelChange', event);
-    console.log(this.number);
+    console.log('VALEUR RECUE : ' + event);
+    console.log('TYPE RECU : ' + typeof event);
   }
 
   // CustomChange is optional
   getFormattedString(event: string) {
     this.formattedString = event;
-    console.log(event);
+    //console.log(event);
   }
 }
