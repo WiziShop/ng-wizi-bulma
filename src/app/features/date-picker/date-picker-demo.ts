@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NwbAlertService } from '@wizishop/ng-wizi-bulma';
+
 @Component({
   providers: [],
   templateUrl: './date-picker-demo.html'
 })
 export class DatePickerDemo {
   myDateForm: FormGroup;
+
   constructor(private fb: FormBuilder, private nwbAlert: NwbAlertService) {
     this.myDateForm = this.fb.group({
-      myDate: [Validators.required]
+      startDate: ['2018-03-20', Validators.required],
+      endDate: ['2018-03-30', Validators.required]
     });
   }
 
@@ -135,8 +138,15 @@ export class DatePickerDemo {
   submitForm() {
     console.log('value', this.myDateForm.getRawValue());
     this.nwbAlert.open({
-      message: 'Selected Date = ' + this.myDateForm.value.myDate,
+      message: 'Selected Date = ' + this.myDateForm.value.startDate + ' - ' + this.myDateForm.value.endDate,
       duration: 3000
+    });
+  }
+
+  changeStartDate(s: string) {
+    this.myDateForm.setValue({
+      startDate: s,
+      endDate: '2018-03-30'
     });
   }
 }
