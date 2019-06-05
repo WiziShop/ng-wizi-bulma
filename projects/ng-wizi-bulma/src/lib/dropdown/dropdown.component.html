@@ -1,28 +1,27 @@
-<div class="dropdown"
-     [ngClass]="{'is-active':isActive}"
-     (click)="toggleActive()"
->
+<div class="dropdown" [ngClass]="{ 'is-active': isActive }" (click)="toggleActive()">
   <div class="dropdown-trigger">
-    <button [ngClass]="['button',classes ? classes : '', isLoading ? ' is-loading' : '']"
-            aria-haspopup="true"
-            aria-controls="dropdown-menu"
-            [disabled]="disabled"
-
+    <button
+      [ngClass]="['button', classes ? classes : '', isLoading ? ' is-loading' : '']"
+      aria-haspopup="true"
+      aria-controls="dropdown-menu"
+      [disabled]="disabled"
     >
       <span [innerHTML]="currentText"></span>
       <span class="icon is-small">
-         <i class="fa fa-angle-down"></i>
+        <i class="fa fa-angle-down"></i>
       </span>
     </button>
   </div>
-  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+  <div class="dropdown-menu" role="menu" *ngIf="isActive">
     <div class="dropdown-content">
-      <a *ngFor="let option of _options" class="dropdown-item"
-         [ngClass]="{'is-active':option.selected, 'is-disabled': option.disabled}"
-         (click)="selectOption(option)"
-         [innerHTML]="option.text">
+      <a
+        *ngFor="let option of _options"
+        class="dropdown-item"
+        [ngClass]="{ 'is-active': option.selected, 'is-disabled': option.disabled }"
+        (click)="selectOption(option)"
+        [innerHTML]="option.text"
+      >
       </a>
-
     </div>
   </div>
 </div>
