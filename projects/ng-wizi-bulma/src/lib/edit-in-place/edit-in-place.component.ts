@@ -21,7 +21,7 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
 
   @Output() customChange = new EventEmitter<any>();
 
-  @ViewChild('input')
+  @ViewChild('input', { static: false })
   input: ElementRef;
 
   public currentValue: string | number;

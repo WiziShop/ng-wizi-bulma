@@ -26,7 +26,7 @@ export class EditUserDialogDemoComponent implements OnInit {
 
   user: User;
 
-  @ViewChild('dialogTemplateRef')
+  @ViewChild('dialogTemplateRef', { static: true })
   dialogTemplateRef: TemplateRef<any>;
 
   private dialog: NwbDialogComponent<any>;

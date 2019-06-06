@@ -44,7 +44,7 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
 
   private finalOptions: NwbDatePickerOptions;
 
-  @ViewChild('ngWiziDatePicker') ngWiziDatePicker: ElementRef;
+  @ViewChild('ngWiziDatePicker', { static: true }) ngWiziDatePicker: ElementRef;
 
   constructor(
     private datePickerIntl: DatePickerIntl,

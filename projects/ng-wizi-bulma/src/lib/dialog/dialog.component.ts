@@ -35,19 +35,19 @@ import { animate, AnimationEvent, keyframes, style, transition, trigger } from '
   ]
 })
 export class NwbDialogComponent<T> implements OnInit {
-  @ViewChild('componentSection', { read: ViewContainerRef })
+  @ViewChild('componentSection', { read: ViewContainerRef, static: true })
   componentSection: ViewContainerRef;
 
-  @ViewChild('okButton')
+  @ViewChild('okButton', { static: false })
   okButtonEl: ElementRef;
-  @ViewChild('cancelButton')
+  @ViewChild('cancelButton', { static: false })
   cancelButtonEl: ElementRef;
-  @ViewChild('backdropButton')
+  @ViewChild('backdropButton', { static: false })
   backdropButtonEl: ElementRef;
 
-  @ViewChild('header')
+  @ViewChild('header', { static: false })
   headerEl: ElementRef;
-  @ViewChild('footer')
+  @ViewChild('footer', { static: false })
   footerEl: ElementRef;
 
   ready = new EventEmitter<boolean>();

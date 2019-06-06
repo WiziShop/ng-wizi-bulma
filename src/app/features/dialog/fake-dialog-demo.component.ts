@@ -20,7 +20,7 @@ import { Component, ElementRef, EventEmitter, ViewChild } from '@angular/core';
   `
 })
 export class FakeDialogDemoComponent {
-  @ViewChild('myInput')
+  @ViewChild('myInput', { static: true })
   myInput: ElementRef;
 
   loading = new EventEmitter<boolean>();

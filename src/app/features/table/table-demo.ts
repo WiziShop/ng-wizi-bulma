@@ -22,9 +22,9 @@ export class TableDemo implements OnInit {
   exampleDatabase: ExampleHttpDao | null;
   data: GithubIssue[] = [];
 
-  @ViewChild(NwbPaginatorComponent)
+  @ViewChild(NwbPaginatorComponent, { static: true })
   paginator;
-  @ViewChild(NwbSort)
+  @ViewChild(NwbSort, { static: true })
   sort;
 
   resultsLength = 0;
