@@ -50,7 +50,8 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
     private datePickerIntl: DatePickerIntl,
     private datePickerFormat: DatePickerFormat,
     private datePrickerSettings: DatePickerSettings,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private elementRef: ElementRef
   ) {}
 
   /**
@@ -86,18 +87,36 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
       if (!this.initalized) {
         return;
       }
+
       // TODO handle change
 
-      // const date = new Date(value);
-
-      // if (inputType === 'startDate') {
-      //
-      //   this.bulmaCalendar.value(date);
-      //
-      // } else {
-      //   // this.bulmaCalendar.endDate = date;
-      // }
+      this.resetCalendar();
     });
+  }
+
+  /**
+   * Since there is no way to change date dynamically, we're gonna destroy the calender and reinitialize it
+   */
+  private resetCalendar() {
+    if (this.bulmaCalendar) {
+      this.bulmaCalendar = null;
+
+      const calendarWrapperEl = this.elementRef.nativeElement.querySelector('.datetimepicker-dummy') as HTMLDivElement;
+      if (calendarWrapperEl) {
+        this.ngWiziDatePicker.nativeElement.setAttribute('type', 'date');
+
+        const rootCalendarNode = calendarWrapperEl.parentElement;
+        this.elementRef.nativeElement.insertBefore(this.ngWiziDatePicker.nativeElement, rootCalendarNode);
+
+        rootCalendarNode.remove();
+
+        this.initalized = false;
+
+        this.initialize();
+      }
+    } else {
+      this.initialize();
+    }
   }
 
   private setValue(startDate: Date, endDate?: Date) {
@@ -123,13 +142,23 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  ngAfterViewInit() {
+  private initialize() {
+    if (this.initalized) {
+      console.log('Already initialized');
+      return;
+    }
+    this.initalized = true;
+
     if (this.datepickerInputStart) {
       this.options.startDate = this.datepickerInputStart.value ? new Date(this.datepickerInputStart.value) : null;
     }
     if (this.datepickerInputEnd) {
       this.options.isRange = true;
       this.options.endDate = this.datepickerInputEnd.value ? new Date(this.datepickerInputEnd.value) : null;
+
+      if (this.options.endDate < this.options.startDate) {
+        throw Error('The end date cannot be before the start date');
+      }
     } else {
       this.options.isRange = false;
     }
@@ -204,8 +233,10 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
         this.setValue(startDate, endDate);
       });
     });
+  }
 
-    this.initalized = true;
+  ngAfterViewInit() {
+    this.initialize();
   }
 
   ngOnDestroy(): void {
