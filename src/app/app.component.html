@@ -5,9 +5,9 @@
         <p class="menu-label">
           Ng Wizi Bulma
           <a (click)="openModalSearch()">
-        <span class="icon is-small has-text-info is-texttop ">
-             <i class="fas fa-search"></i>
-        </span>
+            <span class="icon is-small has-text-info is-texttop ">
+              <i class="fas fa-search"></i>
+            </span>
           </a>
         </p>
         <ul class="menu-list">
@@ -20,6 +20,7 @@
         <ul class="menu-list">
           <li><a [routerLink]="'./alert'">Alert</a></li>
           <li><a [routerLink]="'./animated-card'">Animated Card</a></li>
+          <li><a [routerLink]="'./date-picker'">DatePicker</a></li>
           <li><a [routerLink]="'./debounce'">Debounce</a></li>
           <li><a [routerLink]="'./dialog'">Dialog</a></li>
           <li><a [routerLink]="'./dropdown'">Dropdown</a></li>
@@ -38,11 +39,7 @@
       </aside>
     </div>
     <div class="column is-10">
-
       <router-outlet></router-outlet>
-
     </div>
-
   </div>
 </div>
-

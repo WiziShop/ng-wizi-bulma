@@ -15,3 +15,11 @@ code {
   justify-content: flex-start;
   text-align: left;
 }
+
+.bd-snippet.bd-is-vertical.bd-is-one-third.revert-size .bd-snippet-preview {
+  width: 50%;
+}
+
+.bd-snippet.bd-is-vertical.bd-is-one-third.revert-size .bd-snippet-code {
+  width: 50%;
+}

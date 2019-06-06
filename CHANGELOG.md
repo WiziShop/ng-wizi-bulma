@@ -1,3 +1,8 @@
+#8.0.0 (2019-06-06)
+
+- Upgrade to Angular 8
+- New [Datepicker component](https://ng-wizi-bulma.firebaseapp.com/date-picker)
+
 #7.0.11 (2019-05-22)
 
 - fix type of value returned for currency-edit-in-place : now return a number value, not a string of number

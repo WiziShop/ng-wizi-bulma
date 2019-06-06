@@ -12,6 +12,7 @@ import { NwbProgressBarModule } from './progress-bar/progress-bar-module';
 import { NwbSwitchModule } from './switch/switch-module';
 import { NwbTabsModule } from './tabs/tabs-module';
 import { NwbEditInPlaceModule } from './edit-in-place/edit-in-place-module';
+import { NwbDatePickerModule } from './date-picker/date-picker-module';
 
 const EXPORTED_EXPORTS = [
   NwbCommonModule,
@@ -27,7 +28,8 @@ const EXPORTED_EXPORTS = [
   NwbSortModule,
   NwbSwitchModule,
   NwbTabsModule,
-  NwbEditInPlaceModule
+  NwbEditInPlaceModule,
+  NwbDatePickerModule
 ];
 
 @NgModule({

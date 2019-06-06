@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CdkTableModule } from '@angular/cdk/table';
 
 import { DialogDemo } from './features/dialog/dialog-demo';
@@ -28,13 +28,16 @@ import { TableDemo } from './features/table/table-demo';
 import { HttpClientModule } from '@angular/common/http';
 import { SortDemo } from './features/sort/sort-demo';
 import { EditInPlaceDemo } from './features/edit-in-place/edit-in-place-demo';
+import { DatePickerDemo } from './features/date-picker/date-picker-demo';
 
 import {
   NwbAlertModule,
   NwbAnimatedCardModule,
   NwbCommonModule,
+  NwbDatePickerModule,
   NwbDialogModule,
   NwbDropdownModule,
+  NwbEditInPlaceModule,
   NwbModalSearchModule,
   NwbPaginatorModule,
   NwbProgressBarModule,
@@ -43,13 +46,13 @@ import {
   NwbSwitchModule,
   NwbTabsModule
 } from '@wizishop/ng-wizi-bulma';
-import { NwbEditInPlaceModule } from '../../projects/ng-wizi-bulma/src/lib/edit-in-place';
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     CdkTableModule,
@@ -66,7 +69,8 @@ import { NwbEditInPlaceModule } from '../../projects/ng-wizi-bulma/src/lib/edit-
     NwbSortModule,
     NwbSwitchModule,
     NwbTabsModule,
-    NwbEditInPlaceModule
+    NwbEditInPlaceModule,
+    NwbDatePickerModule
   ],
   declarations: [
     AppComponent,
@@ -89,7 +93,8 @@ import { NwbEditInPlaceModule } from '../../projects/ng-wizi-bulma/src/lib/edit-
     TooltipDemo,
     TableDemo,
     SortDemo,
-    EditInPlaceDemo
+    EditInPlaceDemo,
+    DatePickerDemo
   ],
   providers: [],
   entryComponents: [FakeDialogDemoComponent],

@@ -8,4 +8,6 @@ import { Component, Input } from '@angular/core';
 export class DocPreviewComponent {
   @Input()
   content: string;
+  @Input()
+  revertSize = false;
 }
