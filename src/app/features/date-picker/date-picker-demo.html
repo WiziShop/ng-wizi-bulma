@@ -9,35 +9,49 @@
       <p>The datepicker allows users to enter a date by choosing a date from the calendar.</p>
       <h2 class="title is-4">Add bulma-calendar.js</h2>
       <p>
-        In the angular.json file at the root of your folder, add the following line in project > architect > build > options > scripts
+        In angular.json file at the root of your folder, add the following line in project > architect > build > options > scripts
         "node_modules/bulma-extensions/bulma-calendar/dist/js/bulma-calendar.js". This will allow you to import the modules from Bulma
         Calendar.<br /><br />The official documentation is available at the following link
-        <a href="https://creativebulma.net/product/calendar/demo">https://creativebulma.net/product/calendar/demo</a><br /><br />Integration
-        example :
+        <a href="https://creativebulma.net/product/calendar/demo">https://creativebulma.net/product/calendar/demo</a><br /><br />
+        Integration example :
       </p>
       <div class="control">
         <textarea class="textarea textarea--exampleBulmaCalendar" placeholder="Disabled textarea" disabled>
-      {{exampleBulmaCalendar}}</textarea
-        >
+      {{exampleBulmaCalendar}}
+        </textarea>
       </div>
+
       <h2 class="title is-4">Connecting a datepicker to an input date</h2>
-      <p>A datepicker simple is composed of a date input inside the component nwb-date-picker</p>
+      <p>
+        A datepicker simple is composed of a date input inside the component nwb-date-picker connected via the
+        <b>nwbDatepickerStart</b> property on the input.
+      </p>
+
       <nwb-doc-preview [revertSize]="true" [content]="sample1">
         <p>DatePicker simple</p>
         <nwb-date-picker #datePicker1 (change)="valueChange($event)">
           <input [nwbDatepickerStart]="datePicker1" type="date" />
         </nwb-date-picker>
       </nwb-doc-preview>
-      <h2 class="title is-4">Connecting a datepicker to an input time</h2>
-      <p>A datepicker simple with timer is composed of a time input inside the component nwb-date-picker</p>
+
+      <h2 class="title is-4">Connecting a datepicker to an input datetime-local</h2>
+      <p>
+        A datepicker with a timepicker is composed of a datetime-local input inside the component nwb-date-picker connected via the
+        <b>nwbDatepickerStart</b> property on the input.
+      </p>
+
       <nwb-doc-preview [revertSize]="true" [content]="sample2">
-        <p>DatePicker with timer simple</p>
+        <p>DatePicker with timepicker simple</p>
         <nwb-date-picker #datePicker2 (change)="valueChange($event)">
           <input [nwbDatepickerStart]="datePicker2" type="datetime-local" />
         </nwb-date-picker>
       </nwb-doc-preview>
+
       <h2 class="title is-4">Connecting a datepicker range with 2 input date</h2>
-      <p>A datepicker range is composed of a 2 date input inside the component nwb-date-picker</p>
+      <p>
+        A datepicker range is composed of a 2 date input inside the component nwb-date-picker connected via the
+        <b>nwbDatepickerStart</b> property on the start date input and the <b>nwbDatepickerEnd</b> property on the end date input.
+      </p>
       <nwb-doc-preview [revertSize]="true" [content]="sample3">
         <p>DatePicker range simple</p>
         <nwb-date-picker #datePicker3 (change)="valueChange($event)">
@@ -45,8 +59,12 @@
           <input [nwbDatepickerEnd]="datePicker3" type="date" />
         </nwb-date-picker>
       </nwb-doc-preview>
-      <h2 class="title is-4">Connecting a datepicker range with 2 input time</h2>
-      <p>A datepicker range is composed of a 2 time input inside the component nwb-date-picker</p>
+
+      <h2 class="title is-4">Connecting a datepicker range with 2 input datetime-local</h2>
+      <p>
+        A datepicker range with timepicker is composed of a 2 datetime-local input inside the component nwb-date-picker connected via the
+        <b>nwbDatepickerStart</b> property on the start date input and the <b>nwbDatepickerEnd</b> property on the end date input.
+      </p>
       <nwb-doc-preview [revertSize]="true" [content]="sample4">
         <p>DatePicker range with timer</p>
         <nwb-date-picker #datePicker4 (change)="valueChange($event)">
@@ -55,28 +73,37 @@
         </nwb-date-picker>
       </nwb-doc-preview>
 
-      <h2 class="title is-4">Connecting a datepicker with time only</h2>
-      <p>A datepicker type time is composed of a input inside the component nwb-date-picker</p>
-      <nwb-doc-preview [revertSize]="true" [content]="sample4">
+      <h2 class="title is-4">Connecting a timepicker only</h2>
+      <p>
+        A timepicker is composed of an input type time inside the component nwb-date-picker connected via the
+        <b>nwbDatepickerStart</b> property on the input.
+      </p>
+      <nwb-doc-preview [revertSize]="true" [content]="sample6">
         <p>DatePicker type time</p>
         <nwb-date-picker #datePicker6 (change)="valueChange($event)">
           <input [nwbDatepickerStart]="datePicker6" type="time" />
         </nwb-date-picker>
       </nwb-doc-preview>
+
       <h2 class="title is-4">Example with form</h2>
-      <nwb-doc-preview [revertSize]="true" [content]="sample4">
-        <p>DatePicker simple with submit</p>
+      <nwb-doc-preview [revertSize]="true" [content]="sample5">
+        <p>DatePicker range with angular form</p>
         <form [formGroup]="myDateForm" (ngSubmit)="submitForm()">
           <nwb-date-picker #datePicker5>
             <input type="date" [nwbDatepickerStart]="datePicker5" name="startDate" formControlName="startDate" />
             <input type="date" [nwbDatepickerEnd]="datePicker5" name="endDate" formControlName="endDate" />
           </nwb-date-picker>
-          <button type="submit" class="button">Submit</button>
+          <p>
+            <button type="submit" class="button is-primary">Submit</button>
+          </p>
         </form>
 
-        <button class="button" (click)="changeStartDate('2017-02-20')">Set start value from outside to 2017-02-20</button>
-        <button class="button" (click)="changeEndDate('2032-09-16')">Set end value from outside to 2032-09-16</button>
+        <p class="buttons">
+          <button class="button is-info" (click)="changeStartDate('2017-02-20')">Set start value from outside to 2017-02-20</button>
+          <button class="button is-info" (click)="changeEndDate('2032-09-16')">Set end value from outside to 2032-09-16</button>
+        </p>
       </nwb-doc-preview>
+
       <h2 class="title is-4">Settings</h2>
       <p>
         For more information on BulmaCalendar options, here is the official documentation:
@@ -126,6 +153,18 @@
         <textarea class="textarea textarea--formatClass" placeholder="Disabled textarea" disabled>{{formatClass}}</textarea>
       </div>
       <br />
+
+      <p>If you want to change the default labels you need to create your own DatePickerIntl class.</p>
+      <p>Here are the options for this class</p>
+      <div class="control">
+        <textarea class="textarea textarea--formatIntl" placeholder="Disabled textarea" disabled>{{formatIntl}}</textarea>
+      </div>
+
+      <p>You can overwrite this like that:</p>
+      <div class="control">
+        <textarea class="textarea textarea--formatIntl2" placeholder="Disabled textarea" disabled>{{formatIntl2}}</textarea>
+      </div>
+
       <p>You also have the possibility to add options directly by passing them through the component as follows:</p>
       <div class="control">
         <textarea class="textarea textarea--formatComp" placeholder="Disabled textarea" disabled>{{formatComp}}</textarea>

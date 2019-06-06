@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~bulma';
-@import '~bulma-extensions/bulma-switch/dist/css/bulma-switch.min.css';
-@import '~bulma-extensions/bulma-tooltip/dist/css/bulma-tooltip';
-@import '~bulma-extensions/bulma-calendar/dist/css/bulma-calendar.min.css';
+@import '~bulma-extensions/bulma-switch/src/sass/index';
+@import '~bulma-extensions/bulma-tooltip/src/sass/index';
+@import '~bulma-extensions/bulma-calendar/src/sass/index';
 
 @import 'bulma-docs.css';
 
@@ -41,6 +41,17 @@
 
 .textarea:not([rows]).textarea--formatClass {
   min-height: 480px;
+  cursor: default;
+  resize: none;
+}
+.textarea:not([rows]).textarea--formatIntl {
+  min-height: 280px;
+  cursor: default;
+  resize: none;
+}
+
+.textarea:not([rows]).textarea--formatIntl2 {
+  min-height: 580px;
   cursor: default;
   resize: none;
 }

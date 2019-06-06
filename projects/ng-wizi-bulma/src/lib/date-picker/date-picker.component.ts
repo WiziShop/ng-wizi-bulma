@@ -14,7 +14,7 @@ import { DatePickerIntl } from './date-picker-intl';
 import { DatePickerFormat } from './date-picker-format';
 import { DatePickerSettings } from './date-picker-settings';
 import { NwbDatePickerInputBaseDirective } from './date-picker-input-base.directive';
-import { Subject } from 'rxjs';
+import { fromEvent, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 declare const bulmaCalendar: any;
@@ -42,7 +42,7 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
 
   private initalized = false;
 
-  private finalOptions: NwbDatePickerOptions;
+  private isRange = false;
 
   @ViewChild('ngWiziDatePicker', { static: true }) ngWiziDatePicker: ElementRef;
 
@@ -87,8 +87,6 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
       if (!this.initalized) {
         return;
       }
-
-      // TODO handle change
 
       this.resetCalendar();
     });
@@ -138,7 +136,42 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
 
     this.change.emit({
       startDate: this.currentValueStart,
-      endDate: this.finalOptions.isRange ? this.currentValueEnd : this.currentValueStart
+      endDate: this.isRange ? this.currentValueEnd : this.currentValueStart
+    });
+  }
+
+  /**
+   * Ugly hack to make timepicker change without having to press validate button since the behavior between the timepicker and datepicker differs
+   */
+  private _initEvents() {
+    const elements = [];
+
+    const timepickerStartEl = this.elementRef.nativeElement.querySelector('.timepicker-start');
+    if (timepickerStartEl) {
+      elements.push(timepickerStartEl.querySelector('.timepicker-hours .timepicker-next'));
+      elements.push(timepickerStartEl.querySelector('.timepicker-hours .timepicker-previous'));
+      elements.push(timepickerStartEl.querySelector('.timepicker-minutes .timepicker-next'));
+      elements.push(timepickerStartEl.querySelector('.timepicker-minutes .timepicker-previous'));
+    }
+
+    const timepickerEndEl = this.elementRef.nativeElement.querySelector('.timepicker-end');
+    if (timepickerEndEl) {
+      elements.push(timepickerEndEl.querySelector('.timepicker-hours .timepicker-next'));
+      elements.push(timepickerEndEl.querySelector('.timepicker-hours .timepicker-previous'));
+      elements.push(timepickerEndEl.querySelector('.timepicker-minutes .timepicker-next'));
+      elements.push(timepickerEndEl.querySelector('.timepicker-minutes .timepicker-previous'));
+    }
+
+    elements.forEach(element => {
+      fromEvent(element, 'click')
+        .pipe(takeUntil(this.destroy))
+        .subscribe(() => {
+          this.bulmaCalendar.save();
+          this.bulmaCalendar.emit('select', this.bulmaCalendar);
+          setTimeout(() => {
+            this.bulmaCalendar.refresh();
+          }, 100);
+        });
     });
   }
 
@@ -149,18 +182,22 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
     }
     this.initalized = true;
 
+    this.options.isRange = false;
+    this.options.startDate = null;
+    this.options.endDate = null;
+
     if (this.datepickerInputStart) {
       this.options.startDate = this.datepickerInputStart.value ? new Date(this.datepickerInputStart.value) : null;
     }
+
     if (this.datepickerInputEnd) {
       this.options.isRange = true;
+
       this.options.endDate = this.datepickerInputEnd.value ? new Date(this.datepickerInputEnd.value) : null;
 
       if (this.options.endDate < this.options.startDate) {
         throw Error('The end date cannot be before the start date');
       }
-    } else {
-      this.options.isRange = false;
     }
 
     const elementType = this.datepickerInputStart.elementRef.nativeElement.getAttribute('type');
@@ -174,6 +211,7 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
         break;
       case 'date':
         this.options.type = 'date';
+        this.ngWiziDatePicker.nativeElement.type = 'date';
         break;
       case 'time':
         this.options.type = 'time';
@@ -183,9 +221,23 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
         break;
     }
 
-    this.finalOptions = Object.assign(this.datePickerFormat, this.datePickerIntl, this.datePrickerSettings, this.options);
+    const options = Object.assign(this.datePickerFormat, this.datePickerIntl, this.datePrickerSettings, this.options);
 
-    this.bulmaCalendar = new bulmaCalendar(this.ngWiziDatePicker.nativeElement, this.finalOptions);
+    if (!options.closeLabel) {
+      // Change cancel to close
+      options.closeLabel = '';
+    }
+
+    options['cancelLabel'] = options.closeLabel;
+
+    this.isRange = options.isRange;
+
+    this.bulmaCalendar = new bulmaCalendar(this.ngWiziDatePicker.nativeElement, options);
+
+    // Ready events doesn't work
+    setTimeout(() => {
+      this._initEvents();
+    }, 500);
 
     this.bulmaCalendar.on('select', data => {
       this.ngZone.run(() => {
@@ -198,14 +250,20 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
         switch (elementType) {
           case 'date':
           case 'datetime-local':
-            startDate = datePicker.start;
+            if (!datePicker.start) {
+              return;
+            }
+            startDate = new Date(datePicker.start.toISOString());
             if (timePicker) {
               startDate.setHours(timePicker.start.getHours());
               startDate.setMinutes(timePicker.start.getMinutes());
             }
 
-            if (this.finalOptions.isRange) {
-              endDate = datePicker.end;
+            if (this.isRange) {
+              if (!datePicker.end) {
+                return;
+              }
+              endDate = new Date(datePicker.end.toISOString());
               if (timePicker) {
                 endDate.setHours(timePicker.end.getHours());
                 endDate.setMinutes(timePicker.end.getMinutes());
@@ -219,7 +277,7 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
             startDate.setHours(timePicker.start.getHours());
             startDate.setMinutes(timePicker.start.getMinutes());
 
-            if (this.finalOptions.isRange) {
+            if (this.isRange) {
               endDate = new Date();
               endDate.setSeconds(0);
               endDate.setMilliseconds(0);
@@ -228,7 +286,6 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
             }
             break;
         }
-        console.log('startDate', startDate);
 
         this.setValue(startDate, endDate);
       });
@@ -266,11 +323,9 @@ export interface NwbDatePickerOptions {
   showButtons?: boolean;
   showTodayButton?: boolean;
   showClearButton?: boolean;
-  cancelLabel?: string;
   clearLabel?: string;
   todayLabel?: string;
   nowLabel?: string;
-  validateLabel?: string;
   enableMonthSwitch?: boolean;
   enableYearSwitch?: boolean;
   startDate?: Date;
@@ -288,4 +343,5 @@ export interface NwbDatePickerOptions {
   closeOnOverlayClick?: boolean;
   closeOnSelect?: boolean;
   toggleOnInputClick?: boolean;
+  closeLabel?: string;
 }

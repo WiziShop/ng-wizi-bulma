@@ -28,11 +28,9 @@ import { TableDemo } from './features/table/table-demo';
 import { HttpClientModule } from '@angular/common/http';
 import { SortDemo } from './features/sort/sort-demo';
 import { EditInPlaceDemo } from './features/edit-in-place/edit-in-place-demo';
+import { DatePickerDemo } from './features/date-picker/date-picker-demo';
 
 import {
-  DatePickerFormat,
-  DatePickerIntl,
-  NWB_DATE_LOCALE,
   NwbAlertModule,
   NwbAnimatedCardModule,
   NwbCommonModule,
@@ -48,7 +46,6 @@ import {
   NwbSwitchModule,
   NwbTabsModule
 } from '@wizishop/ng-wizi-bulma';
-import { DatePickerDemo } from './features/date-picker/date-picker-demo';
 
 @NgModule({
   imports: [

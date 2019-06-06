@@ -92,6 +92,41 @@ export class DatePickerDemo {
   ...
 })
 `;
+  formatIntl = `export class DatePickerIntl {
+  closeLabel = 'Close';
+  clearLabel = 'Clear';
+  todayLabel = 'Today';
+  nowLabel = 'Now';
+  labelFrom = '';
+  labelTo = '';
+}
+  `;
+
+  formatIntl2 = `export class MyDatePickerIntl {
+  closeLabel = 'Fermer';
+  clearLabel = 'Effacer';
+  todayLabel = 'Aujourd\\'hui';
+  nowLabel = 'Maintenant';
+  labelFrom = '';
+  labelTo = '';
+}
+
+
+@NgModule({
+  imports: [
+    ...
+  ],
+  declarations: [
+    ...
+  ],
+  providers: [
+    {provide: DatePickerIntl, useClass: MyDatePickerIntl},
+  ],
+  ...
+})
+
+`;
+
   formatDefault = `export class DatePickerFormat {
   /** The lang to use for all dates. */
   lang: string;
@@ -113,22 +148,42 @@ export class DatePickerDemo {
   formatComp = `<nwb-date-picker \n   (change)="valueChange($event)"\n   [options]="{'dateFormat':'MM/DD/YYYY','lang':'fr'}">
    <input type="date">
 </nwb-date-picker>`;
+
   settingComp = `<nwb-date-picker \n   (change)="valueChange($event)"\n   [options]="{'showFooter':false,'displayMode':'dialog'}">
    <input type="date">
 </nwb-date-picker>`;
-  sample1 = `<nwb-date-picker \n   (change)="valueChange($event)">
-   <input type="date">
+
+  sample1 = `<nwb-date-picker #datePicker1 (change)="valueChange($event)">
+  <input [nwbDatepickerStart]="datePicker1" type="date"/>
 </nwb-date-picker>`;
-  sample2 = `<nwb-date-picker \n   (change)="valueChange($event)">
-   <input type="text">
+
+  sample2 = `<nwb-date-picker #datePicker2 (change)="valueChange($event)">
+  <input [nwbDatepickerStart]="datePicker2" type="datetime-local"/>
 </nwb-date-picker>`;
-  sample3 = `<nwb-date-picker \n   (change)="valueChange($event)">
-   <input type="date">
-   <input type="date">
+
+  sample3 = `<nwb-date-picker #datePicker3 (change)="valueChange($event)">
+  <input [nwbDatepickerStart]="datePicker3" type="date"/>
+  <input [nwbDatepickerEnd]="datePicker3" type="date"/>
 </nwb-date-picker>`;
-  sample4 = `<nwb-date-picker \n   (change)="valueChange($event)">
-   <input type="text">
-   <input type="text">
+
+  sample4 = `<nwb-date-picker #datePicker4 (change)="valueChange($event)">
+  <input [nwbDatepickerStart]="datePicker4" type="datetime-local"/>
+  <input [nwbDatepickerEnd]="datePicker4" type="datetime-local"/>
+</nwb-date-picker>`;
+
+  sample5 = `<form [formGroup]="myDateForm" (ngSubmit)="submitForm()">
+  <nwb-date-picker #datePicker5>
+    <input type="date" [nwbDatepickerStart]="datePicker5" name="startDate"
+           formControlName="startDate"/>
+    <input type="date" [nwbDatepickerEnd]="datePicker5" name="endDate" formControlName="endDate"/>
+  </nwb-date-picker>
+  <p>
+    <button type="submit" class="button is-primary">Submit</button>
+  </p>
+</form>`;
+
+  sample6 = `<nwb-date-picker #datePicker6 (change)="valueChange($event)">
+  <input [nwbDatepickerStart]="datePicker6" type="time"/>
 </nwb-date-picker>`;
 
   valueChange(value: any) {
