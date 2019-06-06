@@ -144,9 +144,14 @@ export class DatePickerDemo {
   }
 
   changeStartDate(s: string) {
-    this.myDateForm.setValue({
-      startDate: s,
-      endDate: '2018-03-30'
+    this.myDateForm.patchValue({
+      startDate: s
+    });
+  }
+
+  changeEndDate(s: string) {
+    this.myDateForm.patchValue({
+      endDate: s
     });
   }
 }
