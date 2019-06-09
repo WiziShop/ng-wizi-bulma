@@ -39,7 +39,8 @@ export class NwbDropdownComponent implements ControlValueAccessor {
 
   currentText: any;
 
-  private documentClickListener;
+  private documentClickListenerRemover;
+  private documentTouchstartListenerRemover;
 
   private _onChanged: Function;
   private _onTouched: Function;
@@ -61,13 +62,17 @@ export class NwbDropdownComponent implements ControlValueAccessor {
     this._onTouched = fn;
   }
 
-  private documentClick(ev: UIEvent) {
+  private documentClickOrTouch(ev: UIEvent) {
     if (!this._elementRef.nativeElement.contains(ev.target)) {
       // Outside host, close dropdown
       this.isActive = false;
 
-      if (this.documentClickListener) {
-        this.documentClickListener();
+      if (this.documentClickListenerRemover) {
+        this.documentClickListenerRemover();
+      }
+
+      if (this.documentTouchstartListenerRemover) {
+        this.documentTouchstartListenerRemover();
       }
     }
   }
@@ -127,7 +132,8 @@ export class NwbDropdownComponent implements ControlValueAccessor {
     this.isActive = !this.isActive;
 
     if (this.isActive) {
-      this.documentClickListener = this.renderer.listen('document', 'click', ev => this.documentClick(ev));
+      this.documentClickListenerRemover = this.renderer.listen('document', 'click', ev => this.documentClickOrTouch(ev));
+      this.documentTouchstartListenerRemover = this.renderer.listen('document', 'touchstart', ev => this.documentClickOrTouch(ev));
     }
   }
 }
