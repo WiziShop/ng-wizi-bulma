@@ -14,14 +14,17 @@
   </div>
   <div class="dropdown-menu" role="menu" *ngIf="isActive">
     <div class="dropdown-content">
-      <a
-        *ngFor="let option of _options"
-        class="dropdown-item"
-        [ngClass]="{ 'is-active': option.selected, 'is-disabled': option.disabled }"
-        (click)="selectOption(option)"
-        [innerHTML]="option.text"
-      >
-      </a>
+      <ng-container *ngFor="let option of _options">
+        <hr class="dropdown-divider" *ngIf="option.divider" />
+        <a
+          *ngIf="!option.divider"
+          class="dropdown-item"
+          [ngClass]="{ 'is-active': option.selected, 'is-disabled': option.disabled }"
+          (click)="selectOption(option)"
+          [innerHTML]="option.text"
+          >{{ option.divider }}
+        </a>
+      </ng-container>
     </div>
   </div>
 </div>
