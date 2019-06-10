@@ -1,4 +1,12 @@
-#8.0.1 (2019-06-10)
+#8.0.2 (2019-06-10)
+
+- Added divider to dropdown via [PR#15](https://github.com/WiziShop/ng-wizi-bulma/pull/15)
+- Updated documentation for dropdown
+- Added support for 'touchstart' on dropdown dismiss
+
+Thanks to ([@nathanbedford](https://github.com/nathanbedford)) for this work
+
+# 8.0.1 (2019-06-10)
 
 ### Breaking changes
 
@@ -11,21 +19,21 @@
 
 - The default time part in the `datetime-local` wasn't working.
 
-#8.0.0 (2019-06-06)
+# 8.0.0 (2019-06-06)
 
 - Upgrade to Angular 8
 - New [Datepicker component](https://ng-wizi-bulma.firebaseapp.com/date-picker)
 
-#7.0.11 (2019-05-22)
+# 7.0.11 (2019-05-22)
 
 - fix type of value returned for currency-edit-in-place : now return a number value, not a string of number
 - fix when removing all characters and submitting
 
-#7.0.10 (2019-05-21)
+# 7.0.10 (2019-05-21)
 
 - Add Edit-in-place with currency / fixed numbers
 
-#7.0.9 (2019-03-25)
+# 7.0.9 (2019-03-25)
 
 - Dropdown: fix performance issue due to global document click listener
 
