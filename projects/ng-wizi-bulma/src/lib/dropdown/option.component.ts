@@ -12,6 +12,7 @@ import { Directive, ElementRef, EventEmitter, Input, Output } from '@angular/cor
 export class NwbOptionComponent {
   _selected: boolean = false;
   _disabled: boolean = false;
+  _divider: boolean = false;
   _value: any;
 
   /**
@@ -51,6 +52,18 @@ export class NwbOptionComponent {
 
   set value(val: any) {
     this._value = val;
+  }
+
+  /**
+   * @input {boolean} If true, the option element will be a divider.
+   */
+  @Input()
+  get divider(): boolean {
+    return this._divider;
+  }
+
+  set divider(val: boolean) {
+    this._divider = val;
   }
 
   /**

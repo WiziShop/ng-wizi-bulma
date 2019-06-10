@@ -5,7 +5,14 @@
     </p>
   </header>
   <div class="card-content">
-    <div class="content">
+    <p>A dropdown is composed of <strong>nwb-dropdown</strong> and <strong>nwb-option</strong> elements.</p>
+    <br />
+    <p>
+      Specific dropdown items can be disabled via the <strong>disabled</strong> property. You can also separate items by creating an item
+      with the <strong>divider</strong> property set to true.
+    </p>
+
+    <nwb-doc-preview [content]="sample1">
       <nwb-dropdown [(ngModel)]="gaming" (ngModelChange)="modelChange($event)">
         <nwb-option value="nes" (nwbSelect)="nesHasBeenSelected($event)">NES</nwb-option>
         <nwb-option value="n64">Nintendo64</nwb-option>
@@ -13,12 +20,12 @@
         <nwb-option value="genesis">Sega Genesis</nwb-option>
         <nwb-option value="saturn">Sega Saturn</nwb-option>
         <nwb-option value="snes"><i class="fa fa-keyboard">keyboard</i> SNES</nwb-option>
+        <nwb-option [divider]="true"></nwb-option>
         <nwb-option [value]="null">null value</nwb-option>
         <nwb-option [value]="true">true value</nwb-option>
       </nwb-dropdown>
-    </div>
-
-    <p>Selected value: {{gaming}}</p>
+      <p>Selected value: {{gaming}}</p>
+    </nwb-doc-preview>
   </div>
 </div>
 
@@ -29,8 +36,11 @@
     </p>
   </header>
   <div class="card-content">
-    <p>Will change only if user selects Nintendo64 (n64) or Sega Genesis (genesis)</p>
-    <div class="content">
+    <p>
+      You can specify a custom change handler in the <strong>config</strong> input. The following example will change only if user selects
+      Nintendo64 (n64) or Sega Genesis (genesis)
+    </p>
+    <nwb-doc-preview [content]="sample2">
       <nwb-dropdown #dropdown [(ngModel)]="gaming2" classes="is-info" [config]="dopdown2Config">
         <nwb-option value="nes" (nwbSelect)="nesHasBeenSelected($event)">NES</nwb-option>
         <nwb-option value="n64">Nintendo64</nwb-option>
@@ -38,16 +48,16 @@
         <nwb-option value="genesis">Sega Genesis</nwb-option>
         <nwb-option value="saturn">Sega Saturn</nwb-option>
         <nwb-option value="snes"><i class="fa fa-keyboard"></i> SNES</nwb-option>
+        <nwb-option [divider]="true"></nwb-option>
         <nwb-option [value]="null">null value</nwb-option>
         <nwb-option [value]="true">true value</nwb-option>
       </nwb-dropdown>
-
       <p>Selected value: {{gaming2}}</p>
-    </div>
-    <button class="button" (click)="dropdown.disabled = !dropdown.disabled">Disable/Enable dropdown</button>
-    <button class="button" (click)="dropdown.classes =  dropdown.classes =='is-info' ? '' : 'is-info'">
-      Change classes
-    </button>
-    <pre>{{dopdown2Config|json}}</pre>
+      <button class="button" (click)="dropdown.disabled = !dropdown.disabled">Disable/Enable dropdown</button>
+      <button class="button" (click)="dropdown.classes =  dropdown.classes =='is-info' ? '' : 'is-info'">
+        Change classes
+      </button>
+      <pre>{{dopdown2Config|json}}</pre>
+    </nwb-doc-preview>
   </div>
 </div>
