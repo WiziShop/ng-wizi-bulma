@@ -1,3 +1,16 @@
+#8.0.1 (2019-06-10)
+
+### Breaking changes
+
+- Due to poor API/bugs of bulma calendar the datepicker won't support anymore `time` input. The only supported inputs are `date` and `datetime-local. If needed a separate component should be created
+- `DatePickerSettings` has been renamed to `NwbDatePickerDefaultSettings`
+- `DatePickerFormat` has been renamed to `NwbDatePickerFormat`
+- `NwbDatePickerIntl` has been renamed to `NwbDatePickerIntl`
+
+### Fixes
+
+- The default time part in the `datetime-local` wasn't working.
+
 #8.0.0 (2019-06-06)
 
 - Upgrade to Angular 8

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NwbAlertService } from '@wizishop/ng-wizi-bulma';
+import { NwbDatePickerOptions } from '../../../../projects/ng-wizi-bulma/src/lib/date-picker';
 
 @Component({
   providers: [],
@@ -9,10 +10,33 @@ import { NwbAlertService } from '@wizishop/ng-wizi-bulma';
 export class DatePickerDemo {
   myDateForm: FormGroup;
 
+  options: NwbDatePickerOptions = {
+    color: 'danger',
+    allowSameDayRange: false,
+    displayMode: 'inline',
+    showHeader: false,
+    headerPosition: 'bottom',
+    showFooter: true,
+    showButtons: true,
+    showTodayButton: true,
+    showClearButton: true,
+    enableMonthSwitch: false,
+    enableYearSwitch: false,
+    minDate: new Date('2018-01-20'),
+    maxDate: new Date('2018-01-28'),
+    disabledDates: [new Date('2018-01-22')],
+    disabledWeekDays: [6],
+    weekStart: 0,
+    minuteSteps: 1,
+    closeOnOverlayClick: false,
+    closeOnSelect: true,
+    toggleOnInputClick: true
+  };
+
   constructor(private fb: FormBuilder, private nwbAlert: NwbAlertService) {
     this.myDateForm = this.fb.group({
       startDate: ['2018-03-20', Validators.required],
-      endDate: ['2018-03-30', Validators.required]
+      endDate: ['2018-06-30', Validators.required]
     });
   }
 
@@ -23,7 +47,7 @@ export class DatePickerDemo {
   },
 ...
 }`;
-  settingDefault = `export class DatePickerSettings {
+  settingDefault = `export class NwbDatePickerDefaultSettings implements NwbDatePickerDefaultSettings {
   color = 'primary';
   allowSameDayRange = true;
   displayMode: 'default' | 'dialog' | 'inline' = 'default';
@@ -36,12 +60,12 @@ export class DatePickerDemo {
   enableMonthSwitch = true;
   enableYearSwitch = true;
   weekStart = 0;
-  minuteSteps = 5;
+  minuteSteps = 1;
   closeOnOverlayClick = true;
   closeOnSelect = true;
   toggleOnInputClick = true;
 }`;
-  settingClass = `export class MyDatePickerSettings {
+  settingClass = `export class MyDatePickerSettings implements NwbDatePickerDefaultSettings {
   color = 'primary';
   allowSameDayRange = true;
   displayMode: 'default' | 'dialog' | 'inline' = 'default';
@@ -54,7 +78,7 @@ export class DatePickerDemo {
   enableMonthSwitch = false;
   enableYearSwitch = true;
   weekStart = 0;
-  minuteSteps = 5;
+  minuteSteps = 1;
   closeOnOverlayClick = true;
   closeOnSelect = true;
   toggleOnInputClick = true;
@@ -68,7 +92,7 @@ export class DatePickerDemo {
     ...
   ],
   providers: [
-   {provide: DatePickerSettings, useClass: MyDatePickerSettings},
+   {provide: NwbDatePickerDefaultSettings, useClass: MyDatePickerSettings},
   ],
   ...
 })
@@ -87,12 +111,12 @@ export class DatePickerDemo {
     ...
   ],
   providers: [
-   {provide: DatePickerFormat, useClass: MyDatePickerFormat},
+   {provide: NwbDatePickerFormat, useClass: MyDatePickerFormat},
   ],
   ...
 })
 `;
-  formatIntl = `export class DatePickerIntl {
+  formatIntl = `export class NwbDatePickerIntl {
   closeLabel = 'Close';
   clearLabel = 'Clear';
   todayLabel = 'Today';
@@ -120,14 +144,14 @@ export class DatePickerDemo {
     ...
   ],
   providers: [
-    {provide: DatePickerIntl, useClass: MyDatePickerIntl},
+    {provide: NwbDatePickerIntl, useClass: MyDatePickerIntl},
   ],
   ...
 })
 
 `;
 
-  formatDefault = `export class DatePickerFormat {
+  formatDefault = `export class NwbDatePickerFormat {
   /** The lang to use for all dates. */
   lang: string;
 
@@ -182,9 +206,38 @@ export class DatePickerDemo {
   </p>
 </form>`;
 
-  sample6 = `<nwb-date-picker #datePicker6 (change)="valueChange($event)">
-  <input [nwbDatepickerStart]="datePicker6" type="time"/>
-</nwb-date-picker>`;
+  sample6 = `<nwb-doc-preview [revertSize]="true" [content]="sample6">
+  <p>DatePicker simple</p>
+  <nwb-date-picker #datePicker6 (change)="valueChange($event)" [options]="options" >
+    <input [nwbDatepickerStart]="datePicker6" type="date"  />
+  </nwb-date-picker>
+</nwb-doc-preview>
+
+With options:
+
+options: NwbDatePickerOptions = {
+  color: 'danger',
+  allowSameDayRange: false,
+  displayMode: 'inline',
+  showHeader: false,
+  headerPosition: 'bottom',
+  showFooter: false,
+  showButtons: false,
+  showTodayButton: false,
+  showClearButton: false,
+  enableMonthSwitch: false,
+  enableYearSwitch: false,
+  minDate: new Date('2018-01-20'),
+  maxDate: new Date('2018-01-28'),
+  disabledDates: [new Date('2018-01-22')],
+  disabledWeekDays: [6],
+  weekStart: 0,
+  minuteSteps: 1,
+  closeOnOverlayClick: false,
+  closeOnSelect: true,
+  toggleOnInputClick: true
+};
+`;
 
   valueChange(value: any) {
     console.log('value change from nwbDatePicker', { value });

@@ -10,9 +10,9 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import { DatePickerIntl } from './date-picker-intl';
-import { DatePickerFormat } from './date-picker-format';
-import { DatePickerSettings } from './date-picker-settings';
+import { NwbDatePickerIntl } from './date-picker-intl';
+import { NwbDatePickerFormat } from './date-picker-format';
+import { NwbDatePickerDefaultSettings, NwbDatePickerSettings } from './date-picker-default-settings';
 import { NwbDatePickerInputBaseDirective } from './date-picker-input-base.directive';
 import { fromEvent, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -35,9 +35,6 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
   private datepickerInputStart: NwbDatePickerInputBaseDirective = null;
   private datepickerInputEnd: NwbDatePickerInputBaseDirective = null;
 
-  private currentValueStart: Date = new Date();
-  private currentValueEnd: Date = new Date();
-
   private destroy = new Subject();
 
   private initalized = false;
@@ -47,17 +44,17 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
   @ViewChild('ngWiziDatePicker', { static: true }) ngWiziDatePicker: ElementRef;
 
   constructor(
-    private datePickerIntl: DatePickerIntl,
-    private datePickerFormat: DatePickerFormat,
-    private datePrickerSettings: DatePickerSettings,
+    private datePickerIntl: NwbDatePickerIntl,
+    private datePickerFormat: NwbDatePickerFormat,
+    private datePrickerSettings: NwbDatePickerDefaultSettings,
     private ngZone: NgZone,
     private elementRef: ElementRef
   ) {}
 
   /**
    * Register an input with this datepicker.
-   * @param input The datepicker input to register with this datepicker.
-   * @param inputType
+   *  input The datepicker input to register with this datepicker.
+   *  inputType
    */
   _registerInput(input: NwbDatePickerInputBaseDirective, inputType: 'startDate' | 'endDate'): void {
     let datepickerInput = null;
@@ -83,7 +80,7 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
         throw Error('Invalid inputType:' + inputType);
     }
 
-    datepickerInput._valueChange.pipe(takeUntil(this.destroy)).subscribe(value => {
+    datepickerInput._valueChange.pipe(takeUntil(this.destroy)).subscribe(() => {
       if (!this.initalized) {
         return;
       }
@@ -120,13 +117,11 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
   private setValue(startDate: Date, endDate?: Date) {
     let somethingHasChanged = false;
 
-    if (this.currentValueStart.getTime() !== startDate.getTime()) {
-      this.currentValueStart = new Date(startDate.toISOString()); // clone it
+    if (this.datepickerInputStart.getDate().getTime() !== startDate.getTime()) {
       somethingHasChanged = true;
     }
 
-    if (endDate && this.currentValueEnd.getTime() !== endDate.getTime()) {
-      this.currentValueEnd = new Date(endDate.toISOString()); // clone it
+    if (endDate && this.datepickerInputEnd.getDate().getTime() !== endDate.getTime()) {
       somethingHasChanged = true;
     }
 
@@ -135,13 +130,14 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
     }
 
     this.change.emit({
-      startDate: this.currentValueStart,
-      endDate: this.isRange ? this.currentValueEnd : this.currentValueStart
+      startDate: new Date(startDate.toISOString()),
+      endDate: this.isRange ? new Date(endDate.toISOString()) : new Date(startDate.toISOString())
     });
   }
 
   /**
-   * Ugly hack to make timepicker change without having to press validate button since the behavior between the timepicker and datepicker differs
+   * Ugly hack to make timepicker change without having to press validate button since
+   * the behavior between the timepicker and datepicker differs
    */
   private _initEvents() {
     const elements = [];
@@ -175,6 +171,22 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
     });
   }
 
+  private resetTimePart(date: Date) {
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    date.setMilliseconds(0);
+  }
+
+  private getDateAndTimePart(input: NwbDatePickerInputBaseDirective) {
+    const date = input.getDate();
+    const time = input.getDate();
+
+    this.resetTimePart(date);
+
+    return { date, time };
+  }
+
   private initialize() {
     if (this.initalized) {
       console.log('Already initialized');
@@ -182,21 +194,32 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
     }
     this.initalized = true;
 
-    this.options.isRange = false;
-    this.options.startDate = null;
-    this.options.endDate = null;
+    const privateOptions: NwbPrivateDatePickerOptions = {
+      type: 'date',
+      isRange: false,
+      startDate: null,
+      start: null,
+      endDate: null,
+      end: null
+    };
 
-    if (this.datepickerInputStart) {
-      this.options.startDate = this.datepickerInputStart.value ? new Date(this.datepickerInputStart.value) : null;
+    if (this.datepickerInputStart && this.datepickerInputStart.value) {
+      const _start = this.getDateAndTimePart(this.datepickerInputStart);
+      privateOptions.startDate = _start.date;
+      privateOptions.start = _start.time;
     }
 
     if (this.datepickerInputEnd) {
-      this.options.isRange = true;
+      privateOptions.isRange = true;
 
-      this.options.endDate = this.datepickerInputEnd.value ? new Date(this.datepickerInputEnd.value) : null;
+      if (this.datepickerInputEnd.value) {
+        const _end = this.getDateAndTimePart(this.datepickerInputEnd);
+        privateOptions.endDate = _end.date;
+        privateOptions.end = _end.time;
+      }
 
-      if (this.options.endDate < this.options.startDate) {
-        throw Error('The end date cannot be before the start date');
+      if (privateOptions.endDate < privateOptions.startDate) {
+        console.log('Error the end date cannot be before the start date');
       }
     }
 
@@ -204,24 +227,18 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
 
     switch (elementType) {
       case 'datetime-local':
-        this.options.type = 'datetime';
+        privateOptions.type = 'datetime';
         this.options.showFooter = true;
         this.options.showButtons = true;
         this.ngWiziDatePicker.nativeElement.type = 'text';
         break;
       case 'date':
-        this.options.type = 'date';
+        privateOptions.type = 'date';
         this.ngWiziDatePicker.nativeElement.type = 'date';
-        break;
-      case 'time':
-        this.options.type = 'time';
-        this.options.showFooter = true;
-        this.options.showButtons = true;
-        this.ngWiziDatePicker.nativeElement.type = 'text';
         break;
     }
 
-    const options = Object.assign(this.datePickerFormat, this.datePickerIntl, this.datePrickerSettings, this.options);
+    const options = Object.assign(privateOptions, this.datePickerFormat, this.datePickerIntl, this.datePrickerSettings, this.options);
 
     if (!options.closeLabel) {
       // Change cancel to close
@@ -237,6 +254,7 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
     // Ready events doesn't work
     setTimeout(() => {
       this._initEvents();
+      this.bulmaCalendar.refresh();
     }, 500);
 
     this.bulmaCalendar.on('select', data => {
@@ -270,21 +288,6 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
               }
             }
             break;
-          case 'time':
-            startDate = new Date();
-            startDate.setSeconds(0);
-            startDate.setMilliseconds(0);
-            startDate.setHours(timePicker.start.getHours());
-            startDate.setMinutes(timePicker.start.getMinutes());
-
-            if (this.isRange) {
-              endDate = new Date();
-              endDate.setSeconds(0);
-              endDate.setMilliseconds(0);
-              endDate.setHours(timePicker.end.getHours());
-              endDate.setMinutes(timePicker.end.getMinutes());
-            }
-            break;
         }
 
         this.setValue(startDate, endDate);
@@ -307,41 +310,18 @@ export interface NwbDatePickerEvent {
   endDate: Date;
 }
 
-export interface NwbDatePickerOptions {
-  type?: 'date' | 'time' | 'datetime';
-  color?: string;
-  isRange?: boolean;
-  allowSameDayRange?: boolean;
-  lang?: string;
-  dateFormat?: string;
-  timeFormat?: string;
-  displayMode?: string;
-  position?: string;
-  showHeader?: boolean;
-  headerPosition?: 'top' | 'bottom';
-  showFooter?: boolean;
-  showButtons?: boolean;
-  showTodayButton?: boolean;
-  showClearButton?: boolean;
-  clearLabel?: string;
-  todayLabel?: string;
-  nowLabel?: string;
-  enableMonthSwitch?: boolean;
-  enableYearSwitch?: boolean;
-  startDate?: Date;
-  endDate?: Date;
+interface NwbPrivateDatePickerOptions {
+  type: 'date' | 'datetime';
+  isRange: boolean;
+  startDate: Date;
+  endDate: Date;
+  start: Date;
+  end: Date;
+}
+
+export interface NwbDatePickerOptions extends NwbDatePickerSettings {
   minDate?: Date;
   maxDate?: Date;
   disabledDates?: Date[];
   disabledWeekDays?: number[];
-  weekStart?: number;
-  startTime?: Date;
-  endTime?: Date;
-  minuteSteps?: number;
-  labelFrom?: string;
-  labelTo?: string;
-  closeOnOverlayClick?: boolean;
-  closeOnSelect?: boolean;
-  toggleOnInputClick?: boolean;
-  closeLabel?: string;
 }

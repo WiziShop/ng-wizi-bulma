@@ -4,7 +4,7 @@ import { ControlValueAccessor } from '@angular/forms';
 import { NwbDatePickerComponent, NwbDatePickerEvent } from './date-picker.component';
 import { Subscription } from 'rxjs';
 
-const ALLOWED_INPUT_TYPE = ['date', 'time', 'datetime-local'];
+const ALLOWED_INPUT_TYPE = ['date', 'datetime-local'];
 
 export abstract class NwbDatePickerInputBaseDirective implements ControlValueAccessor, OnDestroy {
   protected _onChanged: Function;
@@ -73,9 +73,6 @@ export abstract class NwbDatePickerInputBaseDirective implements ControlValueAcc
     const type = this.elementRef.nativeElement.getAttribute('type');
 
     const timeStr = date.toLocaleTimeString('us');
-    if (type === 'time') {
-      return timeStr;
-    }
 
     let dateStr = date
       .toLocaleDateString('us')
@@ -87,6 +84,14 @@ export abstract class NwbDatePickerInputBaseDirective implements ControlValueAcc
     }
 
     return dateStr;
+  }
+
+  getDate() {
+    if (!this._value) {
+      return new Date();
+    }
+
+    return new Date(this._value);
   }
 
   writeValue(value: string): void {

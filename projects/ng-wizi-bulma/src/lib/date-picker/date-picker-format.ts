@@ -12,7 +12,7 @@ export function NWB_DATE_LOCALE_FACTORY(): string {
 }
 
 @Injectable({ providedIn: 'root' })
-export class DatePickerFormat {
+export class NwbDatePickerFormat {
   /** The lang to use for all dates. */
   lang: string;
 

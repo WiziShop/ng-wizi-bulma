@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class DatePickerIntl {
+export class NwbDatePickerIntl {
   closeLabel = 'Close';
   clearLabel = 'Clear';
   todayLabel = 'Today';

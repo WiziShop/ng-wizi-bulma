@@ -43,7 +43,7 @@
       <nwb-doc-preview [revertSize]="true" [content]="sample2">
         <p>DatePicker with timepicker simple</p>
         <nwb-date-picker #datePicker2 (change)="valueChange($event)">
-          <input [nwbDatepickerStart]="datePicker2" type="datetime-local" />
+          <input [nwbDatepickerStart]="datePicker2" type="datetime-local" value="2017-02-20T23:02" />
         </nwb-date-picker>
       </nwb-doc-preview>
 
@@ -68,20 +68,8 @@
       <nwb-doc-preview [revertSize]="true" [content]="sample4">
         <p>DatePicker range with timer</p>
         <nwb-date-picker #datePicker4 (change)="valueChange($event)">
-          <input [nwbDatepickerStart]="datePicker4" type="datetime-local" />
-          <input [nwbDatepickerEnd]="datePicker4" type="datetime-local" />
-        </nwb-date-picker>
-      </nwb-doc-preview>
-
-      <h2 class="title is-4">Connecting a timepicker only</h2>
-      <p>
-        A timepicker is composed of an input type time inside the component nwb-date-picker connected via the
-        <b>nwbDatepickerStart</b> property on the input.
-      </p>
-      <nwb-doc-preview [revertSize]="true" [content]="sample6">
-        <p>DatePicker type time</p>
-        <nwb-date-picker #datePicker6 (change)="valueChange($event)">
-          <input [nwbDatepickerStart]="datePicker6" type="time" />
+          <input [nwbDatepickerStart]="datePicker4" type="datetime-local" value="2050-12-23T08:09" />
+          <input [nwbDatepickerEnd]="datePicker4" type="datetime-local" value="2051-01-13T18:59" />
         </nwb-date-picker>
       </nwb-doc-preview>
 
@@ -104,20 +92,32 @@
         </p>
       </nwb-doc-preview>
 
+      <h2 class="title is-4">Datepicker with options</h2>
+      <p>You can defined custom options to a single datepicker by using the <b>options</b> attribute of <b>nwb-doc-preview</b> component</p>
+
+      <nwb-doc-preview [revertSize]="true" [content]="sample6">
+        <p>DatePicker with custom options</p>
+        <nwb-date-picker #datePicker6 (change)="valueChange($event)" [options]="options">
+          <input [nwbDatepickerStart]="datePicker6" type="date" />
+        </nwb-date-picker>
+      </nwb-doc-preview>
+
       <h2 class="title is-4">Settings</h2>
       <p>
         For more information on BulmaCalendar options, here is the official documentation:
         <a href="https://creativebulma.net/product/calendar/demo">https://creativebulma.net/product/calendar/demo</a>
       </p>
-      <p>Here is the list of the basic options of the NgWiziDatePicker, in the file date-picker-settings.ts :</p>
+      <p>Here is the list of the default options of the NwbDatePickerDefaultSettings, in the file date-picker-default-settings.ts:</p>
+      <p>These settings will be applied to all your datepicker in your application</p>
       <div class="control">
         <textarea class="textarea textarea--settingDefault" placeholder="Disabled textarea" disabled>{{settingDefault}}</textarea>
       </div>
       <br />
       <p>
-        It is also possible to create your own date-picker-settings that works with any settings. This is accomplished by subclassing
-        DatePickerSettings and providing your subclass as the DatePickerSettings implementation. You will also want to make sure that the
-        class provided in your app are formats that can be understood by your implementation. Add the following in app.module.ts
+        It is also possible to create your own settings for all your application. This is accomplished by subclassing
+        NwbDatePickerDefaultSettings and providing your subclass as the NwbDatePickerDefaultSettings implementation. You will also want to
+        make sure that the class provided in your app are formats that can be understood by your implementation. Add the following in
+        app.module.ts
       </p>
       <div class="control">
         <textarea class="textarea textarea--settingClass" placeholder="Disabled textarea" disabled>{{settingClass}}</textarea>
@@ -130,14 +130,14 @@
       <br />
       <h2 class="title is-4">Format and Internalization</h2>
       <p>Internationalization of the datepicker is configured via four aspects.</p>
-      <p>Here is the list of the basic options of the NgWiziDatePicker, in the file date-picker-format.ts :</p>
+      <p>Here is the list of the basic options of the NwbDatePickerFormat, in the file date-picker-format.ts:</p>
       <div class="control">
         <textarea class="textarea textarea--formatDefault" placeholder="Disabled textarea" disabled>{{formatDefault}}</textarea>
       </div>
       <br />
       <p>
-        By default the DatePickerFormat will creates dates in your time zone specific locale. You can change the default behaviour to parse
-        dates as UTC by providing the NWB_DATE_LOCALE and setting it to useValue with lang as you want.
+        By default the NwbDatePickerFormat will creates dates in your time zone specific locale. You can change the default behaviour to
+        parse dates as UTC by providing the NWB_DATE_LOCALE and setting it to useValue with lang as you want.
       </p>
       <div class="control">
         <textarea class="textarea textarea--formatUse" placeholder="Disabled textarea" disabled>{{formatUse}}</textarea>
@@ -154,7 +154,7 @@
       </div>
       <br />
 
-      <p>If you want to change the default labels you need to create your own DatePickerIntl class.</p>
+      <p>If you want to change the default labels you need to create your own NwbDatePickerIntl class.</p>
       <p>Here are the options for this class</p>
       <div class="control">
         <textarea class="textarea textarea--formatIntl" placeholder="Disabled textarea" disabled>{{formatIntl}}</textarea>
