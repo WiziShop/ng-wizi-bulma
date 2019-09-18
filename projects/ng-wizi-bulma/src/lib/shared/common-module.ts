@@ -7,12 +7,13 @@ import { NwbDebounceDirective } from './directives/debounce/debounce.directive';
 import { NwbToolTipDirective } from './directives/tooltip/tooltip.directive';
 import { NwbSpinnerComponent } from './components/spinner/spinner.component';
 import { NwbFilterRoutingBuilder } from './services/filter-routing/filter-routing-group.service';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   imports: [CommonModule, FormsModule],
   providers: [OVERLAY_CONTAINER_PROVIDER, DOM_SERVICE_PROVIDER, NwbFilterRoutingBuilder],
   entryComponents: [],
-  declarations: [NwbSpinnerComponent, NwbDebounceDirective, NwbToolTipDirective],
-  exports: [NwbSpinnerComponent, NwbDebounceDirective, NwbToolTipDirective]
+  declarations: [NwbSpinnerComponent, NwbDebounceDirective, NwbToolTipDirective, SafeHtmlPipe],
+  exports: [NwbSpinnerComponent, NwbDebounceDirective, NwbToolTipDirective, SafeHtmlPipe]
 })
 export class NwbCommonModule {}

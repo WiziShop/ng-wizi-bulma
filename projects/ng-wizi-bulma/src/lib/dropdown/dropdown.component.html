@@ -21,7 +21,7 @@
           class="dropdown-item"
           [ngClass]="{ 'is-active': option.selected, 'is-disabled': option.disabled }"
           (click)="selectOption(option)"
-          [innerHTML]="option.text"
+          [innerHTML]="option.text | safeHtml"
         >
         </a>
       </ng-container>

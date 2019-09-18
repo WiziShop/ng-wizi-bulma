@@ -1,3 +1,7 @@
+#8.0.3 (2019-09-18)
+
+- Use safeHtml pipe in dropdown option to be able to pass raw html
+
 #8.0.2 (2019-06-10)
 
 - Added divider to dropdown via [PR#15](https://github.com/WiziShop/ng-wizi-bulma/pull/15)
