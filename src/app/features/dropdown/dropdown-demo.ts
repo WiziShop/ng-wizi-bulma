@@ -19,7 +19,7 @@ export class DropdownDemo {
     <nwb-option value="snes"><i class="fa fa-keyboard">keyboard</i> SNES</nwb-option>
     <nwb-option [divider]="true"></nwb-option>
     <nwb-option [value]="null">null value</nwb-option>
-    <nwb-option [value]="true">true value</nwb-option>
+    <nwb-option [value]="true"><span style="color: #cb4b16">true value</span></nwb-option>
   </nwb-dropdown>
   <p>Selected value: {{gaming}}</p>
 

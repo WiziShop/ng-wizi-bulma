@@ -6,7 +6,7 @@
       aria-controls="dropdown-menu"
       [disabled]="disabled"
     >
-      <span [innerHTML]="currentText"></span>
+      <span [innerHTML]="currentText | safeHtml"></span>
       <span class="icon is-small">
         <i class="fa fa-angle-down"></i>
       </span>

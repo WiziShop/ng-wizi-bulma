@@ -1,4 +1,4 @@
-#8.0.3 (2019-09-18)
+#8.0.4 (2019-09-18)
 
 - Use safeHtml pipe in dropdown option to be able to pass raw html
 
