@@ -1,4 +1,15 @@
-import { AfterViewChecked, Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  AfterViewChecked,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { Observable } from 'rxjs';
@@ -15,7 +26,7 @@ import { Observable } from 'rxjs';
     }
   ]
 })
-export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewChecked {
+export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewChecked, OnChanges {
   @Input()
   config: NwbEditInPlaceConfig = {};
 
@@ -31,6 +42,7 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
   public editing = false;
   public isLoading: boolean;
   private firstEdit: boolean;
+  private initialized: boolean;
 
   public onChange: any = Function.prototype;
   public onTouched: any = Function.prototype;
@@ -91,6 +103,7 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
         this.firstEdit = false;
       }
     }
+    this.initialized = true;
   }
 
   startEditing() {
@@ -179,6 +192,12 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
     }
 
     return value;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.initialized && this.config.data) {
+      this.writeValue(this.config.data);
+    }
   }
 }
 

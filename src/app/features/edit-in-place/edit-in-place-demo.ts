@@ -114,7 +114,8 @@ getFormattedString(event: string) {
   editInPlaceConfig3: NwbEditInPlaceConfig = {
     currency: '$',
     separator: ',',
-    selectTextUponClick: true
+    selectTextUponClick: true,
+    data: this.number
   };
 
   constructor(private dialog: NwbDialogService) {}
@@ -144,6 +145,11 @@ getFormattedString(event: string) {
   // CustomChange is optional
   getFormattedString(event: string) {
     this.formattedString = event;
-    //console.log(event);
+  }
+
+  changeConfig() {
+    const editInPlaceConfig = this.editInPlaceConfig3;
+    editInPlaceConfig.currency = '¥';
+    this.editInPlaceConfig3 = Object.assign({}, editInPlaceConfig);
   }
 }
