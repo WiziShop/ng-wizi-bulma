@@ -77,6 +77,29 @@
             (customChange)="getFormattedString($event)"
           ></nwb-edit-in-place>
         </p>
+        <p>
+          Choose another currency or percentage
+          <input
+            type="radio"
+            id="euro"
+            class="is-checkradio"
+            name="currency"
+            [value]="'€'"
+            [(ngModel)]="editInPlaceConfig3.currency"
+            (ngModelChange)="changeConfig()"
+          />
+          <label for="euro" style="padding: 0 10px 0 5px;">€</label>
+          <input
+            type="radio"
+            id="percentage"
+            class="is-checkradio"
+            name="currency"
+            [value]="'%'"
+            [(ngModel)]="editInPlaceConfig3.currency"
+            (ngModelChange)="changeConfig()"
+          />
+          <label for="percentage" style="padding: 0 10px 0 5px;">%</label>
+        </p>
         <p>Number value: {{number}}</p>
         <p>Output formatted string: {{formattedString}}</p>
       </nwb-doc-preview>

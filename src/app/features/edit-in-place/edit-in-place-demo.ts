@@ -93,6 +93,20 @@ getFormattedString(event: string) {
     this.formattedString = event;
     console.log(event);
 }
+
+  <input type="radio" id="euro" class="is-checkradio" name="currency" 
+  [value]="'€'" [(ngModel)]="editInPlaceConfig3.currency" 
+  (ngModelChange)="changeConfig()"/>
+  <label for="euro">€</label>
+  
+  <input type="radio" id="percent" class="is-checkradio" name="currency"
+   [value]="'%'" [(ngModel)]="editInPlaceConfig3.currency" 
+   (ngModelChange)="changeConfig()"/>
+  <label for="percent">%</label>
+          
+  changeConfig() {
+    this.editInPlaceConfig3 = Object.assign({}, this.editInPlaceConfig3);
+  }
 `;
 
   developer = 'developer';
@@ -114,8 +128,7 @@ getFormattedString(event: string) {
   editInPlaceConfig3: NwbEditInPlaceConfig = {
     currency: '$',
     separator: ',',
-    selectTextUponClick: true,
-    data: this.number
+    selectTextUponClick: true
   };
 
   constructor(private dialog: NwbDialogService) {}
@@ -148,8 +161,6 @@ getFormattedString(event: string) {
   }
 
   changeConfig() {
-    const editInPlaceConfig = this.editInPlaceConfig3;
-    editInPlaceConfig.currency = '¥';
-    this.editInPlaceConfig3 = Object.assign({}, editInPlaceConfig);
+    this.editInPlaceConfig3 = Object.assign({}, this.editInPlaceConfig3);
   }
 }
