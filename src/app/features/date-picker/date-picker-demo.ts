@@ -239,6 +239,15 @@ options: NwbDatePickerOptions = {
 };
 `;
 
+  sample7 = `
+<nwb-date-picker
+    (change)="valueChange($event)"
+    [options]="{'dateFormat':'DD/MM/YYYY','lang':'fr'}"
+>
+   <input type="date" value="2019-12-02">
+</nwb-date-picker>
+`;
+
   valueChange(value: any) {
     console.log('value change from nwbDatePicker', { value });
   }

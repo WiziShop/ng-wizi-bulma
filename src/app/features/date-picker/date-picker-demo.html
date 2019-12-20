@@ -6,6 +6,22 @@
   </header>
   <div class="card-content">
     <div class="content">
+      <h2 class="title">Warning</h2>
+
+      <div class="notification is-danger">
+        Due to <a href="https://github.com/Wikiki/bulma-calendar/issues/193">this issue</a> in the official build, the dateFormat option may
+        not work. It's recommended to use our fork until this <a href="https://github.com/Wikiki/bulma-calendar/pull/221">PR</a> is merged
+      </div>
+      <pre>npm i https://github.com/WiziShop/bulma-calendar.git</pre>
+      <p>In angular.json replace</p>
+      <pre>node_modules/bulma-extensions/bulma-calendar/dist/js/bulma-calendar.js</pre>
+      <p>by</p>
+      <pre>node_modules/bulma-calendar/dist/js/bulma-calendar.js</pre>
+
+      <hr />
+    </div>
+
+    <div class="content">
       <p>The datepicker allows users to enter a date by choosing a date from the calendar.</p>
       <h2 class="title is-4">Add bulma-calendar.js</h2>
       <p>
@@ -170,6 +186,13 @@
         <textarea class="textarea textarea--formatComp" placeholder="Disabled textarea" disabled>{{formatComp}}</textarea>
       </div>
       <br />
+      <h2 class="title is-4">Example</h2>
+      <nwb-doc-preview [revertSize]="true" [content]="sample7">
+        <p>Date with French format</p>
+        <nwb-date-picker #datePicker7 (change)="valueChange($event)" [options]="{'dateFormat':'DD/MM/YYYY','lang':'fr'}">
+          <input [nwbDatepickerStart]="datePicker7" type="date" value="2019-12-02" />
+        </nwb-date-picker>
+      </nwb-doc-preview>
     </div>
   </div>
 </div>
