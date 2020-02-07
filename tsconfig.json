@@ -2,20 +2,33 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "importHelpers": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "importHelpers": true,
     "target": "es2015",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2018", "dom"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
     "paths": {
-      "@wizishop/ng-wizi-bulma": ["dist/@wizishop/ng-wizi-bulma"],
-      "@wizishop/ng-wizi-bulma/*": ["dist/@wizishop/ng-wizi-bulma/*"]
+      "@wizishop/ng-wizi-bulma": [
+        "dist/@wizishop/ng-wizi-bulma"
+      ],
+      "@wizishop/ng-wizi-bulma/*": [
+        "dist/@wizishop/ng-wizi-bulma/*"
+      ]
     }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
   }
 }

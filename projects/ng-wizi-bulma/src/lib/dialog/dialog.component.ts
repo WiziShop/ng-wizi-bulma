@@ -38,16 +38,16 @@ export class NwbDialogComponent<T> implements OnInit {
   @ViewChild('componentSection', { read: ViewContainerRef, static: true })
   componentSection: ViewContainerRef;
 
-  @ViewChild('okButton', { static: false })
+  @ViewChild('okButton')
   okButtonEl: ElementRef;
-  @ViewChild('cancelButton', { static: false })
+  @ViewChild('cancelButton')
   cancelButtonEl: ElementRef;
-  @ViewChild('backdropButton', { static: false })
+  @ViewChild('backdropButton')
   backdropButtonEl: ElementRef;
 
-  @ViewChild('header', { static: false })
+  @ViewChild('header')
   headerEl: ElementRef;
-  @ViewChild('footer', { static: false })
+  @ViewChild('footer')
   footerEl: ElementRef;
 
   ready = new EventEmitter<boolean>();

@@ -1,3 +1,7 @@
+#9.0.0 (2020-02-07)
+- Upgrade to Angular 9
+- Upgrade to Bulma 0.8
+
 #8.0.4 (2019-09-18)
 
 - Use safeHtml pipe in dropdown option to be able to pass raw html
