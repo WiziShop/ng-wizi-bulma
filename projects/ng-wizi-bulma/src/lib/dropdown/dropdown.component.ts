@@ -26,6 +26,10 @@ export class NwbDropdownComponent implements ControlValueAccessor {
   @Input()
   classes?: string;
 
+  /** Set to true for align to right the dropdown */
+  @Input()
+  rightToLeft = false;
+
   /** Disable the dropdown */
   @Input()
   disabled?: boolean;

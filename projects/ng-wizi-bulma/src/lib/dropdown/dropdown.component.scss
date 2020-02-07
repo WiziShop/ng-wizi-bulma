@@ -4,4 +4,10 @@
     background-color: whitesmoke;
     color: #7a7a7a;
   }
+  .right-to-left {
+    .dropdown-menu {
+      left: auto;
+      right: 0;
+    }
+  }
 }

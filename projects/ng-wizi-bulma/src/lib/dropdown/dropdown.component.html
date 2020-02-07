@@ -1,4 +1,4 @@
-<div class="dropdown" [ngClass]="{ 'is-active': isActive }" (click)="toggleActive()">
+<div class="dropdown" [ngClass]="{ 'is-active': isActive, 'right-to-left': rightToLeft }" (click)="toggleActive()">
   <div class="dropdown-trigger">
     <button
       [ngClass]="['button', classes ? classes : '', isLoading ? ' is-loading' : '']"
