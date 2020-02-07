@@ -32,11 +32,11 @@ export class NwbModalSearchComponent implements AfterViewInit {
 
   private searchSubscription: Subscription;
 
-  @ViewChild('header', { static: false })
+  @ViewChild('header')
   header: ElementRef;
   @ViewChild('inputSearch', { static: true })
   inputSearch: ElementRef;
-  @ViewChild('footer', { static: false })
+  @ViewChild('footer')
   footer: ElementRef;
 
   private _isMouseNavigating = false;

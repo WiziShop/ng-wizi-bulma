@@ -1,6 +1,6 @@
 {
   "name": "@wizishop/ng-wizi-bulma",
-  "version": "8.0.6",
+  "version": "9.0.0",
   "description": "Angular Compoments using Bulma css",
   "repository": {
     "type": "git",
@@ -18,11 +18,12 @@
   },
   "homepage": "https://ng-wizi-bulma.firebaseapp.com",
   "peerDependencies": {
-    "@angular/animations": "^8.0.0",
-    "@angular/cdk": "^8.0.0",
-    "@angular/common": "^8.0.0",
-    "@angular/core": "^8.0.0",
-    "bulma": "^0.7.5",
-    "bulma-extensions": "^6.2.7"
+    "@angular/animations": "^9.0.0",
+    "@angular/cdk": "^9.0.0",
+    "@angular/common": "^9.0.0",
+    "@angular/core": "^9.0.0",
+    "bulma": "^0.8.0",
+    "bulma-extensions": "^6.2.7",
+    "tslib": "^1.10.0"
   }
 }

@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs/internal/Subject';
+import { Subject } from 'rxjs';
 
 export class NwbFilterGroup {
   valuesChange$ = new Subject<NwbFilter[]>();

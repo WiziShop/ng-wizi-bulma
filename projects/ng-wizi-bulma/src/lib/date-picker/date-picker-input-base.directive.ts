@@ -1,11 +1,12 @@
 /** Directive used to connect an input to a MatDatepicker. */
-import { ElementRef, EventEmitter, Input, OnDestroy } from '@angular/core';
+import { ElementRef, EventEmitter, Input, OnDestroy, Directive } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { NwbDatePickerComponent, NwbDatePickerEvent } from './date-picker.component';
 import { Subscription } from 'rxjs';
 
 const ALLOWED_INPUT_TYPE = ['date', 'datetime-local'];
 
+@Directive()
 export abstract class NwbDatePickerInputBaseDirective implements ControlValueAccessor, OnDestroy {
   protected _onChanged: Function;
   protected _onTouched: Function;
