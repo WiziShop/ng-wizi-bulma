@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/@wizishop/ng-wizi-bulma.svg)](https://www.npmjs.com/package/@wizishop/ng-wizi-bulma)
 [![npm](https://img.shields.io/npm/dm/@wizishop/ng-wizi-bulma.svg)](https://www.npmjs.com/package/@wizishop/ng-wizi-bulma)
 
-[Bulma](http://bulma.io/) components for Angular 8+
+[Bulma](http://bulma.io/) components for Angular 9+
 
 The library uses [ng-packagr](https://github.com/dherges/ng-packagr) to transpile into the Angular Package Format
 
