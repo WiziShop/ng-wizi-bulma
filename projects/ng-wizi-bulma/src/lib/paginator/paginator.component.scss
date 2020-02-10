@@ -2,6 +2,7 @@
   .pagination-list {
     justify-content: flex-end;
     list-style-type: none;
+    align-content: center;
   }
 
   .pagination-list li {
@@ -28,7 +29,6 @@
 
   .pagination-list li:first-child {
     font-size: 12px;
-    margin-top: 0.25em;
   }
 
   .pagination-list .button[aria-controls='dropdown-menu'] {
