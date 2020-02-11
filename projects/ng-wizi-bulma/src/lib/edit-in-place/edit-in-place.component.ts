@@ -195,7 +195,7 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (this.initialized) {
+    if (this.initialized && typeof this.config.currency === 'string') {
       this.currentValue = this.checkAndRemoveCurrency(this.currentValue) + this.config.currency;
       this.customChange.emit(this.value);
     }
