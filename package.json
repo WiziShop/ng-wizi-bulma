@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "npm run build:lib && concurrently \"npm run watch-scss\" \"ng build ng-wizi-bulma --watch \" \"ng serve\"",
+    "start": "ng build ng-wizi-bulma && npm run block-scss  && concurrently \"npm run watch-scss\"  \"ng serve\"",
     "build:lib": "ng build ng-wizi-bulma --prod && npm run block-scss && cp README.md dist/@wizishop/ng-wizi-bulma",
     "build:demo": "ng build ng-wizi-bulma-demo --prod",
     "build": "rm -rf dist && npm run build:lib && npm run build:demo",
@@ -15,7 +15,7 @@
     "publish:npm": "rm -rf dist &&  npm run build:lib && cd dist/@wizishop/ng-wizi-bulma && npm publish --access public && cd ../../../",
     "publish": "npm run deploy && npm run publish:npm",
     "precommit": "pretty-quick --staged",
-    "prepack": "ng build ng-wizi-bulma && npm run block-scss",
+    "prepack": "npm run build:lib",
     "watch-scss": "nodemon --watch './projects/ng-wizi-bulma/src/**/*.scss' -e scss -d 1 -x \"npm run block-scss\" ",
     "block-scss": "node ./scripts/scss-bundle.js"
   },

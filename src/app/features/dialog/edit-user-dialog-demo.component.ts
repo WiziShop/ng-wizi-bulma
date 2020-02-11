@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
-import { NwbDialogComponent, NwbDialogService } from '@wizishop/ng-wizi-bulma';
+import { NwbDialogComponent, NwbDialogService } from 'projects/ng-wizi-bulma/src/public_api';
 
 @Component({
   selector: 'demo-add-user-dialog',

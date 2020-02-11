@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NwbAlertService } from '@wizishop/ng-wizi-bulma';
-import { NwbDatePickerOptions } from '../../../../projects/ng-wizi-bulma/src/lib/date-picker';
+import { NwbAlertService, NwbDatePickerOptions } from 'projects/ng-wizi-bulma/src/public_api';
 
 @Component({
   providers: [],

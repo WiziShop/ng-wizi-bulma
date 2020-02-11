@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NwbFoundRow, NwbModalSearchComponent, NwbModalSearchService } from '@wizishop/ng-wizi-bulma';
+import { NwbFoundRow, NwbModalSearchComponent, NwbModalSearchService } from 'projects/ng-wizi-bulma/src/public_api';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/index';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

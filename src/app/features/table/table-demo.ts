@@ -10,7 +10,7 @@ import {
   NwbPaginatorComponent,
   NwbSort,
   Sort
-} from '@wizishop/ng-wizi-bulma';
+} from 'projects/ng-wizi-bulma/src/public_api';
 
 @Component({
   providers: [],

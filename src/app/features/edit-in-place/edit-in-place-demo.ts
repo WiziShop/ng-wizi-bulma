@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NwbDialogService } from '@wizishop/ng-wizi-bulma';
+import { NwbDialogService } from 'projects/ng-wizi-bulma/src/public_api';
 import { timer } from 'rxjs';
 import { NwbEditInPlaceConfig } from '../../../../projects/ng-wizi-bulma/src/lib/edit-in-place';
 import { map } from 'rxjs/operators';
@@ -55,12 +55,12 @@ export class EditInPlaceDemo {
  editInPlaceConfig2: NwbEditInPlaceConfig = {
     selectTextUponClick: true
   };
-  
- <nwb-edit-in-place 
+
+ <nwb-edit-in-place
  [(ngModel)]="developer"
- (ngModelChange)="modelChange($event)"  
+ (ngModelChange)="modelChange($event)"
  [config]="editInPlaceConfig2">
- 
+
 </nwb-edit-in-place>
 
   modelChange(event: any) {
@@ -94,16 +94,16 @@ getFormattedString(event: string) {
     console.log(event);
 }
 
-  <input type="radio" id="euro" class="is-checkradio" name="currency" 
-  [value]="'€'" [(ngModel)]="editInPlaceConfig3.currency" 
+  <input type="radio" id="euro" class="is-checkradio" name="currency"
+  [value]="'€'" [(ngModel)]="editInPlaceConfig3.currency"
   (ngModelChange)="changeConfig()"/>
   <label for="euro">€</label>
-  
+
   <input type="radio" id="percent" class="is-checkradio" name="currency"
-   [value]="'%'" [(ngModel)]="editInPlaceConfig3.currency" 
+   [value]="'%'" [(ngModel)]="editInPlaceConfig3.currency"
    (ngModelChange)="changeConfig()"/>
   <label for="percent">%</label>
-          
+
   changeConfig() {
     this.editInPlaceConfig3 = Object.assign({}, this.editInPlaceConfig3);
   }
