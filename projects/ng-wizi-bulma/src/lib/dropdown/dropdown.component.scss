@@ -10,4 +10,11 @@
       right: 0;
     }
   }
+  .dropdown-content {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  a.dropdown-item.is-active, button.dropdown-item.is-active {
+    background-color: #329cc0;
+  }
 }
