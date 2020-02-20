@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NwbDialogService, NwbDropdownConfig } from '@wizishop/ng-wizi-bulma';
+import { NwbDialogService, NwbDropdownConfig } from 'projects/ng-wizi-bulma/src/public_api';
 import { Observable } from 'rxjs';
 
 @Component({

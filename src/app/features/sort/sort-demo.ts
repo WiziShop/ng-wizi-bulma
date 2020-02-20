@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Sort } from '@wizishop/ng-wizi-bulma';
+import { Sort } from 'projects/ng-wizi-bulma/src/public_api';
 
 export interface Dessert {
   calories: number;

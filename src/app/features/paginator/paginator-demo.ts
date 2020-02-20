@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NwbPageEvent } from '@wizishop/ng-wizi-bulma';
+import { NwbPageEvent } from 'projects/ng-wizi-bulma/src/public_api';
 
 @Component({
   providers: [],

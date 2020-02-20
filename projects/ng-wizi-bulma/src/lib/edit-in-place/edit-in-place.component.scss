@@ -2,7 +2,7 @@
   display: inline-block;
   position: relative;
   width: auto;
-  min-width: 26px;
+  min-width: 12px;
   min-height: 1.4em;
   cursor: pointer;
 
@@ -45,7 +45,7 @@
       left: -7px;
       width: calc(100% + 16px) !important;
       height: calc(100% + 14px) !important;
-      min-width: 26px;
+      min-width: 12px;
       min-height: 1em;
       margin: 0;
       background-size: auto 70%;
@@ -58,8 +58,7 @@
     color: inherit;
     &:not(.nwb-loader) {
       display: inline-block;
-      min-width: 20px;
-      min-width: 38px;
+      min-width: 12px;
     }
     &.nwb-editing {
       visibility: hidden;
