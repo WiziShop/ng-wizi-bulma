@@ -1,6 +1,6 @@
 {
   "name": "@wizishop/ng-wizi-bulma",
-  "version": "9.0.06",
+  "version": "9.0.07",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

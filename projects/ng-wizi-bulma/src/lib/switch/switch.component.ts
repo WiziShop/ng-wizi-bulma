@@ -4,6 +4,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 @Component({
   selector: 'nwb-switch',
   templateUrl: './switch.component.html',
+  styleUrls: ['./switch.component.scss'],
   host: {
     class: 'nwb-switch'
   },
