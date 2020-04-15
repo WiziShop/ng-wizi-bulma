@@ -45,7 +45,7 @@
 
       <nwb-doc-preview [revertSize]="true" [content]="sample1">
         <p>DatePicker simple</p>
-        <nwb-date-picker #datePicker1 (change)="valueChange($event)">
+        <nwb-date-picker #datePicker1 (change)="valueChange($event)" [options]="{showClearButton: false}" >
           <input [nwbDatepickerStart]="datePicker1" type="date" />
         </nwb-date-picker>
       </nwb-doc-preview>

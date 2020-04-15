@@ -176,7 +176,7 @@ export class DatePickerDemo {
    <input type="date">
 </nwb-date-picker>`;
 
-  sample1 = `<nwb-date-picker #datePicker1 (change)="valueChange($event)">
+  sample1 = `<nwb-date-picker #datePicker1 (change)="valueChange($event)" [options]="{showClearButton: false}">
   <input [nwbDatepickerStart]="datePicker1" type="date"/>
 </nwb-date-picker>`;
 
