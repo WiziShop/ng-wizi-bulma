@@ -1,3 +1,7 @@
+#9.1.1 (2020-04-15)
+- Upgrade to Angular 9.1.1
+- Upgrade to typescript 3.8.3
+
 #9.0.0 (2020-02-07)
 - Upgrade to Angular 9
 - Upgrade to Bulma 0.8
