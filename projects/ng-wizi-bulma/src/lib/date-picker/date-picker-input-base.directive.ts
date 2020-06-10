@@ -36,7 +36,15 @@ export abstract class NwbDatePickerInputBaseDirective implements ControlValueAcc
   }
 
   @Input()
-  dateType: 'date' | 'datetime' = 'date';
+  nwbDateType: 'date' | 'datetime' = 'date';
+
+  set dateType(type: 'date' | 'datetime') {
+    this.nwbDateType = type;
+  }
+
+  get dateType() {
+    return this.nwbDateType;
+  }
 
   private _value: string;
 
@@ -48,7 +56,7 @@ export abstract class NwbDatePickerInputBaseDirective implements ControlValueAcc
     const type = this.elementRef.nativeElement.getAttribute('type');
     if (type !== 'text') {
       console.warn(
-        `nwb-date-picker deprecated warning. The use of an input type "date" or "datetime-local" is now deprecated due to the lack of timezone. Use an input type "text" and set the attribute "dateType" instead.`
+        `nwb-date-picker deprecated warning. The use of an input type "date" or "datetime-local" is now deprecated due to the lack of timezone. Use an input type "text" and set the attribute "nwbDateType" instead.`
       );
 
       this.dateType = type === 'date' ? 'date' : 'datetime';

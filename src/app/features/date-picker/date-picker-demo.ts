@@ -169,36 +169,36 @@ export class DatePickerDemo {
   ],
 `;
   formatComp = `<nwb-date-picker \n   (change)="valueChange($event)"\n   [options]="{'dateFormat':'MM/DD/YYYY','lang':'fr'}">
-   <input type="text" dateType="date">
+   <input type="text" nwbDateType="date">
 </nwb-date-picker>`;
 
   settingComp = `<nwb-date-picker \n   (change)="valueChange($event)"\n   [options]="{'showFooter':false,'displayMode':'dialog'}">
-   <input type="text" dateType="date">
+   <input type="text" nwbDateType="date">
 </nwb-date-picker>`;
 
   sample1 = `<nwb-date-picker #datePicker1 (change)="valueChange($event)" [options]="{showClearButton: false}">
-  <input [nwbDatepickerStart]="datePicker1" type="text" dateType="date"/>
+  <input [nwbDatepickerStart]="datePicker1" type="text" nwbDateType="date"/>
 </nwb-date-picker>`;
 
   sample2 = `<nwb-date-picker #datePicker2 (change)="valueChange($event)">
-  <input [nwbDatepickerStart]="datePicker2" type="text" dateType="datetime"/>
+  <input [nwbDatepickerStart]="datePicker2" type="text" nwbDateType="datetime"/>
 </nwb-date-picker>`;
 
   sample3 = `<nwb-date-picker #datePicker3 (change)="valueChange($event)">
-  <input [nwbDatepickerStart]="datePicker3" type="text" dateType="date"/>
-  <input [nwbDatepickerEnd]="datePicker3" type="text" dateType="date"/>
+  <input [nwbDatepickerStart]="datePicker3" type="text" nwbDateType="date"/>
+  <input [nwbDatepickerEnd]="datePicker3" type="text" nwbDateType="date"/>
 </nwb-date-picker>`;
 
   sample4 = `<nwb-date-picker #datePicker4 (change)="valueChange($event)">
-  <input [nwbDatepickerStart]="datePicker4" type="text" dateType="datetime"/>
-  <input [nwbDatepickerEnd]="datePicker4" type="text" dateType="datetime"/>
+  <input [nwbDatepickerStart]="datePicker4" type="text" nwbDateType="datetime"/>
+  <input [nwbDatepickerEnd]="datePicker4" type="text" nwbDateType="datetime"/>
 </nwb-date-picker>`;
 
   sample5 = `<form [formGroup]="myDateForm" (ngSubmit)="submitForm()">
   <nwb-date-picker #datePicker5>
-    <input type="text" dateType="date" [nwbDatepickerStart]="datePicker5" name="startDate"
+    <input type="text" nwbDateType="date" [nwbDatepickerStart]="datePicker5" name="startDate"
            formControlName="startDate"/>
-    <input type="text" dateType="date" [nwbDatepickerEnd]="datePicker5" name="endDate" formControlName="endDate"/>
+    <input type="text" nwbDateType="date" [nwbDatepickerEnd]="datePicker5" name="endDate" formControlName="endDate"/>
   </nwb-date-picker>
   <p>
     <button type="submit" class="button is-primary">Submit</button>
@@ -208,7 +208,7 @@ export class DatePickerDemo {
   sample6 = `<nwb-doc-preview [revertSize]="true" [content]="sample6">
   <p>DatePicker simple</p>
   <nwb-date-picker #datePicker6 (change)="valueChange($event)" [options]="options" >
-    <input [nwbDatepickerStart]="datePicker6" type="text" dateType="date"  />
+    <input [nwbDatepickerStart]="datePicker6" type="text" nwbDateType="date"  />
   </nwb-date-picker>
 </nwb-doc-preview>
 
@@ -243,7 +243,7 @@ options: NwbDatePickerOptions = {
     (change)="valueChange($event)"
     [options]="{'dateFormat':'DD/MM/YYYY','lang':'fr'}"
 >
-   <input type="text" dateType="date" value="2019-12-02T00:00:00.000Z">
+   <input type="text" [nwbDateType]="'date'" value="2019-12-02T00:00:00.000Z">
 </nwb-date-picker>
 `;
 

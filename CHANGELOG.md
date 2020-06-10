@@ -1,6 +1,6 @@
-#9.1.2 (2020-06-10)
+#9.1.3 (2020-06-10)
 
-- Change in nwb-date-picker. The use of an input type "date" or "datetime-local" is now deprecated due to the lack of timezone. Use an input type "text" and set the attribute "dateType" instead.
+- Change in nwb-date-picker. The use of an input type "date" or "datetime-local" is now deprecated due to the lack of timezone. Use an input type "text" and set the attribute "nwbDateType" instead.
 - Upgrade to Bulma 0.9
 - Upgrade to Angular 9.1.10
 - Upgrade to Angular CDK 9.2.4
