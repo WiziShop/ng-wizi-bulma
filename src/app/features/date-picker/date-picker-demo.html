@@ -45,8 +45,8 @@
 
       <nwb-doc-preview [revertSize]="true" [content]="sample1">
         <p>DatePicker simple</p>
-        <nwb-date-picker #datePicker1 (change)="valueChange($event)" [options]="{showClearButton: false}" >
-          <input [nwbDatepickerStart]="datePicker1" type="date" />
+        <nwb-date-picker #datePicker1 (change)="valueChange($event)" [options]="{showClearButton: false}">
+          <input [nwbDatepickerStart]="datePicker1" type="text" dateType="date" />
         </nwb-date-picker>
       </nwb-doc-preview>
 
@@ -59,7 +59,7 @@
       <nwb-doc-preview [revertSize]="true" [content]="sample2">
         <p>DatePicker with timepicker simple</p>
         <nwb-date-picker #datePicker2 (change)="valueChange($event)">
-          <input [nwbDatepickerStart]="datePicker2" type="datetime-local" value="2017-02-20T23:02" />
+          <input [nwbDatepickerStart]="datePicker2" type="text" dateType="datetime" value="2017-02-20T22:02:00.000Z" />
         </nwb-date-picker>
       </nwb-doc-preview>
 
@@ -71,8 +71,8 @@
       <nwb-doc-preview [revertSize]="true" [content]="sample3">
         <p>DatePicker range simple</p>
         <nwb-date-picker #datePicker3 (change)="valueChange($event)">
-          <input [nwbDatepickerStart]="datePicker3" type="date" />
-          <input [nwbDatepickerEnd]="datePicker3" type="date" />
+          <input [nwbDatepickerStart]="datePicker3" type="text" dateType="date" />
+          <input [nwbDatepickerEnd]="datePicker3" type="text" dateType="date" />
         </nwb-date-picker>
       </nwb-doc-preview>
 
@@ -84,8 +84,8 @@
       <nwb-doc-preview [revertSize]="true" [content]="sample4">
         <p>DatePicker range with timer</p>
         <nwb-date-picker #datePicker4 (change)="valueChange($event)">
-          <input [nwbDatepickerStart]="datePicker4" type="datetime-local" value="2050-12-23T08:09" />
-          <input [nwbDatepickerEnd]="datePicker4" type="datetime-local" value="2051-01-13T18:59" />
+          <input [nwbDatepickerStart]="datePicker4" type="text" dateType="datetime" value="2050-12-23T07:09:00.000Z" />
+          <input [nwbDatepickerEnd]="datePicker4" type="text" dateType="datetime" value="2051-01-13T17:59:00.000Z" />
         </nwb-date-picker>
       </nwb-doc-preview>
 
@@ -94,8 +94,8 @@
         <p>DatePicker range with angular form</p>
         <form [formGroup]="myDateForm" (ngSubmit)="submitForm()">
           <nwb-date-picker #datePicker5>
-            <input type="date" [nwbDatepickerStart]="datePicker5" name="startDate" formControlName="startDate" />
-            <input type="date" [nwbDatepickerEnd]="datePicker5" name="endDate" formControlName="endDate" />
+            <input type="text" dateType="date" [nwbDatepickerStart]="datePicker5" name="startDate" formControlName="startDate" />
+            <input type="text" dateType="date" [nwbDatepickerEnd]="datePicker5" name="endDate" formControlName="endDate" />
           </nwb-date-picker>
           <p>
             <button type="submit" class="button is-primary">Submit</button>
@@ -103,8 +103,12 @@
         </form>
 
         <p class="buttons">
-          <button class="button is-info" (click)="changeStartDate('2017-02-20')">Set start value from outside to 2017-02-20</button>
-          <button class="button is-info" (click)="changeEndDate('2032-09-16')">Set end value from outside to 2032-09-16</button>
+          <button class="button is-info" (click)="changeStartDate('2017-02-20T00:00:00.000Z')">
+            Set start value from outside to 2017-02-20T00:00:00.000Z
+          </button>
+          <button class="button is-info" (click)="changeEndDate('2032-09-16T00:00:00.000Z')">
+            Set end value from outside to 2032-09-16T00:00:00.000Z
+          </button>
         </p>
       </nwb-doc-preview>
 
@@ -114,7 +118,7 @@
       <nwb-doc-preview [revertSize]="true" [content]="sample6">
         <p>DatePicker with custom options</p>
         <nwb-date-picker #datePicker6 (change)="valueChange($event)" [options]="options">
-          <input [nwbDatepickerStart]="datePicker6" type="date" />
+          <input [nwbDatepickerStart]="datePicker6" type="text" dateType="date" />
         </nwb-date-picker>
       </nwb-doc-preview>
 
@@ -190,7 +194,7 @@
       <nwb-doc-preview [revertSize]="true" [content]="sample7">
         <p>Date with French format</p>
         <nwb-date-picker #datePicker7 (change)="valueChange($event)" [options]="{'dateFormat':'DD/MM/YYYY','lang':'fr'}">
-          <input [nwbDatepickerStart]="datePicker7" type="date" value="2019-12-02" />
+          <input [nwbDatepickerStart]="datePicker7" type="text" dateType="date" value="2019-12-02T00:00:00.000Z" />
         </nwb-date-picker>
       </nwb-doc-preview>
     </div>

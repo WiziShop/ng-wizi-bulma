@@ -1,10 +1,8 @@
 /** Directive used to connect an input to a MatDatepicker. */
-import { ElementRef, EventEmitter, Input, OnDestroy, Directive } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Input, OnDestroy } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { NwbDatePickerComponent, NwbDatePickerEvent } from './date-picker.component';
 import { Subscription } from 'rxjs';
-
-const ALLOWED_INPUT_TYPE = ['date', 'datetime-local'];
 
 @Directive()
 export abstract class NwbDatePickerInputBaseDirective implements ControlValueAccessor, OnDestroy {
@@ -37,6 +35,9 @@ export abstract class NwbDatePickerInputBaseDirective implements ControlValueAcc
     }
   }
 
+  @Input()
+  dateType: 'date' | 'datetime' = 'date';
+
   private _value: string;
 
   protected registerInput(datePickerComponent: NwbDatePickerComponent, inputType: 'startDate' | 'endDate') {
@@ -45,8 +46,14 @@ export abstract class NwbDatePickerInputBaseDirective implements ControlValueAcc
     }
 
     const type = this.elementRef.nativeElement.getAttribute('type');
-    if (!ALLOWED_INPUT_TYPE.includes(type)) {
-      throw Error(`Datepicker input type: ${type} is not allowed. Allowed types: ${ALLOWED_INPUT_TYPE.join(', ')}`);
+    if (type !== 'text') {
+      console.warn(
+        `nwb-date-picker deprecated warning. The use of an input type "date" or "datetime-local" is now deprecated due to the lack of timezone. Use an input type "text" and set the attribute "dateType" instead.`
+      );
+
+      this.dateType = type === 'date' ? 'date' : 'datetime';
+
+      this.elementRef.nativeElement.setAttribute('type', 'text');
     }
 
     this._datepicker = datePickerComponent;
@@ -56,9 +63,9 @@ export abstract class NwbDatePickerInputBaseDirective implements ControlValueAcc
     this._datepickerSubscription = this._datepicker.change.subscribe((value: NwbDatePickerEvent) => {
       let dateStr;
       if (inputType === 'startDate') {
-        dateStr = this.formatValue(value.startDate);
+        dateStr = value.startDate.toISOString();
       } else {
-        dateStr = this.formatValue(value.endDate);
+        dateStr = value.endDate.toISOString();
       }
 
       this.elementRef.nativeElement.value = dateStr;
@@ -70,29 +77,21 @@ export abstract class NwbDatePickerInputBaseDirective implements ControlValueAcc
     });
   }
 
-  protected formatValue(date: Date) {
-    const type = this.elementRef.nativeElement.getAttribute('type');
-
-    const timeStr = date.toLocaleTimeString('us');
-
-    let dateStr = date
-      .toLocaleDateString('us')
-      .split('/')
-      .reverse()
-      .join('-');
-    if (type === 'datetime-local') {
-      dateStr += 'T' + timeStr;
-    }
-
-    return dateStr;
-  }
-
   getDate() {
     if (!this._value) {
       return new Date();
     }
 
-    return new Date(this._value);
+    const date = new Date(this._value);
+    const finalDate = new Date();
+
+    finalDate.setFullYear(date.getFullYear(), date.getMonth(), date.getDate());
+    finalDate.setHours(date.getHours(), date.getMinutes(), 0, 0);
+    if (this.dateType === 'date') {
+      finalDate.setHours(0, 0, 0, 0);
+    }
+
+    return finalDate;
   }
 
   writeValue(value: string): void {

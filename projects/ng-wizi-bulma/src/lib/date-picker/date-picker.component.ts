@@ -8,7 +8,7 @@ import {
   NgZone,
   OnDestroy,
   Output,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { NwbDatePickerIntl } from './date-picker-intl';
 import { NwbDatePickerFormat } from './date-picker-format';
@@ -23,7 +23,7 @@ declare const bulmaCalendar: any;
   selector: 'nwb-date-picker',
   templateUrl: './date-picker.component.html',
   styleUrls: ['./date-picker.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
   @Input() options: NwbDatePickerOptions = {};
@@ -98,7 +98,7 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
 
       const calendarWrapperEl = this.elementRef.nativeElement.querySelector('.datetimepicker-dummy') as HTMLDivElement;
       if (calendarWrapperEl) {
-        this.ngWiziDatePicker.nativeElement.setAttribute('type', 'date');
+        this.ngWiziDatePicker.nativeElement.setAttribute('type', 'text');
 
         const rootCalendarNode = calendarWrapperEl.parentElement;
         this.elementRef.nativeElement.insertBefore(this.ngWiziDatePicker.nativeElement, rootCalendarNode);
@@ -131,7 +131,7 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
 
     this.change.emit({
       startDate: new Date(startDate.toISOString()),
-      endDate: this.isRange ? new Date(endDate.toISOString()) : new Date(startDate.toISOString())
+      endDate: this.isRange ? new Date(endDate.toISOString()) : new Date(startDate.toISOString()),
     });
   }
 
@@ -158,7 +158,7 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
       elements.push(timepickerEndEl.querySelector('.timepicker-minutes .timepicker-previous'));
     }
 
-    elements.forEach(element => {
+    elements.forEach((element) => {
       fromEvent(element, 'click')
         .pipe(takeUntil(this.destroy))
         .subscribe(() => {
@@ -171,18 +171,11 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  private resetTimePart(date: Date) {
-    date.setHours(0);
-    date.setMinutes(0);
-    date.setSeconds(0);
-    date.setMilliseconds(0);
-  }
-
   private getDateAndTimePart(input: NwbDatePickerInputBaseDirective) {
     const date = input.getDate();
     const time = input.getDate();
 
-    this.resetTimePart(date);
+    date.setHours(0, 0, 0, 0);
 
     return { date, time };
   }
@@ -200,7 +193,7 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
       startDate: null,
       start: null,
       endDate: null,
-      end: null
+      end: null,
     };
 
     if (this.datepickerInputStart && this.datepickerInputStart.value) {
@@ -223,10 +216,10 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
       }
     }
 
-    const elementType = this.datepickerInputStart.elementRef.nativeElement.getAttribute('type');
+    const elementType = this.datepickerInputStart.dateType;
 
     switch (elementType) {
-      case 'datetime-local':
+      case 'datetime':
         privateOptions.type = 'datetime';
         this.options.showFooter = true;
         this.options.showButtons = true;
@@ -257,7 +250,7 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
       this.bulmaCalendar.refresh();
     }, 500);
 
-    this.bulmaCalendar.on('select', data => {
+    this.bulmaCalendar.on('select', (data) => {
       this.ngZone.run(() => {
         const datePicker = data.data.datePicker;
         const timePicker = data.data.timePicker;
@@ -265,29 +258,24 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
         let startDate: Date;
         let endDate: Date;
 
-        switch (elementType) {
-          case 'date':
-          case 'datetime-local':
-            if (!datePicker.start) {
-              return;
-            }
-            startDate = new Date(datePicker.start.toISOString());
-            if (timePicker) {
-              startDate.setHours(timePicker.start.getHours());
-              startDate.setMinutes(timePicker.start.getMinutes());
-            }
+        if (!datePicker.start) {
+          return;
+        }
+        // Clone the date
+        startDate = new Date(datePicker.start.toISOString());
+        if (timePicker) {
+          startDate.setHours(timePicker.start.getHours(), timePicker.start.getMinutes(), 0, 0);
+        }
 
-            if (this.isRange) {
-              if (!datePicker.end) {
-                return;
-              }
-              endDate = new Date(datePicker.end.toISOString());
-              if (timePicker) {
-                endDate.setHours(timePicker.end.getHours());
-                endDate.setMinutes(timePicker.end.getMinutes());
-              }
-            }
-            break;
+        if (this.isRange) {
+          if (!datePicker.end) {
+            return;
+          }
+          // Clone the date
+          endDate = new Date(datePicker.end.toISOString());
+          if (timePicker) {
+            endDate.setHours(timePicker.end.getHours(), timePicker.end.getMinutes(), 0, 0);
+          }
         }
 
         this.setValue(startDate, endDate);
