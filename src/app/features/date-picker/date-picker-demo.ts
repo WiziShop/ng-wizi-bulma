@@ -270,4 +270,8 @@ options: NwbDatePickerOptions = {
       endDate: s,
     });
   }
+
+  onClear() {
+    console.log('Date picker clear');
+  }
 }

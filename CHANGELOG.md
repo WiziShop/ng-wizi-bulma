@@ -1,3 +1,7 @@
+#9.1.4 (2020-06-10)
+
+- Date Picker: add clear event
+
 #9.1.3 (2020-06-10)
 
 - Change in nwb-date-picker. The use of an input type "date" or "datetime-local" is now deprecated due to the lack of timezone. Use an input type "text" and set the attribute "nwbDateType" instead.

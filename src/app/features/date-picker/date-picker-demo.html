@@ -58,7 +58,7 @@
 
       <nwb-doc-preview [revertSize]="true" [content]="sample2">
         <p>DatePicker with timepicker simple</p>
-        <nwb-date-picker #datePicker2 (change)="valueChange($event)">
+        <nwb-date-picker #datePicker2 (clear)="onClear()" (change)="valueChange($event)">
           <input [nwbDatepickerStart]="datePicker2" type="text" nwbDateType="datetime" value="2017-02-20T22:02:00.000Z" />
         </nwb-date-picker>
       </nwb-doc-preview>

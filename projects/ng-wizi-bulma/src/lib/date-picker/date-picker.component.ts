@@ -29,6 +29,7 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
   @Input() options: NwbDatePickerOptions = {};
 
   @Output() change = new EventEmitter<NwbDatePickerEvent>();
+  @Output() clear = new EventEmitter<boolean>();
 
   private bulmaCalendar = null;
 
@@ -249,6 +250,12 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
       this._initEvents();
       this.bulmaCalendar.refresh();
     }, 500);
+
+    this.bulmaCalendar.on('clear', () => {
+      this.ngZone.run(() => {
+        this.clear.next(true);
+      });
+    });
 
     this.bulmaCalendar.on('select', (data) => {
       this.ngZone.run(() => {
