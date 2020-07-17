@@ -7,16 +7,16 @@ import { Observable } from 'rxjs';
   selector: 'nwb-dropdown',
   templateUrl: './dropdown.component.html',
   host: {
-    class: 'nwb-dropdown'
+    class: 'nwb-dropdown',
   },
   encapsulation: ViewEncapsulation.None,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: NwbDropdownComponent,
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class NwbDropdownComponent implements ControlValueAccessor {
   @Input()
@@ -29,6 +29,10 @@ export class NwbDropdownComponent implements ControlValueAccessor {
   /** Set to true for align to right the dropdown */
   @Input()
   rightToLeft = false;
+
+  /** Set to true for align to top the dropdown */
+  @Input()
+  isUp = false;
 
   /** Disable the dropdown */
   @Input()
@@ -90,7 +94,7 @@ export class NwbDropdownComponent implements ControlValueAccessor {
 
   private _updateOptions() {
     if (this._options) {
-      this._options.forEach(option => {
+      this._options.forEach((option) => {
         option.selected = option.value === this.currentValue;
         if (option.selected) {
           this.currentText = option.text;
@@ -113,7 +117,7 @@ export class NwbDropdownComponent implements ControlValueAccessor {
       if (typeof this.config.handler === 'function') {
         this.isLoading = true;
         this.config.handler(option.value, this.config.data).subscribe(
-          hasChanged => {
+          (hasChanged) => {
             this.isLoading = false;
             if (hasChanged) {
               this._setValue(option);
@@ -136,8 +140,8 @@ export class NwbDropdownComponent implements ControlValueAccessor {
     this.isActive = !this.isActive;
 
     if (this.isActive) {
-      this.documentClickListenerRemover = this.renderer.listen('document', 'click', ev => this.documentClickOrTouch(ev));
-      this.documentTouchstartListenerRemover = this.renderer.listen('document', 'touchstart', ev => this.documentClickOrTouch(ev));
+      this.documentClickListenerRemover = this.renderer.listen('document', 'click', (ev) => this.documentClickOrTouch(ev));
+      this.documentTouchstartListenerRemover = this.renderer.listen('document', 'touchstart', (ev) => this.documentClickOrTouch(ev));
     }
   }
 }
