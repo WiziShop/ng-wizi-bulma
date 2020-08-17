@@ -1,3 +1,7 @@
+#10.0.0 (2020-08-17)
+
+- Upgrade to Angular 10
+
 #9.1.4 (2020-06-10)
 
 - Date Picker: add clear event
