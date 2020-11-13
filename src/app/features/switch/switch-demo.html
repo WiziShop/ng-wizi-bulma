@@ -5,16 +5,10 @@
     </p>
   </header>
   <div class="card-content">
-    <div class="content">
-      See doc <a href="https://wikiki.github.io/form/switch/">https://wikiki.github.io/form/switch/</a>
-    </div>
+    <div class="content">See doc <a href="https://wikiki.github.io/form/switch/">https://wikiki.github.io/form/switch/</a></div>
     <div class="content">
       <nwb-doc-preview [content]="sample1">
-        <nwb-switch
-          [(ngModel)]="sample1Value"
-          (ngModelChange)="model1Change($event)"
-          extraClasses="is-danger is-small"
-        >
+        <nwb-switch [(ngModel)]="sample1Value" (ngModelChange)="model1Change($event)" extraClasses="is-danger is-small">
           Switch example
         </nwb-switch>
 
@@ -23,10 +17,7 @@
     </div>
     <div class="content">
       <nwb-doc-preview [content]="sample2">
-        <nwb-switch
-          [checked]="true"
-          extraClasses="is-succes is-rtl"
-        >
+        <nwb-switch [checked]="true" extraClasses="is-succes is-rtl">
           Switch example
         </nwb-switch>
       </nwb-doc-preview>
@@ -34,15 +25,18 @@
     <div class="content">
       <nwb-doc-preview [content]="sample3">
         <p>Switch with tooltip</p>
-        <div nwbToolTip="My tooltip" nwbToolTipPosition="bottom" style="display: inline-block">
-          <nwb-switch
-            [checked]="true"
-            extraClasses="is-info is-big"
-          >
-          </nwb-switch>
+        <div nwbToolTip="My tooltip" nwbToolTipPosition="bottom" style="display: inline-block;">
+          <nwb-switch [checked]="true" extraClasses="is-info is-big"> </nwb-switch>
         </div>
+      </nwb-doc-preview>
+    </div>
+    <div class="content">
+      <nwb-doc-preview [content]="sample4">
+        <form [formGroup]="myForm">
+          <p>Switch with Reactive Form</p>
+          <nwb-switch formControlName="mySwitch" extraClasses="is-info is-big"></nwb-switch>
+        </form>
       </nwb-doc-preview>
     </div>
   </div>
 </div>
-

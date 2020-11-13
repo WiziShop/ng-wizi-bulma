@@ -6,10 +6,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   templateUrl: './switch.component.html',
   styleUrls: ['./switch.component.scss'],
   host: {
-    class: 'nwb-switch'
+    class: 'nwb-switch',
   },
   encapsulation: ViewEncapsulation.None,
-  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: NwbSwitchComponent, multi: true }]
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: NwbSwitchComponent, multi: true }],
 })
 export class NwbSwitchComponent implements ControlValueAccessor {
   @Input()
@@ -35,6 +35,10 @@ export class NwbSwitchComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this._onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean) {
+    this.disabled = isDisabled;
   }
 
   change() {
@@ -65,11 +69,7 @@ export class NwbSwitchComponent implements ControlValueAccessor {
 
   getId() {
     if (!this._id) {
-      this._id =
-        'search-' +
-        Math.random()
-          .toString()
-          .replace('.', '-');
+      this._id = 'search-' + Math.random().toString().replace('.', '-');
     }
     return this._id;
   }

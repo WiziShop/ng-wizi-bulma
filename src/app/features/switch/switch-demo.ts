@@ -1,21 +1,22 @@
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component } from '@angular/core';
 
 @Component({
   providers: [],
-  templateUrl: './switch-demo.html'
+  templateUrl: './switch-demo.html',
 })
 export class SwitchDemo {
   sample1Value = true;
 
-  sample1 = `<nwb-switch 
-  [(ngModel)]="sample1Value" 
+  sample1 = `<nwb-switch
+  [(ngModel)]="sample1Value"
   extraClasses="is-danger is-small"
   >
 Switch example
 </nwb-switch>`;
 
-  sample2 = `<nwb-switch 
-[checked]="true" 
+  sample2 = `<nwb-switch
+[checked]="true"
 extraClasses="is-succes is-rtl"
 >
 Switch example
@@ -28,6 +29,33 @@ Switch example
           >
           </nwb-switch>
         </div>`;
+
+  sample4 = `
+  myForm = this.fb.group({
+    mySwitch: [
+      {
+        value: true,
+        disabled: true,
+      },
+    ],
+
+
+<form [formGroup]="myForm">
+  <p>Switch with Reactive Form</p>
+  <nwb-switch formControlName="mySwitch" extraClasses="is-info is-big"></nwb-switch>
+</form>
+
+  `;
+  myForm = this.fb.group({
+    mySwitch: [
+      {
+        value: true,
+        disabled: true,
+      },
+    ],
+  });
+
+  constructor(private fb: FormBuilder) {}
 
   model1Change(value) {
     console.log('model3Change', value);

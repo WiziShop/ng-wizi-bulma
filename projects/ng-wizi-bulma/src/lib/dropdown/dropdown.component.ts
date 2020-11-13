@@ -70,6 +70,10 @@ export class NwbDropdownComponent implements ControlValueAccessor {
     this._onTouched = fn;
   }
 
+  setDisabledState(isDisabled: boolean) {
+    this.disabled = isDisabled;
+  }
+
   private documentClickOrTouch(ev: UIEvent) {
     if (!this._elementRef.nativeElement.contains(ev.target)) {
       // Outside host, close dropdown
