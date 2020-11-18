@@ -22,89 +22,89 @@ import { DatePickerDemo } from './features/date-picker/date-picker-demo';
 const appRoutes: Routes = [
   {
     path: '',
-    component: Home
+    component: Home,
   },
   {
     path: 'dialog',
-    component: DialogDemo
+    component: DialogDemo,
   },
   {
     path: 'snackbar',
-    component: SnackbarDemo
+    component: SnackbarDemo,
   },
   {
     path: 'alert',
-    component: AlertDemo
+    component: AlertDemo,
   },
   {
     path: 'animated-card',
-    component: AnimatedCardDemo
+    component: AnimatedCardDemo,
   },
   {
     path: 'paginator',
-    component: PaginatorDemo
+    component: PaginatorDemo,
   },
   {
     path: 'spinner',
-    component: SpinnerDemo
+    component: SpinnerDemo,
   },
   {
     path: 'dropdown',
-    component: DropdownDemo
+    component: DropdownDemo,
   },
   {
     path: 'progress-bar',
-    component: ProgressBarDemo
+    component: ProgressBarDemo,
   },
   {
     path: 'debounce',
-    component: DebounceDemo
+    component: DebounceDemo,
   },
   {
     path: 'modal-search',
-    component: ModalSearchDemo
+    component: ModalSearchDemo,
   },
   {
     path: 'tabs',
-    component: TabsDemo
+    component: TabsDemo,
   },
   {
     path: 'tabs/:basicTabIndex',
-    component: TabsDemo
+    component: TabsDemo,
   },
   {
     path: 'switch',
-    component: SwitchDemo
+    component: SwitchDemo,
   },
   {
     path: 'tooltip',
-    component: TooltipDemo
+    component: TooltipDemo,
   },
   {
     path: 'table',
-    component: TableDemo
+    component: TableDemo,
   },
   {
     path: 'edit-in-place',
-    component: EditInPlaceDemo
+    component: EditInPlaceDemo,
   },
   {
     path: 'sort',
-    component: SortDemo
+    component: SortDemo,
   },
   {
     path: 'date-picker',
-    component: DatePickerDemo
+    component: DatePickerDemo,
   },
   {
     path: '**',
-    component: Home
-  }
+    component: Home,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'corrected' })],
   exports: [RouterModule],
-  providers: []
+  providers: [],
 })
 export class AppRoutingModule {}

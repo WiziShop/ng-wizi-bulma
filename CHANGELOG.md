@@ -1,3 +1,7 @@
+#11.0.0 (2020-11-18)
+
+- Upgrade to Angular 11
+
 #10.0.1 (2020-11-13)
 
 - Handle [setDisableState](https://angular.io/api/forms/ControlValueAccessor#setdisabledstate) for `switch` and `dropdown` components
