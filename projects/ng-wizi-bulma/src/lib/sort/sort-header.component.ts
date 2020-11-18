@@ -30,7 +30,7 @@ export interface ArrowViewStateTransition {
 @Component({
   selector: '[nwb-sort-header]',
   templateUrl: './sort-header.component.html',
-  animations: [nwbSortAnimations.arrowDirection, nwbSortAnimations.arrowOpacity, nwbSortAnimations.arrowPosition]
+  animations: [nwbSortAnimations.arrowDirection, nwbSortAnimations.arrowOpacity, nwbSortAnimations.arrowPosition],
 })
 export class NwbSortHeaderComponent implements NwbSortable, OnInit, OnDestroy {
   private _rerenderSubscription: Subscription;
@@ -78,7 +78,7 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit, OnDestroy {
         this._disableViewStateAnimation = false;
         this._setAnimationTransitionState({
           fromState: 'active',
-          toState: this._arrowDirection
+          toState: this._arrowDirection,
         });
       }
 
@@ -88,7 +88,7 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit, OnDestroy {
 
   private _updateArrow() {
     // Do not show the animation if the header was already shown in the right position.
-    if (this._viewState.toState === 'hint' || this._viewState.toState === 'active') {
+    if (this._viewState && (this._viewState.toState === 'hint' || this._viewState.toState === 'active')) {
       this._disableViewStateAnimation = true;
     }
 
@@ -115,7 +115,7 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit, OnDestroy {
     this._updateArrowDirection();
 
     this._setAnimationTransitionState({
-      toState: this.isSorted() ? 'active' : this._arrowDirection
+      toState: this.isSorted() ? 'active' : this._arrowDirection,
     });
   }
 
@@ -142,12 +142,12 @@ export class NwbSortHeaderComponent implements NwbSortable, OnInit, OnDestroy {
       if (this._showIndicatorHint) {
         this._setAnimationTransitionState({
           fromState: this._arrowDirection,
-          toState: 'hint'
+          toState: 'hint',
         });
       } else {
         this._setAnimationTransitionState({
           fromState: 'hint',
-          toState: this._arrowDirection
+          toState: this._arrowDirection,
         });
       }
     }
