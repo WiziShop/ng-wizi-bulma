@@ -1,3 +1,7 @@
+#12.0.0 (2021-05-31)
+
+- Upgrade to Angular 12
+
 #11.0.0 (2020-11-18)
 
 - Upgrade to Angular 11
