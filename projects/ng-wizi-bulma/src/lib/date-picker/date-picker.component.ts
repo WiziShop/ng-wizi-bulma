@@ -10,12 +10,12 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { NwbDatePickerIntl } from './date-picker-intl';
-import { NwbDatePickerFormat } from './date-picker-format';
-import { NwbDatePickerDefaultSettings, NwbDatePickerSettings } from './date-picker-default-settings';
-import { NwbDatePickerInputBaseDirective } from './date-picker-input-base.directive';
 import { fromEvent, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { NwbDatePickerDefaultSettings, NwbDatePickerSettings } from './date-picker-default-settings';
+import { NwbDatePickerFormat } from './date-picker-format';
+import { NwbDatePickerInputBaseDirective } from './date-picker-input-base.directive';
+import { NwbDatePickerIntl } from './date-picker-intl';
 
 declare const bulmaCalendar: any;
 
@@ -295,7 +295,7 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.destroy.next();
+    this.destroy.next(true);
     this.destroy.complete();
   }
 }
@@ -315,6 +315,9 @@ interface NwbPrivateDatePickerOptions {
 }
 
 export interface NwbDatePickerOptions extends NwbDatePickerSettings {
+  lang?: string;
+  dateFormat?: string;
+  timeFormat?: string;
   minDate?: Date;
   maxDate?: Date;
   disabledDates?: Date[];

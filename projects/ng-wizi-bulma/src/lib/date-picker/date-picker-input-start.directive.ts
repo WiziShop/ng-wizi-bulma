@@ -21,7 +21,7 @@ export class NwbDatePickerInputStartDirective extends NwbDatePickerInputBaseDire
     this.registerInput(datePickerComponent, 'startDate');
   }
 
-  constructor(public elementRef: ElementRef) {
+  constructor(public override elementRef: ElementRef) {
     super(elementRef);
   }
 }

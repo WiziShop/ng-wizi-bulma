@@ -1,36 +1,48 @@
-#12.0.0 (2021-05-31)
+# 13.0.0 (2021-11-23)
+
+## Upgrade
+- Angular 13
+- rxjs 7
+- bulma 0.9.3
+
+
+## Breaking changes
+In your main scss file, replace `@import '~@wizishop/ng-wizi-bulma/ng-wizi-bulma';` with `@import 'node_modules/@wizishop/ng-wizi-bulma/ng-wizi-bulma';`
+
+  
+# 12.0.0 (2021-05-31)
 
 - Upgrade to Angular 12
 
-#11.0.0 (2020-11-18)
+# 11.0.0 (2020-11-18)
 
 - Upgrade to Angular 11
 
-#10.0.1 (2020-11-13)
+# 10.0.1 (2020-11-13)
 
 - Handle [setDisableState](https://angular.io/api/forms/ControlValueAccessor#setdisabledstate) for `switch` and `dropdown` components
 
-#10.0.0 (2020-08-17)
+# 10.0.0 (2020-08-17)
 
 - Upgrade to Angular 10
 
-#9.1.4 (2020-06-10)
+# 9.1.4 (2020-06-10)
 
 - Date Picker: add clear event
 
-#9.1.3 (2020-06-10)
+# 9.1.3 (2020-06-10)
 
 - Change in nwb-date-picker. The use of an input type "date" or "datetime-local" is now deprecated due to the lack of timezone. Use an input type "text" and set the attribute "nwbDateType" instead.
 - Upgrade to Bulma 0.9
 - Upgrade to Angular 9.1.10
 - Upgrade to Angular CDK 9.2.4
 
-#9.1.1 (2020-04-15)
+# 9.1.1 (2020-04-15)
 
 - Upgrade to Angular 9.1.1
 - Upgrade to typescript 3.8.3
 
-#9.0.0 (2020-02-07)
+# 9.0.0 (2020-02-07)
 
 - Upgrade to Angular 9
 - Upgrade to Bulma 0.8
@@ -126,21 +138,21 @@ Thanks to ([@nathanbedford](https://github.com/nathanbedford)) for this work
 - Angular 6.1.4
 - Set a default value for NwbAlertConfig.position
 
-#4.0.5 (2018-08-16)
+# 4.0.5 (2018-08-16)
 
 - Angular 6.1
 - Add ofLabel property into NwbPaginatorIntl
 
-#4.0.4 (2018-07-23)
+# 4.0.4 (2018-07-23)
 
 - In NwbFilterRoutingBuilder.group add groupName argument to let user overwrite the default one
 
-#4.0.3 (2018-07-19)
+# 4.0.3 (2018-07-19)
 
 - FIX: wrong direction was used for the arrow in NwbSortHeaderComponent
 - Add NwbFilterRoutingBuilder service
 
-#4.0.0 (2018-07-13)
+# 4.0.0 (2018-07-13)
 
 - Each component has now its own module, so you can import only the components you want to use.
 - Breaking changes: `NwbModule` has been renamed to `NwbAllModule`. Il will import all the components' module for you.

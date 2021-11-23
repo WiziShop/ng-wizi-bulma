@@ -53,7 +53,7 @@ export class NwbSort implements OnChanges, OnDestroy {
    * May be overriden by the NwbSortable's sort start.
    */
   @Input('nwbSortStart')
-  start: 'asc' | 'desc' = 'asc';
+  start: SortDirection = 'asc';
 
   /** The sort direction of the currently active NwbSortable. */
   @Input('nwbSortDirection')

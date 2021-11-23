@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DialogDemo } from './features/dialog/dialog-demo';
-import { SnackbarDemo } from './features/snackbar/snackbar-demo';
-import { PaginatorDemo } from './features/paginator/paginator-demo';
-import { SpinnerDemo } from './features/spinner/spinner-demo';
-import { DropdownDemo } from './features/dropdown/dropdown-demo';
-import { ProgressBarDemo } from './features/progress-bar/progress-bar-demo';
-import { Home } from './features/home/home';
-import { DebounceDemo } from './features/debounce/debounce-demo';
-import { ModalSearchDemo } from './features/modal-search/modal-search-demo';
-import { TabsDemo } from './features/tabs/tabs-demo.component';
-import { SwitchDemo } from './features/switch/switch-demo';
-import { TooltipDemo } from './features/tooltip/tooltip-demo';
 import { AlertDemo } from './features/alert/alert-demo';
 import { AnimatedCardDemo } from './features/animated-card/animated-card-demo';
-import { TableDemo } from './features/table/table-demo';
-import { SortDemo } from './features/sort/sort-demo';
-import { EditInPlaceDemo } from './features/edit-in-place/edit-in-place-demo';
 import { DatePickerDemo } from './features/date-picker/date-picker-demo';
+import { DebounceDemo } from './features/debounce/debounce-demo';
+import { DialogDemo } from './features/dialog/dialog-demo';
+import { DropdownDemo } from './features/dropdown/dropdown-demo';
+import { EditInPlaceDemo } from './features/edit-in-place/edit-in-place-demo';
+import { Home } from './features/home/home';
+import { ModalSearchDemo } from './features/modal-search/modal-search-demo';
+import { PaginatorDemo } from './features/paginator/paginator-demo';
+import { ProgressBarDemo } from './features/progress-bar/progress-bar-demo';
+import { SnackbarDemo } from './features/snackbar/snackbar-demo';
+import { SortDemo } from './features/sort/sort-demo';
+import { SpinnerDemo } from './features/spinner/spinner-demo';
+import { SwitchDemo } from './features/switch/switch-demo';
+import { TableDemo } from './features/table/table-demo';
+import { TabsDemo } from './features/tabs/tabs-demo.component';
+import { TooltipDemo } from './features/tooltip/tooltip-demo';
 
 const appRoutes: Routes = [
   {

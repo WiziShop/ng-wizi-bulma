@@ -21,9 +21,9 @@ export class NwbDatePickerInputEndDirective extends NwbDatePickerInputBaseDirect
     this.registerInput(datePickerComponent, 'endDate');
   }
 
-  @Input() nwbDateType;
+  @Input() override nwbDateType;
 
-  constructor(public elementRef: ElementRef) {
+  constructor(public override elementRef: ElementRef) {
     super(elementRef);
   }
 }

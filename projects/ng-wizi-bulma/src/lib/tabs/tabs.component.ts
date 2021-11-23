@@ -1,32 +1,31 @@
 import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList } from '@angular/core';
-
 import { NwbTabComponent } from './tab.component';
 
 @Component({
   selector: 'nwb-tabs',
   template: `
-    <div class="tabs
-    {{alignment&&'is-'+alignment}}
-    {{size&&'is-'+size}}
-    {{box&&'is-boxed'}}
-    {{toggle&&'is-toggle'}}
-    {{rounded&&'is-toggle-rounded'}}
-    {{fullwidth&&'is-fullwidth'}}">
+    <div
+      class="tabs
+    {{ alignment && 'is-' + alignment }}
+    {{ size && 'is-' + size }}
+    {{ box && 'is-boxed' }}
+    {{ toggle && 'is-toggle' }}
+    {{ rounded && 'is-toggle-rounded' }}
+    {{ fullwidth && 'is-fullwidth' }}"
+    >
       <ul>
-        <li *ngFor="let tab of tabList"
-            [ngClass]="{'is-active':selectedIndex===tab.index}"
-            (click)="select(tab.index)">
+        <li *ngFor="let tab of tabList" [ngClass]="{ 'is-active': selectedIndex === tab.index }" (click)="select(tab.index)">
           <a>
-          <span *ngIf="tab.icon" class="icon">
-            <i class="{{tab.icon}}"></i>
-          </span>
-            <span>{{tab.label}}</span>
+            <span *ngIf="tab.icon" class="icon">
+              <i class="{{ tab.icon }}"></i>
+            </span>
+            <span>{{ tab.label }}</span>
           </a>
         </li>
       </ul>
     </div>
     <ng-content></ng-content>
-  `
+  `,
 })
 export class NwbTabsComponent implements OnInit, AfterContentInit {
   /** IE [box]="true" **/
@@ -39,7 +38,7 @@ export class NwbTabsComponent implements OnInit, AfterContentInit {
 
   /** IE: [size]="'small|medium|large'" **/
   @Input()
-  size: boolean;
+  size: 'small' | 'medium' | 'large';
 
   /** IE: [toggle]="true" **/
   @Input()

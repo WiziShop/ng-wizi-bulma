@@ -8,10 +8,9 @@ import {
   Output,
   SimpleChanges,
   ViewChild,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
 import { Observable } from 'rxjs';
 
 @Component({
@@ -22,9 +21,9 @@ import { Observable } from 'rxjs';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: NwbEditInPlaceComponent,
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewChecked, OnChanges {
   @Input()
@@ -125,7 +124,7 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
       if (typeof this.config.handler === 'function') {
         this.isLoading = true;
         this.config.handler(this.currentValue, this.config.data).subscribe(
-          data => {
+          (data) => {
             let hasChanged: boolean;
             this.isLoading = false;
             if (typeof data !== 'boolean') {
@@ -181,8 +180,8 @@ export class NwbEditInPlaceComponent implements ControlValueAccessor, AfterViewC
           return parseFloat(value);
         }
       }
-      return 0;
     }
+    return 0;
   }
 
   parseValueToSeparator(value) {

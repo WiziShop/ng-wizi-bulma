@@ -1,15 +1,15 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, ViewChild, ViewEncapsulation } from '@angular/core';
-import { NwbFoundRow, NwbModalSearchConfig } from './modal-search.service';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { NwbFoundRow, NwbModalSearchConfig } from './modal-search.service';
 
 @Component({
   selector: 'nwb-modal-search',
   templateUrl: './modal-search.component.html',
   host: {
-    class: 'nwb-modal-search'
+    class: 'nwb-modal-search',
   },
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class NwbModalSearchComponent implements AfterViewInit {
   selectedValue$ = new Subject<NwbFoundRow>();
@@ -127,7 +127,7 @@ export class NwbModalSearchComponent implements AfterViewInit {
 
   private isSubscribedKey(ev: KeyboardEvent) {
     return (
-      this.config.keyCodes.filter(keyCode => {
+      this.config.keyCodes.filter((keyCode) => {
         const specialKey = this.getSpecialKey(ev);
         return specialKey === keyCode.specialKey && ev.key === keyCode.key;
       }).length > 0
@@ -206,7 +206,10 @@ export class NwbModalSearchComponent implements AfterViewInit {
     if (keyCode === 13) {
       // Enter
       this.selectValue();
+
+      return true;
     }
+    return false;
   }
 
   private isSelectedFoundRowSelectable() {
@@ -253,7 +256,7 @@ export class NwbModalSearchComponent implements AfterViewInit {
     } else if (obs) {
       this.isSearching = true;
 
-      this.searchSubscription = obs.pipe(finalize(() => (this.isSearching = false))).subscribe(foundRows => {
+      this.searchSubscription = obs.pipe(finalize(() => (this.isSearching = false))).subscribe((foundRows) => {
         this.foundRows = this.flattenNwbFoundRow(foundRows);
         this.selectFirstSelectableRow();
       });
@@ -265,13 +268,13 @@ export class NwbModalSearchComponent implements AfterViewInit {
 
     let hasSelectableRow = false;
 
-    rows.forEach(row => {
+    rows.forEach((row) => {
       const foundRow: NwbFlattenFoundRow = {
         text: row.text,
         isSelectable: row.hasOwnProperty('isSelectable') ? row.isSelectable : true,
         isChild: false,
         data: row.data || null,
-        isParent: row.children && row.children.length > 0
+        isParent: row.children && row.children.length > 0,
       };
 
       if (foundRow.isSelectable) {
@@ -280,13 +283,13 @@ export class NwbModalSearchComponent implements AfterViewInit {
       foundRows.push(foundRow);
 
       if (row.children) {
-        row.children.forEach(child => {
+        row.children.forEach((child) => {
           const foundRowChild: NwbFlattenFoundRow = {
             text: child.text,
             isSelectable: child.hasOwnProperty('isSelectable') ? child.isSelectable : true,
             isChild: true,
             data: child.data || null,
-            isParent: false
+            isParent: false,
           };
 
           if (foundRowChild.isSelectable) {
@@ -317,7 +320,7 @@ export class NwbModalSearchComponent implements AfterViewInit {
   searchAllWordsInFoundRows(searchValue: string, rows: NwbFoundRow[]): NwbFoundRow[] {
     const regExStr = searchValue
       .split(' ')
-      .map(word => {
+      .map((word) => {
         return `(?=.*${word})`;
       })
       .join('');
@@ -326,10 +329,10 @@ export class NwbModalSearchComponent implements AfterViewInit {
 
     const foundRows: NwbFoundRow[] = [];
 
-    rows.forEach(record => {
+    rows.forEach((record) => {
       let children = [];
       if (record.children) {
-        children = record.children.filter(childRecord => childRecord.text.search(regEx) !== -1);
+        children = record.children.filter((childRecord) => childRecord.text.search(regEx) !== -1);
       }
 
       if (children.length || record.text.search(regEx) !== -1) {

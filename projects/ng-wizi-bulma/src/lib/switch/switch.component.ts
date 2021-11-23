@@ -13,7 +13,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class NwbSwitchComponent implements ControlValueAccessor {
   @Input()
-  extraClasses: '';
+  extraClasses= '';
   @Input()
   disabled = false;
   @Input()

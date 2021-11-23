@@ -6,9 +6,9 @@ import { NwbDatePickerInputBaseDirective } from './date-picker-input-base.direct
   selector: 'input[nwbDateType]',
 })
 export class NwbDatePickerInputDateTypeDirective extends NwbDatePickerInputBaseDirective {
-  @Input() nwbDateType;
+  @Input() override nwbDateType;
 
-  constructor(public elementRef: ElementRef) {
+  constructor(public override elementRef: ElementRef) {
     super(elementRef);
   }
 }
