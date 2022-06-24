@@ -22,9 +22,16 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": ["src/assets", "src/favicon.ico"],
-            "styles": ["src/styles.scss"],
-            "scripts": ["node_modules/bulma-calendar/dist/js/bulma-calendar.js"],
+            "assets": [
+              "src/assets",
+              "src/favicon.ico"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/bulma-calendar/dist/js/bulma-calendar.js"
+            ],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
@@ -91,9 +98,14 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "src/styles.scss"
+            ],
             "scripts": [],
-            "assets": ["src/assets", "src/favicon.ico"]
+            "assets": [
+              "src/assets",
+              "src/favicon.ico"
+            ]
           }
         }
       }
@@ -143,9 +155,21 @@
             "tsConfig": "projects/ng-wizi-bulma/tsconfig.spec.json",
             "karmaConfig": "projects/ng-wizi-bulma/karma.conf.js"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ng-wizi-bulma/**/*.ts",
+              "projects/ng-wizi-bulma/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "ng-wizi-bulma-demo"
+  "defaultProject": "ng-wizi-bulma-demo",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
