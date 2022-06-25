@@ -5,10 +5,9 @@ import { NwbTabsComponent } from './tabs.component';
 import { NwbCommonModule } from '../shared/common-module';
 
 @NgModule({
-  imports: [CommonModule, NwbCommonModule],
-  providers: [],
-  entryComponents: [],
-  declarations: [NwbTabsComponent, NwbTabComponent],
-  exports: [NwbTabsComponent, NwbTabComponent]
+    imports: [CommonModule, NwbCommonModule],
+    providers: [],
+    declarations: [NwbTabsComponent, NwbTabComponent],
+    exports: [NwbTabsComponent, NwbTabComponent]
 })
 export class NwbTabsModule {}

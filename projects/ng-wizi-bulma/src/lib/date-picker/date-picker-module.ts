@@ -7,15 +7,14 @@ import { NwbDatePickerInputEndDirective } from './date-picker-input-end.directiv
 import { NwbDatePickerInputDateTypeDirective } from './date-picker-input-date-type.directive';
 
 @NgModule({
-  imports: [CommonModule, NwbCommonModule],
-  providers: [],
-  entryComponents: [NwbDatePickerComponent],
-  declarations: [
-    NwbDatePickerComponent,
-    NwbDatePickerInputStartDirective,
-    NwbDatePickerInputEndDirective,
-    NwbDatePickerInputDateTypeDirective,
-  ],
-  exports: [NwbDatePickerComponent, NwbDatePickerInputStartDirective, NwbDatePickerInputEndDirective, NwbDatePickerInputDateTypeDirective],
+    imports: [CommonModule, NwbCommonModule],
+    providers: [],
+    declarations: [
+        NwbDatePickerComponent,
+        NwbDatePickerInputStartDirective,
+        NwbDatePickerInputEndDirective,
+        NwbDatePickerInputDateTypeDirective,
+    ],
+    exports: [NwbDatePickerComponent, NwbDatePickerInputStartDirective, NwbDatePickerInputEndDirective, NwbDatePickerInputDateTypeDirective]
 })
 export class NwbDatePickerModule {}

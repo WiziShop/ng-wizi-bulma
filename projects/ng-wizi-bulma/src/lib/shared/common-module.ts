@@ -10,10 +10,9 @@ import { NwbFilterRoutingBuilder } from './services/filter-routing/filter-routin
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
-  imports: [CommonModule, FormsModule],
-  providers: [OVERLAY_CONTAINER_PROVIDER, DOM_SERVICE_PROVIDER, NwbFilterRoutingBuilder],
-  entryComponents: [],
-  declarations: [NwbSpinnerComponent, NwbDebounceDirective, NwbToolTipDirective, SafeHtmlPipe],
-  exports: [NwbSpinnerComponent, NwbDebounceDirective, NwbToolTipDirective, SafeHtmlPipe]
+    imports: [CommonModule, FormsModule],
+    providers: [OVERLAY_CONTAINER_PROVIDER, DOM_SERVICE_PROVIDER, NwbFilterRoutingBuilder],
+    declarations: [NwbSpinnerComponent, NwbDebounceDirective, NwbToolTipDirective, SafeHtmlPipe],
+    exports: [NwbSpinnerComponent, NwbDebounceDirective, NwbToolTipDirective, SafeHtmlPipe]
 })
 export class NwbCommonModule {}

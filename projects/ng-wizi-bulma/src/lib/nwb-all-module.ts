@@ -33,10 +33,9 @@ const EXPORTED_EXPORTS = [
 ];
 
 @NgModule({
-  imports: [],
-  providers: [],
-  entryComponents: [],
-  declarations: [],
-  exports: EXPORTED_EXPORTS
+    imports: [],
+    providers: [],
+    declarations: [],
+    exports: EXPORTED_EXPORTS
 })
 export class NwbAllModule {}

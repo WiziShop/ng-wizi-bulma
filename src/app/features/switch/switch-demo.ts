@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, FormGroup } from '@angular/forms';
 import { Component } from '@angular/core';
 
 @Component({
@@ -55,7 +55,7 @@ Switch example
     ],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {}
 
   model1Change(value) {
     console.log('model3Change', value);

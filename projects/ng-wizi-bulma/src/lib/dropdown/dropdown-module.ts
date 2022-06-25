@@ -5,10 +5,9 @@ import { NwbDropdownComponent } from './dropdown.component';
 import { NwbOptionComponent } from './option.component';
 
 @NgModule({
-  imports: [CommonModule, NwbCommonModule],
-  providers: [],
-  entryComponents: [],
-  declarations: [NwbDropdownComponent, NwbOptionComponent],
-  exports: [NwbDropdownComponent, NwbOptionComponent]
+    imports: [CommonModule, NwbCommonModule],
+    providers: [],
+    declarations: [NwbDropdownComponent, NwbOptionComponent],
+    exports: [NwbDropdownComponent, NwbOptionComponent]
 })
 export class NwbDropdownModule {}

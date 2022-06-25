@@ -5,10 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NwbCommonModule } from '../shared/common-module';
 
 @NgModule({
-  imports: [CommonModule, NwbCommonModule, FormsModule, ReactiveFormsModule],
-  providers: [],
-  entryComponents: [],
-  declarations: [NwbEditInPlaceComponent],
-  exports: [NwbEditInPlaceComponent]
+    imports: [CommonModule, NwbCommonModule, FormsModule, ReactiveFormsModule],
+    providers: [],
+    declarations: [NwbEditInPlaceComponent],
+    exports: [NwbEditInPlaceComponent]
 })
 export class NwbEditInPlaceModule {}

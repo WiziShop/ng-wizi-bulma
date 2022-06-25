@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { NwbAlertService, NwbDatePickerOptions } from 'projects/ng-wizi-bulma/src/public_api';
 
 @Component({
@@ -7,7 +7,7 @@ import { NwbAlertService, NwbDatePickerOptions } from 'projects/ng-wizi-bulma/sr
   templateUrl: './date-picker-demo.html',
 })
 export class DatePickerDemo {
-  myDateForm: FormGroup;
+  myDateForm: UntypedFormGroup;
 
   options: NwbDatePickerOptions = {
     color: 'danger',
@@ -32,7 +32,7 @@ export class DatePickerDemo {
     toggleOnInputClick: true,
   };
 
-  constructor(private fb: FormBuilder, private nwbAlert: NwbAlertService) {
+  constructor(private fb: UntypedFormBuilder, private nwbAlert: NwbAlertService) {
     this.myDateForm = this.fb.group({
       startDate: ['2018-03-20T00:00:00.000Z', Validators.required],
       endDate: ['2018-06-30T00:00:00.000Z', Validators.required],

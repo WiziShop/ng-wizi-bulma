@@ -5,10 +5,9 @@ import { NwbDialogService } from './dialog.service';
 import { NwbCommonModule } from '../shared/common-module';
 
 @NgModule({
-  imports: [CommonModule, NwbCommonModule],
-  providers: [NwbDialogService],
-  entryComponents: [NwbDialogComponent],
-  declarations: [NwbDialogComponent],
-  exports: [NwbDialogComponent]
+    imports: [CommonModule, NwbCommonModule],
+    providers: [NwbDialogService],
+    declarations: [NwbDialogComponent],
+    exports: [NwbDialogComponent]
 })
 export class NwbDialogModule {}

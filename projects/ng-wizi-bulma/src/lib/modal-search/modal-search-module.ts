@@ -6,10 +6,9 @@ import { NwbCommonModule } from '../shared/common-module';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, NwbCommonModule],
-  providers: [NwbModalSearchService],
-  entryComponents: [NwbModalSearchComponent],
-  declarations: [NwbModalSearchComponent],
-  exports: [NwbModalSearchComponent]
+    imports: [CommonModule, FormsModule, NwbCommonModule],
+    providers: [NwbModalSearchService],
+    declarations: [NwbModalSearchComponent],
+    exports: [NwbModalSearchComponent]
 })
 export class NwbModalSearchModule {}

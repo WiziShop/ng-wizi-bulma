@@ -5,10 +5,9 @@ import { NwbAlertComponent } from './alert.component';
 import { NwbCommonModule } from '../shared/common-module';
 
 @NgModule({
-  imports: [CommonModule, NwbCommonModule],
-  providers: [NwbAlertService],
-  entryComponents: [NwbAlertComponent],
-  declarations: [NwbAlertComponent],
-  exports: [NwbAlertComponent]
+    imports: [CommonModule, NwbCommonModule],
+    providers: [NwbAlertService],
+    declarations: [NwbAlertComponent],
+    exports: [NwbAlertComponent]
 })
 export class NwbAlertModule {}

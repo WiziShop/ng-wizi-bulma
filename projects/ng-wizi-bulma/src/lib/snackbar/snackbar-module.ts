@@ -5,10 +5,9 @@ import { NwbSnackbarComponent } from './snackbar.component';
 import { NwbCommonModule } from '../shared/common-module';
 
 @NgModule({
-  imports: [CommonModule, NwbCommonModule],
-  providers: [NwbSnackbarService],
-  entryComponents: [NwbSnackbarComponent],
-  declarations: [NwbSnackbarComponent],
-  exports: [NwbSnackbarComponent]
+    imports: [CommonModule, NwbCommonModule],
+    providers: [NwbSnackbarService],
+    declarations: [NwbSnackbarComponent],
+    exports: [NwbSnackbarComponent]
 })
 export class NwbSnackbarModule {}

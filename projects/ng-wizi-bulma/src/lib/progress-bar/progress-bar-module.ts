@@ -4,10 +4,9 @@ import { NwbCommonModule } from '../shared/common-module';
 import { NwbProgressBarComponent } from './progress-bar.component';
 
 @NgModule({
-  imports: [CommonModule, NwbCommonModule],
-  providers: [],
-  entryComponents: [],
-  declarations: [NwbProgressBarComponent],
-  exports: [NwbProgressBarComponent]
+    imports: [CommonModule, NwbCommonModule],
+    providers: [],
+    declarations: [NwbProgressBarComponent],
+    exports: [NwbProgressBarComponent]
 })
 export class NwbProgressBarModule {}

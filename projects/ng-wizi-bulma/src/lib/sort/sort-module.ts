@@ -6,10 +6,9 @@ import { NwbSort } from './sort';
 import { NwbCommonModule } from '../shared/common-module';
 
 @NgModule({
-  imports: [CommonModule, NwbCommonModule, CdkTableModule],
-  providers: [],
-  entryComponents: [],
-  declarations: [NwbSort, NwbSortHeaderComponent],
-  exports: [NwbSort, NwbSortHeaderComponent]
+    imports: [CommonModule, NwbCommonModule, CdkTableModule],
+    providers: [],
+    declarations: [NwbSort, NwbSortHeaderComponent],
+    exports: [NwbSort, NwbSortHeaderComponent]
 })
 export class NwbSortModule {}
