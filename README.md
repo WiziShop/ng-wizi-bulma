@@ -22,10 +22,10 @@ npm i -S @wizishop/ng-wizi-bulma bulma bulma-extensions @angular/cdk
 Import bulma (and needed extensions) scss into your main scss file:
 
 ```scss
-@import '~bulma';
-@import '~bulma-extensions/bulma-switch/src/sass/index';
-@import '~bulma-extensions/bulma-tooltip/src/sass/index';
-@import '~bulma-extensions/bulma-calendar/src/sass/index';
+@import 'node_modules/bulma/bulma.sass';
+@import 'node_modules/bulma-extensions/bulma-switch/src/sass/index';
+@import 'node_modules/bulma-extensions/bulma-tooltip/src/sass/index';
+@import 'node_modules/bulma-extensions/bulma-calendar/src/sass/index';
 ```
 
 After Bulma, import ng-wizi-bulma scss into your main scss file allowing you to custom all variable from bulma:

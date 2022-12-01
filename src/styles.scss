@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~bulma';
-@import '~bulma-extensions/bulma-switch/src/sass/index';
-@import '~bulma-extensions/bulma-tooltip/src/sass/index';
-@import '~bulma-extensions/bulma-calendar/src/sass/index';
+@import 'node_modules/bulma/bulma.sass';
+@import 'node_modules/bulma-extensions/bulma-switch/src/sass/index';
+@import 'node_modules/bulma-extensions/bulma-tooltip/src/sass/index';
+@import 'node_modules/bulma-extensions/bulma-calendar/src/sass/index';
 
 @import 'bulma-docs.css';
 
