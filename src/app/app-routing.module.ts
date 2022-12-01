@@ -103,7 +103,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'corrected' })],
+  imports: [RouterModule.forRoot(appRoutes, {})],
   exports: [RouterModule],
   providers: [],
 })
