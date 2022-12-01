@@ -1,0 +1,38 @@
+[debug] [2022-12-01T15:57:25.128Z] ----------------------------------------------------------------------
+[debug] [2022-12-01T15:57:25.129Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2022-12-01T15:57:25.130Z] CLI Version:   11.8.0
+[debug] [2022-12-01T15:57:25.130Z] Platform:      linux
+[debug] [2022-12-01T15:57:25.130Z] Node Version:  v14.21.1
+[debug] [2022-12-01T15:57:25.133Z] Time:          Thu Dec 01 2022 16:57:25 GMT+0100 (Central European Standard Time)
+[debug] [2022-12-01T15:57:25.133Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-12-01T15:57:25.136Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-12-01T15:57:25.196Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-01T15:57:25.196Z] > authorizing via signed-in user (romain@wizishop.com)
+[debug] [2022-12-01T15:57:25.196Z] [iam] checking project ng-wizi-bulma for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-12-01T15:57:25.198Z] > refreshing access token with scopes: []
+[debug] [2022-12-01T15:57:25.198Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2022-12-01T15:57:25.199Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-12-01T15:57:25.334Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2022-12-01T15:57:25.334Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-12-01T15:57:25.350Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/ng-wizi-bulma:testIamPermissions [none]
+[debug] [2022-12-01T15:57:25.351Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/ng-wizi-bulma:testIamPermissions x-goog-quota-user=projects/ng-wizi-bulma
+[debug] [2022-12-01T15:57:25.351Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/ng-wizi-bulma:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-01T15:57:25.474Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2022-12-01T15:57:25.475Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2022-12-01T15:57:26.122Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/ng-wizi-bulma:testIamPermissions 200
+[debug] [2022-12-01T15:57:26.123Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/ng-wizi-bulma:testIamPermissions {}
+[debug] [2022-12-01T15:57:26.123Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project ng-wizi-bulma:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2022-12-01T15:57:26.126Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ng-wizi-bulma [none]
+[debug] [2022-12-01T15:57:26.484Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ng-wizi-bulma 403
+[debug] [2022-12-01T15:57:26.484Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ng-wizi-bulma {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2022-12-01T15:57:26.486Z] HTTP Error: 403, The caller does not have permission
+[debug] [2022-12-01T15:57:26.487Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:288:77)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+[error] 
+[error] Error: Failed to get Firebase project ng-wizi-bulma. Please make sure the project exists and your account has permission to access it.
