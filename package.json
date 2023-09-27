@@ -10,7 +10,6 @@
     "build": "rm -rf dist && npm run build:lib && npm run build:demo",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
     "deploy": "npm run build && firebase deploy",
     "publish:npm": "rm -rf dist &&  npm run build:lib && cd dist/@wizishop/ng-wizi-bulma && npm publish --access public && cd ../../../",
     "publish:npm:next": "rm -rf dist &&  npm run build:lib && cd dist/@wizishop/ng-wizi-bulma && npm publish --access public --tag next && cd ../../../",
