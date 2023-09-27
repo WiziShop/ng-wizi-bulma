@@ -110,20 +110,6 @@
         }
       }
     },
-    "ng-wizi-bulma-demo-e2e": {
-      "root": "e2e/",
-      "sourceRoot": "",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ng-wizi-bulma-demo:serve"
-          }
-        }
-      }
-    },
     "ng-wizi-bulma": {
       "root": "projects/ng-wizi-bulma",
       "sourceRoot": "projects/ng-wizi-bulma/src",
