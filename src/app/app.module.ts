@@ -25,7 +25,7 @@ import { AlertDemo } from './features/alert/alert-demo';
 import { TooltipDemo } from './features/tooltip/tooltip-demo';
 import { AnimatedCardDemo } from './features/animated-card/animated-card-demo';
 import { TableDemo } from './features/table/table-demo';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { SortDemo } from './features/sort/sort-demo';
 import { EditInPlaceDemo } from './features/edit-in-place/edit-in-place-demo';
 import { DatePickerDemo } from './features/date-picker/date-picker-demo';
@@ -44,58 +44,57 @@ import {
   NwbSnackbarModule,
   NwbSortModule,
   NwbSwitchModule,
-  NwbTabsModule
+  NwbTabsModule,
 } from 'projects/ng-wizi-bulma/src/public_api';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        AppRoutingModule,
-        CdkTableModule,
-        NwbCommonModule,
-        NwbAlertModule,
-        NwbAnimatedCardModule,
-        NwbDialogModule,
-        NwbDropdownModule,
-        NwbModalSearchModule,
-        NwbPaginatorModule,
-        NwbProgressBarModule,
-        NwbSnackbarModule,
-        NwbSortModule,
-        NwbSwitchModule,
-        NwbTabsModule,
-        NwbEditInPlaceModule,
-        NwbDatePickerModule
-    ],
-    declarations: [
-        AppComponent,
-        DocPreviewComponent,
-        DialogDemo,
-        FakeDialogDemoComponent,
-        SnackbarDemo,
-        PaginatorDemo,
-        SpinnerDemo,
-        TabsDemo,
-        DropdownDemo,
-        ProgressBarDemo,
-        Home,
-        DebounceDemo,
-        EditUserDialogDemoComponent,
-        ModalSearchDemo,
-        SwitchDemo,
-        AlertDemo,
-        AnimatedCardDemo,
-        TooltipDemo,
-        TableDemo,
-        SortDemo,
-        EditInPlaceDemo,
-        DatePickerDemo
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    DocPreviewComponent,
+    DialogDemo,
+    FakeDialogDemoComponent,
+    SnackbarDemo,
+    PaginatorDemo,
+    SpinnerDemo,
+    TabsDemo,
+    DropdownDemo,
+    ProgressBarDemo,
+    Home,
+    DebounceDemo,
+    EditUserDialogDemoComponent,
+    ModalSearchDemo,
+    SwitchDemo,
+    AlertDemo,
+    AnimatedCardDemo,
+    TooltipDemo,
+    TableDemo,
+    SortDemo,
+    EditInPlaceDemo,
+    DatePickerDemo,
+  ],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    CdkTableModule,
+    NwbCommonModule,
+    NwbAlertModule,
+    NwbAnimatedCardModule,
+    NwbDialogModule,
+    NwbDropdownModule,
+    NwbModalSearchModule,
+    NwbPaginatorModule,
+    NwbProgressBarModule,
+    NwbSnackbarModule,
+    NwbSortModule,
+    NwbSwitchModule,
+    NwbTabsModule,
+    NwbEditInPlaceModule,
+    NwbDatePickerModule,
+  ],
+  providers: [provideHttpClient(withInterceptorsFromDi())],
 })
 export class AppModule {}

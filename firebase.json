@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/demo",
+    "public": "dist/demo/browser",
     "rewrites": [
       {
         "source": "/**/!(*.@(js|ts|html|css|json|svg|png|jpg|jpeg))",
@@ -18,12 +18,6 @@
         ]
       }
     ],
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**",
-      "tmp",
-      "deploy"
-    ]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "tmp", "deploy"]
   }
 }

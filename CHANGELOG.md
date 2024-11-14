@@ -1,34 +1,41 @@
+# 18.0.0 (2024-11-14)
+
+## Upgrade
+
+- Angular 18
+
 # 17.0.0 (2024-01-22)
 
 ## Upgrade
+
 - Angular 17
-  
-  
+
 # 16.0.0 (2023-09-27)
 
 ## Upgrade
+
 - Angular 16
 - pnpm 8
 
 # 14.0.0 (2022-06-24)
 
 ## Upgrade
+
 - Angular 14
 - bulma 0.9.4
-
 
 # 13.0.0 (2021-11-23)
 
 ## Upgrade
+
 - Angular 13
 - rxjs 7
 - bulma 0.9.3
 
-
 ## Breaking changes
+
 In your main scss file, replace `@import '~@wizishop/ng-wizi-bulma/ng-wizi-bulma';` with `@import 'node_modules/@wizishop/ng-wizi-bulma/ng-wizi-bulma';`
 
-  
 # 12.0.0 (2021-05-31)
 
 - Upgrade to Angular 12
