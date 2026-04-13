@@ -5,10 +5,13 @@ import { NwbDatePickerComponent } from './date-picker.component';
 import { NwbDatePickerInputStartDirective } from './date-picker-input-start.directive';
 import { NwbDatePickerInputEndDirective } from './date-picker-input-end.directive';
 import { NwbDatePickerInputDateTypeDirective } from './date-picker-input-date-type.directive';
+import { NwbDatePickerIntl } from './date-picker-intl';
+import { NwbDatePickerFormat } from './date-picker-format';
+import { NwbDatePickerDefaultSettings } from './date-picker-default-settings';
 
 @NgModule({
     imports: [CommonModule, NwbCommonModule],
-    providers: [],
+    providers: [NwbDatePickerIntl, NwbDatePickerFormat, NwbDatePickerDefaultSettings],
     declarations: [
         NwbDatePickerComponent,
         NwbDatePickerInputStartDirective,

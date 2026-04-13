@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   providers: [],
   templateUrl: './progress-bar-demo.html'
 })

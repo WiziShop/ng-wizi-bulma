@@ -4,6 +4,7 @@ import { NwbOptionComponent } from './option.component';
 import { Observable } from 'rxjs';
 
 @Component({
+  standalone: false,
   selector: 'nwb-dropdown',
   templateUrl: './dropdown.component.html',
   host: {

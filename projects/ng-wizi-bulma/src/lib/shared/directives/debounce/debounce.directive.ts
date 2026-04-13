@@ -4,6 +4,7 @@ import { Subscription, fromEvent } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Directive({
+  standalone: false,
   selector: '[nwbDebounce]',
   providers: [
     {

@@ -1,6 +1,7 @@
 import { OnInit, ElementRef, Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'div[nwbAnimatedCardClosed], div[nwbAnimatedCardOpened]',
   template: `
     <ng-content></ng-content>

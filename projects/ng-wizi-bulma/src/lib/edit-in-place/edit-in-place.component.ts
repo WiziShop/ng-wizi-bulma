@@ -14,6 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 @Component({
+  standalone: false,
   selector: 'nwb-edit-in-place',
   templateUrl: './edit-in-place.component.html',
   encapsulation: ViewEncapsulation.None,

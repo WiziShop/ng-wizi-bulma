@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'nwb-doc-preview',
   templateUrl: './doc-preview.component.html',
   styleUrls: ['./doc-preview.component.scss']

@@ -34,6 +34,7 @@ export interface Sort {
 }
 
 @Directive({
+  standalone: false,
   selector: '[nwbSort]',
   exportAs: 'nwbSort'
 })

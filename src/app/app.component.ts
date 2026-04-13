@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ModalSearchService } from './services/modal-search.service';
 
 @Component({
+  standalone: false,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']

@@ -19,7 +19,15 @@ import { NwbDatePickerIntl } from './date-picker-intl';
 
 declare const bulmaCalendar: any;
 
+function getBulmaCalendar(): any {
+  if (typeof bulmaCalendar !== 'undefined') {
+    return bulmaCalendar;
+  }
+  return (window as any).bulmaCalendar;
+}
+
 @Component({
+  standalone: false,
   selector: 'nwb-date-picker',
   templateUrl: './date-picker.component.html',
   styleUrls: ['./date-picker.component.scss'],
@@ -243,7 +251,12 @@ export class NwbDatePickerComponent implements AfterViewInit, OnDestroy {
 
     this.isRange = options.isRange;
 
-    this.bulmaCalendar = new bulmaCalendar(this.ngWiziDatePicker.nativeElement, options);
+    const BulmaCalendarClass = getBulmaCalendar();
+    if (!BulmaCalendarClass) {
+      console.error('bulmaCalendar is not loaded. Make sure to include bulma-calendar JS in your angular.json scripts.');
+      return;
+    }
+    this.bulmaCalendar = new BulmaCalendarClass(this.ngWiziDatePicker.nativeElement, options);
 
     // Ready events doesn't work
     setTimeout(() => {

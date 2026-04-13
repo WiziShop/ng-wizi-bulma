@@ -4,6 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
+  standalone: false,
   selector: 'nwb-snack-bar',
   templateUrl: './snackbar.component.html',
   host: {

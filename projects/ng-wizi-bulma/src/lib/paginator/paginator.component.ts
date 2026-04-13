@@ -47,6 +47,7 @@ export class NwbPageEvent {
  * navigational button to go to the previous or next page.
  */
 @Component({
+  standalone: false,
   selector: 'nwb-paginator',
   templateUrl: 'paginator.component.html',
   host: {

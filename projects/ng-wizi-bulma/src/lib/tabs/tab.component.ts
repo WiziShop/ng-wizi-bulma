@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'nwb-tab',
   template: `
     <ng-content *ngIf="isSelected">

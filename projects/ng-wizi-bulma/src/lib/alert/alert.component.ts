@@ -3,6 +3,7 @@ import { NwbAlertConfig } from './alert.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'nwb-alert',
   templateUrl: './alert.component.html',
   host: {

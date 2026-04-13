@@ -4,6 +4,7 @@ import { FakeDialogDemoComponent } from './fake-dialog-demo.component';
 import { User } from './edit-user-dialog-demo.component';
 
 @Component({
+  standalone: false,
   providers: [],
   templateUrl: './dialog-demo.html'
 })

@@ -10,6 +10,7 @@ export interface Dessert {
 }
 
 @Component({
+  standalone: false,
   providers: [],
   templateUrl: './sort-demo.html',
   styleUrls: ['./sort-demo.scss']

@@ -2,6 +2,7 @@ import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnIn
 import { NwbTabComponent } from './tab.component';
 
 @Component({
+  standalone: false,
   selector: 'nwb-tabs',
   template: `
     <div

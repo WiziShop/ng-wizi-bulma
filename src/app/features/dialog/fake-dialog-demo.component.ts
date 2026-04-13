@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, ViewChild } from '@angular/core';
 
 @Component({
+  standalone: false,
   providers: [],
   template: `
     <div class="field">

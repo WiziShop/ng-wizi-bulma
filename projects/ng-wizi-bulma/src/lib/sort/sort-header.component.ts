@@ -28,6 +28,7 @@ export interface ArrowViewStateTransition {
 }
 
 @Component({
+  standalone: false,
   selector: '[nwb-sort-header]',
   templateUrl: './sort-header.component.html',
   animations: [nwbSortAnimations.arrowDirection, nwbSortAnimations.arrowOpacity, nwbSortAnimations.arrowPosition],

@@ -3,6 +3,7 @@ import { NwbDialogService, NwbDropdownConfig } from 'projects/ng-wizi-bulma/src/
 import { Observable } from 'rxjs';
 
 @Component({
+  standalone: false,
   providers: [],
   templateUrl: './dropdown-demo.html'
 })

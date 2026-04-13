@@ -7,6 +7,7 @@ import { Directive, ElementRef, EventEmitter, Input, Output } from '@angular/cor
  *
  */
 @Directive({
+  standalone: false,
   selector: 'nwb-option'
 })
 export class NwbOptionComponent {

@@ -5,6 +5,7 @@ import { NwbDatePickerComponent } from './date-picker.component';
 import { NwbDatePickerInputBaseDirective } from './date-picker-input-base.directive';
 
 @Directive({
+  standalone: false,
   selector: 'input[nwbDatepickerStart]',
   providers: [
     {

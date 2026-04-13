@@ -15,6 +15,7 @@ import {
 import { animate, AnimationEvent, keyframes, style, transition, trigger } from '@angular/animations';
 
 @Component({
+  standalone: false,
   selector: 'nwb-dialog',
   templateUrl: './dialog.component.html',
   host: {

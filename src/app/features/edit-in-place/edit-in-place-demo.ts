@@ -5,6 +5,7 @@ import { NwbEditInPlaceConfig } from '../../../../projects/ng-wizi-bulma/src/lib
 import { map } from 'rxjs/operators';
 
 @Component({
+  standalone: false,
   providers: [],
   templateUrl: './edit-in-place-demo.html'
 })

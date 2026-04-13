@@ -4,6 +4,7 @@ import { finalize } from 'rxjs/operators';
 import { NwbFoundRow, NwbModalSearchConfig } from './modal-search.service';
 
 @Component({
+  standalone: false,
   selector: 'nwb-modal-search',
   templateUrl: './modal-search.component.html',
   host: {

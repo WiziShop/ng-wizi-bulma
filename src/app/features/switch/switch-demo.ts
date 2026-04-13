@@ -2,6 +2,7 @@ import { UntypedFormBuilder, FormGroup } from '@angular/forms';
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   providers: [],
   templateUrl: './switch-demo.html',
 })

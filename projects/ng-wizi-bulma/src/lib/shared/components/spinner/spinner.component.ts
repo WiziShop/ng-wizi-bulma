@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'nwb-spinner',
   templateUrl: './spinner.component.html',
   host: {

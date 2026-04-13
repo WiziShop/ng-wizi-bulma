@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NwbAlertConfig, NwbAlertService } from 'projects/ng-wizi-bulma/src/public_api';
 
 @Component({
+  standalone: false,
   providers: [],
   templateUrl: './alert-demo.html'
 })
