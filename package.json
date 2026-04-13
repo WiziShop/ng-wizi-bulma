@@ -74,11 +74,6 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.5.4"
   },
-  "overrides": {
-    "bulma-calendar": {
-      "node-sass": "npm:sass@^1.57.0"
-    }
-  },
   "volta": {
     "node": "22.14.0"
   }
